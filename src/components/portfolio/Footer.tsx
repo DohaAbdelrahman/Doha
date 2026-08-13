@@ -7,15 +7,15 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#E8ECEA] border-t border-[#D6DEDA]">
+    <footer className="bg-[#EAE6DE] border-t border-[#D9D5CD]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Left */}
           <div className="text-center sm:text-left">
-            <p className="font-semibold text-[#263238] text-sm">
+            <p className="font-semibold text-[#202A35] text-sm">
               {profile.name}
             </p>
-            <p className="text-[#607174] text-xs mt-0.5">
+            <p className="text-[#65717C] text-xs mt-0.5">
               Data Scientist
             </p>
           </div>
@@ -26,7 +26,7 @@ export default function Footer() {
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-[#607174] hover:text-[#4F7C78] hover:bg-[#D6DEDA] rounded-lg transition-colors"
+              className="p-2 text-[#65717C] hover:text-[#607D9A] hover:bg-[#D9D5CD] rounded-lg transition-colors"
               aria-label="GitHub"
             >
               <Github size={16} />
@@ -35,14 +35,14 @@ export default function Footer() {
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-[#607174] hover:text-[#4F7C78] hover:bg-[#D6DEDA] rounded-lg transition-colors"
+              className="p-2 text-[#65717C] hover:text-[#607D9A] hover:bg-[#D9D5CD] rounded-lg transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin size={16} />
             </a>
             <a
               href={`mailto:${profile.email}`}
-              className="p-2 text-[#607174] hover:text-[#4F7C78] hover:bg-[#D6DEDA] rounded-lg transition-colors"
+              className="p-2 text-[#65717C] hover:text-[#607D9A] hover:bg-[#D9D5CD] rounded-lg transition-colors"
               aria-label="Email"
             >
               <Mail size={16} />
@@ -50,9 +50,9 @@ export default function Footer() {
           </div>
 
           {/* Right */}
-          <p className="text-[#607174] text-xs flex items-center gap-1">
+          <p className="text-[#65717C] text-xs flex items-center gap-1">
             &copy; {currentYear} {profile.name}. Built with{" "}
-            <Heart className="w-3 h-3 text-[#4F7C78] inline" /> using Next.js
+            <Heart className="w-3 h-3 text-[#607D9A] inline" /> using Next.js
           </p>
         </div>
       </div>

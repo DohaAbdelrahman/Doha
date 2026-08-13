@@ -30,7 +30,7 @@ export default function Navigation() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#F1F3F2]/85 backdrop-blur-md shadow-sm border-b border-[#D6DEDA]"
+          ? "bg-[#F4F1EB]/85 backdrop-blur-md shadow-sm border-b border-[#D9D5CD]"
           : "bg-transparent"
       }`}
     >
@@ -43,7 +43,7 @@ export default function Navigation() {
               e.preventDefault();
               handleNavClick("#home");
             }}
-            className="font-semibold text-lg text-[#263238] tracking-tight"
+            className="font-semibold text-lg text-[#202A35] tracking-tight"
           >
             {profile.name}
           </a>
@@ -58,7 +58,7 @@ export default function Navigation() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  className="px-3 py-2 text-sm text-[#607174] hover:text-[#4F7C78] transition-colors duration-200 rounded-md hover:bg-[#E8ECEA]/60"
+                  className="px-3 py-2 text-sm text-[#65717C] hover:text-[#607D9A] transition-colors duration-200 rounded-md hover:bg-[#EAE6DE]/60"
                 >
                   {link.label}
                 </a>
@@ -69,7 +69,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-[#263238] hover:bg-[#E8ECEA] rounded-md transition-colors"
+            className="md:hidden p-2 text-[#202A35] hover:bg-[#EAE6DE] rounded-md transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -85,7 +85,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#F1F3F2]/95 backdrop-blur-md border-b border-[#D6DEDA] overflow-hidden"
+            className="md:hidden bg-[#F4F1EB]/95 backdrop-blur-md border-b border-[#D9D5CD] overflow-hidden"
           >
             <ul className="px-4 py-3 space-y-1">
               {navLinks.map((link) => (
@@ -96,7 +96,7 @@ export default function Navigation() {
                       e.preventDefault();
                       handleNavClick(link.href);
                     }}
-                    className="block px-3 py-2.5 text-sm text-[#607174] hover:text-[#4F7C78] hover:bg-[#E8ECEA] rounded-md transition-colors"
+                    className="block px-3 py-2.5 text-sm text-[#65717C] hover:text-[#607D9A] hover:bg-[#EAE6DE] rounded-md transition-colors"
                   >
                     {link.label}
                   </a>

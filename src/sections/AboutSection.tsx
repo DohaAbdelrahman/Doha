@@ -38,15 +38,15 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 sm:py-32 bg-[#E8ECEA]"
+      className="py-24 sm:py-32 bg-[#EAE6DE]"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#263238] mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#202A35] mb-4">
             About Me
           </h2>
-          <div className="w-12 h-1 bg-[#4F7C78] mx-auto rounded-full" />
+          <div className="w-12 h-1 bg-[#607D9A] mx-auto rounded-full" />
         </ScrollReveal>
 
         {/* Two Column Layout */}
@@ -57,7 +57,7 @@ export default function AboutSection() {
               {about.bio.map((paragraph, idx) => (
                 <p
                   key={idx}
-                  className="text-[#607174] leading-relaxed text-base sm:text-[17px]"
+                  className="text-[#65717C] leading-relaxed text-base sm:text-[17px]"
                 >
                   {paragraph}
                 </p>
@@ -70,16 +70,16 @@ export default function AboutSection() {
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
               {about.focusAreas.map((area) => (
                 <StaggerItem key={area.title}>
-                  <div className="bg-[#F8FAF9] rounded-xl p-5 border border-[#D6DEDA] hover:shadow-md hover:border-[#4F7C78]/30 transition-all duration-300">
+                  <div className="bg-[#FAF9F6] rounded-xl p-5 border border-[#D9D5CD] hover:shadow-md hover:border-[#607D9A]/30 transition-all duration-300">
                     <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#4F7C78]/10 flex items-center justify-center text-[#4F7C78]">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#607D9A]/10 flex items-center justify-center text-[#607D9A]">
                         {focusIcons[area.icon]}
                       </div>
                       <div>
-                        <h3 className="font-semibold text-[#263238] text-sm mb-1.5">
+                        <h3 className="font-semibold text-[#202A35] text-sm mb-1.5">
                           {area.title}
                         </h3>
-                        <p className="text-[#607174] text-sm leading-relaxed">
+                        <p className="text-[#65717C] text-sm leading-relaxed">
                           {area.description}
                         </p>
                       </div>

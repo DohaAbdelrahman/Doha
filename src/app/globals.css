@@ -58,49 +58,49 @@
   --radius: 0.625rem;
 
   /* Soft Professional Theme — Doha Adelrahman Portfolio */
-  --portfolio-bg: #F1F3F2;
-  --portfolio-bg-alt: #E8ECEA;
-  --portfolio-card: #F8FAF9;
-  --portfolio-text: #263238;
-  --portfolio-text-secondary: #607174;
-  --portfolio-border: #D6DEDA;
-  --portfolio-accent: #4F7C78;
-  --portfolio-accent-hover: #3F6864;
-  --portfolio-accent-light: #7A9A96;
+  --portfolio-bg: #F4F1EB;
+  --portfolio-bg-alt: #EAE6DE;
+  --portfolio-card: #FAF9F6;
+  --portfolio-text: #202A35;
+  --portfolio-text-secondary: #65717C;
+  --portfolio-border: #D9D5CD;
+  --portfolio-accent: #607D9A;
+  --portfolio-accent-hover: #4F6A84;
+  --portfolio-accent-light: #8A96A3;
 
   /* shadcn mapping */
-  --background: #F1F3F2;
-  --foreground: #263238;
-  --card: #F8FAF9;
-  --card-foreground: #263238;
-  --popover: #F8FAF9;
-  --popover-foreground: #263238;
-  --primary: #4F7C78;
+  --background: #F4F1EB;
+  --foreground: #202A35;
+  --card: #FAF9F6;
+  --card-foreground: #202A35;
+  --popover: #FAF9F6;
+  --popover-foreground: #202A35;
+  --primary: #607D9A;
   --primary-foreground: #FFFFFF;
-  --secondary: #E8ECEA;
-  --secondary-foreground: #263238;
-  --muted: #E8ECEA;
-  --muted-foreground: #607174;
-  --accent: #E8ECEA;
-  --accent-foreground: #263238;
+  --secondary: #EAE6DE;
+  --secondary-foreground: #202A35;
+  --muted: #EAE6DE;
+  --muted-foreground: #65717C;
+  --accent: #EAE6DE;
+  --accent-foreground: #202A35;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #D6DEDA;
-  --input: #D6DEDA;
-  --ring: #4F7C78;
-  --chart-1: #4F7C78;
-  --chart-2: #7A9A96;
-  --chart-3: #3F6864;
-  --chart-4: #263238;
-  --chart-5: #D6DEDA;
+  --border: #D9D5CD;
+  --input: #D9D5CD;
+  --ring: #607D9A;
+  --chart-1: #607D9A;
+  --chart-2: #8A96A3;
+  --chart-3: #4F6A84;
+  --chart-4: #202A35;
+  --chart-5: #D9D5CD;
 
-  --sidebar: #F8FAF9;
-  --sidebar-foreground: #263238;
-  --sidebar-primary: #4F7C78;
+  --sidebar: #FAF9F6;
+  --sidebar-foreground: #202A35;
+  --sidebar-primary: #607D9A;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E8ECEA;
-  --sidebar-accent-foreground: #263238;
-  --sidebar-border: #D6DEDA;
-  --sidebar-ring: #4F7C78;
+  --sidebar-accent: #EAE6DE;
+  --sidebar-accent-foreground: #202A35;
+  --sidebar-border: #D9D5CD;
+  --sidebar-ring: #607D9A;
 }
 
 @layer base {
@@ -108,7 +108,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-[#F1F3F2] text-[#263238];
+    @apply bg-[#F4F1EB] text-[#202A35];
   }
   html {
     scroll-behavior: smooth;
@@ -120,18 +120,18 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #E8ECEA;
+  background: #EAE6DE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #7A9A96;
+  background: #8A96A3;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4F7C78;
+  background: #607D9A;
 }
 
 /* Selection */
 ::selection {
-  background-color: #4F7C7840;
-  color: #263238;
+  background-color: #607D9A40;
+  color: #202A35;
 }

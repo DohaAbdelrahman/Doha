@@ -86,7 +86,7 @@ export default function HeroVisual() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxDist) {
             const alpha = (1 - dist / maxDist) * 0.08;
-            ctx.strokeStyle = `rgba(79, 124, 120, ${alpha})`;
+            ctx.strokeStyle = `rgba(96, 125, 154, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -100,7 +100,7 @@ export default function HeroVisual() {
       nodes.forEach((node) => {
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(79, 124, 120, ${node.opacity})`;
+        ctx.fillStyle = `rgba(96, 125, 154, ${node.opacity})`;
         ctx.fill();
       });
 
@@ -119,7 +119,7 @@ export default function HeroVisual() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxDist) {
             const alpha = (1 - dist / maxDist) * 0.08;
-            ctx.strokeStyle = `rgba(79, 124, 120, ${alpha})`;
+            ctx.strokeStyle = `rgba(96, 125, 154, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -131,7 +131,7 @@ export default function HeroVisual() {
       nodes.forEach((node) => {
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(79, 124, 120, ${node.opacity})`;
+        ctx.fillStyle = `rgba(96, 125, 154, ${node.opacity})`;
         ctx.fill();
       });
     }

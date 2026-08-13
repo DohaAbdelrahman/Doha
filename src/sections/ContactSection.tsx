@@ -34,53 +34,53 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-[#F1F3F2]">
+    <section id="contact" className="py-24 sm:py-32 bg-[#F4F1EB]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#263238] mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#202A35] mb-4">
             Get In Touch
           </h2>
-          <p className="text-[#607174] max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-[#65717C] max-w-2xl mx-auto text-base sm:text-lg">
             Interested in collaborating, have a data science project, or just
             want to connect? I&apos;d love to hear from you.
           </p>
-          <div className="w-12 h-1 bg-[#4F7C78] mx-auto rounded-full mt-4" />
+          <div className="w-12 h-1 bg-[#607D9A] mx-auto rounded-full mt-4" />
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Left: Contact Info */}
           <ScrollReveal direction="left">
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold text-[#263238]">
+              <h3 className="text-xl font-semibold text-[#202A35]">
                 Let&apos;s work together
               </h3>
-              <p className="text-[#607174] leading-relaxed">
+              <p className="text-[#65717C] leading-relaxed">
                 Whether you&apos;re looking for a data scientist to join your
                 team, need help with a machine learning project, or want to
                 discuss data science opportunities — feel free to reach out.
               </p>
 
               {/* Email */}
-              <div className="bg-[#F8FAF9] rounded-xl border border-[#D6DEDA] p-5">
+              <div className="bg-[#FAF9F6] rounded-xl border border-[#D9D5CD] p-5">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-[#4F7C78]/10 flex items-center justify-center text-[#4F7C78]">
+                  <div className="w-10 h-10 rounded-lg bg-[#607D9A]/10 flex items-center justify-center text-[#607D9A]">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs text-[#607174]">Email</p>
-                    <p className="text-[#263238] font-medium text-sm">
+                    <p className="text-xs text-[#65717C]">Email</p>
+                    <p className="text-[#202A35] font-medium text-sm">
                       {profile.email}
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={copyEmail}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#607174] bg-[#E8ECEA] hover:bg-[#D6DEDA] rounded-md transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#65717C] bg-[#EAE6DE] hover:bg-[#D9D5CD] rounded-md transition-colors"
                 >
                   {copied ? (
                     <>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#4F7C78]" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#607D9A]" />
                       Copied
                     </>
                   ) : (
@@ -98,7 +98,7 @@ export default function ContactSection() {
                   href={profile.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-[#263238] bg-[#F8FAF9] border border-[#D6DEDA] hover:border-[#4F7C78]/40 hover:bg-[#E8ECEA] rounded-lg transition-all"
+                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-[#202A35] bg-[#FAF9F6] border border-[#D9D5CD] hover:border-[#607D9A]/40 hover:bg-[#EAE6DE] rounded-lg transition-all"
                 >
                   <Github size={16} />
                   GitHub
@@ -107,7 +107,7 @@ export default function ContactSection() {
                   href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-[#263238] bg-[#F8FAF9] border border-[#D6DEDA] hover:border-[#4F7C78]/40 hover:bg-[#E8ECEA] rounded-lg transition-all"
+                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-[#202A35] bg-[#FAF9F6] border border-[#D9D5CD] hover:border-[#607D9A]/40 hover:bg-[#EAE6DE] rounded-lg transition-all"
                 >
                   <Linkedin size={16} />
                   LinkedIn
@@ -122,7 +122,7 @@ export default function ContactSection() {
               <div>
                 <label
                   htmlFor="contact-name"
-                  className="block text-sm font-medium text-[#263238] mb-1.5"
+                  className="block text-sm font-medium text-[#202A35] mb-1.5"
                 >
                   Name
                 </label>
@@ -134,14 +134,14 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 text-sm bg-[#F8FAF9] border border-[#D6DEDA] rounded-lg text-[#263238] placeholder-[#7A9A96] focus:outline-none focus:ring-2 focus:ring-[#4F7C78]/30 focus:border-[#4F7C78] transition-colors"
+                  className="w-full px-4 py-2.5 text-sm bg-[#FAF9F6] border border-[#D9D5CD] rounded-lg text-[#202A35] placeholder-[#8A96A3] focus:outline-none focus:ring-2 focus:ring-[#607D9A]/30 focus:border-[#607D9A] transition-colors"
                   placeholder="Your name"
                 />
               </div>
               <div>
                 <label
                   htmlFor="contact-email"
-                  className="block text-sm font-medium text-[#263238] mb-1.5"
+                  className="block text-sm font-medium text-[#202A35] mb-1.5"
                 >
                   Email
                 </label>
@@ -153,14 +153,14 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 text-sm bg-[#F8FAF9] border border-[#D6DEDA] rounded-lg text-[#263238] placeholder-[#7A9A96] focus:outline-none focus:ring-2 focus:ring-[#4F7C78]/30 focus:border-[#4F7C78] transition-colors"
+                  className="w-full px-4 py-2.5 text-sm bg-[#FAF9F6] border border-[#D9D5CD] rounded-lg text-[#202A35] placeholder-[#8A96A3] focus:outline-none focus:ring-2 focus:ring-[#607D9A]/30 focus:border-[#607D9A] transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
               <div>
                 <label
                   htmlFor="contact-message"
-                  className="block text-sm font-medium text-[#263238] mb-1.5"
+                  className="block text-sm font-medium text-[#202A35] mb-1.5"
                 >
                   Message
                 </label>
@@ -172,13 +172,13 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 text-sm bg-[#F8FAF9] border border-[#D6DEDA] rounded-lg text-[#263238] placeholder-[#7A9A96] focus:outline-none focus:ring-2 focus:ring-[#4F7C78]/30 focus:border-[#4F7C78] transition-colors resize-none"
+                  className="w-full px-4 py-2.5 text-sm bg-[#FAF9F6] border border-[#D9D5CD] rounded-lg text-[#202A35] placeholder-[#8A96A3] focus:outline-none focus:ring-2 focus:ring-[#607D9A]/30 focus:border-[#607D9A] transition-colors resize-none"
                   placeholder="Tell me about your project or opportunity..."
                 />
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F7C78] text-white rounded-lg text-sm font-medium hover:bg-[#3F6864] transition-colors duration-200 shadow-sm w-full sm:w-auto justify-center"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#607D9A] text-white rounded-lg text-sm font-medium hover:bg-[#4F6A84] transition-colors duration-200 shadow-sm w-full sm:w-auto justify-center"
               >
                 <Send className="w-4 h-4" />
                 Send Message

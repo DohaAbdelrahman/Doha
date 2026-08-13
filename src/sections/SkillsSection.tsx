@@ -52,31 +52,31 @@ const categoryIcons: Record<string, React.ReactNode> = {
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-24 sm:py-32 bg-[#F1F3F2]">
+    <section id="skills" className="py-24 sm:py-32 bg-[#F4F1EB]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#263238] mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#202A35] mb-4">
             Skills & Technologies
           </h2>
-          <p className="text-[#607174] max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-[#65717C] max-w-2xl mx-auto text-base sm:text-lg">
             Technologies and tools I use across the data science pipeline —
             from data wrangling to model deployment.
           </p>
-          <div className="w-12 h-1 bg-[#4F7C78] mx-auto rounded-full mt-4" />
+          <div className="w-12 h-1 bg-[#607D9A] mx-auto rounded-full mt-4" />
         </ScrollReveal>
 
         {/* Skill Categories */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
             <StaggerItem key={category.title}>
-              <div className="bg-[#F8FAF9] rounded-xl border border-[#D6DEDA] p-6 hover:shadow-md hover:border-[#4F7C78]/30 transition-all duration-300 h-full">
+              <div className="bg-[#FAF9F6] rounded-xl border border-[#D9D5CD] p-6 hover:shadow-md hover:border-[#607D9A]/30 transition-all duration-300 h-full">
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-[#4F7C78]/10 flex items-center justify-center text-[#4F7C78] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-[#607D9A]/10 flex items-center justify-center text-[#607D9A] flex-shrink-0">
                     {categoryIcons[category.icon]}
                   </div>
-                  <h3 className="font-semibold text-[#263238]">
+                  <h3 className="font-semibold text-[#202A35]">
                     {category.title}
                   </h3>
                 </div>
@@ -86,8 +86,8 @@ export default function SkillsSection() {
                   {category.skills.map((skill) => (
                     <div key={skill.name}>
                       <div className="flex items-center gap-2 mb-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#4F7C78] flex-shrink-0" />
-                        <span className="text-[#263238] font-medium text-sm">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#607D9A] flex-shrink-0" />
+                        <span className="text-[#202A35] font-medium text-sm">
                           {skill.name}
                         </span>
                       </div>
@@ -95,7 +95,7 @@ export default function SkillsSection() {
                         {skill.context.map((ctx) => (
                           <span
                             key={ctx}
-                            className="inline-block px-2 py-0.5 text-xs text-[#607174] bg-[#E8ECEA] rounded-md"
+                            className="inline-block px-2 py-0.5 text-xs text-[#65717C] bg-[#EAE6DE] rounded-md"
                           >
                             {ctx}
                           </span>

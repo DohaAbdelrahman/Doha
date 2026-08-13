@@ -14,7 +14,7 @@ import ContactSection from "@/sections/ContactSection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F1F3F2]">
+    <div className="min-h-screen flex flex-col bg-[#F4F1EB]">
       <Navigation />
       <main className="flex-1">
         <HeroSection />

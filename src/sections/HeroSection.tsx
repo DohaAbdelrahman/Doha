@@ -71,7 +71,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#F1F3F2]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#F4F1EB]"
     >
       <HeroVisual />
 
@@ -81,7 +81,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[#4F7C78] font-medium text-sm sm:text-base tracking-wider uppercase mb-4"
+          className="text-[#607D9A] font-medium text-sm sm:text-base tracking-wider uppercase mb-4"
         >
           Hello, I&apos;m
         </motion.p>
@@ -90,7 +90,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#263238] mb-4 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#202A35] mb-4 tracking-tight"
         >
           {profile.name}
         </motion.h1>
@@ -99,7 +99,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#4F7C78] mb-6"
+          className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#607D9A] mb-6"
         >
           {profile.title}
         </motion.h2>
@@ -108,7 +108,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          className="text-lg sm:text-xl text-[#4F7C78] font-medium mb-6 italic"
+          className="text-lg sm:text-xl text-[#607D9A] font-medium mb-6 italic"
         >
           &ldquo;{profile.tagline}&rdquo;
         </motion.p>
@@ -117,7 +117,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="max-w-2xl mx-auto text-[#607174] text-base sm:text-lg leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-[#65717C] text-base sm:text-lg leading-relaxed mb-10"
         >
           {profile.description}
         </motion.p>
@@ -131,19 +131,19 @@ export default function HeroSection() {
         >
           <button
             onClick={scrollToProjects}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F7C78] text-white rounded-lg text-sm font-medium hover:bg-[#3F6864] transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#607D9A] text-white rounded-lg text-sm font-medium hover:bg-[#4F6A84] transition-colors duration-200 shadow-sm"
           >
             View My Projects
           </button>
           <a
             href={profile.resumeUrl}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#263238] text-white rounded-lg text-sm font-medium hover:bg-[#37474F] transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#202A35] text-white rounded-lg text-sm font-medium hover:bg-[#37474F] transition-colors duration-200 shadow-sm"
           >
             Download Resume
           </a>
           <button
             onClick={scrollToContact}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[#D6DEDA] text-[#263238] rounded-lg text-sm font-medium hover:bg-[#E8ECEA] transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-[#D9D5CD] text-[#202A35] rounded-lg text-sm font-medium hover:bg-[#EAE6DE] transition-colors duration-200"
           >
             Let&apos;s Connect
           </button>
@@ -160,7 +160,7 @@ export default function HeroSection() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 text-[#607174] hover:text-[#4F7C78] hover:bg-[#E8ECEA] rounded-lg transition-colors duration-200"
+            className="p-2.5 text-[#65717C] hover:text-[#607D9A] hover:bg-[#EAE6DE] rounded-lg transition-colors duration-200"
             aria-label="GitHub"
           >
             <Github size={20} />
@@ -169,14 +169,14 @@ export default function HeroSection() {
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 text-[#607174] hover:text-[#4F7C78] hover:bg-[#E8ECEA] rounded-lg transition-colors duration-200"
+            className="p-2.5 text-[#65717C] hover:text-[#607D9A] hover:bg-[#EAE6DE] rounded-lg transition-colors duration-200"
             aria-label="LinkedIn"
           >
             <Linkedin size={20} />
           </a>
           <a
             href={`mailto:${profile.email}`}
-            className="p-2.5 text-[#607174] hover:text-[#4F7C78] hover:bg-[#E8ECEA] rounded-lg transition-colors duration-200"
+            className="p-2.5 text-[#65717C] hover:text-[#607D9A] hover:bg-[#EAE6DE] rounded-lg transition-colors duration-200"
             aria-label="Email"
           >
             <Mail size={20} />
@@ -193,9 +193,9 @@ export default function HeroSection() {
           {heroStats.map((stat, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-2.5 text-[#607174]"
+              className="flex items-center gap-2.5 text-[#65717C]"
             >
-              <span className="text-[#4F7C78]">{statIcons[stat.icon]}</span>
+              <span className="text-[#607D9A]">{statIcons[stat.icon]}</span>
               <span className="text-sm font-medium">{stat.label}</span>
             </div>
           ))}
@@ -213,7 +213,7 @@ export default function HeroSection() {
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ArrowDown className="w-5 h-5 text-[#7A9A96]" />
+          <ArrowDown className="w-5 h-5 text-[#8A96A3]" />
         </motion.div>
       </motion.div>
     </section>

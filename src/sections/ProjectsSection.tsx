@@ -1,120 +1,172 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  X,
   ExternalLink,
   Github,
-  ArrowRight,
-  Database,
-  BrainCircuit,
-  BarChart3,
-  FlaskConical,
-  CheckCircle2,
-  FileText,
+  ArrowUpRight,
 } from "lucide-react";
-import ScrollReveal, {
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/portfolio/ScrollReveal";
-import { projects, type Project } from "@/data/portfolio";
+import ScrollReveal from "@/components/portfolio/ScrollReveal";
+import { projects } from "@/data/portfolio";
 
-const categoryColors: Record<string, string> = {
-  "Machine Learning": "bg-[#4F7C78]/10 text-[#4F7C78]",
-  "NLP / Deep Learning": "bg-[#3F6864]/10 text-[#3F6864]",
-  "Data Science": "bg-[#7A9A96]/10 text-[#7A9A96]",
-  "Deep Learning": "bg-[#3F6864]/10 text-[#3F6864]",
-};
-
-function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
-  const steps = [
-    { icon: <FileText className="w-4 h-4" />, label: "Overview", key: "problem" as const },
-    { icon: <Database className="w-4 h-4" />, label: "Dataset", key: "data" as const },
-    { icon: <BarChart3 className="w-4 h-4" />, label: "Analysis", key: "analysis" as const },
-    { icon: <BrainCircuit className="w-4 h-4" />, label: "Modeling", key: "modeling" as const },
-    { icon: <FlaskConical className="w-4 h-4" />, label: "Evaluation", key: "evaluation" as const },
-    { icon: <CheckCircle2 className="w-4 h-4" />, label: "Results", key: "results" as const },
+/* ── abstract data-science visual per project ── */
+function ProjectVisual({ project, index }: { project: typeof projects[number]; index: number }) {
+  const palettes = [
+    ["#607D9A", "#8A96A3", "#D9D5CD"], // blue-ish
+    ["#4F6A84", "#607D9A", "#EAE6DE"], // deep blue
+    ["#8A96A3", "#B0B8C4", "#FAF9F6"], // steel
   ];
+  const [c1, c2, c3] = palettes[index % palettes.length];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#263238]/40 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="bg-[#F8FAF9] rounded-2xl border border-[#D6DEDA] shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
+    <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-[#EAE6DE] to-[#FAF9F6]">
+      <svg
+        viewBox="0 0 400 300"
+        className="w-full h-full"
+        preserveAspectRatio="xMidYMid meet"
+        aria-hidden="true"
       >
-        {/* Header */}
-        <div className="sticky top-0 bg-[#F8FAF9] border-b border-[#D6DEDA] px-6 py-4 flex items-start justify-between z-10">
-          <div>
-            <h3 className="text-xl font-bold text-[#263238]">{project.title}</h3>
-            <span
-              className={`inline-block mt-1.5 px-2.5 py-0.5 text-xs font-medium rounded-md ${
-                categoryColors[project.category] || "bg-[#E8ECEA] text-[#607174]"
-              }`}
-            >
-              {project.category}
-            </span>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 text-[#607174] hover:text-[#263238] hover:bg-[#E8ECEA] rounded-lg transition-colors"
-            aria-label="Close"
-          >
-            <X size={20} />
-          </button>
-        </div>
+        {/* Decorative grid dots */}
+        {Array.from({ length: 8 }).map((_, row) =>
+          Array.from({ length: 10 }).map((_, col) => (
+            <circle
+              key={`dot-${row}-${col}`}
+              cx={30 + col * 40}
+              cy={25 + row * 35}
+              r="1.5"
+              fill={c3}
+              opacity="0.5"
+            />
+          ))
+        )}
 
-        {/* Content */}
-        <div className="p-6 space-y-6">
-          {/* Process Steps */}
-          <div>
-            <h4 className="text-xs font-semibold text-[#607174] uppercase tracking-wider mb-4">
-              Process
-            </h4>
-            <div className="bg-[#F1F3F2] rounded-lg p-4 mb-4">
-              <p className="text-[#607174] text-sm leading-relaxed">{project.process}</p>
+        {/* Chart-style bars */}
+        <rect x="40" y="180" width="28" height="80" rx="3" fill={c1} opacity="0.25" />
+        <rect x="80" y="140" width="28" height="120" rx="3" fill={c1} opacity="0.35" />
+        <rect x="120" y="100" width="28" height="160" rx="3" fill={c1} opacity="0.5" />
+        <rect x="160" y="130" width="28" height="130" rx="3" fill={c2} opacity="0.4" />
+        <rect x="200" y="80" width="28" height="180" rx="3" fill={c1} opacity="0.6" />
+        <rect x="240" y="110" width="28" height="150" rx="3" fill={c2} opacity="0.35" />
+        <rect x="280" y="60" width="28" height="200" rx="3" fill={c1} opacity="0.7" />
+        <rect x="320" y="90" width="28" height="170" rx="3" fill={c2} opacity="0.45" />
+
+        {/* Trend line */}
+        <polyline
+          points="54,170 94,125 134,85 174,115 214,65 254,95 294,45 334,75"
+          fill="none"
+          stroke={c1}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.6"
+        />
+        <polyline
+          points="54,190 94,160 134,140 174,155 214,120 254,145 294,100 334,130"
+          fill="none"
+          stroke={c2}
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray="6 4"
+          opacity="0.4"
+        />
+
+        {/* Data points on trend */}
+        {[
+          [54, 170], [94, 125], [134, 85], [174, 115],
+          [214, 65], [254, 95], [294, 45], [334, 75],
+        ].map(([cx, cy], i) => (
+          <circle key={`pt-${i}`} cx={cx} cy={cy} r="4" fill="#FAF9F6" stroke={c1} strokeWidth="2" opacity="0.7" />
+        ))}
+
+        {/* Confusion-matrix style block */}
+        <rect x="280" y="210" width="90" height="60" rx="4" fill="#FAF9F6" stroke={c2} strokeWidth="0.8" opacity="0.6" />
+        <rect x="284" y="214" width="38" height="24" rx="2" fill={c1} opacity="0.5" />
+        <rect x="326" y="214" width="40" height="24" rx="2" fill={c2} opacity="0.2" />
+        <rect x="284" y="242" width="38" height="22" rx="2" fill={c2} opacity="0.2" />
+        <rect x="326" y="242" width="40" height="22" rx="2" fill={c1} opacity="0.4" />
+
+        {/* Title badge */}
+        <rect x="30" y="20" width="140" height="28" rx="6" fill="#FAF9F6" opacity="0.85" />
+        <text x="40" y="39" fontSize="11" fontFamily="sans-serif" fill={c1} fontWeight="600" opacity="0.7">
+          {project.category}
+        </text>
+      </svg>
+    </div>
+  );
+}
+
+/* ── single case-study block ── */
+function CaseStudy({
+  project,
+  index,
+}: {
+  project: typeof projects[number];
+  index: number;
+}) {
+  const isEven = index % 2 === 0; // text-left, visual-right
+  const number = String(index + 1).padStart(2, "0");
+
+  return (
+    <ScrollReveal>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        {/* Text side */}
+        <div className={`${isEven ? "lg:order-1" : "lg:order-2"}`}>
+          {/* Project number */}
+          <span className="text-[#607D9A] text-sm font-semibold tracking-widest">
+            {number}
+          </span>
+
+          {/* Title */}
+          <h3 className="text-2xl sm:text-3xl font-bold text-[#202A35] mt-2 mb-3">
+            {project.title}
+          </h3>
+
+          {/* Short description */}
+          <p className="text-[#65717C] leading-relaxed mb-8">
+            {project.shortDescription}
+          </p>
+
+          {/* PROBLEM / APPROACH / RESULT */}
+          <div className="space-y-6 mb-8">
+            <div>
+              <h4 className="text-xs font-semibold text-[#607D9A] uppercase tracking-wider mb-2">
+                Problem
+              </h4>
+              <p className="text-[#65717C] text-sm leading-relaxed">
+                {project.problem}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-xs font-semibold text-[#607D9A] uppercase tracking-wider mb-2">
+                Approach
+              </h4>
+              <p className="text-[#65717C] text-sm leading-relaxed">
+                {project.modeling}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-xs font-semibold text-[#607D9A] uppercase tracking-wider mb-2">
+                Result
+              </h4>
+              <p className="text-[#65717C] text-sm leading-relaxed">
+                {project.results}
+              </p>
             </div>
           </div>
 
-          {/* Detailed Steps */}
-          <div className="space-y-4">
-            {steps.map((step) => (
-              <div key={step.key} className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#4F7C78]/10 flex items-center justify-center text-[#4F7C78] mt-0.5">
-                  {step.icon}
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-sm font-semibold text-[#263238] mb-1">
-                    {step.label}
-                  </h4>
-                  <p className="text-[#607174] text-sm leading-relaxed">
-                    {project[step.key]}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
           {/* Technologies */}
-          <div>
-            <h4 className="text-xs font-semibold text-[#607174] uppercase tracking-wider mb-3">
-              Technologies Used
+          <div className="mb-6">
+            <h4 className="text-xs font-semibold text-[#65717C] uppercase tracking-wider mb-3">
+              Technologies
             </h4>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 text-xs font-medium text-[#4F7C78] bg-[#4F7C78]/10 rounded-md"
+                  className="px-3 py-1 text-xs font-medium text-[#65717C] bg-[#EAE6DE] rounded-md"
                 >
                   {tech}
                 </span>
@@ -123,16 +175,20 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-3 pt-2 border-t border-[#D6DEDA]">
+          <div className="flex items-center gap-3">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#263238] bg-[#E8ECEA] hover:bg-[#D6DEDA] rounded-lg transition-colors"
+                className="group inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-[#202A35] bg-[#FAF9F6] border border-[#D9D5CD] hover:border-[#607D9A]/40 hover:bg-[#EAE6DE] rounded-lg transition-all duration-200"
               >
                 <Github size={16} />
                 Source Code
+                <ArrowUpRight
+                  size={14}
+                  className="text-[#65717C] group-hover:text-[#607D9A] transition-colors"
+                />
               </a>
             )}
             {project.demoUrl && (
@@ -140,7 +196,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[#4F7C78] hover:bg-[#3F6864] rounded-lg transition-colors"
+                className="group inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white bg-[#607D9A] hover:bg-[#4F6A84] rounded-lg transition-colors duration-200"
               >
                 <ExternalLink size={16} />
                 Live Demo
@@ -148,128 +204,53 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             )}
           </div>
         </div>
-      </motion.div>
-    </motion.div>
+
+        {/* Visual side */}
+        <div className={`${isEven ? "lg:order-2" : "lg:order-1"}`}>
+          <motion.div
+            whileHover={{ scale: 1.015 }}
+            transition={{ type: "tween", duration: 0.4 }}
+            className="rounded-lg overflow-hidden shadow-sm border border-[#D9D5CD] hover:shadow-md transition-shadow duration-300"
+          >
+            <ProjectVisual project={project} index={index} />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Divider (except last) */}
+      {index < projects.length - 1 && (
+        <div className="mt-24 mb-2 flex items-center justify-center">
+          <div className="w-px h-16 bg-[#D9D5CD]" />
+        </div>
+      )}
+    </ScrollReveal>
   );
 }
 
+/* ── projects section ── */
 export default function ProjectsSection() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [filter, setFilter] = useState<string>("all");
-
-  const categories = ["all", ...Array.from(new Set(projects.map((p) => p.category)))];
-  const filtered =
-    filter === "all"
-      ? projects
-      : projects.filter((p) => p.category === filter);
-
   return (
-    <section id="projects" className="py-24 sm:py-32 bg-[#E8ECEA]">
+    <section id="projects" className="py-24 sm:py-32 bg-[#EAE6DE]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <ScrollReveal className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#263238] mb-4">
+        <ScrollReveal className="text-center mb-20">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#202A35] mb-4">
             Featured Projects
           </h2>
-          <p className="text-[#607174] max-w-2xl mx-auto text-base sm:text-lg">
-            Data science case studies showcasing problem-solving through data —
-            from exploration to deployment.
+          <p className="text-[#65717C] max-w-2xl mx-auto text-base sm:text-lg">
+            Data science case studies showcasing problem-solving through
+            data — from exploration to deployment.
           </p>
-          <div className="w-12 h-1 bg-[#4F7C78] mx-auto rounded-full mt-4" />
+          <div className="w-12 h-1 bg-[#607D9A] mx-auto rounded-full mt-4" />
         </ScrollReveal>
 
-        {/* Filter */}
-        <ScrollReveal className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                filter === cat
-                  ? "bg-[#4F7C78] text-white"
-                  : "text-[#607174] bg-[#F8FAF9] border border-[#D6DEDA] hover:border-[#4F7C78]/40"
-              }`}
-            >
-              {cat === "all" ? "All Projects" : cat}
-            </button>
+        {/* Case Studies */}
+        <div className="space-y-0">
+          {projects.map((project, idx) => (
+            <CaseStudy key={project.id} project={project} index={idx} />
           ))}
-        </ScrollReveal>
-
-        {/* Project Grid */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((project) => (
-            <StaggerItem key={project.id}>
-              <div
-                className={`bg-[#F8FAF9] rounded-xl border border-[#D6DEDA] overflow-hidden hover:shadow-lg hover:border-[#4F7C78]/30 transition-all duration-300 cursor-pointer group h-full flex flex-col ${
-                  project.featured ? "md:col-span-1" : ""
-                }`}
-                onClick={() => setSelectedProject(project)}
-              >
-                {/* Card Header Visual */}
-                <div className="h-40 bg-gradient-to-br from-[#4F7C78]/15 to-[#7A9A96]/10 relative flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-xl bg-[#4F7C78]/10 flex items-center justify-center">
-                    <BrainCircuit className="w-8 h-8 text-[#4F7C78]/60" />
-                  </div>
-                  {project.featured && (
-                    <span className="absolute top-3 right-3 px-2.5 py-0.5 text-xs font-medium bg-[#4F7C78] text-white rounded-md">
-                      Featured
-                    </span>
-                  )}
-                  <span className="absolute top-3 left-3 px-2.5 py-0.5 text-xs font-medium rounded-md bg-[#F8FAF9]/80 text-[#4F7C78] backdrop-blur-sm">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Card Body */}
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="font-semibold text-[#263238] text-lg mb-2 group-hover:text-[#4F7C78] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-[#607174] text-sm leading-relaxed mb-4 flex-1">
-                    {project.shortDescription}
-                  </p>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-0.5 text-xs text-[#607174] bg-[#E8ECEA] rounded-md"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="px-2 py-0.5 text-xs text-[#607174] bg-[#E8ECEA] rounded-md">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Action */}
-                  <div className="flex items-center gap-2 text-[#4F7C78] text-sm font-medium">
-                    <span>View Case Study</span>
-                    <ArrowRight
-                      size={14}
-                      className="group-hover:translate-x-1 transition-transform"
-                    />
-                  </div>
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        </div>
       </div>
-
-      {/* Project Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
-      </AnimatePresence>
     </section>
   );
 }
