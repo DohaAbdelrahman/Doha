@@ -51,7 +51,6 @@ export default function HeroVisual() {
     resize();
     window.addEventListener("resize", resize);
 
-    // Create nodes
     const nodeCount = reducedMotion ? 15 : 35;
     const nodes: Node[] = [];
     for (let i = 0; i < nodeCount; i++) {
@@ -67,26 +66,22 @@ export default function HeroVisual() {
 
     const maxDist = 150;
 
-    const draw = () => {
+    const drawFrame = () => {
       ctx.clearRect(0, 0, width, height);
-
-      // Update nodes
-      nodes.forEach((node) => {
-        node.x += node.vx;
-        node.y += node.vy;
-        if (node.x < 0 || node.x > width) node.vx *= -1;
-        if (node.y < 0 || node.y > height) node.vy *= -1;
+      nodes.forEach((n) => {
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
       });
-
-      // Draw connections
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.08;
-            ctx.strokeStyle = `rgba(96, 125, 154, ${alpha})`;
+            const a = (1 - dist / maxDist) * 0.1;
+            ctx.strokeStyle = `rgba(126, 184, 218, ${a})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -95,22 +90,16 @@ export default function HeroVisual() {
           }
         }
       }
-
-      // Draw nodes
-      nodes.forEach((node) => {
+      nodes.forEach((n) => {
         ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(96, 125, 154, ${node.opacity})`;
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(126, 184, 218, ${n.opacity})`;
         ctx.fill();
       });
-
-      animationRef.current = requestAnimationFrame(draw);
+      animationRef.current = requestAnimationFrame(drawFrame);
     };
 
-    if (!reducedMotion) {
-      draw();
-    } else {
-      // Draw static version
+    const drawStatic = () => {
       ctx.clearRect(0, 0, width, height);
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -118,8 +107,8 @@ export default function HeroVisual() {
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.08;
-            ctx.strokeStyle = `rgba(96, 125, 154, ${alpha})`;
+            const a = (1 - dist / maxDist) * 0.1;
+            ctx.strokeStyle = `rgba(126, 184, 218, ${a})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -128,13 +117,16 @@ export default function HeroVisual() {
           }
         }
       }
-      nodes.forEach((node) => {
+      nodes.forEach((n) => {
         ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(96, 125, 154, ${node.opacity})`;
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(126, 184, 218, ${n.opacity})`;
         ctx.fill();
       });
-    }
+    };
+
+    if (!reducedMotion) drawFrame();
+    else drawStatic();
 
     return () => {
       window.removeEventListener("resize", resize);

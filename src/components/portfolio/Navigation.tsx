@@ -17,10 +17,7 @@ export default function Navigation() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -30,35 +27,27 @@ export default function Navigation() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#F4F1EB]/85 backdrop-blur-md shadow-sm border-b border-[#D9D5CD]"
+          ? "glass-subtle shadow-lg"
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <a
             href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick("#home");
-            }}
-            className="font-semibold text-lg text-[#202A35] tracking-tight"
+            onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
+            className="font-semibold text-lg text-[#E2E8F0] tracking-tight"
           >
             {profile.name}
           </a>
 
-          {/* Desktop Links */}
           <ul className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
-                  className="px-3 py-2 text-sm text-[#65717C] hover:text-[#607D9A] transition-colors duration-200 rounded-md hover:bg-[#EAE6DE]/60"
+                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                  className="px-3 py-2 text-sm text-[#8B9BB4] hover:text-[#7EB8DA] transition-colors duration-200 rounded-lg hover:bg-white/5"
                 >
                   {link.label}
                 </a>
@@ -66,10 +55,9 @@ export default function Navigation() {
             ))}
           </ul>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-[#202A35] hover:bg-[#EAE6DE] rounded-md transition-colors"
+            className="md:hidden p-2 text-[#E2E8F0] hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -77,7 +65,6 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -85,18 +72,15 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#F4F1EB]/95 backdrop-blur-md border-b border-[#D9D5CD] overflow-hidden"
+            className="md:hidden glass-subtle overflow-hidden"
           >
             <ul className="px-4 py-3 space-y-1">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.href);
-                    }}
-                    className="block px-3 py-2.5 text-sm text-[#65717C] hover:text-[#607D9A] hover:bg-[#EAE6DE] rounded-md transition-colors"
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                    className="block px-3 py-2.5 text-sm text-[#8B9BB4] hover:text-[#7EB8DA] hover:bg-white/5 rounded-lg transition-colors"
                   >
                     {link.label}
                   </a>

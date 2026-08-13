@@ -41,66 +41,44 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
-  /* Custom portfolio colors */
-  --color-portfolio-bg: var(--portfolio-bg);
-  --color-portfolio-bg-alt: var(--portfolio-bg-alt);
-  --color-portfolio-card: var(--portfolio-card);
-  --color-portfolio-text: var(--portfolio-text);
-  --color-portfolio-text-secondary: var(--portfolio-text-secondary);
-  --color-portfolio-border: var(--portfolio-border);
-  --color-portfolio-accent: var(--portfolio-accent);
-  --color-portfolio-accent-hover: var(--portfolio-accent-hover);
-  --color-portfolio-accent-light: var(--portfolio-accent-light);
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  /* Soft Professional Theme — Doha Adelrahman Portfolio */
-  --portfolio-bg: #F4F1EB;
-  --portfolio-bg-alt: #EAE6DE;
-  --portfolio-card: #FAF9F6;
-  --portfolio-text: #202A35;
-  --portfolio-text-secondary: #65717C;
-  --portfolio-border: #D9D5CD;
-  --portfolio-accent: #607D9A;
-  --portfolio-accent-hover: #4F6A84;
-  --portfolio-accent-light: #8A96A3;
-
-  /* shadcn mapping */
-  --background: #F4F1EB;
-  --foreground: #202A35;
-  --card: #FAF9F6;
-  --card-foreground: #202A35;
-  --popover: #FAF9F6;
-  --popover-foreground: #202A35;
-  --primary: #607D9A;
-  --primary-foreground: #FFFFFF;
-  --secondary: #EAE6DE;
-  --secondary-foreground: #202A35;
-  --muted: #EAE6DE;
-  --muted-foreground: #65717C;
-  --accent: #EAE6DE;
-  --accent-foreground: #202A35;
+  /* Deep Navy — Doha Adelrahman Portfolio */
+  --background: #071A2B;
+  --foreground: #E2E8F0;
+  --card: rgba(20, 55, 85, 0.45);
+  --card-foreground: #E2E8F0;
+  --popover: rgba(20, 55, 85, 0.55);
+  --popover-foreground: #E2E8F0;
+  --primary: #7EB8DA;
+  --primary-foreground: #071A2B;
+  --secondary: #0D2D4A;
+  --secondary-foreground: #E2E8F0;
+  --muted: #0D2D4A;
+  --muted-foreground: #8B9BB4;
+  --accent: #0D2D4A;
+  --accent-foreground: #E2E8F0;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #D9D5CD;
-  --input: #D9D5CD;
-  --ring: #607D9A;
-  --chart-1: #607D9A;
-  --chart-2: #8A96A3;
-  --chart-3: #4F6A84;
-  --chart-4: #202A35;
-  --chart-5: #D9D5CD;
+  --border: rgba(150, 200, 230, 0.18);
+  --input: rgba(150, 200, 230, 0.18);
+  --ring: #7EB8DA;
+  --chart-1: #7EB8DA;
+  --chart-2: #5BA3D0;
+  --chart-3: #3D7FA8;
+  --chart-4: #E2E8F0;
+  --chart-5: #0D2D4A;
 
-  --sidebar: #FAF9F6;
-  --sidebar-foreground: #202A35;
-  --sidebar-primary: #607D9A;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #EAE6DE;
-  --sidebar-accent-foreground: #202A35;
-  --sidebar-border: #D9D5CD;
-  --sidebar-ring: #607D9A;
+  --sidebar: rgba(10, 37, 64, 0.8);
+  --sidebar-foreground: #E2E8F0;
+  --sidebar-primary: #7EB8DA;
+  --sidebar-primary-foreground: #071A2B;
+  --sidebar-accent: #0D2D4A;
+  --sidebar-accent-foreground: #E2E8F0;
+  --sidebar-border: rgba(150, 200, 230, 0.18);
+  --sidebar-ring: #7EB8DA;
 }
 
 @layer base {
@@ -108,30 +86,56 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-[#F4F1EB] text-[#202A35];
+    background-color: #071A2B;
+    color: #E2E8F0;
   }
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* Custom scrollbar */
+/* Glass utility classes */
+.glass {
+  background: rgba(20, 55, 85, 0.45);
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(150, 200, 230, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.glass-subtle {
+  background: rgba(20, 55, 85, 0.3);
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(150, 200, 230, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.glass-strong {
+  background: rgba(20, 55, 85, 0.6);
+  backdrop-filter: blur(32px) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+  border: 1px solid rgba(150, 200, 230, 0.22);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Custom scrollbar — dark */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #EAE6DE;
+  background: #0A2540;
 }
 ::-webkit-scrollbar-thumb {
-  background: #8A96A3;
+  background: rgba(126, 184, 218, 0.3);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #607D9A;
+  background: rgba(126, 184, 218, 0.5);
 }
 
 /* Selection */
 ::selection {
-  background-color: #607D9A40;
-  color: #202A35;
+  background-color: rgba(126, 184, 218, 0.3);
+  color: #E2E8F0;
 }

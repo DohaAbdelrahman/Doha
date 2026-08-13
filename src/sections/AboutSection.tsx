@@ -1,17 +1,12 @@
 "use client";
 
-import ScrollReveal, {
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/portfolio/ScrollReveal";
+import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/portfolio/ScrollReveal";
 import { about } from "@/data/portfolio";
 
 const focusIcons: Record<string, React.ReactNode> = {
   "bar-chart-3": (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <line x1="12" y1="20" x2="12" y2="10" />
-      <line x1="18" y1="20" x2="18" y2="4" />
-      <line x1="6" y1="20" x2="6" y2="16" />
+      <line x1="12" y1="20" x2="12" y2="10" /><line x1="18" y1="20" x2="18" y2="4" /><line x1="6" y1="20" x2="6" y2="16" />
     </svg>
   ),
   brain: (
@@ -22,8 +17,7 @@ const focusIcons: Record<string, React.ReactNode> = {
   ),
   search: (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
   ),
   sparkles: (
@@ -36,52 +30,34 @@ const focusIcons: Record<string, React.ReactNode> = {
 
 export default function AboutSection() {
   return (
-    <section
-      id="about"
-      className="py-24 sm:py-32 bg-[#EAE6DE]"
-    >
+    <section id="about" className="py-24 sm:py-32 bg-[#0A2540]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#202A35] mb-4">
-            About Me
-          </h2>
-          <div className="w-12 h-1 bg-[#607D9A] mx-auto rounded-full" />
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
+          <div className="w-12 h-1 bg-[#7EB8DA] mx-auto rounded-full" />
         </ScrollReveal>
 
-        {/* Two Column Layout */}
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-          {/* Left: Bio */}
           <ScrollReveal className="lg:col-span-3" direction="left">
             <div className="space-y-5">
-              {about.bio.map((paragraph, idx) => (
-                <p
-                  key={idx}
-                  className="text-[#65717C] leading-relaxed text-base sm:text-[17px]"
-                >
-                  {paragraph}
-                </p>
+              {about.bio.map((p, i) => (
+                <p key={i} className="text-[#8B9BB4] leading-relaxed text-base sm:text-[17px]">{p}</p>
               ))}
             </div>
           </ScrollReveal>
 
-          {/* Right: Focus Area Cards */}
           <div className="lg:col-span-2">
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
               {about.focusAreas.map((area) => (
                 <StaggerItem key={area.title}>
-                  <div className="bg-[#FAF9F6] rounded-xl p-5 border border-[#D9D5CD] hover:shadow-md hover:border-[#607D9A]/30 transition-all duration-300">
+                  <div className="glass-subtle rounded-2xl p-5 hover:bg-white/10 transition-all duration-300">
                     <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#607D9A]/10 flex items-center justify-center text-[#607D9A]">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#7EB8DA]/10 flex items-center justify-center text-[#7EB8DA]">
                         {focusIcons[area.icon]}
                       </div>
                       <div>
-                        <h3 className="font-semibold text-[#202A35] text-sm mb-1.5">
-                          {area.title}
-                        </h3>
-                        <p className="text-[#65717C] text-sm leading-relaxed">
-                          {area.description}
-                        </p>
+                        <h3 className="font-semibold text-white text-sm mb-1.5">{area.title}</h3>
+                        <p className="text-[#8B9BB4] text-sm leading-relaxed">{area.description}</p>
                       </div>
                     </div>
                   </div>
