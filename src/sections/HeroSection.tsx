@@ -81,7 +81,7 @@ export default function HeroSection() {
           <span className="w-10 h-px bg-[#4F8FD8]/50" />
 
           <span className="text-[#6AA7E8] text-sm sm:text-base tracking-[0.35em] font-medium">
-            EXPLORE ME
+             ME
           </span>
 
           <span className="w-10 h-px bg-[#4F8FD8]/50" />
