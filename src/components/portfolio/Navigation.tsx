@@ -36,7 +36,7 @@ export default function Navigation() {
           <a
             href="#home"
             onClick={(e) => { e.preventDefault(); handleNavClick("#home"); }}
-            className="font-semibold text-lg text-[#E2E8F0] tracking-tight"
+            className="font-semibold text-lg text-[#F1F5F9] tracking-tight"
           >
             {profile.name}
           </a>
@@ -47,7 +47,7 @@ export default function Navigation() {
                 <a
                   href={link.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  className="px-3 py-2 text-sm text-[#8B9BB4] hover:text-[#7EB8DA] transition-colors duration-200 rounded-lg hover:bg-white/5"
+                  className="px-3 py-2 text-sm text-[#A8B8C8] hover:text-[#4F8FD8] transition-colors duration-200 rounded-lg hover:bg-white/5"
                 >
                   {link.label}
                 </a>
@@ -57,7 +57,7 @@ export default function Navigation() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-[#E2E8F0] hover:bg-white/10 rounded-lg transition-colors"
+            className="md:hidden p-2 text-[#F1F5F9] hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -80,7 +80,7 @@ export default function Navigation() {
                   <a
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                    className="block px-3 py-2.5 text-sm text-[#8B9BB4] hover:text-[#7EB8DA] hover:bg-white/5 rounded-lg transition-colors"
+                    className="block px-3 py-2.5 text-sm text-[#A8B8C8] hover:text-[#4F8FD8] hover:bg-white/5 rounded-lg transition-colors"
                   >
                     {link.label}
                   </a>

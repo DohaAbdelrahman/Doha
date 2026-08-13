@@ -42,14 +42,14 @@ export default function HeroSection() {
       <HeroVisual />
 
       {/* Subtle radial glow behind content */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#7EB8DA]/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#4F8FD8]/5 blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[#7EB8DA] font-medium text-sm sm:text-base tracking-wider uppercase mb-4"
+          className="text-[#4F8FD8] font-medium text-sm sm:text-base tracking-wider uppercase mb-4"
         >
           Hello, I&apos;m
         </motion.p>
@@ -67,7 +67,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#7EB8DA] mb-6"
+          className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#4F8FD8] mb-6"
         >
           {profile.title}
         </motion.h2>
@@ -76,7 +76,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          className="text-lg sm:text-xl text-[#7EB8DA]/80 font-medium mb-6 italic"
+          className="text-lg sm:text-xl text-[#4F8FD8]/80 font-medium mb-6 italic"
         >
           &ldquo;{profile.tagline}&rdquo;
         </motion.p>
@@ -85,7 +85,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="max-w-2xl mx-auto text-[#8B9BB4] text-base sm:text-lg leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-[#A8B8C8] text-base sm:text-lg leading-relaxed mb-10"
         >
           {profile.description}
         </motion.p>
@@ -99,7 +99,7 @@ export default function HeroSection() {
         >
           <button
             onClick={scrollToProjects}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#7EB8DA] text-[#071A2B] rounded-xl text-sm font-semibold hover:bg-[#5BA3D0] transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F8FD8] text-[#071A2B] rounded-xl text-sm font-semibold hover:bg-[#6AA7E8] transition-colors duration-200"
           >
             View My Projects
           </button>
@@ -111,7 +111,7 @@ export default function HeroSection() {
           </a>
           <button
             onClick={scrollToContact}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(150,200,230,0.18)] text-[#8B9BB4] rounded-xl text-sm font-medium hover:text-[#7EB8DA] hover:border-[rgba(150,200,230,0.35)] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(150,195,225,0.18)] text-[#A8B8C8] rounded-xl text-sm font-medium hover:text-[#4F8FD8] hover:border-[rgba(150,195,225,0.35)] transition-all duration-200"
           >
             Let&apos;s Connect
           </button>
@@ -134,7 +134,7 @@ export default function HeroSection() {
               href={s.href}
               target={s.label !== "Email" ? "_blank" : undefined}
               rel={s.label !== "Email" ? "noopener noreferrer" : undefined}
-              className="p-2.5 text-[#8B9BB4] hover:text-[#7EB8DA] hover:bg-white/5 rounded-xl transition-colors duration-200"
+              className="p-2.5 text-[#A8B8C8] hover:text-[#4F8FD8] hover:bg-white/5 rounded-xl transition-colors duration-200"
               aria-label={s.label}
             >
               {s.icon}
@@ -150,8 +150,8 @@ export default function HeroSection() {
           className="flex flex-wrap items-center justify-center gap-6 sm:gap-10"
         >
           {heroStats.map((stat, idx) => (
-            <div key={idx} className="flex items-center gap-2.5 text-[#8B9BB4]">
-              <span className="text-[#7EB8DA]/70">{statIcons[stat.icon]}</span>
+            <div key={idx} className="flex items-center gap-2.5 text-[#A8B8C8]">
+              <span className="text-[#4F8FD8]/70">{statIcons[stat.icon]}</span>
               <span className="text-sm font-medium">{stat.label}</span>
             </div>
           ))}
@@ -166,7 +166,7 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}>
-          <ArrowDown className="w-5 h-5 text-[#5A7A94]" />
+          <ArrowDown className="w-5 h-5 text-[#71859A]" />
         </motion.div>
       </motion.div>
     </section>

@@ -17,10 +17,10 @@ export default function SkillsSection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Skills &amp; Technologies</h2>
-          <p className="text-[#8B9BB4] max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-[#A8B8C8] max-w-2xl mx-auto text-base sm:text-lg">
             Technologies and tools across the data science pipeline — from data wrangling to model deployment.
           </p>
-          <div className="w-12 h-1 bg-[#7EB8DA] mx-auto rounded-full mt-4" />
+          <div className="w-12 h-1 bg-[#4F8FD8] mx-auto rounded-full mt-4" />
         </ScrollReveal>
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -28,7 +28,7 @@ export default function SkillsSection() {
             <StaggerItem key={cat.title}>
               <div className="glass-subtle rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 h-full">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-[#7EB8DA]/10 flex items-center justify-center text-[#7EB8DA] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8] flex-shrink-0">
                     {categoryIcons[cat.icon]}
                   </div>
                   <h3 className="font-semibold text-white">{cat.title}</h3>
@@ -37,12 +37,12 @@ export default function SkillsSection() {
                   {cat.skills.map((skill) => (
                     <div key={skill.name}>
                       <div className="flex items-center gap-2 mb-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#7EB8DA] flex-shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#4F8FD8] flex-shrink-0" />
                         <span className="text-white font-medium text-sm">{skill.name}</span>
                       </div>
                       <div className="flex flex-wrap gap-1.5 ml-3.5">
                         {skill.context.map((ctx) => (
-                          <span key={ctx} className="px-2 py-0.5 text-xs text-[#8B9BB4] bg-white/5 rounded-md">{ctx}</span>
+                          <span key={ctx} className="px-2 py-0.5 text-xs text-[#A8B8C8] bg-white/5 rounded-md">{ctx}</span>
                         ))}
                       </div>
                     </div>

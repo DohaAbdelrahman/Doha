@@ -11,38 +11,38 @@ const typeIcons: Record<string, React.ReactNode> = {
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 sm:py-32 bg-[#0A2540]">
+    <section id="experience" className="py-24 sm:py-32 bg-[#0A2138]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Learning &amp; Professional Journey</h2>
-          <p className="text-[#8B9BB4] max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-[#A8B8C8] max-w-2xl mx-auto text-base sm:text-lg">
             Key milestones and programs that have shaped my data science journey.
           </p>
-          <div className="w-12 h-1 bg-[#7EB8DA] mx-auto rounded-full mt-4" />
+          <div className="w-12 h-1 bg-[#4F8FD8] mx-auto rounded-full mt-4" />
         </ScrollReveal>
 
         <div className="relative max-w-3xl mx-auto">
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-[rgba(150,200,230,0.15)]" />
+          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-[rgba(150,195,225,0.15)]" />
           <StaggerContainer className="space-y-8">
             {experiences.map((exp, idx) => (
               <StaggerItem key={idx}>
                 <div className="relative flex gap-6 sm:gap-8">
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full glass flex items-center justify-center text-[#7EB8DA]">
+                    <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full glass flex items-center justify-center text-[#4F8FD8]">
                       {typeIcons[exp.type]}
                     </div>
                   </div>
                   <div className="flex-1 glass-subtle rounded-2xl p-5 sm:p-6 hover:bg-white/10 transition-all duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
                       <h3 className="font-semibold text-white text-base sm:text-lg">{exp.title}</h3>
-                      <span className="text-xs font-medium text-[#7EB8DA] bg-[#7EB8DA]/10 px-2.5 py-0.5 rounded-lg whitespace-nowrap">{exp.date}</span>
+                      <span className="text-xs font-medium text-[#4F8FD8] bg-[#4F8FD8]/10 px-2.5 py-0.5 rounded-lg whitespace-nowrap">{exp.date}</span>
                     </div>
-                    <p className="text-[#7EB8DA] text-sm font-medium mb-2">{exp.organization}</p>
-                    <p className="text-[#8B9BB4] text-sm leading-relaxed mb-3">{exp.description}</p>
+                    <p className="text-[#4F8FD8] text-sm font-medium mb-2">{exp.organization}</p>
+                    <p className="text-[#A8B8C8] text-sm leading-relaxed mb-3">{exp.description}</p>
                     {exp.tags && (
                       <div className="flex flex-wrap gap-1.5">
                         {exp.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 text-xs text-[#8B9BB4] bg-white/5 rounded-md">{tag}</span>
+                          <span key={tag} className="px-2 py-0.5 text-xs text-[#A8B8C8] bg-white/5 rounded-md">{tag}</span>
                         ))}
                       </div>
                     )}

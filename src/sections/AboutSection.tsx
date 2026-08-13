@@ -30,18 +30,18 @@ const focusIcons: Record<string, React.ReactNode> = {
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 sm:py-32 bg-[#0A2540]">
+    <section id="about" className="py-24 sm:py-32 bg-[#0A2138]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
-          <div className="w-12 h-1 bg-[#7EB8DA] mx-auto rounded-full" />
+          <div className="w-12 h-1 bg-[#4F8FD8] mx-auto rounded-full" />
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
           <ScrollReveal className="lg:col-span-3" direction="left">
             <div className="space-y-5">
               {about.bio.map((p, i) => (
-                <p key={i} className="text-[#8B9BB4] leading-relaxed text-base sm:text-[17px]">{p}</p>
+                <p key={i} className="text-[#A8B8C8] leading-relaxed text-base sm:text-[17px]">{p}</p>
               ))}
             </div>
           </ScrollReveal>
@@ -52,12 +52,12 @@ export default function AboutSection() {
                 <StaggerItem key={area.title}>
                   <div className="glass-subtle rounded-2xl p-5 hover:bg-white/10 transition-all duration-300">
                     <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#7EB8DA]/10 flex items-center justify-center text-[#7EB8DA]">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8]">
                         {focusIcons[area.icon]}
                       </div>
                       <div>
                         <h3 className="font-semibold text-white text-sm mb-1.5">{area.title}</h3>
-                        <p className="text-[#8B9BB4] text-sm leading-relaxed">{area.description}</p>
+                        <p className="text-[#A8B8C8] text-sm leading-relaxed">{area.description}</p>
                       </div>
                     </div>
                   </div>
