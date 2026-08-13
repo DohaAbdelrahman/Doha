@@ -43,16 +43,22 @@ export default function HeroSection() {
 
       {/* Subtle radial glow behind content */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#4F8FD8]/5 blur-[120px] pointer-events-none" />
-
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[#4F8FD8] font-medium text-sm sm:text-base tracking-wider uppercase mb-4"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="flex items-center justify-center gap-3 mb-6"
         >
-          Hello, I&apos;m
-        </motion.p>
+          <span className="w-10 h-px bg-[#4F8FD8]/50" />
+
+          <span className="text-[#6AA7E8] text-4xl sm:text-5xl md:text-6xl font-semibold tracking-[0.18em]">
+            EXPLORE ME
+          </span>
+
+          <span className="w-10 h-px bg-[#4F8FD8]/50" />
+        </motion.div>
+
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -72,20 +78,7 @@ export default function HeroSection() {
           {profile.title}
         </motion.h2>
 
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="flex items-center justify-center gap-3 mb-6"
-        >
-          <span className="w-10 h-px bg-[#4F8FD8]/50" />
-
-          <span className="text-[#6AA7E8] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[0.18em]">
-            EXPLORE ME
-          </span>
-
-          <span className="w-10 h-px bg-[#4F8FD8]/50" />
-        </motion.div>
+        
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
