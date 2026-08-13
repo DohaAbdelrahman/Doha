@@ -72,14 +72,20 @@ export default function HeroSection() {
           {profile.title}
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.65 }}
-          className="text-lg sm:text-xl text-[#4F8FD8]/80 font-medium mb-6 italic"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="flex items-center justify-center gap-3 mb-6"
         >
-          &ldquo;{profile.tagline}&rdquo;
-        </motion.p>
+          <span className="w-10 h-px bg-[#4F8FD8]/50" />
+
+          <span className="text-[#6AA7E8] text-sm sm:text-base tracking-[0.35em] font-medium">
+            EXPLORE ME
+          </span>
+
+          <span className="w-10 h-px bg-[#4F8FD8]/50" />
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
