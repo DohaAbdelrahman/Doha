@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
-import HeroVisual from "@/components/portfolio/HeroVisual";
+
 import { profile, heroStats } from "@/data/portfolio";
 
 const statIcons: Record<string, React.ReactNode> = {
@@ -39,11 +39,126 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#071A2B]">
-      <HeroVisual />
+      
 
       {/* Subtle radial glow behind content */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#4F8FD8]/5 blur-[120px] pointer-events-none" />
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+
+
+
+        {/* Floating Orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+
+          {/* Orb 1 */}
+          <motion.div
+            className="
+              absolute
+              w-32 h-32
+              rounded-full
+              bg-[#5B9FE3]/10
+              border border-[#7FB2E5]/20
+              shadow-[0_0_70px_rgba(91,159,227,0.12)]
+              backdrop-blur-sm
+            "
+            style={{ top: "16%", left: "10%" }}
+            animate={{
+              x: [0, 20, -10, 15, 0],
+              y: [0, -25, 15, -10, 0],
+              scale: [1, 1.05, 0.98, 1.03, 1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Orb 2 */}
+          <motion.div
+            className="
+              absolute
+              w-24 h-24
+              rounded-full
+              bg-[#6AA7E8]/10
+              border border-[#8BBBE8]/20
+              shadow-[0_0_60px_rgba(106,167,232,0.12)]
+              backdrop-blur-sm
+            "
+            style={{ top: "22%", right: "12%" }}
+            animate={{
+              x: [0, -20, 15, -10, 0],
+              y: [0, 25, -15, 20, 0],
+              scale: [1, 0.97, 1.04, 0.99, 1],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Orb 3 */}
+          <motion.div
+            className="
+              absolute
+              w-14 h-14
+              rounded-full
+              bg-[#8BBBE8]/15
+              border border-[#8BBBE8]/25
+              shadow-[0_0_40px_rgba(139,187,232,0.15)]
+            "
+            style={{ bottom: "24%", left: "18%" }}
+            animate={{
+              x: [0, 25, -15, 10, 0],
+              y: [0, -20, 15, -10, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Orb 4 */}
+          <motion.div
+            className="
+              absolute
+              w-16 h-16
+              rounded-full
+              bg-[#5B9FE3]/10
+              border border-[#7FB2E5]/20
+              shadow-[0_0_45px_rgba(91,159,227,0.12)]
+            "
+            style={{ bottom: "20%", right: "18%" }}
+            animate={{
+              x: [0, -20, 15, -10, 0],
+              y: [0, 15, -20, 10, 0],
+            }}
+            transition={{
+              duration: 9,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Small floating particles */}
+          <motion.span
+            className="absolute w-2 h-2 rounded-full bg-[#7FB2E5]/40"
+            style={{ top: "25%", left: "32%" }}
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          <motion.span
+            className="absolute w-1.5 h-1.5 rounded-full bg-[#7FB2E5]/50"
+            style={{ top: "38%", right: "28%" }}
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,12 +196,21 @@ export default function HeroSection() {
         
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="max-w-2xl mx-auto text-[#A8B8C8] text-base sm:text-lg leading-relaxed mb-10"
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="
+            mt-6
+            text-base
+            sm:text-lg
+            font-medium
+            tracking-wide
+            text-[#A9BACB]
+          "
         >
-          {profile.description}
+          Data Analysis
+          <span className="mx-3 text-[#5B9FE3]/50">|</span>
+          Machine Learning
         </motion.p>
 
         {/* CTA Buttons */}
@@ -108,12 +232,6 @@ export default function HeroSection() {
           >
             Download Resume
           </a>
-          <button
-            onClick={scrollToContact}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(150,195,225,0.18)] text-[#A8B8C8] rounded-xl text-sm font-medium hover:text-[#4F8FD8] hover:border-[rgba(150,195,225,0.35)] transition-all duration-200 hover-lift"
-          >
-            Let&apos;s Connect
-          </button>
         </motion.div>
 
         {/* Social Links */}
