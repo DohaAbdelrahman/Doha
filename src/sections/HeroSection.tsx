@@ -1,37 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
-import { profile, heroStats } from "@/data/portfolio";
+import { profile} from "@/data/portfolio";
 
-const statIcons: Record<string, React.ReactNode> = {
-  brain: (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M12 2a4 4 0 0 1 4 4c0 1.1-.45 2.1-1.17 2.83L12 11.66l-2.83-2.83A4 4 0 0 1 12 2z" />
-      <path d="M8 10c-2.21 0-4 1.79-4 4v2h16v-2c0-2.21-1.79-4-4-4H8z" />
-    </svg>
-  ),
-  "code-2": (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <polyline points="16 18 22 12 16 6" />
-      <polyline points="8 6 2 12 8 18" />
-    </svg>
-  ),
-  award: (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <circle cx="12" cy="8" r="7" />
-      <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-    </svg>
-  ),
-  target: (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <circle cx="12" cy="12" r="10" />
-      <circle cx="12" cy="12" r="6" />
-      <circle cx="12" cy="12" r="2" />
-    </svg>
-  ),
-};
+
 
 export default function HeroSection() {
   const scrollToProjects = () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
@@ -47,115 +21,89 @@ export default function HeroSection() {
 
 
 
-        {/* Floating Orbs */}
+        {/* Floating Orb Field */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
 
-          {/* Orb 1 */}
+          {/* Large soft orbs */}
           <motion.div
-            className="
-              absolute
-              w-32 h-32
-              rounded-full
-              bg-[#5B9FE3]/10
-              border border-[#7FB2E5]/20
-              shadow-[0_0_70px_rgba(91,159,227,0.12)]
-              backdrop-blur-sm
-            "
-            style={{ top: "16%", left: "10%" }}
-            animate={{
-              x: [0, 20, -10, 15, 0],
-              y: [0, -25, 15, -10, 0],
-              scale: [1, 1.05, 0.98, 1.03, 1],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-
-          {/* Orb 2 */}
-          <motion.div
-            className="
-              absolute
-              w-24 h-24
-              rounded-full
-              bg-[#6AA7E8]/10
-              border border-[#8BBBE8]/20
-              shadow-[0_0_60px_rgba(106,167,232,0.12)]
-              backdrop-blur-sm
-            "
-            style={{ top: "22%", right: "12%" }}
-            animate={{
-              x: [0, -20, 15, -10, 0],
-              y: [0, 25, -15, 20, 0],
-              scale: [1, 0.97, 1.04, 0.99, 1],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-
-          {/* Orb 3 */}
-          <motion.div
-            className="
-              absolute
-              w-14 h-14
-              rounded-full
-              bg-[#8BBBE8]/15
-              border border-[#8BBBE8]/25
-              shadow-[0_0_40px_rgba(139,187,232,0.15)]
-            "
-            style={{ bottom: "24%", left: "18%" }}
+            className="absolute w-24 h-24 rounded-full border border-[#7FB2E5]/20 bg-[#5B9FE3]/8 shadow-[0_0_50px_rgba(91,159,227,0.10)]"
+            style={{ top: "12%", left: "8%" }}
             animate={{
               x: [0, 25, -15, 10, 0],
               y: [0, -20, 15, -10, 0],
             }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* Orb 4 */}
           <motion.div
-            className="
-              absolute
-              w-16 h-16
-              rounded-full
-              bg-[#5B9FE3]/10
-              border border-[#7FB2E5]/20
-              shadow-[0_0_45px_rgba(91,159,227,0.12)]
-            "
-            style={{ bottom: "20%", right: "18%" }}
+            className="absolute w-16 h-16 rounded-full border border-[#7FB2E5]/20 bg-[#6AA7E8]/8 shadow-[0_0_40px_rgba(106,167,232,0.10)]"
+            style={{ top: "20%", right: "9%" }}
             animate={{
               x: [0, -20, 15, -10, 0],
+              y: [0, 20, -15, 10, 0],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          <motion.div
+            className="absolute w-12 h-12 rounded-full border border-[#8BBBE8]/20 bg-[#8BBBE8]/8"
+            style={{ bottom: "18%", left: "11%" }}
+            animate={{
+              x: [0, 20, -10, 15, 0],
+              y: [0, -15, 20, -10, 0],
+            }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          <motion.div
+            className="absolute w-14 h-14 rounded-full border border-[#7FB2E5]/20 bg-[#5B9FE3]/8"
+            style={{ bottom: "20%", right: "12%" }}
+            animate={{
+              x: [0, -15, 10, -20, 0],
               y: [0, 15, -20, 10, 0],
             }}
-            transition={{
-              duration: 9,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* Small floating particles */}
-          <motion.span
-            className="absolute w-2 h-2 rounded-full bg-[#7FB2E5]/40"
-            style={{ top: "25%", left: "32%" }}
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          <motion.span
-            className="absolute w-1.5 h-1.5 rounded-full bg-[#7FB2E5]/50"
-            style={{ top: "38%", right: "28%" }}
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          />
+          {/* Many small floating particles */}
+          {[
+            ["12%", "32%"],
+            ["18%", "72%"],
+            ["25%", "15%"],
+            ["30%", "82%"],
+            ["36%", "9%"],
+            ["42%", "92%"],
+            ["48%", "17%"],
+            ["54%", "86%"],
+            ["61%", "8%"],
+            ["67%", "94%"],
+            ["73%", "18%"],
+            ["78%", "82%"],
+            ["84%", "12%"],
+            ["90%", "70%"],
+            ["94%", "35%"],
+            ["15%", "52%"],
+            ["27%", "91%"],
+            ["72%", "88%"],
+            ["87%", "48%"],
+            ["57%", "94%"],
+          ].map(([top, left], index) => (
+            <motion.span
+              key={index}
+              className="absolute w-1.5 h-1.5 rounded-full bg-[#7FB2E5]/45 shadow-[0_0_10px_rgba(127,178,229,0.25)]"
+              style={{ top, left }}
+              animate={{
+                y: [0, -8, 0, 8, 0],
+                opacity: [0.3, 0.7, 0.35, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 3 + (index % 4),
+                repeat: Infinity,
+                delay: index * 0.15,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
 
         </div>
 
@@ -208,9 +156,11 @@ export default function HeroSection() {
             text-[#A9BACB]
           "
         >
-          Data Analysis
+          Data Science
           <span className="mx-3 text-[#5B9FE3]/50">|</span>
           Machine Learning
+          <span className="mx-3 text-[#5B9FE3]/50">|</span>
+          Data Analysis
         </motion.p>
 
         {/* CTA Buttons */}
@@ -218,7 +168,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.95 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-8"
+          className="flex flex-wrap items-center justify-center gap-4 mb-14"
         >
           <button
             onClick={scrollToProjects}
@@ -233,6 +183,7 @@ export default function HeroSection() {
             Download Resume
           </a>
         </motion.div>
+    
 
         {/* Social Links */}
         <motion.div
@@ -258,34 +209,38 @@ export default function HeroSection() {
             </a>
           ))}
         </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="flex flex-wrap items-center justify-center gap-6 sm:gap-10"
-        >
-          {heroStats.map((stat, idx) => (
-            <div key={idx} className="flex items-center gap-2.5 text-[#A8B8C8]">
-              <span className="text-[#4F8FD8]/70">{statIcons[stat.icon]}</span>
-              <span className="text-sm font-medium">{stat.label}</span>
-            </div>
-          ))}
-        </motion.div>
       </div>
+        
+      {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <div className="w-6 h-10 rounded-full border border-[#7FB2E5]/50 flex items-start justify-center p-1.5">
+            <motion.span
+              animate={{ y: [0, 12, 0], opacity: [1, 0.4, 1] }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.8,
+                ease: "easeInOut",
+              }}
+              className="w-1.5 h-1.5 rounded-full bg-[#6AA7E8] shadow-[0_0_8px_rgba(106,167,232,0.7)]"
+            />
+          </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}>
-          <ArrowDown className="w-5 h-5 text-[#71859A]" />
+          <motion.span
+            animate={{ y: [0, 4, 0] }}
+            transition={{
+              repeat: Infinity,
+              duration: 1.8,
+              ease: "easeInOut",
+            }}
+            className="w-2.5 h-2.5 border-r border-b border-[#7FB2E5]/60 rotate-45"
+          />
         </motion.div>
-      </motion.div>
+
     </section>
   );
 }
