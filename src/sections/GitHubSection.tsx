@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/portfolio/ScrollReveal";
+import MouseGlow from "@/components/portfolio/MouseGlow";
 import { githubProfile } from "@/data/portfolio";
 import { Github, ExternalLink, Star, GitFork } from "lucide-react";
 
@@ -15,8 +16,8 @@ export default function GitHubSection() {
         </ScrollReveal>
 
         <ScrollReveal className="max-w-3xl mx-auto mb-10">
-          <div className="glass-subtle rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5">
-            <div className="w-16 h-16 rounded-full bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8] flex-shrink-0">
+          <MouseGlow className="glass-subtle rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5 hover-glass">
+            <div className="w-16 h-16 rounded-full bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8] flex-shrink-0 hover-icon">
               <Github className="w-8 h-8" />
             </div>
             <div className="text-center sm:text-left flex-1">
@@ -27,14 +28,14 @@ export default function GitHubSection() {
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-[#071A2B] bg-[#4F8FD8] hover:bg-[#6AA7E8] rounded-xl transition-colors">
               <Github size={16} />View Profile
             </a>
-          </div>
+          </MouseGlow>
         </ScrollReveal>
 
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
           {githubProfile.featuredRepos.map((repo) => (
             <StaggerItem key={repo.name}>
               <a href={repo.url} target="_blank" rel="noopener noreferrer"
-                className="block glass-subtle rounded-2xl p-5 hover:bg-white/10 transition-all duration-300 group">
+                className="block glass-subtle rounded-2xl p-5 hover-glass group">
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-2 text-[#4F8FD8] text-sm font-medium">
                     <GitFork className="w-4 h-4" /><span className="group-hover:underline">{repo.name}</span>

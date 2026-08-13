@@ -47,7 +47,7 @@ export default function Navigation() {
                 <a
                   href={link.href}
                   onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  className="px-3 py-2 text-sm text-[#A8B8C8] hover:text-[#4F8FD8] transition-colors duration-200 rounded-lg hover:bg-white/5"
+                  className="px-3 py-2 text-sm text-[#A8B8C8] hover:text-[#4F8FD8] transition-colors duration-200 rounded-lg hover:bg-white/5 hover-nav"
                 >
                   {link.label}
                 </a>
@@ -80,7 +80,7 @@ export default function Navigation() {
                   <a
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                    className="block px-3 py-2.5 text-sm text-[#A8B8C8] hover:text-[#4F8FD8] hover:bg-white/5 rounded-lg transition-colors"
+                    className="block px-3 py-2.5 text-sm text-[#A8B8C8] hover:text-[#4F8FD8] hover:bg-white/5 rounded-lg transition-colors hover-nav"
                   >
                     {link.label}
                   </a>

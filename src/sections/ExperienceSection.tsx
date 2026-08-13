@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/portfolio/ScrollReveal";
+import MouseGlow from "@/components/portfolio/MouseGlow";
 import { experiences } from "@/data/portfolio";
 
 const typeIcons: Record<string, React.ReactNode> = {
@@ -32,7 +33,7 @@ export default function ExperienceSection() {
                       {typeIcons[exp.type]}
                     </div>
                   </div>
-                  <div className="flex-1 glass-subtle rounded-2xl p-5 sm:p-6 hover:bg-white/10 transition-all duration-300">
+                  <MouseGlow className="flex-1 glass-subtle rounded-2xl p-5 sm:p-6 hover-glass">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
                       <h3 className="font-semibold text-white text-base sm:text-lg">{exp.title}</h3>
                       <span className="text-xs font-medium text-[#4F8FD8] bg-[#4F8FD8]/10 px-2.5 py-0.5 rounded-lg whitespace-nowrap">{exp.date}</span>
@@ -46,7 +47,7 @@ export default function ExperienceSection() {
                         ))}
                       </div>
                     )}
-                  </div>
+                  </MouseGlow>
                 </div>
               </StaggerItem>
             ))}

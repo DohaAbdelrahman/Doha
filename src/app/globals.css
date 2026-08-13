@@ -186,3 +186,156 @@
   background-color: rgba(79, 143, 216, 0.3);
   color: #F1F5F9;
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   GLOBAL HOVER / FOCUS INTERACTION SYSTEM
+   Subtle Zoom + Glass Highlight + Soft Blue Accent + Smooth Transition
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --hover-scale-sm: 1.04;
+  --hover-scale-md: 1.02;
+  --hover-scale-lg: 1.015;
+  --hover-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --hover-duration: 280ms;
+  --hover-duration-fast: 200ms;
+  --press-scale: 0.97;
+  --glow-color: rgba(79, 143, 216, 0.06);
+  --glow-color-strong: rgba(79, 143, 216, 0.10);
+}
+
+/* ── Base interactive hover (buttons, CTAs, small controls) ── */
+.hover-lift {
+  transition: transform var(--hover-duration) var(--hover-ease),
+              box-shadow var(--hover-duration) var(--hover-ease),
+              border-color var(--hover-duration) var(--hover-ease),
+              background-color var(--hover-duration) var(--hover-ease);
+}
+.hover-lift:hover {
+  transform: scale(var(--hover-scale-sm));
+}
+.hover-lift:active {
+  transform: scale(var(--press-scale));
+  transition-duration: 100ms;
+}
+
+/* ── Glass surface hover (cards, panels) ── */
+.hover-glass {
+  transition: transform var(--hover-duration) var(--hover-ease),
+              box-shadow var(--hover-duration) var(--hover-ease),
+              border-color var(--hover-duration) var(--hover-ease),
+              background-color var(--hover-duration) var(--hover-ease);
+}
+.hover-glass:hover {
+  transform: scale(var(--hover-scale-md));
+  border-color: rgba(150, 195, 225, 0.3);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(150, 195, 225, 0.1);
+}
+.hover-glass:active {
+  transform: scale(var(--press-scale));
+  transition-duration: 100ms;
+}
+
+/* ── Icon hover (social icons, small circular elements) ── */
+.hover-icon {
+  transition: transform var(--hover-duration-fast) var(--hover-ease),
+              color var(--hover-duration-fast) var(--hover-ease),
+              background-color var(--hover-duration-fast) var(--hover-ease),
+              box-shadow var(--hover-duration-fast) var(--hover-ease);
+}
+.hover-icon:hover {
+  transform: scale(var(--hover-scale-sm));
+  box-shadow: 0 0 20px rgba(79, 143, 216, 0.15);
+}
+.hover-icon:active {
+  transform: scale(var(--press-scale));
+  transition-duration: 100ms;
+}
+
+/* ── Navigation item hover with underline ── */
+.hover-nav {
+  position: relative;
+  transition: color var(--hover-duration-fast) var(--hover-ease),
+              background-color var(--hover-duration-fast) var(--hover-ease),
+              transform var(--hover-duration-fast) var(--hover-ease);
+}
+.hover-nav::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: #4F8FD8;
+  border-radius: 1px;
+  opacity: 0.6;
+  transition: width var(--hover-duration) var(--hover-ease),
+              left var(--hover-duration) var(--hover-ease),
+              opacity var(--hover-duration-fast) var(--hover-ease);
+}
+.hover-nav:hover::after {
+  width: 60%;
+  left: 20%;
+  opacity: 0.8;
+}
+
+/* ── Visual zoom — clipped container zooms its child ── */
+.hover-zoom {
+  overflow: hidden;
+}
+.hover-zoom > * {
+  transition: transform var(--hover-duration) var(--hover-ease);
+}
+.hover-zoom:hover > * {
+  transform: scale(1.04);
+}
+
+/* ── Mouse glow layer (for MouseGlow component) ── */
+.mouse-glow-layer {
+  background: radial-gradient(
+    350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--glow-color),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+[data-hovered] .mouse-glow-layer {
+  opacity: 1;
+}
+
+/* ── Keyboard focus ring ── */
+*:focus-visible {
+  outline: 2px solid rgba(79, 143, 216, 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Prefers reduced motion — disable transforms, keep color transitions ── */
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift:hover,
+  .hover-glass:hover,
+  .hover-icon:hover {
+    transform: none !important;
+  }
+  .hover-lift:active,
+  .hover-glass:active,
+  .hover-icon:active {
+    transform: none !important;
+  }
+  .hover-zoom:hover > * {
+    transform: none !important;
+  }
+  .mouse-glow-layer {
+    display: none !important;
+  }
+  .hover-nav::after {
+    transition-duration: 0ms !important;
+  }
+}

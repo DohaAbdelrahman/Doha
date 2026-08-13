@@ -20,7 +20,7 @@ export default function Footer() {
               { href: `mailto:${profile.email}`, icon: <Mail size={16} />, label: "Email" },
             ].map((s) => (
               <a key={s.label} href={s.href} target={s.label !== "Email" ? "_blank" : undefined} rel={s.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="p-2 text-[#A8B8C8] hover:text-[#4F8FD8] hover:bg-white/5 rounded-lg transition-colors" aria-label={s.label}>
+                className="p-2 text-[#A8B8C8] hover:text-[#4F8FD8] hover:bg-white/5 rounded-lg transition-colors hover-icon" aria-label={s.label}>
                 {s.icon}
               </a>
             ))}

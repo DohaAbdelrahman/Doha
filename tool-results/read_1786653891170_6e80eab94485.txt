@@ -1,0 +1,756 @@
+     1→"use client";
+     2→
+     3→import { useState } from "react";
+     4→import { motion, AnimatePresence } from "framer-motion";
+     5→import {
+     6→  X,
+     7→  ExternalLink,
+     8→  Github,
+     9→  ArrowUpRight,
+    10→  FileText,
+    11→  Database,
+    12→  BarChart3,
+    13→  BrainCircuit,
+    14→  FlaskConical,
+    15→  CheckCircle2,
+    16→} from "lucide-react";
+    17→import MouseGlow from "@/components/portfolio/MouseGlow";
+    18→import ScrollReveal, {
+    19→  StaggerContainer,
+    20→  StaggerItem,
+    21→} from "@/components/portfolio/ScrollReveal";
+    22→import { projects, type Project } from "@/data/portfolio";
+    23→
+    24→/* ════════════════════════════════════════════════════════════════════
+    25→   PROJECT-SPECIFIC SVG VISUALS
+    26→   Each featured project gets a unique data-science visualization
+    27→   ════════════════════════════════════════════════════════════════════ */
+    28→
+    29→/* ── 01: Customer Churn Prediction — Feature importance bars + churn funnel ── */
+    30→function ChurnVisual() {
+    31→  const features = [
+    32→    { name: "Contract", pct: 0.85 },
+    33→    { name: "Tenure", pct: 0.72 },
+    34→    { name: "Charges", pct: 0.65 },
+    35→    { name: "Support", pct: 0.48 },
+    36→    { name: "Payment", pct: 0.35 },
+    37→    { name: "Internet", pct: 0.28 },
+    38→  ];
+    39→  return (
+    40→    <svg
+    41→      viewBox="0 0 320 200"
+    42→      className="w-full h-full"
+    43→      preserveAspectRatio="xMidYMid meet"
+    44→      aria-hidden="true"
+    45→    >
+    46→      {/* Grid dots */}
+    47→      {Array.from({ length: 4 }).map((_, row) =>
+    48→        Array.from({ length: 9 }).map((_, col) => (
+    49→          <circle
+    50→            key={`d${row}${col}`}
+    51→            cx={18 + col * 34}
+    52→            cy={15 + row * 42}
+    53→            r="0.8"
+    54→            fill="rgba(150,195,225,0.12)"
+    55→          />
+    56→        ))
+    57→      )}
+    58→
+    59→      {/* Title label */}
+    60→      <text x="20" y="14" fill="rgba(79,143,216,0.5)" fontSize="6" fontFamily="Inter, sans-serif" fontWeight="600" letterSpacing="0.5">FEATURE IMPORTANCE</text>
+    61→
+    62→      {/* Feature bars */}
+    63→      {features.map((f, i) => (
+    64→        <g key={f.name}>
+    65→          <rect
+    66→            x={80}
+    67→            y={28 + i * 22}
+    68→            width={f.pct * 180}
+    69→            height={12}
+    70→            rx={3}
+    71→            fill={`rgba(79,143,216,${0.08 + f.pct * 0.12})`}
+    72→            stroke="rgba(150,195,225,0.08)"
+    73→            strokeWidth="0.5"
+    74→          />
+    75→          <rect
+    76→            x={80}
+    77→            y={28 + i * 22}
+    78→            width={f.pct * 180}
+    79→            height={12}
+    80→            rx={3}
+    81→            fill={`rgba(79,143,216,${0.04 + f.pct * 0.06})`}
+    82→          />
+    83→          <text
+    84→            x={72}
+    85→            y={37 + i * 22}
+    86→            fill="rgba(241,245,249,0.5)"
+    87→            fontSize="6"
+    88→            fontFamily="Inter, sans-serif"
+    89→            textAnchor="end"
+    90→          >
+    91→            {f.name}
+    92→          </text>
+    93→          {/* Pct label */}
+    94→          <text
+    95→            x={84 + f.pct * 180}
+    96→            y={37 + i * 22}
+    97→            fill="rgba(79,143,216,0.6)"
+    98→            fontSize="5"
+    99→            fontFamily="Inter, sans-serif"
+   100→          >
+   101→            {(f.pct * 100).toFixed(0)}%
+   102→          </text>
+   103→        </g>
+   104→      ))}
+   105→
+   106→      {/* Mini churn indicator */}
+   107→      <circle cx={270} cy={30} r="16" fill="none" stroke="rgba(150,195,225,0.1)" strokeWidth="1" />
+   108→      <circle cx={270} cy={30} r="16" fill="none" stroke="rgba(79,143,216,0.3)" strokeWidth="2"
+   109→        strokeDasharray={`${16 * Math.PI * 0.78} ${16 * Math.PI * 0.22}`}
+   110→        strokeDashoffset={-16 * Math.PI * 0.25}
+   111→        strokeLinecap="round"
+   112→      />
+   113→      <text x={270} y={32} fill="rgba(241,245,249,0.6)" fontSize="7" fontFamily="Inter, sans-serif" textAnchor="middle" fontWeight="600">78%</text>
+   114→
+   115→      {/* Small confusion matrix */}
+   116→      <rect x={20} y={165} width={70} height={30} rx="3" fill="rgba(10,33,56,0.5)" stroke="rgba(150,195,225,0.1)" strokeWidth="0.5" />
+   117→      <text x={55} y={177} fill="rgba(79,143,216,0.4)" fontSize="5" fontFamily="Inter, sans-serif" textAnchor="middle">CONFUSION</text>
+   118→      <text x={55} y={186} fill="rgba(79,143,216,0.4)" fontSize="5" fontFamily="Inter, sans-serif" textAnchor="middle">MATRIX</text>
+   119→      <rect x={35} y={192} width={25} height={8} rx="1" fill="rgba(79,143,216,0.1)" />
+   120→      <rect x={63} y={192} width={25} height={8} rx="1" fill="rgba(150,195,225,0.04)" />
+   121→    </svg>
+   122→  );
+   123→}
+   124→
+   125→/* ── 02: Sentiment Analysis — Word frequency + sentiment distribution ── */
+   126→function SentimentVisual() {
+   127→  const words = [
+   128→    { word: "excellent", size: 11, x: 40, y: 50 },
+   129→    { word: "quality", size: 9, x: 130, y: 40 },
+   130→    { word: "service", size: 10, x: 210, y: 55 },
+   131→    { word: "value", size: 8, x: 280, y: 38 },
+   132→    { word: "fast", size: 7, x: 60, y: 75 },
+   133→    { word: "delivery", size: 8, x: 160, y: 72 },
+   134→    { word: "price", size: 9, x: 245, y: 78 },
+   135→    { word: "love", size: 7, x: 50, y: 100 },
+   136→    { word: "recommend", size: 8, x: 180, y: 98 },
+   137→    { word: "amazing", size: 10, x: 120, y: 115 },
+   138→  ];
+   139→  return (
+   140→    <svg
+   141→      viewBox="0 0 320 200"
+   142→      className="w-full h-full"
+   143→      preserveAspectRatio="xMidYMid meet"
+   144→      aria-hidden="true"
+   145→    >
+   146→      {/* Grid dots */}
+   147→      {Array.from({ length: 4 }).map((_, row) =>
+   148→        Array.from({ length: 9 }).map((_, col) => (
+   149→          <circle
+   150→            key={`d${row}${col}`}
+   151→            cx={18 + col * 34}
+   152→            cy={15 + row * 42}
+   153→            r="0.8"
+   154→            fill="rgba(150,195,225,0.12)"
+   155→          />
+   156→        ))
+   157→      )}
+   158→
+   159→      <text x="20" y="14" fill="rgba(79,143,216,0.5)" fontSize="6" fontFamily="Inter, sans-serif" fontWeight="600" letterSpacing="0.5">SENTIMENT ANALYSIS</text>
+   160→
+   161→      {/* Word cloud */}
+   162→      {words.map((w) => (
+   163→        <text
+   164→          key={w.word}
+   165→          x={w.x}
+   166→          y={w.y}
+   167→          fill={`rgba(79,143,216,${0.15 + w.size * 0.03})`}
+   168→          fontSize={w.size}
+   169→          fontFamily="Inter, sans-serif"
+   170→          fontWeight="500"
+   171→        >
+   172→          {w.word}
+   173→        </text>
+   174→      ))}
+   175→
+   176→      {/* Sentiment bar distribution */}
+   177→      <g transform="translate(30, 140)">
+   178→        <text x={0} y={0} fill="rgba(241,245,249,0.4)" fontSize="5" fontFamily="Inter, sans-serif">Positive</text>
+   179→        <rect x={0} y={5} width={180} height={8} rx={4} fill="rgba(79,143,216,0.12)" />
+   180→        <rect x={0} y={5} width={140} height={8} rx={4} fill="rgba(79,143,216,0.25)" />
+   181→        <text x={185} y={12} fill="rgba(79,143,216,0.5)" fontSize="5" fontFamily="Inter, sans-serif">72%</text>
+   182→
+   183→        <text x={0} y={26} fill="rgba(241,245,249,0.4)" fontSize="5" fontFamily="Inter, sans-serif">Neutral</text>
+   184→        <rect x={0} y={31} width={180} height={8} rx={4} fill="rgba(79,143,216,0.12)" />
+   185→        <rect x={0} y={31} width={45} height={8} rx={4} fill="rgba(79,143,216,0.15)" />
+   186→        <text x={185} y={38} fill="rgba(79,143,216,0.5)" fontSize="5" fontFamily="Inter, sans-serif">18%</text>
+   187→
+   188→        <text x={0} y={52} fill="rgba(241,245,249,0.4)" fontSize="5" fontFamily="Inter, sans-serif">Negative</text>
+   189→        <rect x={0} y={57} width={180} height={8} rx={4} fill="rgba(79,143,216,0.12)" />
+   190→        <rect x={0} y={57} width={30} height={8} rx={4} fill="rgba(79,143,216,0.1)" />
+   191→        <text x={185} y={64} fill="rgba(79,143,216,0.5)" fontSize="5" fontFamily="Inter, sans-serif">10%</text>
+   192→      </g>
+   193→
+   194→      {/* Model accuracy ring */}
+   195→      <circle cx={275} cy={165} r="20" fill="none" stroke="rgba(150,195,225,0.08)" strokeWidth="3" />
+   196→      <circle cx={275} cy={165} r="20" fill="none" stroke="rgba(79,143,216,0.35)" strokeWidth="3"
+   197→        strokeDasharray={`${20 * Math.PI * 0.82} ${20 * Math.PI * 0.18}`}
+   198→        strokeDashoffset={-20 * Math.PI * 0.25}
+   199→        strokeLinecap="round"
+   200→      />
+   201→      <text x={275} y={168} fill="rgba(241,245,249,0.6)" fontSize="8" fontFamily="Inter, sans-serif" textAnchor="middle" fontWeight="600">NLP</text>
+   202→    </svg>
+   203→  );
+   204→}
+   205→
+   206→/* ── 03: Sales Forecasting — Time series + forecast envelope ── */
+   207→function ForecastVisual() {
+   208→  const actual: [number, number][] = [
+   209→    [30, 120], [58, 105], [86, 115], [114, 90], [142, 100],
+   210→    [170, 80], [198, 85], [226, 70], [254, 75], [282, 60],
+   211→  ];
+   212→  const forecast: [number, number][] = [
+   213→    [282, 60], [295, 55], [308, 50], [321, 48], [335, 42], [348, 38],
+   214→  ];
+   215→
+   216→  return (
+   217→    <svg
+   218→      viewBox="0 0 320 200"
+   219→      className="w-full h-full"
+   220→      preserveAspectRatio="xMidYMid meet"
+   221→      aria-hidden="true"
+   222→    >
+   223→      {/* Grid dots */}
+   224→      {Array.from({ length: 4 }).map((_, row) =>
+   225→        Array.from({ length: 9 }).map((_, col) => (
+   226→          <circle
+   227→            key={`d${row}${col}`}
+   228→            cx={18 + col * 34}
+   229→            cy={15 + row * 42}
+   230→            r="0.8"
+   231→            fill="rgba(150,195,225,0.12)"
+   232→          />
+   233→        ))
+   234→      )}
+   235→
+   236→      <text x="20" y="14" fill="rgba(79,143,216,0.5)" fontSize="6" fontFamily="Inter, sans-serif" fontWeight="600" letterSpacing="0.5">SALES FORECAST</text>
+   237→
+   238→      {/* Axis lines */}
+   239→      <line x1={25} y1={140} x2={300} y2={140} stroke="rgba(150,195,225,0.1)" strokeWidth="0.5" />
+   240→      <line x1={25} y1={30} x2={25} y2={140} stroke="rgba(150,195,225,0.1)" strokeWidth="0.5" />
+   241→
+   242→      {/* Y-axis labels */}
+   243→      {["High", "Mid", "Low"].map((label, i) => (
+   244→        <text key={label} x={22} y={50 + i * 40} fill="rgba(150,195,225,0.15)" fontSize="4" fontFamily="Inter, sans-serif" textAnchor="end">{label}</text>
+   245→      ))}
+   246→
+   247→      {/* Confidence band */}
+   248→      <path
+   249→        d={`M${actual[actual.length - 1][0]},${actual[actual.length - 1][1] - 15} 
+   250→           L${forecast[forecast.length - 1][0]},${forecast[forecast.length - 1][1] - 20}
+   251→           L${forecast[forecast.length - 1][0]},${forecast[forecast.length - 1][1] + 25}
+   252→           L${actual[actual.length - 1][0]},${actual[actual.length - 1][1] + 10} Z`}
+   253→        fill="rgba(79,143,216,0.06)"
+   254→      />
+   255→
+   256→      {/* Area under actual */}
+   257→      <path
+   258→        d={`M${actual.map(([x, y]) => `${x},${y}`).join(" L")} L${actual[actual.length - 1][0]},140 L${actual[0][0]},140 Z`}
+   259→        fill="rgba(79,143,216,0.04)"
+   260→      />
+   261→
+   262→      {/* Actual line */}
+   263→      <polyline
+   264→        points={actual.map(([x, y]) => `${x},${y}`).join(" ")}
+   265→        fill="none"
+   266→        stroke="rgba(79,143,216,0.5)"
+   267→        strokeWidth="1.5"
+   268→        strokeLinecap="round"
+   269→        strokeLinejoin="round"
+   270→      />
+   271→
+   272→      {/* Forecast line (dashed) */}
+   273→      <polyline
+   274→        points={forecast.map(([x, y]) => `${x},${y}`).join(" ")}
+   275→        fill="none"
+   276→        stroke="rgba(106,167,232,0.4)"
+   277→        strokeWidth="1.5"
+   278→        strokeDasharray="4 3"
+   279→        strokeLinecap="round"
+   280→        strokeLinejoin="round"
+   281→      />
+   282→
+   283→      {/* Data points on actual */}
+   284→      {actual.map(([x, y], i) => (
+   285→        <circle key={`a${i}`} cx={x} cy={y} r="2.5" fill="#071A2B" stroke="rgba(79,143,216,0.6)" strokeWidth="1" />
+   286→      ))}
+   287→
+   288→      {/* Forecast points */}
+   289→      {forecast.map(([x, y], i) => (
+   290→        <circle key={`f${i}`} cx={x} cy={y} r="2" fill="rgba(106,167,232,0.3)" stroke="rgba(106,167,232,0.5)" strokeWidth="0.8" />
+   291→      ))}
+   292→
+   293→      {/* Legend */}
+   294→      <line x1={30} y1={165} x2={45} y2={165} stroke="rgba(79,143,216,0.5)" strokeWidth="1.5" />
+   295→      <text x={48} y={167} fill="rgba(241,245,249,0.4)" fontSize="5" fontFamily="Inter, sans-serif">Actual</text>
+   296→      <line x1={85} y1={165} x2={100} y2={165} stroke="rgba(106,167,232,0.4)" strokeWidth="1.5" strokeDasharray="3 2" />
+   297→      <text x={103} y={167} fill="rgba(241,245,249,0.4)" fontSize="5" fontFamily="Inter, sans-serif">Forecast</text>
+   298→
+   299→      {/* Stats panel */}
+   300→      <rect x={200} y={155} width={95} height={35} rx="5" fill="rgba(10,33,56,0.5)" stroke="rgba(150,195,225,0.08)" strokeWidth="0.5" />
+   301→      <text x={210} y={168} fill="rgba(241,245,249,0.35)" fontSize="4" fontFamily="Inter, sans-serif">MAPE</text>
+   302→      <text x={248} y={168} fill="rgba(79,143,216,0.5)" fontSize="5" fontFamily="Inter, sans-serif" fontWeight="600">Low</text>
+   303→      <text x={210} y={180} fill="rgba(241,245,249,0.35)" fontSize="4" fontFamily="Inter, sans-serif">Direction</text>
+   304→      <text x={248} y={180} fill="rgba(79,143,216,0.5)" fontSize="5" fontFamily="Inter, sans-serif" fontWeight="600">High</text>
+   305→    </svg>
+   306→  );
+   307→}
+   308→
+   309→/* ── Generic visual for non-featured projects ── */
+   310→function GenericVisual({ index }: { index: number }) {
+   311→  const c = ["#4F8FD8", "#6AA7E8", "#3A7AB8"][index % 3];
+   312→  const cLight = [
+   313→    "rgba(79,143,216,0.12)",
+   314→    "rgba(106,167,232,0.12)",
+   315→    "rgba(58,122,184,0.12)",
+   316→  ][index % 3];
+   317→  return (
+   318→    <svg
+   319→      viewBox="0 0 320 200"
+   320→      className="w-full h-full"
+   321→      preserveAspectRatio="xMidYMid meet"
+   322→      aria-hidden="true"
+   323→    >
+   324→      {Array.from({ length: 4 }).map((_, row) =>
+   325→        Array.from({ length: 9 }).map((_, col) => (
+   326→          <circle
+   327→            key={`d${row}${col}`}
+   328→            cx={18 + col * 34}
+   329→            cy={15 + row * 42}
+   330→            r="0.8"
+   331→            fill="rgba(150,195,225,0.12)"
+   332→          />
+   333→        ))
+   334→      )}
+   335→      {[80, 130, 160, 100, 140, 180, 120, 170].map((h, i) => (
+   336→        <rect
+   337→          key={`b${i}`}
+   338→          x={24 + i * 36}
+   339→          y={190 - h * 0.5}
+   340→          width="22"
+   341→          height={h * 0.5}
+   342→          rx="3"
+   343→          fill={cLight}
+   344→        />
+   345→      ))}
+   346→      <polyline
+   347→        points="35,140 71,115 107,95 143,110 179,75 215,100 251,65 287,85"
+   348→        fill="none"
+   349→        stroke={c}
+   350→        strokeWidth="2"
+   351→        strokeLinecap="round"
+   352→        strokeLinejoin="round"
+   353→        opacity="0.5"
+   354→      />
+   355→      {[
+   356→        [35, 140],
+   357→        [107, 95],
+   358→        [179, 75],
+   359→        [251, 65],
+   360→      ].map(([cx, cy], i) => (
+   361→        <circle
+   362→          key={`p${i}`}
+   363→          cx={cx}
+   364→          cy={cy}
+   365→          r="3.5"
+   366→          fill="#071A2B"
+   367→          stroke={c}
+   368→          strokeWidth="1.5"
+   369→          opacity="0.6"
+   370→        />
+   371→      ))}
+   372→    </svg>
+   373→  );
+   374→}
+   375→
+   376→/* ── Visual dispatcher ── */
+   377→function ProjectVisual({ projectId, index }: { projectId: string; index: number }) {
+   378→  switch (projectId) {
+   379→    case "customer-churn":
+   380→      return <ChurnVisual />;
+   381→    case "sentiment-analysis":
+   382→      return <SentimentVisual />;
+   383→    case "sales-forecasting":
+   384→      return <ForecastVisual />;
+   385→    default:
+   386→      return <GenericVisual index={index} />;
+   387→  }
+   388→}
+   389→
+   390→/* ════════════════════════════════════════════════════════════════════
+   391→   CASE STUDY MODAL
+   392→   ════════════════════════════════════════════════════════════════════ */
+   393→
+   394→function CaseStudyModal({
+   395→  project,
+   396→  onClose,
+   397→}: {
+   398→  project: Project;
+   399→  onClose: () => void;
+   400→}) {
+   401→  const steps = [
+   402→    {
+   403→      icon: <FileText className="w-4 h-4" />,
+   404→      label: "Overview",
+   405→      key: "problem" as const,
+   406→    },
+   407→    {
+   408→      icon: <Database className="w-4 h-4" />,
+   409→      label: "Dataset",
+   410→      key: "data" as const,
+   411→    },
+   412→    {
+   413→      icon: <BarChart3 className="w-4 h-4" />,
+   414→      label: "Analysis",
+   415→      key: "analysis" as const,
+   416→    },
+   417→    {
+   418→      icon: <BrainCircuit className="w-4 h-4" />,
+   419→      label: "Modeling",
+   420→      key: "modeling" as const,
+   421→    },
+   422→    {
+   423→      icon: <FlaskConical className="w-4 h-4" />,
+   424→      label: "Evaluation",
+   425→      key: "evaluation" as const,
+   426→    },
+   427→    {
+   428→      icon: <CheckCircle2 className="w-4 h-4" />,
+   429→      label: "Results",
+   430→      key: "results" as const,
+   431→    },
+   432→  ];
+   433→
+   434→  return (
+   435→    <motion.div
+   436→      initial={{ opacity: 0 }}
+   437→      animate={{ opacity: 1 }}
+   438→      exit={{ opacity: 0 }}
+   439→      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#071A2B]/70 backdrop-blur-sm"
+   440→      onClick={onClose}
+   441→    >
+   442→      <motion.div
+   443→        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+   444→        animate={{ opacity: 1, scale: 1, y: 0 }}
+   445→        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+   446→        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+   447→        className="glass-strong rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-y-auto"
+   448→        onClick={(e) => e.stopPropagation()}
+   449→      >
+   450→        {/* Header */}
+   451→        <div className="sticky top-0 glass-strong rounded-t-3xl px-6 py-4 flex items-start justify-between z-10 border-b border-[rgba(150,195,225,0.12)]">
+   452→          <div>
+   453→            <h3 className="text-xl font-bold text-[#F1F5F9]">
+   454→              {project.title}
+   455→            </h3>
+   456→            <span className="inline-block mt-1.5 px-2.5 py-0.5 text-xs font-medium rounded-md bg-[#4F8FD8]/15 text-[#4F8FD8]">
+   457→              {project.category}
+   458→            </span>
+   459→          </div>
+   460→          <button
+   461→            onClick={onClose}
+   462→            className="p-2 text-[#A8B8C8] hover:text-[#F1F5F9] hover:bg-white/10 rounded-lg transition-colors"
+   463→            aria-label="Close"
+   464→          >
+   465→            <X size={20} />
+   466→          </button>
+   467→        </div>
+   468→
+   469→        {/* Content */}
+   470→        <div className="p-6 space-y-6">
+   471→          <div>
+   472→            <h4 className="text-xs font-semibold text-[#A8B8C8] uppercase tracking-wider mb-4">
+   473→              Process
+   474→            </h4>
+   475→            <div className="bg-[#0D2942] rounded-xl p-4">
+   476→              <p className="text-[#A8B8C8] text-sm leading-relaxed">
+   477→                {project.process}
+   478→              </p>
+   479→            </div>
+   480→          </div>
+   481→
+   482→          <div className="space-y-4">
+   483→            {steps.map((step) => (
+   484→              <div key={step.key} className="flex gap-3">
+   485→                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8] mt-0.5">
+   486→                  {step.icon}
+   487→                </div>
+   488→                <div className="flex-1">
+   489→                  <h4 className="text-sm font-semibold text-[#F1F5F9] mb-1">
+   490→                    {step.label}
+   491→                  </h4>
+   492→                  <p className="text-[#A8B8C8] text-sm leading-relaxed">
+   493→                    {project[step.key]}
+   494→                  </p>
+   495→                </div>
+   496→              </div>
+   497→            ))}
+   498→          </div>
+   499→
+   500→          <div>
+   501→            <h4 className="text-xs font-semibold text-[#A8B8C8] uppercase tracking-wider mb-3">
+   502→              Technologies Used
+   503→            </h4>
+   504→            <div className="flex flex-wrap gap-2">
+   505→              {project.technologies.map((tech) => (
+   506→                <span
+   507→                  key={tech}
+   508→                  className="px-3 py-1 text-xs font-medium text-[#4F8FD8] bg-[#4F8FD8]/10 rounded-lg"
+   509→                >
+   510→                  {tech}
+   511→                </span>
+   512→              ))}
+   513→            </div>
+   514→          </div>
+   515→
+   516→          <div className="flex items-center gap-3 pt-2 border-t border-[rgba(150,195,225,0.12)]">
+   517→            {project.githubUrl && (
+   518→              <a
+   519→                href={project.githubUrl}
+   520→                target="_blank"
+   521→                rel="noopener noreferrer"
+   522→                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#F1F5F9] glass-subtle rounded-lg hover:bg-white/10 transition-all"
+   523→              >
+   524→                <Github size={16} />
+   525→                Source Code
+   526→              </a>
+   527→            )}
+   528→            {project.demoUrl && (
+   529→              <a
+   530→                href={project.demoUrl}
+   531→                target="_blank"
+   532→                rel="noopener noreferrer"
+   533→                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#F1F5F9] bg-[#4F8FD8] hover:bg-[#6AA7E8] rounded-lg transition-colors"
+   534→              >
+   535→                <ExternalLink size={16} />
+   536→                Live Demo
+   537→              </a>
+   538→            )}
+   539→          </div>
+   540→        </div>
+   541→      </motion.div>
+   542→    </motion.div>
+   543→  );
+   544→}
+   545→
+   546→/* ════════════════════════════════════════════════════════════════════
+   547→   SINGLE GLASS BOARD
+   548→   ════════════════════════════════════════════════════════════════════ */
+   549→
+   550→function GlassBoard({
+   551→  project,
+   552→  index,
+   553→  onOpen,
+   554→}: {
+   555→  project: Project;
+   556→  index: number;
+   557→  onOpen: () => void;
+   558→}) {
+   559→  const number = String(index + 1).padStart(2, "0");
+   560→
+   561→  return (
+   562→    <MouseGlow className="glass glass-reflect rounded-3xl p-6 sm:p-8 flex flex-col h-full group cursor-pointer relative overflow-hidden hover-glass"
+   563→      onClick={onOpen}
+   564→    >
+   565→      {/* Hover glow */}
+   566→      <div
+   567→        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+   568→        style={{
+   569→          background:
+   570→            "radial-gradient(ellipse at 50% 0%, rgba(79,143,216,0.08) 0%, transparent 70%)",
+   571→        }}
+   572→      />
+   573→
+   574→      <div className="relative z-10 flex flex-col h-full">
+   575→        {/* Number + Category */}
+   576→        <div className="flex items-center justify-between mb-4">
+   577→          <span className="text-3xl sm:text-4xl font-bold text-[#F1F5F9]/[0.07] group-hover:text-[#F1F5F9]/[0.14] transition-colors duration-500">
+   578→            {number}
+   579→          </span>
+   580→          <span className="px-2.5 py-1 text-[10px] font-semibold tracking-widest uppercase text-[#4F8FD8]/70 bg-[#4F8FD8]/10 rounded-lg">
+   581→            {project.category}
+   582→          </span>
+   583→        </div>
+   584→
+   585→        {/* Project Visual */}
+   586→        <div className="rounded-2xl overflow-hidden mb-5 bg-[#0A2138] border border-[rgba(150,195,225,0.08)] group-hover:border-[rgba(150,195,225,0.2)] transition-all duration-500">
+   587→          <div className="aspect-[16/10] hover-zoom">
+   588→            <ProjectVisual projectId={project.id} index={index} />
+   589→          </div>
+   590→        </div>
+   591→
+   592→        {/* Title */}
+   593→        <h3 className="text-lg sm:text-xl font-bold text-[#F1F5F9] mb-2 group-hover:text-[#4F8FD8] transition-colors duration-300">
+   594→          {project.title}
+   595→        </h3>
+   596→
+   597→        {/* Description */}
+   598→        <p className="text-[#A8B8C8] text-sm leading-relaxed mb-5 flex-1 line-clamp-3">
+   599→          {project.shortDescription}
+   600→        </p>
+   601→
+   602→        {/* Technologies */}
+   603→        <div className="flex flex-wrap gap-1.5 mb-5">
+   604→          {project.technologies.slice(0, 5).map((tech) => (
+   605→            <span
+   606→              key={tech}
+   607→              className="px-2.5 py-1 text-[11px] text-[#A8B8C8] bg-white/5 rounded-lg border border-[rgba(150,195,225,0.08)]"
+   608→            >
+   609→              {tech}
+   610→            </span>
+   611→          ))}
+   612→          {project.technologies.length > 5 && (
+   613→            <span className="px-2.5 py-1 text-[11px] text-[#A8B8C8]/60 bg-white/5 rounded-lg">
+   614→              +{project.technologies.length - 5}
+   615→            </span>
+   616→          )}
+   617→        </div>
+   618→
+   619→        {/* Key Result */}
+   620→        <p className="text-[#4F8FD8]/70 text-xs leading-relaxed mb-5 line-clamp-2 italic">
+   621→          {project.results}
+   622→        </p>
+   623→
+   624→        {/* CTAs */}
+   625→        <div className="flex items-center gap-3 mt-auto">
+   626→          <span className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-[#4F8FD8] glass-subtle rounded-xl group-hover:bg-white/10 transition-all duration-300">
+   627→            View Case Study
+   628→            <span className="group-hover:translate-x-0.5 transition-transform">
+   629→              →
+   630→            </span>
+   631→          </span>
+   632→          {project.githubUrl && (
+   633→            <a
+   634→              href={project.githubUrl}
+   635→              target="_blank"
+   636→              rel="noopener noreferrer"
+   637→              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm text-[#A8B8C8] hover:text-[#4F8FD8] transition-colors"
+   638→              onClick={(e) => e.stopPropagation()}
+   639→            >
+   640→              GitHub
+   641→              <ArrowUpRight size={14} />
+   642→            </a>
+   643→          )}
+   644→        </div>
+   645→      </div>
+   646→    </MouseGlow>
+   647→  );
+   648→}
+   649→
+   650→/* ════════════════════════════════════════════════════════════════════
+   651→   PROJECTS SECTION
+   652→   ════════════════════════════════════════════════════════════════════ */
+   653→
+   654→export default function ProjectsSection() {
+   655→  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+   656→  const featured = projects.filter((p) => p.featured);
+   657→  const others = projects.filter((p) => !p.featured);
+   658→
+   659→  return (
+   660→    <section id="projects" className="py-24 sm:py-32 bg-[#071A2B]">
+   661→      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   662→        {/* ── Section Header ── */}
+   663→        <ScrollReveal className="text-center mb-16">
+   664→          <p className="text-[#4F8FD8] text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+   665→            Featured Projects
+   666→          </p>
+   667→          <h2 className="text-3xl sm:text-4xl font-bold text-[#F1F5F9] mb-4">
+   668→            Data Science in Practice
+   669→          </h2>
+   670→          <p className="text-[#A8B8C8] max-w-2xl mx-auto text-base sm:text-lg">
+   671→            Real projects. Real data. Real impact.
+   672→          </p>
+   673→        </ScrollReveal>
+   674→
+   675→        {/* ── 3 Glass Boards side by side ── */}
+   676→        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20">
+   677→          {featured.map((project, idx) => (
+   678→            <StaggerItem key={project.id}>
+   679→              <GlassBoard
+   680→                project={project}
+   681→                index={idx}
+   682→                onOpen={() => setSelectedProject(project)}
+   683→              />
+   684→            </StaggerItem>
+   685→          ))}
+   686→        </StaggerContainer>
+   687→
+   688→        {/* ── More Projects ── */}
+   689→        {others.length > 0 && (
+   690→          <ScrollReveal>
+   691→            <h3 className="text-xl font-semibold text-[#F1F5F9] mb-8 text-center">
+   692→              More Projects
+   693→            </h3>
+   694→            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+   695→              {others.map((project, idx) => (
+   696→                <motion.div
+   697→                  key={project.id}
+   698→                  whileHover={{ scale: 1.02 }}
+   699→                  transition={{ type: "tween", duration: 0.3 }}
+   700→                  className="glass-subtle glass-reflect rounded-2xl p-5 flex flex-col cursor-pointer group overflow-hidden"
+   701→                  onClick={() => setSelectedProject(project)}
+   702→                >
+   703→
+   704→
+   705→                  <div className="relative z-10">
+   706→                    <div className="flex items-center justify-between mb-3">
+   707→                      <span className="text-[#4F8FD8]/40 text-lg font-bold">
+   708→                        {String(featured.length + idx + 1).padStart(2, "0")}
+   709→                      </span>
+   710→                      <span className="px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase text-[#4F8FD8]/60 bg-[#4F8FD8]/8 rounded-md">
+   711→                        {project.category}
+   712→                      </span>
+   713→                    </div>
+   714→                    <h4 className="text-base font-semibold text-[#F1F5F9] mb-2 group-hover:text-[#4F8FD8] transition-colors">
+   715→                      {project.title}
+   716→                    </h4>
+   717→                    <p className="text-[#A8B8C8] text-sm leading-relaxed mb-4 flex-1 line-clamp-2">
+   718→                      {project.shortDescription}
+   719→                    </p>
+   720→                    <div className="flex flex-wrap gap-1.5 mb-3">
+   721→                      {project.technologies.slice(0, 4).map((tech) => (
+   722→                        <span
+   723→                          key={tech}
+   724→                          className="px-2 py-0.5 text-[11px] text-[#A8B8C8] bg-white/5 rounded-md"
+   725→                        >
+   726→                          {tech}
+   727→                        </span>
+   728→                      ))}
+   729→                    </div>
+   730→                    <div className="flex items-center gap-1.5 text-[#4F8FD8]/70 text-xs font-medium group-hover:text-[#4F8FD8] transition-colors">
+   731→                      View Case Study{" "}
+   732→                      <span className="group-hover:translate-x-0.5 transition-transform inline-block">
+   733→                        →
+   734→                      </span>
+   735→                    </div>
+   736→                  </div>
+   737→                </MouseGlow>
+   738→              ))}
+   739→            </div>
+   740→          </ScrollReveal>
+   741→        )}
+   742→      </div>
+   743→
+   744→      {/* ── Case Study Modal ── */}
+   745→      <AnimatePresence>
+   746→        {selectedProject && (
+   747→          <CaseStudyModal
+   748→            project={selectedProject}
+   749→            onClose={() => setSelectedProject(null)}
+   750→          />
+   751→        )}
+   752→      </AnimatePresence>
+   753→    </section>
+   754→  );
+   755→}
+   756→

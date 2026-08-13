@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/portfolio/ScrollReveal";
+import MouseGlow from "@/components/portfolio/MouseGlow";
 import { certifications } from "@/data/portfolio";
 import { Award, ExternalLink, Calendar } from "lucide-react";
 
@@ -19,7 +20,7 @@ export default function CertificationsSection() {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {certifications.map((cert, idx) => (
             <StaggerItem key={idx}>
-              <div className="glass-subtle rounded-2xl p-5 hover:bg-white/10 transition-all duration-300 h-full flex flex-col">
+              <MouseGlow className="glass-subtle rounded-2xl p-5 hover-glass h-full flex flex-col">
                 <div className="w-10 h-10 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8] mb-4">
                   <Award className="w-5 h-5" />
                 </div>
@@ -39,7 +40,7 @@ export default function CertificationsSection() {
                     <ExternalLink className="w-3.5 h-3.5" />View Credential
                   </a>
                 )}
-              </div>
+              </MouseGlow>
             </StaggerItem>
           ))}
         </StaggerContainer>

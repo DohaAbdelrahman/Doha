@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/portfolio/ScrollReveal";
+import MouseGlow from "@/components/portfolio/MouseGlow";
 import { skillCategories } from "@/data/portfolio";
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -26,7 +27,7 @@ export default function SkillsSection() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((cat) => (
             <StaggerItem key={cat.title}>
-              <div className="glass-subtle rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 h-full">
+              <MouseGlow className="glass-subtle rounded-2xl p-6 hover-glass h-full">
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-10 h-10 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8] flex-shrink-0">
                     {categoryIcons[cat.icon]}
@@ -48,7 +49,7 @@ export default function SkillsSection() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </MouseGlow>
             </StaggerItem>
           ))}
         </StaggerContainer>

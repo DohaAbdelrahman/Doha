@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
+import MouseGlow from "@/components/portfolio/MouseGlow";
 import { profile } from "@/data/portfolio";
 import { Mail, Send, Github, Linkedin, Copy, CheckCircle2 } from "lucide-react";
 
@@ -40,7 +41,7 @@ export default function ContactSection() {
                 Whether you&apos;re looking for a data scientist to join your team, need help with a machine learning project, or want to discuss data science opportunities — feel free to reach out.
               </p>
 
-              <div className="glass-subtle rounded-2xl p-5">
+              <MouseGlow className="glass-subtle rounded-2xl p-5 hover-glass">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8]">
                     <Mail className="w-5 h-5" />
@@ -51,18 +52,18 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <button onClick={copyEmail}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#A8B8C8] bg-white/5 hover:bg-white/10 rounded-md transition-colors">
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#A8B8C8] bg-white/5 hover:bg-white/10 rounded-md transition-colors hover-lift">
                   {copied ? <><CheckCircle2 className="w-3.5 h-3.5 text-[#4F8FD8]" />Copied</> : <><Copy className="w-3.5 h-3.5" />Copy Email</>}
                 </button>
-              </div>
+              </MouseGlow>
 
               <div className="flex items-center gap-3">
                 <a href={profile.github} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white glass-subtle rounded-xl hover:bg-white/10 transition-all">
+                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white glass-subtle rounded-xl hover-glass">
                   <Github size={16} />GitHub
                 </a>
                 <a href={profile.linkedin} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white glass-subtle rounded-xl hover:bg-white/10 transition-all">
+                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white glass-subtle rounded-xl hover-glass">
                   <Linkedin size={16} />LinkedIn
                 </a>
               </div>
@@ -93,7 +94,7 @@ export default function ContactSection() {
                   placeholder="Tell me about your project or opportunity..." />
               </div>
               <button type="submit"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F8FD8] text-[#071A2B] rounded-xl text-sm font-semibold hover:bg-[#6AA7E8] transition-colors duration-200 w-full sm:w-auto justify-center">
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F8FD8] text-[#071A2B] rounded-xl text-sm font-semibold hover:bg-[#6AA7E8] transition-colors duration-200 w-full sm:w-auto justify-center hover-lift">
                 <Send className="w-4 h-4" />Send Message
               </button>
             </form>

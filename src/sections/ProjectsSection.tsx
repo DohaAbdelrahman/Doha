@@ -14,6 +14,7 @@ import {
   FlaskConical,
   CheckCircle2,
 } from "lucide-react";
+import MouseGlow from "@/components/portfolio/MouseGlow";
 import ScrollReveal, {
   StaggerContainer,
   StaggerItem,
@@ -558,10 +559,7 @@ function GlassBoard({
   const number = String(index + 1).padStart(2, "0");
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.015, y: -4 }}
-      transition={{ type: "tween", duration: 0.4, ease: "easeOut" }}
-      className="glass glass-reflect rounded-3xl p-6 sm:p-8 flex flex-col h-full group cursor-pointer relative overflow-hidden"
+    <MouseGlow className="glass glass-reflect rounded-3xl p-6 sm:p-8 flex flex-col h-full group cursor-pointer relative overflow-hidden hover-glass"
       onClick={onOpen}
     >
       {/* Hover glow */}
@@ -586,7 +584,7 @@ function GlassBoard({
 
         {/* Project Visual */}
         <div className="rounded-2xl overflow-hidden mb-5 bg-[#0A2138] border border-[rgba(150,195,225,0.08)] group-hover:border-[rgba(150,195,225,0.2)] transition-all duration-500">
-          <div className="aspect-[16/10] group-hover:scale-[1.02] transition-transform duration-500">
+          <div className="aspect-[16/10] hover-zoom">
             <ProjectVisual projectId={project.id} index={index} />
           </div>
         </div>
@@ -645,7 +643,7 @@ function GlassBoard({
           )}
         </div>
       </div>
-    </motion.div>
+    </MouseGlow>
   );
 }
 
@@ -695,23 +693,11 @@ export default function ProjectsSection() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {others.map((project, idx) => (
-                <motion.div
+                <MouseGlow
                   key={project.id}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "tween", duration: 0.3 }}
-                  className="glass-subtle glass-reflect rounded-2xl p-5 flex flex-col cursor-pointer group overflow-hidden"
-                  onClick={() => setSelectedProject(project)}
+                  className="glass-subtle glass-reflect rounded-2xl p-5 flex flex-col cursor-pointer group overflow-hidden hover-glass"
                 >
-                  {/* Hover glow */}
-                  <div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(79,143,216,0.06) 0%, transparent 70%)",
-                    }}
-                  />
-
-                  <div className="relative z-10">
+                  <div className="relative z-10" onClick={() => setSelectedProject(project)}>
                     <div className="flex items-center justify-between mb-3">
                       <span className="text-[#4F8FD8]/40 text-lg font-bold">
                         {String(featured.length + idx + 1).padStart(2, "0")}
@@ -743,7 +729,7 @@ export default function ProjectsSection() {
                       </span>
                     </div>
                   </div>
-                </motion.div>
+                </MouseGlow>
               ))}
             </div>
           </ScrollReveal>

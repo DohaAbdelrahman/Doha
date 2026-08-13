@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/portfolio/ScrollReveal";
+import MouseGlow from "@/components/portfolio/MouseGlow";
 import { about } from "@/data/portfolio";
 
 const focusIcons: Record<string, React.ReactNode> = {
@@ -50,7 +51,7 @@ export default function AboutSection() {
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
               {about.focusAreas.map((area) => (
                 <StaggerItem key={area.title}>
-                  <div className="glass-subtle rounded-2xl p-5 hover:bg-white/10 transition-all duration-300">
+                  <MouseGlow className="glass-subtle rounded-2xl p-5 hover-glass">
                     <div className="flex items-start gap-3">
                       <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8]">
                         {focusIcons[area.icon]}
@@ -60,7 +61,7 @@ export default function AboutSection() {
                         <p className="text-[#A8B8C8] text-sm leading-relaxed">{area.description}</p>
                       </div>
                     </div>
-                  </div>
+                  </MouseGlow>
                 </StaggerItem>
               ))}
             </StaggerContainer>

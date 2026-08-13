@@ -99,19 +99,19 @@ export default function HeroSection() {
         >
           <button
             onClick={scrollToProjects}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F8FD8] text-[#071A2B] rounded-xl text-sm font-semibold hover:bg-[#6AA7E8] transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F8FD8] text-[#071A2B] rounded-xl text-sm font-semibold hover:bg-[#6AA7E8] transition-colors duration-200 hover-lift"
           >
             View My Projects
           </button>
           <a
             href={profile.resumeUrl}
-            className="inline-flex items-center gap-2 px-6 py-3 glass text-white rounded-xl text-sm font-medium hover:bg-white/10 transition-all duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 glass text-white rounded-xl text-sm font-medium hover-glass"
           >
             Download Resume
           </a>
           <button
             onClick={scrollToContact}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(150,195,225,0.18)] text-[#A8B8C8] rounded-xl text-sm font-medium hover:text-[#4F8FD8] hover:border-[rgba(150,195,225,0.35)] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(150,195,225,0.18)] text-[#A8B8C8] rounded-xl text-sm font-medium hover:text-[#4F8FD8] hover:border-[rgba(150,195,225,0.35)] transition-all duration-200 hover-lift"
           >
             Let&apos;s Connect
           </button>
@@ -134,7 +134,7 @@ export default function HeroSection() {
               href={s.href}
               target={s.label !== "Email" ? "_blank" : undefined}
               rel={s.label !== "Email" ? "noopener noreferrer" : undefined}
-              className="p-2.5 text-[#A8B8C8] hover:text-[#4F8FD8] hover:bg-white/5 rounded-xl transition-colors duration-200"
+              className="p-2.5 text-[#A8B8C8] hover:text-[#4F8FD8] hover:bg-white/5 rounded-xl transition-colors duration-200 hover-icon"
               aria-label={s.label}
             >
               {s.icon}

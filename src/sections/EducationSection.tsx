@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
+import MouseGlow from "@/components/portfolio/MouseGlow";
 import { GraduationCap, Calendar, BookOpen } from "lucide-react";
 
 export default function EducationSection() {
@@ -13,7 +14,7 @@ export default function EducationSection() {
         </ScrollReveal>
 
         <ScrollReveal className="max-w-3xl mx-auto">
-          <div className="glass-subtle rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+          <MouseGlow className="glass-subtle rounded-2xl p-6 sm:p-8 hover-glass">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8]">
                 <GraduationCap className="w-7 h-7" />
@@ -36,7 +37,7 @@ export default function EducationSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </MouseGlow>
         </ScrollReveal>
       </div>
     </section>
