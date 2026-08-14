@@ -410,20 +410,6 @@ export const experiences: Experience[] = [
     ],
   },
 
-  {
-    type: "education",
-    title: "Bachelor's Degree",
-    organization: "Faculty of Computers and Information",
-    date: "Expected Graduation",
-    description:
-      "Pursuing a degree in computing with a focus on data science, machine learning, programming, and analytical problem-solving.",
-    tags: [
-      "Data Science",
-      "Machine Learning",
-      "Python",
-      "Computer Science",
-    ],
-  },
 ];
 
 export const certifications = [
