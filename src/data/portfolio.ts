@@ -2,14 +2,14 @@
 // All information is placeholder-based — replace with verified real data
 
 export const profile = {
-  name: "Doha Adelrahman",
+  name: "Doha Abdelrahman",
   title: "Data Scientist",
-  tagline: "Turning Data Into Intelligent Solutions.",
+  tagline: "Turning Data Into Meaningful Insights.",
   description:
-    "Data Scientist focused on data analysis, machine learning, predictive modeling, and transforming complex data into meaningful insights.",
-  email: "doha@example.com",
-  github: "https://github.com/dohadelrahman",
-  linkedin: "https://linkedin.com/in/dohadelrahman",
+    "Computer Science student specializing in Data Science, with hands-on experience in Python, SQL, Power BI, data analysis, and machine learning.",
+  email: "dohaabdo757@gmail.com",
+  github: "https://github.com/DohaAbdelrahman",
+  linkedin: "https://www.linkedin.com/in/doha-abdelrahman-3540292a5/",
   resumeUrl: "#",
 };
 
