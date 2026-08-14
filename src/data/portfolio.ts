@@ -57,40 +57,51 @@ export const about = {
 
 export const skillCategories = [
   {
-    title: "Programming",
+    title: "Programming & Data",
     icon: "code-2",
     skills: [
       {
         name: "Python",
-        context: [
-          "Data Analysis",
-          "Machine Learning",
-          "Automation",
-          "Model Development",
-        ],
+        context: ["Data Analysis", "Machine Learning", "Automation"],
       },
       {
         name: "SQL",
-        context: [
-          "Data Querying",
-          "Database Management",
-          "Data Extraction",
-          "Reporting",
-        ],
+        context: ["Data Querying", "Data Extraction", "Reporting"],
       },
     ],
   },
+
   {
-    title: "Data Analysis",
+    title: "Data Analysis & Visualization",
     icon: "bar-chart-3",
     skills: [
-      { name: "Pandas", context: ["Data Wrangling", "Data Cleaning", "ETL"] },
-      { name: "NumPy", context: ["Numerical Computing", "Array Operations"] },
-      { name: "Matplotlib", context: ["Visualization", "Charts", "Plots"] },
-      { name: "Seaborn", context: ["Statistical Plots", "Heatmaps"] },
-      { name: "Plotly", context: ["Interactive Dashboards", "Web Viz"] },
+      {
+        name: "Pandas",
+        context: ["Data Wrangling", "Data Cleaning", "ETL"],
+      },
+      {
+        name: "NumPy",
+        context: ["Numerical Computing"],
+      },
+      {
+        name: "Matplotlib",
+        context: ["Visualization", "Charts"],
+      },
+      {
+        name: "Seaborn",
+        context: ["Statistical Plots", "Heatmaps"],
+      },
+      {
+        name: "Plotly",
+        context: ["Interactive Visualization"],
+      },
+      {
+        name: "Power BI",
+        context: ["Dashboards", "Data Visualization"],
+      },
     ],
   },
+
   {
     title: "Machine Learning",
     icon: "brain",
@@ -99,37 +110,61 @@ export const skillCategories = [
         name: "Scikit-learn",
         context: ["Classification", "Regression", "Clustering"],
       },
-      { name: "Regression", context: ["Linear", "Polynomial", "Regularized"] },
-      { name: "Classification", context: ["Binary", "Multi-class", "Ensemble"] },
-      { name: "Clustering", context: ["K-Means", "DBSCAN", "Hierarchical"] },
+      {
+        name: "XGBoost",
+        context: ["Gradient Boosting", "Ensemble"],
+      },
+      {
+        name: "Random Forest",
+        context: ["Ensemble", "Bagging"],
+      },
       {
         name: "Feature Engineering",
-        context: ["Selection", "Transformation", "Creation"],
+        context: ["Selection", "Transformation"],
       },
-      { name: "Model Evaluation", context: ["Cross-validation", "Metrics"] },
-      { name: "XGBoost", context: ["Gradient Boosting", "Ensemble Methods"] },
-      { name: "Random Forest", context: ["Ensemble", "Bagging"] },
+      {
+        name: "Model Evaluation",
+        context: ["Cross-validation", "Metrics"],
+      },
+      {
+        name: "PyTorch",
+        context: ["Neural Networks", "Training"],
+      },
+      {
+        name: "TensorFlow",
+        context: ["Keras Models", "Production ML"],
+      },
     ],
   },
+
   {
-    title: "Deep Learning",
-    icon: "cpu",
-    skills: [
-      { name: "PyTorch", context: ["Neural Networks", "Research", "Training"] },
-      { name: "TensorFlow", context: ["Production ML", "Keras Models"] },
-      { name: "Transformers", context: ["NLP", "Attention", "Fine-tuning"] },
-    ],
-  },
-  {
-    title: "Deployment / MLOps",
+    title: "Deployment & MLOps",
     icon: "rocket",
     skills: [
-      { name: "Streamlit", context: ["ML Apps", "Dashboards", "Prototyping"] },
-      { name: "Flask", context: ["APIs", "Web Services", "ML Serving"] },
-      { name: "MLflow", context: ["Experiment Tracking", "Model Registry"] },
-      { name: "DVC", context: ["Data Versioning", "Pipeline Management"] },
-      { name: "Docker", context: ["Containerization", "Reproducibility"] },
-      { name: "Git / GitHub", context: ["Version Control", "Collaboration"] },
+      {
+        name: "Streamlit",
+        context: ["ML Apps", "Dashboards", "Prototyping"],
+      },
+      {
+        name: "Flask",
+        context: ["APIs", "ML Serving"],
+      },
+      {
+        name: "MLflow",
+        context: ["Experiment Tracking", "Model Registry"],
+      },
+      {
+        name: "DVC",
+        context: ["Data Versioning", "Pipelines"],
+      },
+      {
+        name: "Docker",
+        context: ["Containerization", "Reproducibility"],
+      },
+      {
+        name: "Git / GitHub",
+        context: ["Version Control", "Collaboration"],
+      },
     ],
   },
 ];
