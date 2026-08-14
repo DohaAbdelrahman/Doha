@@ -1,10 +1,6 @@
 "use client";
 
-import ScrollReveal, {
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/portfolio/ScrollReveal";
-
+import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { skillCategories } from "@/data/portfolio";
 
 export default function SkillsSection() {
@@ -17,105 +13,80 @@ export default function SkillsSection() {
 
         {/* Header */}
         <ScrollReveal className="mb-10 text-center">
-          <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#C96A4A]">
+          <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.3em] text-[#C96A4A]/80">
             Skills
           </p>
 
-          <h2 className="text-3xl font-bold tracking-tight text-[#F4EFE7] sm:text-4xl">
-            Technologies I Use.
+          <h2 className="text-3xl font-semibold tracking-tight text-[#F4EFE7]">
+            My Toolkit
           </h2>
         </ScrollReveal>
 
-        {/* Skill Boxes */}
-        <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-
-          {skillCategories.slice(0, 4).map((category) => (
-            <StaggerItem key={category.title}>
-
+        {/* Skills */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {skillCategories.map((category, index) => (
+            <ScrollReveal key={category.title} delay={index * 0.08}>
               <div
                 className="
                   group
-                  rounded-2xl
+                  h-full
+                  rounded-xl
                   border
-                  border-white/[0.09]
-                  bg-[#2A2420]
-                  p-5
+                  border-white/[0.07]
+                  bg-[#25201C]
+                  px-6
+                  py-6
                   transition-all
                   duration-300
-                  hover:-translate-y-1
-                  hover:border-[#C96A4A]/40
+                  hover:border-[#C96A4A]/25
+                  hover:bg-[#29231F]
                 "
               >
-
-                {/* Category Header */}
-                <div className="mb-4 flex items-center justify-between">
-
-                  <h3 className="text-base font-semibold text-[#F4EFE7]">
-                    {category.title}
-                  </h3>
-
+                {/* Category */}
+                <div className="mb-5 flex items-center gap-3">
                   <span
                     className="
-                      h-2
-                      w-2
+                      h-1.5
+                      w-1.5
                       rounded-full
-                      bg-[#C96A4A]
-                      opacity-70
-                      transition-opacity
-                      group-hover:opacity-100
+                      bg-[#C96A4A]/70
+                      transition-all
+                      duration-300
+                      group-hover:bg-[#C96A4A]
                     "
                   />
 
+                  <h3 className="text-sm font-medium text-[#F4EFE7]">
+                    {category.title}
+                  </h3>
                 </div>
 
                 {/* Skills */}
-                <div className="flex flex-wrap gap-2">
-
-                  {category.skills.flatMap((skill) => [
-                    <span
+                <div className="space-y-3">
+                  {category.skills.map((skill) => (
+                    <div
                       key={skill.name}
                       className="
-                        rounded-lg
-                        border
-                        border-[#C96A4A]/20
-                        bg-[#C96A4A]/[0.06]
-                        px-2.5
-                        py-1
-                        text-xs
-                        font-medium
-                        text-[#D8CEC4]
+                        flex
+                        items-center
+                        justify-between
+                        border-b
+                        border-white/[0.05]
+                        pb-3
+                        last:border-0
+                        last:pb-0
                       "
                     >
-                      {skill.name}
-                    </span>,
-
-                    ...skill.context.map((context) => (
-                      <span
-                        key={`${skill.name}-${context}`}
-                        className="
-                          rounded-lg
-                          border
-                          border-white/[0.07]
-                          bg-white/[0.03]
-                          px-2.5
-                          py-1
-                          text-xs
-                          text-[#9F958C]
-                        "
-                      >
-                        {context}
+                      <span className="text-sm text-[#C9C0B8]">
+                        {skill.name}
                       </span>
-                    )),
-                  ])}
-
+                    </div>
+                  ))}
                 </div>
-
               </div>
-
-            </StaggerItem>
+            </ScrollReveal>
           ))}
-
-        </StaggerContainer>
+        </div>
 
       </div>
     </section>
