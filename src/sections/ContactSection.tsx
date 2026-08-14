@@ -15,6 +15,17 @@ import {
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
 
+  // Main portfolio colors
+  const colors = {
+    background: "#211C18",
+    surface: "#2A2420",
+    text: "#F4EFE7",
+    secondary: "#B8AEA4",
+    muted: "#8E847B",
+    accent: "#C96A4A",
+    accentHover: "#D77B5B",
+  };
+
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(profile.email);
@@ -31,15 +42,14 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="
-        relative
-        overflow-hidden
-        bg-[#211C18]
-        py-24
-        sm:py-32
-      "
+      className="relative overflow-hidden py-28 sm:py-36"
+      style={{
+        backgroundColor: colors.background,
+      }}
     >
-      {/* Subtle Terracotta Glow */}
+      {/* =====================================================
+          SUBTLE BACKGROUND GLOW
+      ===================================================== */}
 
       <div
         className="
@@ -47,34 +57,31 @@ export default function ContactSection() {
           absolute
           left-1/2
           top-1/2
-          h-[320px]
-          w-[320px]
+          h-[380px]
+          w-[380px]
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
-          bg-[#C96A4A]/5
-          blur-[110px]
+          blur-[120px]
         "
+        style={{
+          backgroundColor: colors.accent,
+          opacity: 0.045,
+        }}
       />
 
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          max-w-4xl
-          px-6
-          text-center
-          sm:px-8
-        "
-      >
+      <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8">
+
         {/* =====================================================
             HEADER
         ===================================================== */}
 
-        <ScrollReveal>
+        <ScrollReveal className="text-center">
           <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-8 bg-[#C96A4A]" />
+            <span
+              className="h-px w-8"
+              style={{ backgroundColor: colors.accent }}
+            />
 
             <span
               className="
@@ -82,13 +89,16 @@ export default function ContactSection() {
                 font-semibold
                 uppercase
                 tracking-[0.3em]
-                text-[#C96A4A]
               "
+              style={{ color: colors.accent }}
             >
               Let&apos;s Connect
             </span>
 
-            <span className="h-px w-8 bg-[#C96A4A]" />
+            <span
+              className="h-px w-8"
+              style={{ backgroundColor: colors.accent }}
+            />
           </div>
 
           <h2
@@ -97,14 +107,15 @@ export default function ContactSection() {
               text-4xl
               font-bold
               tracking-[-0.04em]
-              text-[#F4EFE7]
-
               sm:text-5xl
               md:text-6xl
             "
+            style={{ color: colors.text }}
           >
-            Let&apos;s work
-            <span className="text-[#C96A4A]"> together.</span>
+            Let&apos;s work{" "}
+            <span style={{ color: colors.accent }}>
+              together.
+            </span>
           </h2>
 
           <p
@@ -114,45 +125,42 @@ export default function ContactSection() {
               max-w-xl
               text-base
               leading-7
-              text-[#B8AEA4]
-
               sm:text-lg
             "
+            style={{ color: colors.secondary }}
           >
-            Have a project, an opportunity, or simply want to connect?
-            I&apos;d love to hear from you.
+            Have a project, an opportunity, or simply want to
+            connect? I&apos;d love to hear from you.
           </p>
         </ScrollReveal>
 
         {/* =====================================================
-            EMAIL
+            EMAIL CARD
         ===================================================== */}
 
         <ScrollReveal
           direction="up"
           delay={0.1}
-          className="mt-12"
+          className="mx-auto mt-12 max-w-xl"
         >
           <div
             className="
-              mx-auto
               flex
-              max-w-xl
               flex-col
               items-center
               justify-between
               gap-4
               rounded-2xl
               border
-              border-[#F4EFE7]/10
-              bg-[#2A2420]/80
               px-5
               py-5
-              backdrop-blur-sm
-
               sm:flex-row
               sm:px-6
             "
+            style={{
+              backgroundColor: colors.surface,
+              borderColor: `${colors.text}18`,
+            }}
           >
             <div className="flex items-center gap-3">
               <div
@@ -163,9 +171,11 @@ export default function ContactSection() {
                   items-center
                   justify-center
                   rounded-xl
-                  bg-[#C96A4A]/10
-                  text-[#C96A4A]
                 "
+                style={{
+                  backgroundColor: `${colors.accent}18`,
+                  color: colors.accent,
+                }}
               >
                 <Mail size={18} />
               </div>
@@ -177,19 +187,15 @@ export default function ContactSection() {
                     font-semibold
                     uppercase
                     tracking-[0.2em]
-                    text-[#8E847B]
                   "
+                  style={{ color: colors.muted }}
                 >
                   Email
                 </p>
 
                 <p
-                  className="
-                    mt-0.5
-                    text-sm
-                    font-medium
-                    text-[#F4EFE7]
-                  "
+                  className="mt-0.5 text-sm font-medium"
+                  style={{ color: colors.text }}
                 >
                   {profile.email}
                 </p>
@@ -205,19 +211,27 @@ export default function ContactSection() {
                 gap-2
                 rounded-lg
                 border
-                border-[#F4EFE7]/10
                 px-3
                 py-2
                 text-xs
                 font-medium
-                text-[#B8AEA4]
                 transition-all
                 duration-200
-
-                hover:border-[#C96A4A]/40
-                hover:bg-[#C96A4A]/10
-                hover:text-[#D77B5B]
               "
+              style={{
+                borderColor: `${colors.text}18`,
+                color: colors.secondary,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = `${colors.accent}66`;
+                e.currentTarget.style.color = colors.accentHover;
+                e.currentTarget.style.backgroundColor = `${colors.accent}12`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = `${colors.text}18`;
+                e.currentTarget.style.color = colors.secondary;
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
             >
               {copied ? (
                 <>
@@ -244,6 +258,7 @@ export default function ContactSection() {
           className="mt-8"
         >
           <div className="flex flex-wrap items-center justify-center gap-3">
+
             <a
               href={profile.github}
               target="_blank"
@@ -254,21 +269,18 @@ export default function ContactSection() {
                 gap-2
                 rounded-full
                 border
-                border-[#F4EFE7]/10
-                bg-[#2A2420]/60
                 px-4
                 py-2.5
                 text-sm
                 font-medium
-                text-[#B8AEA4]
                 transition-all
                 duration-300
-
                 hover:-translate-y-1
-                hover:border-[#C96A4A]/40
-                hover:bg-[#C96A4A]/10
-                hover:text-[#F4EFE7]
               "
+              style={{
+                borderColor: `${colors.text}18`,
+                color: colors.secondary,
+              }}
             >
               <Github size={16} />
               GitHub
@@ -284,21 +296,18 @@ export default function ContactSection() {
                 gap-2
                 rounded-full
                 border
-                border-[#F4EFE7]/10
-                bg-[#2A2420]/60
                 px-4
                 py-2.5
                 text-sm
                 font-medium
-                text-[#B8AEA4]
                 transition-all
                 duration-300
-
                 hover:-translate-y-1
-                hover:border-[#C96A4A]/40
-                hover:bg-[#C96A4A]/10
-                hover:text-[#F4EFE7]
               "
+              style={{
+                borderColor: `${colors.text}18`,
+                color: colors.secondary,
+              }}
             >
               <Linkedin size={16} />
               LinkedIn
@@ -312,36 +321,34 @@ export default function ContactSection() {
                 gap-2
                 rounded-full
                 border
-                border-[#F4EFE7]/10
-                bg-[#2A2420]/60
                 px-4
                 py-2.5
                 text-sm
                 font-medium
-                text-[#B8AEA4]
                 transition-all
                 duration-300
-
                 hover:-translate-y-1
-                hover:border-[#C96A4A]/40
-                hover:bg-[#C96A4A]/10
-                hover:text-[#F4EFE7]
               "
+              style={{
+                borderColor: `${colors.text}18`,
+                color: colors.secondary,
+              }}
             >
               <Mail size={16} />
               Email
             </a>
+
           </div>
         </ScrollReveal>
 
         {/* =====================================================
-            CTA
+            MAIN CTA
         ===================================================== */}
 
         <ScrollReveal
           direction="up"
           delay={0.3}
-          className="mt-10"
+          className="mt-10 text-center"
         >
           <a
             href={`mailto:${profile.email}`}
@@ -351,19 +358,29 @@ export default function ContactSection() {
               items-center
               gap-3
               rounded-xl
-              bg-[#C96A4A]
               px-7
               py-3.5
               text-sm
               font-semibold
-              text-[#F4EFE7]
               transition-all
               duration-300
-
               hover:-translate-y-1
-              hover:bg-[#D77B5B]
-              hover:shadow-[0_12px_30px_rgba(201,106,74,0.22)]
             "
+            style={{
+              backgroundColor: colors.accent,
+              color: colors.text,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor =
+                colors.accentHover;
+              e.currentTarget.style.boxShadow =
+                `0 14px 35px ${colors.accent}35`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor =
+                colors.accent;
+              e.currentTarget.style.boxShadow = "none";
+            }}
           >
             Send me an email
 
@@ -372,7 +389,6 @@ export default function ContactSection() {
               className="
                 transition-transform
                 duration-300
-
                 group-hover:-translate-y-0.5
                 group-hover:translate-x-0.5
               "
@@ -381,33 +397,30 @@ export default function ContactSection() {
         </ScrollReveal>
 
         {/* =====================================================
-            FOOTER
+            SIMPLE COPYRIGHT
+            No separate footer section
         ===================================================== */}
 
         <ScrollReveal
           direction="up"
           delay={0.4}
-          className="mt-20"
+          className="mt-20 text-center"
         >
           <div
-            className="
-              mx-auto
-              h-px
-              max-w-2xl
-              bg-[#F4EFE7]/10
-            "
+            className="mx-auto h-px max-w-2xl"
+            style={{
+              backgroundColor: `${colors.text}12`,
+            }}
           />
 
           <p
-            className="
-              mt-6
-              text-xs
-              text-[#8E847B]
-            "
+            className="mt-6 text-xs"
+            style={{ color: colors.muted }}
           >
-            © {new Date().getFullYear()} Doha Abdelrahman. All rights reserved.
+            © Doha Abdelrahman. All rights reserved.
           </p>
         </ScrollReveal>
+
       </div>
     </section>
   );
