@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Github,
@@ -12,6 +12,7 @@ import {
 import { profile } from "@/data/portfolio";
 
 export default function HeroSection() {
+  const [activeSkill, setActiveSkill] = useState("Data Science");
   const scrollToProjects = () => {
     document.querySelector("#projects")?.scrollIntoView({
       behavior: "smooth",
@@ -216,7 +217,6 @@ export default function HeroSection() {
           </motion.h1>
 
           {/* Specializations */}
-
           <motion.div
             initial={{
               opacity: 0,
@@ -235,27 +235,77 @@ export default function HeroSection() {
               flex
               flex-wrap
               items-center
-              gap-x-3
-              gap-y-2
+              justify-center
+              gap-x-4
+              gap-y-3
               text-base
               font-medium
-              text-[#AFC1D2]
-
               sm:text-lg
               md:text-xl
             "
           >
-            <span>Data Science</span>
+            {["Data Science", "Machine Learning", "Data Analysis"].map(
+              (skill, index) => (
+                <div
+                  key={skill}
+                  className="flex items-center gap-4"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setActiveSkill(skill)}
+                    className={`
+                      relative
+                      cursor-pointer
+                      pb-2
+                      transition-all
+                      duration-300
 
-            <span className="text-[#5B9FE3]/60">•</span>
+                      ${
+                        activeSkill === skill
+                          ? `
+                            text-white
+                            drop-shadow-[0_0_12px_rgba(106,167,232,0.9)]
+                          `
+                          : `
+                            text-[#8FA4B7]
+                            hover:text-[#DCEBFA]
+                          `
+                      }
+                    `}
+                  >
+                    {skill}
 
-            <span>Machine Learning</span>
+                    {activeSkill === skill && (
+                      <motion.span
+                        layoutId="skillGlow"
+                        className="
+                          absolute
+                          bottom-0
+                          left-0
+                          h-[2px]
+                          w-full
+                          rounded-full
+                          bg-[#6AA7E8]
+                          shadow-[0_0_12px_rgba(106,167,232,0.9)]
+                        "
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </button>
 
-            <span className="text-[#5B9FE3]/60">•</span>
-
-            <span>Data Analysis</span>
+                  {index < 2 && (
+                    <span className="text-[#5B9FE3]/40">
+                      |
+                    </span>
+                  )}
+                </div>
+              )
+            )}
           </motion.div>
-
           {/* Description */}
 
           <motion.p
