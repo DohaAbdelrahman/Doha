@@ -306,33 +306,7 @@ export default function HeroSection() {
               )
             )}
           </motion.div>
-          {/* Description */}
-
-          <motion.p
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 0.35,
-            }}
-            className="
-              mt-7
-              max-w-2xl
-              text-base
-              leading-8
-              text-[#9FB2C4]
-
-              sm:text-lg
-            "
-          >
-            {profile.description}
-          </motion.p>
+        
 
           {/* CTA */}
 
@@ -563,7 +537,6 @@ export default function HeroSection() {
             lg:right-12
           "
         >
-          <span>Data-driven. Insight-focused.</span>
 
           <button
             type="button"
@@ -579,8 +552,7 @@ export default function HeroSection() {
               sm:flex
             "
           >
-            Scroll to explore
-            <ArrowDown size={14} />
+          
           </button>
         </motion.div>
       </div>
