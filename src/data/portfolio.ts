@@ -330,7 +330,7 @@ export const projects: Project[] = [
     category: "Software Development",
     featured: false,
   },
- 
+ ]; 
 
 export interface Experience {
   type: "education" | "program" | "milestone";
