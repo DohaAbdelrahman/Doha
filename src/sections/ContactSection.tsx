@@ -45,8 +45,8 @@ export default function ContactSection() {
         relative
         min-h-screen
         overflow-hidden
-        py-28
-        sm:py-36
+        py-20
+        sm:py-24
       "
       style={{
         backgroundColor: colors.background,
@@ -79,7 +79,6 @@ export default function ContactSection() {
           z-10
           mx-auto
           flex
-          min-h-[calc(100vh-7rem)]
           max-w-5xl
           flex-col
           items-center
