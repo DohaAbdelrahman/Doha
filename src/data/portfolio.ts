@@ -154,199 +154,183 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "customer-churn",
-    title: "Customer Churn Prediction",
+    id: "hospital-er-dashboard",
+    title: "Hospital ER Dashboard",
     shortDescription:
-      "Built a machine learning pipeline to predict customer churn for a telecom company, achieving high accuracy with ensemble methods and thorough feature engineering.",
+      "Interactive Power BI dashboard for analyzing emergency room operations, patient flow, waiting times, admissions, referrals, and patient satisfaction.",
+
     problem:
-      "Telecom companies face significant revenue loss when customers switch to competitors. The challenge was to identify at-risk customers early enough to implement targeted retention strategies, reducing churn rates and improving customer lifetime value.",
+      "The project focuses on analyzing emergency room operations and providing insights into patient flow, hospital performance, waiting times, admissions, referrals, and patient satisfaction to support operational decision-making.",
+
     data:
-      "Used a telecom customer dataset with demographics, account information, service usage patterns, and churn labels. The dataset included both numerical features (tenure, monthly charges) and categorical features (contract type, payment method, internet service).",
+      "Hospital ER_Data.csv containing patient records including admission status, visit date, age, gender, department referral, waiting time, satisfaction score, race, and attendance status.",
+
     process:
-      "Performed comprehensive data cleaning including handling missing values, encoding categorical variables, and addressing class imbalance using SMOTE. Conducted exploratory data analysis to identify key churn drivers and correlations between features.",
+      "Cleaned and transformed the emergency room data using Power Query, built the data model, and developed DAX measures to support KPI calculations and interactive analysis.",
+
     analysis:
-      "Discovered that contract type, tenure, monthly charges, and customer support interactions were the strongest predictors of churn. Customers on month-to-month contracts with shorter tenure showed significantly higher churn rates.",
+      "Analyzed patient trends, admissions, department referrals, waiting times, satisfaction scores, gender distribution, and age groups through interactive Power BI visualizations.",
+
     modeling:
-      "Trained and compared multiple models including Logistic Regression, Decision Trees, Random Forest, XGBoost, and a Stacked Ensemble. Used cross-validation and hyperparameter tuning with GridSearchCV to optimize each model.",
+      "Built a Power BI data model and created DAX measures to support the dashboard KPIs and analytical views.",
+
     evaluation:
-      "Evaluated models using Accuracy, Precision, Recall, F1-Score, and ROC-AUC. The XGBoost model achieved the best balance of precision and recall, critical for minimizing false negatives in churn prediction.",
+      "Validated the dashboard through KPI and interactive visualization views covering patient volume, admissions, waiting time, referrals, and satisfaction.",
+
     results:
-      "The final model demonstrated strong predictive capability, identifying high-risk customers with reliable accuracy. Key feature importance analysis revealed actionable business insights for targeted retention campaigns.",
+      "Delivered an interactive dashboard that helps monitor emergency room performance, track admissions, analyze waiting times, improve patient satisfaction, identify busy periods, and support operational decisions.",
+
+    technologies: [
+      "Power BI",
+      "Power Query",
+      "DAX",
+      "Data Cleaning",
+      "Data Modeling",
+      "Data Visualization",
+    ],
+
+    githubUrl:
+      "https://github.com/DohaAbdelrahman/Hospital-ER-PowerBI-Dashboard",
+
+    category: "Data Analysis",
+    featured: true,
+  },
+  {
+    id: "hotel-booking-analysis",
+    title: "Hotel Booking Analysis & Cancellation Prediction",
+
+    shortDescription:
+      "Analyzed hotel booking data to understand customer behavior, booking patterns, cancellation factors, and their impact on revenue management.",
+
+    problem:
+      "The project analyzes booking behavior and the factors that influence hotel cancellations, with the goal of helping hotels improve decision-making, reduce cancellation rates, and optimize revenue management strategies.",
+
+    data:
+      "Hotel Booking Demand Dataset containing booking details, customer information, stay duration, distribution channels, market segments, previous booking history, and cancellation status.",
+
+    process:
+      "Performed data understanding, preprocessing, exploratory data analysis, and feature engineering. The workflow included handling missing values, removing duplicates, treating outliers, encoding categorical variables, and creating booking-related features.",
+
+    analysis:
+      "Analyzed cancellation rates, booking trends, customer types, market segments, lead time, stay duration, deposit types, and distribution channels.",
+
+    modeling:
+      "Built a machine learning workflow to predict booking cancellations using the is_canceled target variable, following preprocessing, exploratory analysis, and feature engineering.",
+
+    evaluation:
+      "The project evaluates cancellation behavior through exploratory analysis and machine learning modeling, while the Power BI dashboard provides analytical views of booking and cancellation patterns.",
+
+    results:
+      "The analysis found that longer lead times were associated with higher cancellation probability, while deposit type, customer segments, and distribution channels also affected cancellation behavior.",
+
     technologies: [
       "Python",
       "Pandas",
-      "Scikit-learn",
-      "XGBoost",
-      "SMOTE",
+      "NumPy",
       "Matplotlib",
       "Seaborn",
-      "Jupyter",
-    ],
-    githubUrl: "#",
-    category: "Machine Learning",
-    featured: true,
-  },
-  {
-    id: "sentiment-analysis",
-    title: "Sentiment Analysis with NLP",
-    shortDescription:
-      "Developed an NLP-powered sentiment analysis pipeline to classify customer reviews, leveraging transformer models for nuanced understanding of opinion and emotion.",
-    problem:
-      "Understanding customer sentiment at scale is crucial for product improvement and brand management. Manual review analysis is impractical for large volumes of feedback, necessitating an automated, accurate NLP solution.",
-    data:
-      "Worked with a large dataset of customer reviews containing text, ratings, and metadata. The dataset presented challenges including slang, mixed languages, sarcasm, and varying review lengths requiring careful preprocessing.",
-    process:
-      "Implemented text preprocessing including tokenization, stop-word removal, lemmatization, and handling class imbalance. Experimented with both traditional feature extraction (TF-IDF, Word2Vec) and contextual embeddings from transformer models.",
-    analysis:
-      "Found that product quality, customer service, and delivery speed were the primary sentiment drivers. Negative reviews frequently cited shipping delays and product defects, while positive reviews emphasized value and usability.",
-    modeling:
-      "Built and compared models including Naive Bayes, LSTM networks, and fine-tuned transformer models (BERT-based). The transformer approach significantly outperformed traditional methods on nuanced sentiment classification.",
-    evaluation:
-      "Used Accuracy, Precision, Recall, F1, and Confusion Matrices for evaluation. The transformer model achieved strong results across all sentiment classes, particularly in distinguishing between neutral and negative sentiments.",
-    results:
-      "The final NLP pipeline successfully categorized reviews with high accuracy, providing actionable sentiment insights. The system could process new reviews in real-time, enabling continuous monitoring of customer feedback.",
-    technologies: [
-      "Python",
-      "PyTorch",
-      "Transformers",
-      "NLTK",
       "Scikit-learn",
-      "Pandas",
-      "Matplotlib",
-    ],
-    githubUrl: "#",
-    category: "NLP / Deep Learning",
-    featured: true,
-  },
-  {
-    id: "sales-forecasting",
-    title: "Sales Forecasting Dashboard",
-    shortDescription:
-      "Created an end-to-end sales forecasting system with an interactive dashboard, combining time series analysis with machine learning for accurate revenue predictions.",
-    problem:
-      "Accurate sales forecasting is essential for inventory management, resource planning, and financial projections. Traditional spreadsheet-based forecasts were insufficient for handling the complexity and volume of multi-product sales data.",
-    data:
-      "Utilized historical sales data with daily records across multiple product categories, including date, product details, quantity, price, promotions, and seasonal indicators. The dataset spanned multiple years to capture trends and seasonality.",
-    process:
-      "Performed time series decomposition to separate trend, seasonality, and residual components. Engineered features including lag values, rolling statistics, and holiday indicators. Built automated data pipelines for continuous updates.",
-    analysis:
-      "Identified strong seasonal patterns with peak sales periods, promotional impacts, and long-term growth trends. Product categories showed varying sensitivity to promotions and economic factors, requiring category-specific models.",
-    modeling:
-      "Implemented and compared forecasting approaches including ARIMA, Prophet, and ML-based methods using XGBoost and LSTM networks. Developed ensemble strategies combining statistical and machine learning forecasts for improved accuracy.",
-    evaluation:
-      "Evaluated forecast accuracy using MAE, RMSE, MAPE, and directional accuracy metrics. The ensemble approach consistently outperformed individual models across all product categories and time horizons.",
-    results:
-      "Delivered an interactive Streamlit dashboard enabling stakeholders to view forecasts, adjust parameters, and explore scenario analysis. The system improved forecast accuracy over previous methods and supported data-driven planning decisions.",
-    technologies: [
-      "Python",
-      "Streamlit",
-      "Prophet",
       "XGBoost",
-      "Scikit-learn",
-      "Pandas",
-      "Plotly",
-      "Docker",
+      "Power BI",
+      "Jupyter Notebook",
     ],
-    githubUrl: "#",
-    demoUrl: "#",
+
+    githubUrl:
+      "https://github.com/DohaAbdelrahman/Hotel-Booking-Analysis",
+
     category: "Data Science",
     featured: true,
   },
   {
-    id: "image-classification",
-    title: "Image Classification with CNN",
+    id: "fifa-23-dashboard",
+    title: "FIFA 23 Players Dashboard",
+
     shortDescription:
-      "Built a convolutional neural network for image classification, implementing data augmentation and transfer learning to achieve robust performance on visual recognition tasks.",
+      "Interactive dashboard built with Python, Dash, and Plotly to analyze FIFA player ratings, market values, positions, nationalities, clubs, and performance statistics.",
+
     problem:
-      "Automated image classification is needed across industries from medical imaging to quality control. The challenge was building an efficient model that generalizes well to new images while minimizing computational requirements.",
+      "The project explores FIFA player data and provides an interactive way to analyze player attributes, compare ratings, explore clubs and leagues, filter players, and understand market values and performance trends.",
+
     data:
-      "Worked with a labeled image dataset containing multiple classes. Addressed class imbalance through augmentation strategies and ensured a proper train/validation/test split for unbiased evaluation.",
+      "FIFA player datasets from multiple seasons, including players_15.csv through players_20.csv, along with processed FIFA analysis datasets.",
+
     process:
-      "Implemented comprehensive data preprocessing including resizing, normalization, and data augmentation (rotation, flipping, brightness adjustment). Used transfer learning with pre-trained models as a foundation for fine-tuning.",
+      "Processed and analyzed FIFA player datasets using Python-based data analysis tools, preparing the data for interactive dashboard exploration.",
+
     analysis:
-      "Explored dataset characteristics including class distribution, image quality patterns, and inter-class similarity. Identified challenging cases and determined optimal augmentation strategies to improve model robustness.",
+      "Analyzed overall rating distribution, player nationalities, top clubs, market values, player positions, age distribution, and relationships between player characteristics.",
+
     modeling:
-      "Built CNN architectures from scratch and compared with transfer learning approaches using pre-trained models. Implemented progressive fine-tuning, learning rate scheduling, and early stopping to optimize training.",
+      "The project is primarily an interactive data analysis and visualization dashboard rather than a predictive modeling project.",
+
     evaluation:
-      "Evaluated using classification accuracy, precision, recall, F1-score per class, and confusion matrix analysis. The transfer learning model achieved strong performance with significantly less training time than training from scratch.",
+      "The dashboard provides interactive filters and dynamic visualizations for exploring player attributes, clubs, nationalities, positions, market values, and ratings.",
+
     results:
-      "The final model demonstrated reliable classification accuracy across all categories. The project showcased the effectiveness of transfer learning for image classification tasks and the importance of data augmentation for model generalization.",
+      "The dashboard enables users to explore FIFA player trends, identify countries producing highly rated players, compare valuable clubs and players, and examine position-wise and age-related patterns.",
+
     technologies: [
       "Python",
-      "PyTorch",
-      "TensorFlow",
-      "OpenCV",
-      "NumPy",
-      "Matplotlib",
-    ],
-    githubUrl: "#",
-    category: "Deep Learning",
-    featured: false,
-  },
-  {
-    id: "house-price",
-    title: "House Price Prediction",
-    shortDescription:
-      "Developed a regression model to predict house prices based on property features, applying advanced feature engineering and ensemble methods for accurate real estate valuation.",
-    problem:
-      "Accurately predicting property values is valuable for buyers, sellers, and real estate professionals. The goal was to build a model that captures the complex relationships between property features and market prices.",
-    data:
-      "Used a real estate dataset containing property attributes including location, size, rooms, age, amenities, neighborhood quality scores, and historical sale prices. Handled missing values and outliers during preprocessing.",
-    process:
-      "Conducted thorough exploratory analysis of feature distributions and correlations. Engineered new features including price per square foot, neighborhood aggregates, and temporal features. Addressed multicollinearity and performed feature selection.",
-    analysis:
-      "Found that location, property size, condition, and neighborhood quality were the strongest price predictors. Identified non-linear relationships between certain features and price, informing model selection decisions.",
-    modeling:
-      "Trained and evaluated multiple regression models including Linear Regression, Ridge, Lasso, Random Forest Regressor, XGBoost, and Gradient Boosting. Used cross-validation and hyperparameter optimization for each approach.",
-    evaluation:
-      "Evaluated models using RMSE, MAE, and R-squared metrics. The XGBoost model achieved the lowest error rates, with feature importance analysis confirming the dominance of location and size-related features.",
-    results:
-      "The model provided reliable price estimates with quantified uncertainty. Feature importance analysis delivered actionable insights for both buyers and sellers about which property attributes most significantly impact value.",
-    technologies: [
-      "Python",
-      "Scikit-learn",
-      "XGBoost",
       "Pandas",
       "NumPy",
-      "Seaborn",
-      "Jupyter",
+      "Plotly",
+      "Dash",
+      "Scikit-learn",
+      "Jupyter Notebook",
     ],
-    githubUrl: "#",
-    category: "Machine Learning",
-    featured: false,
+
+    githubUrl:
+      "https://github.com/DohaAbdelrahman/FIFA-23-Players-Dashboard",
+
+    category: "Data Analysis",
+    featured: true,
   },
   {
-    id: "recommender-system",
-    title: "Movie Recommender System",
+    id: "employee-management-system",
+    title: "Employee Management System",
+
     shortDescription:
-      "Designed and implemented a hybrid movie recommender system combining collaborative filtering and content-based methods for personalized movie suggestions.",
+      "Web-based employee management application built with ASP.NET Core MVC, Entity Framework Core, and SQL Server, supporting full CRUD operations.",
+
     problem:
-      "With the vast amount of available content, users need personalized recommendations to discover relevant movies. The challenge was building a system that handles the cold-start problem while providing accurate, diverse suggestions.",
+      "The application provides a simple way to manage employee records through creating, viewing, updating, and deleting employee information.",
+
     data:
-      "Worked with a movie ratings dataset containing user ratings, movie metadata (genre, director, cast, year), and user demographic information. The sparse nature of the rating matrix presented a key challenge.",
+      "Employee records stored in a SQL Server database.",
+
     process:
-      "Preprocessed data to handle sparse ratings and missing movie information. Built user-item interaction matrices and content feature vectors. Implemented evaluation protocols using train-test splits with temporal ordering.",
+      "Built the application using ASP.NET Core MVC with Entity Framework Core for data access and SQL Server for database integration.",
+
     analysis:
-      "Explored rating patterns, genre popularity trends, and user behavior clusters. Identified that combining collaborative signals with content features significantly improved recommendation quality, especially for users with few ratings.",
+      "The project focuses on managing employee records and providing a responsive interface for common employee management operations.",
+
     modeling:
-      "Implemented collaborative filtering (user-based and item-based), content-based filtering using movie features, and matrix factorization techniques. Built a hybrid model that combines recommendations from multiple approaches using weighted scoring.",
+      "Implemented application models, controllers, views, database access, and Entity Framework Core migrations.",
+
     evaluation:
-      "Evaluated using RMSE for rating prediction and Precision@K, Recall@K, and NDCG for ranking quality. The hybrid approach consistently outperformed individual methods, particularly in recommendation diversity and coverage.",
+      "The application supports CRUD operations for employee records and integrates with SQL Server for persistent data management.",
+
     results:
-      "The hybrid recommender system delivered personalized and diverse movie suggestions. The system effectively addressed the cold-start problem for new users through content-based fallback recommendations and demonstrated scalability for real-world deployment.",
+      "Delivered a responsive web-based Employee Management System supporting employee creation, viewing, editing, and deletion.",
+
     technologies: [
-      "Python",
-      "Scikit-learn",
-      "Pandas",
-      "NumPy",
-      "Surprise",
-      "Streamlit",
+      "ASP.NET Core MVC",
+      "C#",
+      "Entity Framework Core",
+      "SQL Server",
+      "HTML5",
+      "CSS3",
+      "Bootstrap",
+      "JavaScript",
     ],
-    githubUrl: "#",
-    category: "Machine Learning",
+
+    githubUrl:
+      "https://github.com/DohaAbdelrahman/EmployeeManagementSystem-",
+
+    category: "Software Development",
     featured: false,
   },
-];
+ 
 
 export interface Experience {
   type: "education" | "program" | "milestone";
