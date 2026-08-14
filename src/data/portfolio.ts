@@ -387,42 +387,53 @@ export const experiences: Experience[] = [
 
 export const certifications = [
   {
-    title: "Data Science Professional",
-    organization: "DEPI",
-    date: "2024",
-    skills: ["Machine Learning", "Python", "Data Analysis", "Deep Learning"],
-    credentialUrl: "#",
+    title: "Google Data Analyst Specialist",
+    organization: "Digital Egypt Pioneers Program (DEPI)",
+    date: "November – May 2025",
+    skills: ["Data Analysis"],
+    credentialUrl:
+      "https://drive.google.com/file/d/1jcC5HyN3MtiE6JEf8LtSp32C9mMBH5UD/view?usp=sharing",
   },
-  {
-    title: "Software Engineering",
-    organization: "ALX Africa",
-    date: "2024",
-    skills: [
-      "Software Engineering",
-      "Python",
-      "C Programming",
-      "Problem Solving",
-    ],
-    credentialUrl: "#",
-  },
+
   {
     title: "Machine Learning",
-    organization: "Online Course",
-    date: "2024",
-    skills: [
-      "Supervised Learning",
-      "Unsupervised Learning",
-      "Model Evaluation",
-      "Scikit-learn",
-    ],
-    credentialUrl: "#",
+    organization: "ITIDA / NTI",
+    date: "31 August – 25 September 2025",
+    skills: ["Machine Learning"],
+    credentialUrl: "https://drive.google.com/file/d/1mIdeC9qjMbKe8YeqcIwW6F8WayF6GWHL/view?usp=sharing",
   },
+
   {
-    title: "Python for Data Science",
-    organization: "Online Course",
-    date: "2023",
-    skills: ["Python", "Pandas", "NumPy", "Matplotlib"],
-    credentialUrl: "#",
+    title: "Artificial Intelligence (AI)",
+    organization: "NTI / Huawei Egyptian Talent Academy",
+    date: "11 July – 16 August 2025",
+    skills: ["Artificial Intelligence"],
+    credentialUrl: "https://drive.google.com/file/d/1qS3vnxXfzcNN3H4LUHhMmZMdDFXWuHnM/view?usp=sharing",
+  },
+
+  {
+    title: "HCIA-AI V4.0",
+    organization: "Huawei ICT Academy",
+    date: "16 August 2025",
+    skills: ["Artificial Intelligence"],
+    credentialUrl: "https://drive.google.com/file/d/1EqDnMZV-IQoJx8USInegDpQd94jB6lCH/view?usp=sharing",
+  },
+
+  {
+    title: "Professional Foundations",
+    organization: "ALX Africa",
+    date: "30 September 2025",
+    skills: ["Professional Development"],
+    credentialUrl:
+      "https://drive.google.com/file/d/1K5AnDxJEwFDRu4M8y8s9LbO0ibfvtj1y/view?usp=sharing",
+  },
+
+  {
+    title: "Business English",
+    organization: "Berlitz Egypt / Digital Egypt Pioneers Initiative",
+    date: "November 2024 – May 2025",
+    skills: ["Business English"],
+    credentialUrl: "https://drive.google.com/file/d/1vmYaZ3C_ymf47Cs5tA_2lC3ryoKTi6nz/view?usp=sharing",
   },
 ];
 
