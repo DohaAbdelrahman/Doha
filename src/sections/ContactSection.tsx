@@ -15,7 +15,6 @@ import {
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
 
-  // Main portfolio colors
   const colors = {
     background: "#211C18",
     surface: "#2A2420",
@@ -42,14 +41,18 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden py-28 sm:py-36"
+      className="
+        relative
+        min-h-screen
+        overflow-hidden
+        py-28
+        sm:py-36
+      "
       style={{
         backgroundColor: colors.background,
       }}
     >
-      {/* =====================================================
-          SUBTLE BACKGROUND GLOW
-      ===================================================== */}
+      {/* Background Glow */}
 
       <div
         className="
@@ -57,12 +60,12 @@ export default function ContactSection() {
           absolute
           left-1/2
           top-1/2
-          h-[380px]
-          w-[380px]
+          h-[420px]
+          w-[420px]
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
-          blur-[120px]
+          blur-[130px]
         "
         style={{
           backgroundColor: colors.accent,
@@ -70,17 +73,32 @@ export default function ContactSection() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 sm:px-8">
-
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          flex
+          min-h-[calc(100vh-7rem)]
+          max-w-5xl
+          flex-col
+          items-center
+          justify-center
+          px-6
+          sm:px-8
+        "
+      >
         {/* =====================================================
             HEADER
         ===================================================== */}
 
-        <ScrollReveal className="text-center">
+        <ScrollReveal className="w-full text-center">
           <div className="flex items-center justify-center gap-3">
             <span
-              className="h-px w-8"
-              style={{ backgroundColor: colors.accent }}
+              className="h-px w-10"
+              style={{
+                backgroundColor: colors.accent,
+              }}
             />
 
             <span
@@ -88,32 +106,44 @@ export default function ContactSection() {
                 text-xs
                 font-semibold
                 uppercase
-                tracking-[0.3em]
+                tracking-[0.32em]
               "
-              style={{ color: colors.accent }}
+              style={{
+                color: colors.accent,
+              }}
             >
               Let&apos;s Connect
             </span>
 
             <span
-              className="h-px w-8"
-              style={{ backgroundColor: colors.accent }}
+              className="h-px w-10"
+              style={{
+                backgroundColor: colors.accent,
+              }}
             />
           </div>
 
           <h2
             className="
-              mt-5
+              mt-6
               text-4xl
               font-bold
-              tracking-[-0.04em]
+              leading-tight
+              tracking-[-0.045em]
               sm:text-5xl
               md:text-6xl
+              lg:text-7xl
             "
-            style={{ color: colors.text }}
+            style={{
+              color: colors.text,
+            }}
           >
             Let&apos;s work{" "}
-            <span style={{ color: colors.accent }}>
+            <span
+              style={{
+                color: colors.accent,
+              }}
+            >
               together.
             </span>
           </h2>
@@ -121,13 +151,15 @@ export default function ContactSection() {
           <p
             className="
               mx-auto
-              mt-5
-              max-w-xl
+              mt-6
+              max-w-2xl
               text-base
               leading-7
               sm:text-lg
             "
-            style={{ color: colors.secondary }}
+            style={{
+              color: colors.secondary,
+            }}
           >
             Have a project, an opportunity, or simply want to
             connect? I&apos;d love to hear from you.
@@ -141,7 +173,11 @@ export default function ContactSection() {
         <ScrollReveal
           direction="up"
           delay={0.1}
-          className="mx-auto mt-12 max-w-xl"
+          className="
+            mt-12
+            w-full
+            max-w-2xl
+          "
         >
           <div
             className="
@@ -149,25 +185,30 @@ export default function ContactSection() {
               flex-col
               items-center
               justify-between
-              gap-4
+              gap-5
               rounded-2xl
               border
               px-5
               py-5
               sm:flex-row
               sm:px-6
+              sm:py-6
             "
             style={{
-              backgroundColor: colors.surface,
+              backgroundColor: `${colors.surface}CC`,
               borderColor: `${colors.text}18`,
+              boxShadow: `0 20px 60px ${colors.accent}08`,
             }}
           >
-            <div className="flex items-center gap-3">
+            {/* Email Information */}
+
+            <div className="flex items-center gap-4">
               <div
                 className="
                   flex
-                  h-10
-                  w-10
+                  h-12
+                  w-12
+                  shrink-0
                   items-center
                   justify-center
                   rounded-xl
@@ -177,7 +218,7 @@ export default function ContactSection() {
                   color: colors.accent,
                 }}
               >
-                <Mail size={18} />
+                <Mail size={21} />
               </div>
 
               <div className="text-left">
@@ -186,33 +227,45 @@ export default function ContactSection() {
                     text-[10px]
                     font-semibold
                     uppercase
-                    tracking-[0.2em]
+                    tracking-[0.22em]
                   "
-                  style={{ color: colors.muted }}
+                  style={{
+                    color: colors.muted,
+                  }}
                 >
                   Email
                 </p>
 
                 <p
-                  className="mt-0.5 text-sm font-medium"
-                  style={{ color: colors.text }}
+                  className="
+                    mt-1
+                    text-sm
+                    font-medium
+                    sm:text-base
+                  "
+                  style={{
+                    color: colors.text,
+                  }}
                 >
                   {profile.email}
                 </p>
               </div>
             </div>
 
+            {/* Copy Button */}
+
             <button
               type="button"
               onClick={copyEmail}
               className="
                 inline-flex
+                shrink-0
                 items-center
                 gap-2
                 rounded-lg
                 border
-                px-3
-                py-2
+                px-4
+                py-2.5
                 text-xs
                 font-medium
                 transition-all
@@ -223,24 +276,34 @@ export default function ContactSection() {
                 color: colors.secondary,
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = `${colors.accent}66`;
-                e.currentTarget.style.color = colors.accentHover;
-                e.currentTarget.style.backgroundColor = `${colors.accent}12`;
+                e.currentTarget.style.borderColor =
+                  `${colors.accent}66`;
+
+                e.currentTarget.style.color =
+                  colors.accentHover;
+
+                e.currentTarget.style.backgroundColor =
+                  `${colors.accent}12`;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = `${colors.text}18`;
-                e.currentTarget.style.color = colors.secondary;
-                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.borderColor =
+                  `${colors.text}18`;
+
+                e.currentTarget.style.color =
+                  colors.secondary;
+
+                e.currentTarget.style.backgroundColor =
+                  "transparent";
               }}
             >
               {copied ? (
                 <>
-                  <Check size={14} />
+                  <Check size={15} />
                   Copied
                 </>
               ) : (
                 <>
-                  <Copy size={14} />
+                  <Copy size={15} />
                   Copy Email
                 </>
               )}
@@ -257,19 +320,29 @@ export default function ContactSection() {
           delay={0.2}
           className="mt-8"
         >
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div
+            className="
+              flex
+              flex-wrap
+              items-center
+              justify-center
+              gap-3
+            "
+          >
+            {/* GitHub */}
 
             <a
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
               className="
+                group
                 inline-flex
                 items-center
                 gap-2
                 rounded-full
                 border
-                px-4
+                px-5
                 py-2.5
                 text-sm
                 font-medium
@@ -281,22 +354,45 @@ export default function ContactSection() {
                 borderColor: `${colors.text}18`,
                 color: colors.secondary,
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor =
+                  `${colors.accent}66`;
+
+                e.currentTarget.style.color =
+                  colors.text;
+
+                e.currentTarget.style.backgroundColor =
+                  `${colors.accent}0D`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor =
+                  `${colors.text}18`;
+
+                e.currentTarget.style.color =
+                  colors.secondary;
+
+                e.currentTarget.style.backgroundColor =
+                  "transparent";
+              }}
             >
-              <Github size={16} />
+              <Github size={17} />
               GitHub
             </a>
+
+            {/* LinkedIn */}
 
             <a
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="
+                group
                 inline-flex
                 items-center
                 gap-2
                 rounded-full
                 border
-                px-4
+                px-5
                 py-2.5
                 text-sm
                 font-medium
@@ -308,20 +404,43 @@ export default function ContactSection() {
                 borderColor: `${colors.text}18`,
                 color: colors.secondary,
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor =
+                  `${colors.accent}66`;
+
+                e.currentTarget.style.color =
+                  colors.text;
+
+                e.currentTarget.style.backgroundColor =
+                  `${colors.accent}0D`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor =
+                  `${colors.text}18`;
+
+                e.currentTarget.style.color =
+                  colors.secondary;
+
+                e.currentTarget.style.backgroundColor =
+                  "transparent";
+              }}
             >
-              <Linkedin size={16} />
+              <Linkedin size={17} />
               LinkedIn
             </a>
+
+            {/* Email */}
 
             <a
               href={`mailto:${profile.email}`}
               className="
+                group
                 inline-flex
                 items-center
                 gap-2
                 rounded-full
                 border
-                px-4
+                px-5
                 py-2.5
                 text-sm
                 font-medium
@@ -333,11 +452,30 @@ export default function ContactSection() {
                 borderColor: `${colors.text}18`,
                 color: colors.secondary,
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor =
+                  `${colors.accent}66`;
+
+                e.currentTarget.style.color =
+                  colors.text;
+
+                e.currentTarget.style.backgroundColor =
+                  `${colors.accent}0D`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor =
+                  `${colors.text}18`;
+
+                e.currentTarget.style.color =
+                  colors.secondary;
+
+                e.currentTarget.style.backgroundColor =
+                  "transparent";
+              }}
             >
-              <Mail size={16} />
+              <Mail size={17} />
               Email
             </a>
-
           </div>
         </ScrollReveal>
 
@@ -348,7 +486,7 @@ export default function ContactSection() {
         <ScrollReveal
           direction="up"
           delay={0.3}
-          className="mt-10 text-center"
+          className="mt-10"
         >
           <a
             href={`mailto:${profile.email}`}
@@ -358,8 +496,8 @@ export default function ContactSection() {
               items-center
               gap-3
               rounded-xl
-              px-7
-              py-3.5
+              px-8
+              py-4
               text-sm
               font-semibold
               transition-all
@@ -369,23 +507,27 @@ export default function ContactSection() {
             style={{
               backgroundColor: colors.accent,
               color: colors.text,
+              boxShadow: `0 12px 35px ${colors.accent}20`,
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor =
                 colors.accentHover;
+
               e.currentTarget.style.boxShadow =
-                `0 14px 35px ${colors.accent}35`;
+                `0 16px 40px ${colors.accent}35`;
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor =
                 colors.accent;
-              e.currentTarget.style.boxShadow = "none";
+
+              e.currentTarget.style.boxShadow =
+                `0 12px 35px ${colors.accent}20`;
             }}
           >
             Send me an email
 
             <ArrowUpRight
-              size={17}
+              size={18}
               className="
                 transition-transform
                 duration-300
@@ -397,30 +539,39 @@ export default function ContactSection() {
         </ScrollReveal>
 
         {/* =====================================================
-            SIMPLE COPYRIGHT
-            No separate footer section
+            COPYRIGHT
+            This is NOT a separate footer section.
         ===================================================== */}
 
         <ScrollReveal
           direction="up"
           delay={0.4}
-          className="mt-20 text-center"
+          className="
+            mt-20
+            w-full
+            max-w-2xl
+          "
         >
           <div
-            className="mx-auto h-px max-w-2xl"
+            className="h-px w-full"
             style={{
               backgroundColor: `${colors.text}12`,
             }}
           />
 
           <p
-            className="mt-6 text-xs"
-            style={{ color: colors.muted }}
+            className="
+              mt-6
+              text-center
+              text-xs
+            "
+            style={{
+              color: colors.muted,
+            }}
           >
             © Doha Abdelrahman. All rights reserved.
           </p>
         </ScrollReveal>
-
       </div>
     </section>
   );
