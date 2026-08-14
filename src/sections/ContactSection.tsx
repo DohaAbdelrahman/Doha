@@ -538,40 +538,7 @@ export default function ContactSection() {
           </a>
         </ScrollReveal>
 
-        {/* =====================================================
-            COPYRIGHT
-            This is NOT a separate footer section.
-        ===================================================== */}
-
-        <ScrollReveal
-          direction="up"
-          delay={0.4}
-          className="
-            mt-20
-            w-full
-            max-w-2xl
-          "
-        >
-          <div
-            className="h-px w-full"
-            style={{
-              backgroundColor: `${colors.text}12`,
-            }}
-          />
-
-          <p
-            className="
-              mt-6
-              text-center
-              text-xs
-            "
-            style={{
-              color: colors.muted,
-            }}
-          >
-            © Doha Abdelrahman. All rights reserved.
-          </p>
-        </ScrollReveal>
+        
       </div>
     </section>
   );
