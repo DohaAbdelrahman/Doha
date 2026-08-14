@@ -27,7 +27,7 @@ export default function Home() {
         <GitHubSection />
         <ContactSection />
       </main>
-      <Footer />
+      
     </div>
   );
 }
