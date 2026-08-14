@@ -21,7 +21,7 @@ import { projects, type Project } from "@/data/portfolio";
 const COLORS = {
   background: "#211C18",
   surface: "#2A2420",
-  surfaceLight: "#302923",
+  surfaceHover: "#302923",
   text: "#F4EFE7",
   secondary: "#B8AEA4",
   muted: "#8E847B",
@@ -95,7 +95,7 @@ function CaseStudyModal({
       <motion.div
         initial={{
           opacity: 0,
-          y: 30,
+          y: 25,
           scale: 0.97,
         }}
         animate={{
@@ -126,7 +126,7 @@ function CaseStudyModal({
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Header */}
+        {/* Header */}
 
         <div
           className="
@@ -175,18 +175,14 @@ function CaseStudyModal({
               {project.title}
             </h3>
 
-            <span
-              className="
-                mt-2
-                inline-block
-                text-xs
-              "
+            <p
+              className="mt-2 text-xs"
               style={{
                 color: COLORS.secondary,
               }}
             >
               {project.category}
-            </span>
+            </p>
           </div>
 
           <button
@@ -206,7 +202,7 @@ function CaseStudyModal({
           </button>
         </div>
 
-        {/* Modal Content */}
+        {/* Content */}
 
         <div className="space-y-8 p-6 sm:p-8">
 
@@ -229,10 +225,7 @@ function CaseStudyModal({
             </p>
 
             <p
-              className="
-                text-sm
-                leading-7
-              "
+              className="text-sm leading-7"
               style={{
                 color: COLORS.secondary,
               }}
@@ -376,7 +369,7 @@ function CaseStudyModal({
                 }}
               >
                 <Github size={16} />
-                Source Code
+                GitHub
                 <ArrowUpRight size={14} />
               </a>
             )}
@@ -413,10 +406,10 @@ function CaseStudyModal({
 }
 
 /* =========================================================
-   PROJECT ITEM
+   PROJECT CARD
 ========================================================= */
 
-function ProjectItem({
+function ProjectCard({
   project,
   index,
   onOpen,
@@ -431,7 +424,7 @@ function ProjectItem({
     <motion.article
       initial={{
         opacity: 0,
-        y: 20,
+        y: 25,
       }}
       whileInView={{
         opacity: 1,
@@ -439,197 +432,282 @@ function ProjectItem({
       }}
       viewport={{
         once: true,
-        margin: "-80px",
+        margin: "-70px",
       }}
       transition={{
         duration: 0.5,
       }}
       className="
         group
-        border-t
-        py-8
-        sm:py-10
+        relative
+        rounded-2xl
+        border
+        p-6
+        transition-all
+        duration-300
+        sm:p-7
       "
       style={{
+        backgroundColor: COLORS.surface,
         borderColor: COLORS.border,
       }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor =
+          COLORS.surfaceHover;
+
+        e.currentTarget.style.borderColor =
+          `${COLORS.accent}45`;
+
+        e.currentTarget.style.transform =
+          "translateY(-4px)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor =
+          COLORS.surface;
+
+        e.currentTarget.style.borderColor =
+          COLORS.border;
+
+        e.currentTarget.style.transform =
+          "translateY(0)";
+      }}
     >
+      {/* Top Row */}
+
+      <div className="flex items-center justify-between gap-4">
+        <span
+          className="
+            text-3xl
+            font-light
+            tracking-tight
+          "
+          style={{
+            color: `${COLORS.text}25`,
+          }}
+        >
+          {number}
+        </span>
+
+        <div className="flex items-center gap-2">
+          {project.featured && (
+            <span
+              className="
+                rounded-full
+                border
+                px-2.5
+                py-1
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-wider
+              "
+              style={{
+                borderColor: `${COLORS.accent}45`,
+                color: COLORS.accent,
+              }}
+            >
+              Featured
+            </span>
+          )}
+
+          <span
+            className="
+              rounded-full
+              px-2.5
+              py-1
+              text-[9px]
+              font-semibold
+              uppercase
+              tracking-wider
+            "
+            style={{
+              backgroundColor: `${COLORS.accent}12`,
+              color: COLORS.accent,
+            }}
+          >
+            {project.category}
+          </span>
+        </div>
+      </div>
+
+      {/* Project Info */}
+
       <button
         type="button"
         onClick={onOpen}
         className="
+          mt-7
+          block
           w-full
           text-left
         "
       >
-        <div
+        <h3
           className="
-            grid
-            gap-6
-            md:grid-cols-[70px_1fr_auto]
-            md:items-start
+            text-xl
+            font-semibold
+            tracking-tight
+            transition-colors
+            duration-300
+            sm:text-2xl
           "
+          style={{
+            color: COLORS.text,
+          }}
         >
-          {/* Number */}
+          {project.title}
+        </h3>
 
-          <div
+        <p
+          className="
+            mt-3
+            text-sm
+            leading-7
+          "
+          style={{
+            color: COLORS.secondary,
+          }}
+        >
+          {project.shortDescription}
+        </p>
+      </button>
+
+      {/* Technologies */}
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        {project.technologies.slice(0, 5).map((tech) => (
+          <span
+            key={tech}
             className="
-              text-3xl
-              font-light
-              tracking-tight
-              transition-colors
-              duration-300
-              sm:text-4xl
+              rounded-md
+              border
+              px-2.5
+              py-1
+              text-[10px]
+              font-medium
             "
             style={{
-              color: `${COLORS.text}25`,
+              borderColor: COLORS.border,
+              color: COLORS.muted,
             }}
           >
-            {number}
-          </div>
+            {tech}
+          </span>
+        ))}
 
-          {/* Main Content */}
-
-          <div>
-            <div className="mb-2 flex flex-wrap items-center gap-3">
-              <span
-                className="
-                  text-[10px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.22em]
-                "
-                style={{
-                  color: COLORS.accent,
-                }}
-              >
-                {project.category}
-              </span>
-
-              {project.featured && (
-                <span
-                  className="
-                    rounded-full
-                    border
-                    px-2.5
-                    py-1
-                    text-[9px]
-                    font-semibold
-                    uppercase
-                    tracking-wider
-                  "
-                  style={{
-                    borderColor: `${COLORS.accent}45`,
-                    color: COLORS.accent,
-                  }}
-                >
-                  Featured
-                </span>
-              )}
-            </div>
-
-            <h3
-              className="
-                text-2xl
-                font-semibold
-                tracking-tight
-                transition-colors
-                duration-300
-                sm:text-3xl
-              "
-              style={{
-                color: COLORS.text,
-              }}
-            >
-              {project.title}
-            </h3>
-
-            <p
-              className="
-                mt-3
-                max-w-2xl
-                text-sm
-                leading-7
-                sm:text-base
-              "
-              style={{
-                color: COLORS.secondary,
-              }}
-            >
-              {project.shortDescription}
-            </p>
-
-            {/* Technologies */}
-
-            <div className="mt-5 flex flex-wrap gap-2">
-              {project.technologies.slice(0, 5).map((tech) => (
-                <span
-                  key={tech}
-                  className="
-                    rounded-md
-                    border
-                    px-2.5
-                    py-1
-                    text-[10px]
-                    font-medium
-                  "
-                  style={{
-                    borderColor: COLORS.border,
-                    color: COLORS.muted,
-                  }}
-                >
-                  {tech}
-                </span>
-              ))}
-
-              {project.technologies.length > 5 && (
-                <span
-                  className="
-                    px-1
-                    py-1
-                    text-[10px]
-                  "
-                  style={{
-                    color: COLORS.muted,
-                  }}
-                >
-                  +{project.technologies.length - 5}
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* Action */}
-
-          <div
+        {project.technologies.length > 5 && (
+          <span
             className="
-              flex
+              px-1
+              py-1
+              text-[10px]
+            "
+            style={{
+              color: COLORS.muted,
+            }}
+          >
+            +{project.technologies.length - 5}
+          </span>
+        )}
+      </div>
+
+      {/* Divider */}
+
+      <div
+        className="my-6 h-px"
+        style={{
+          backgroundColor: COLORS.border,
+        }}
+      />
+
+      {/* Actions */}
+
+      <div className="flex flex-wrap items-center justify-between gap-3">
+
+        {/* Case Study */}
+
+        <button
+          type="button"
+          onClick={onOpen}
+          className="
+            group/case
+            inline-flex
+            items-center
+            gap-2
+            text-sm
+            font-medium
+            transition-colors
+          "
+          style={{
+            color: COLORS.accent,
+          }}
+        >
+          View Case Study
+
+          <ArrowUpRight
+            size={15}
+            className="
+              transition-transform
+              duration-200
+              group-hover/case:-translate-y-0.5
+              group-hover/case:translate-x-0.5
+            "
+          />
+        </button>
+
+        {/* GitHub */}
+
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="
+              inline-flex
               items-center
               gap-2
-              text-sm
+              rounded-lg
+              border
+              px-3
+              py-2
+              text-xs
               font-medium
               transition-all
-              duration-300
-              md:pt-8
+              duration-200
+              hover:-translate-y-0.5
             "
             style={{
+              borderColor: COLORS.border,
               color: COLORS.secondary,
             }}
-          >
-            View Case Study
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor =
+                `${COLORS.accent}55`;
 
-            <ArrowUpRight
-              size={17}
-              className="
-                transition-transform
-                duration-300
-                group-hover:-translate-y-1
-                group-hover:translate-x-1
-              "
-            />
-          </div>
-        </div>
-      </button>
+              e.currentTarget.style.color =
+                COLORS.text;
+
+              e.currentTarget.style.backgroundColor =
+                `${COLORS.accent}0D`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor =
+                COLORS.border;
+
+              e.currentTarget.style.color =
+                COLORS.secondary;
+
+              e.currentTarget.style.backgroundColor =
+                "transparent";
+            }}
+          >
+            <Github size={15} />
+            GitHub
+            <ArrowUpRight size={13} />
+          </a>
+        )}
+      </div>
     </motion.article>
   );
 }
@@ -655,50 +733,48 @@ export default function ProjectsSection() {
     >
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
 
-        {/* Header */}
+        {/* Section Header */}
 
-        <ScrollReveal className="mb-16">
-          <div className="flex items-end justify-between gap-8">
-            <div>
-              <p
-                className="
-                  mb-4
-                  text-xs
-                  font-semibold
-                  uppercase
-                  tracking-[0.28em]
-                "
-                style={{
-                  color: COLORS.accent,
-                }}
-              >
-                Selected Work
-              </p>
+        <ScrollReveal className="mb-14">
+          <div className="text-center">
+            <p
+              className="
+                mb-4
+                text-xs
+                font-semibold
+                uppercase
+                tracking-[0.28em]
+              "
+              style={{
+                color: COLORS.accent,
+              }}
+            >
+              Selected Work
+            </p>
 
-              <h2
-                className="
-                  text-4xl
-                  font-bold
-                  tracking-[-0.04em]
-                  sm:text-5xl
-                  md:text-6xl
-                "
-                style={{
-                  color: COLORS.text,
-                }}
-              >
-                Projects.
-              </h2>
-            </div>
+            <h2
+              className="
+                text-4xl
+                font-bold
+                tracking-[-0.04em]
+                sm:text-5xl
+                md:text-6xl
+              "
+              style={{
+                color: COLORS.text,
+              }}
+            >
+              Projects.
+            </h2>
 
             <p
               className="
-                hidden
-                max-w-sm
-                text-right
+                mx-auto
+                mt-5
+                max-w-2xl
                 text-sm
-                leading-6
-                md:block
+                leading-7
+                sm:text-base
               "
               style={{
                 color: COLORS.secondary,
@@ -711,11 +787,20 @@ export default function ProjectsSection() {
           </div>
         </ScrollReveal>
 
-        {/* Projects */}
+        {/* =====================================================
+            PROJECT GRID
+        ===================================================== */}
 
-        <div>
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-5
+            md:grid-cols-2
+          "
+        >
           {projects.map((project, index) => (
-            <ProjectItem
+            <ProjectCard
               key={project.id}
               project={project}
               index={index}
@@ -724,21 +809,23 @@ export default function ProjectsSection() {
               }
             />
           ))}
+        </div>
 
-          {/* Bottom Border */}
+        {/* Bottom */}
 
+        <ScrollReveal className="mt-8">
           <div
-            className="border-t"
+            className="
+              flex
+              items-center
+              justify-between
+              border-t
+              pt-6
+            "
             style={{
               borderColor: COLORS.border,
             }}
-          />
-        </div>
-
-        {/* Footer Note */}
-
-        <ScrollReveal className="mt-8">
-          <div className="flex items-center justify-between">
+          >
             <span
               className="text-xs"
               style={{
@@ -749,24 +836,20 @@ export default function ProjectsSection() {
             </span>
 
             <span
-              className="
-                flex
-                items-center
-                gap-2
-                text-xs
-              "
+              className="text-xs"
               style={{
                 color: COLORS.muted,
               }}
             >
-              Click a project to explore
-              <ArrowUpRight size={13} />
+              Data Science · Machine Learning · Data Analysis
             </span>
           </div>
         </ScrollReveal>
       </div>
 
-      {/* Modal */}
+      {/* =====================================================
+          CASE STUDY MODAL
+      ===================================================== */}
 
       <AnimatePresence>
         {selectedProject && (
