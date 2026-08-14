@@ -1,58 +1,225 @@
 "use client";
 
-import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/portfolio/ScrollReveal";
-import MouseGlow from "@/components/portfolio/MouseGlow";
+import { motion } from "framer-motion";
+import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { experiences } from "@/data/portfolio";
-
-const typeIcons: Record<string, React.ReactNode> = {
-  education: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>,
-  program: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>,
-  milestone: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>,
-};
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 sm:py-32 bg-[#0A2138]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Learning &amp; Professional Journey</h2>
-          <p className="text-[#A8B8C8] max-w-2xl mx-auto text-base sm:text-lg">
-            Key milestones and programs that have shaped my data science journey.
+    <section
+      id="experience"
+      className="bg-[#211C18] py-24 sm:py-32"
+    >
+      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+
+        {/* Header */}
+        <ScrollReveal className="mb-20 text-center">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#C96A4A]">
+            Experience
           </p>
-          <div className="w-12 h-1 bg-[#4F8FD8] mx-auto rounded-full mt-4" />
+
+          <h2 className="text-4xl font-bold tracking-tight text-[#F4EFE7] sm:text-5xl">
+            My Journey.
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#B8AEA4] sm:text-base">
+            Key milestones, programs, and learning experiences that shaped
+            my journey in data science.
+          </p>
         </ScrollReveal>
 
-        <div className="relative max-w-3xl mx-auto">
-          <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-[rgba(150,195,225,0.15)]" />
-          <StaggerContainer className="space-y-8">
-            {experiences.map((exp, idx) => (
-              <StaggerItem key={idx}>
-                <div className="relative flex gap-6 sm:gap-8">
-                  <div className="relative z-10 flex-shrink-0">
-                    <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full glass flex items-center justify-center text-[#4F8FD8]">
-                      {typeIcons[exp.type]}
+        {/* Timeline */}
+        <div className="relative">
+
+          {/* Center Line */}
+          <div
+            className="
+              absolute
+              left-1/2
+              top-0
+              hidden
+              h-full
+              w-px
+              -translate-x-1/2
+              bg-white/[0.10]
+              md:block
+            "
+          />
+
+          <div className="space-y-10 md:space-y-0">
+            {experiences.map((exp, index) => {
+              const isLeft = index % 2 === 0;
+
+              return (
+                <motion.div
+                  key={`${exp.title}-${index}`}
+                  initial={{
+                    opacity: 0,
+                    x: isLeft ? -30 : 30,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    margin: "-80px",
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.08,
+                  }}
+                  className={`
+                    relative
+                    md:grid
+                    md:grid-cols-2
+                    md:min-h-[250px]
+                    ${
+                      index !== experiences.length - 1
+                        ? "md:pb-10"
+                        : ""
+                    }
+                  `}
+                >
+
+                  {/* LEFT */}
+                  <div
+                    className={`
+                      ${
+                        isLeft
+                          ? "md:pr-14"
+                          : "md:col-start-2 md:pl-14"
+                      }
+                    `}
+                  >
+                    <div
+                      className="
+                        group
+                        relative
+                        rounded-2xl
+                        border
+                        border-white/[0.10]
+                        bg-[#2A2420]
+                        p-7
+                        transition-all
+                        duration-300
+                        hover:-translate-y-1
+                        hover:border-[#C96A4A]/40
+                      "
+                    >
+
+                      {/* Accent */}
+                      <div
+                        className="
+                          absolute
+                          left-0
+                          top-6
+                          h-10
+                          w-[2px]
+                          rounded-r-full
+                          bg-[#C96A4A]
+                          opacity-70
+                          transition-opacity
+                          group-hover:opacity-100
+                        "
+                      />
+
+                      {/* Date */}
+                      <span
+                        className="
+                          inline-flex
+                          rounded-full
+                          border
+                          border-[#C96A4A]/20
+                          bg-[#C96A4A]/10
+                          px-3
+                          py-1
+                          text-xs
+                          font-medium
+                          text-[#C96A4A]
+                        "
+                      >
+                        {exp.date}
+                      </span>
+
+                      {/* Title */}
+                      <h3
+                        className="
+                          mt-5
+                          text-xl
+                          font-semibold
+                          leading-snug
+                          text-[#F4EFE7]
+                        "
+                      >
+                        {exp.title}
+                      </h3>
+
+                      {/* Organization */}
+                      <p className="mt-2 text-sm font-medium text-[#C96A4A]">
+                        {exp.organization}
+                      </p>
+
+                      {/* Description */}
+                      <p className="mt-4 text-sm leading-7 text-[#B8AEA4]">
+                        {exp.description}
+                      </p>
+
+                      {/* Tags */}
+                      {exp.tags && exp.tags.length > 0 && (
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {exp.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="
+                                rounded-full
+                                border
+                                border-white/[0.08]
+                                bg-white/[0.04]
+                                px-3
+                                py-1
+                                text-xs
+                                text-[#B8AEA4]
+                              "
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <MouseGlow className="flex-1 glass-subtle rounded-2xl p-5 sm:p-6 hover-glass">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                      <h3 className="font-semibold text-white text-base sm:text-lg">{exp.title}</h3>
-                      <span className="text-xs font-medium text-[#4F8FD8] bg-[#4F8FD8]/10 px-2.5 py-0.5 rounded-lg whitespace-nowrap">{exp.date}</span>
-                    </div>
-                    <p className="text-[#4F8FD8] text-sm font-medium mb-2">{exp.organization}</p>
-                    <p className="text-[#A8B8C8] text-sm leading-relaxed mb-3">{exp.description}</p>
-                    {exp.tags && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {exp.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 text-xs text-[#A8B8C8] bg-white/5 rounded-md">{tag}</span>
-                        ))}
-                      </div>
-                    )}
-                  </MouseGlow>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+
+                  {/* CENTER DOT */}
+                  <div
+                    className="
+                      absolute
+                      left-1/2
+                      top-8
+                      hidden
+                      -translate-x-1/2
+                      md:flex
+                    "
+                  >
+                    <div
+                      className="
+                        h-3
+                        w-3
+                        rounded-full
+                        border-2
+                        border-[#211C18]
+                        bg-[#C96A4A]
+                        shadow-[0_0_0_5px_rgba(201,106,74,0.10)]
+                      "
+                    />
+                  </div>
+
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
+
       </div>
     </section>
   );
