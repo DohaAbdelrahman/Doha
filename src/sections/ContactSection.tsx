@@ -34,12 +34,12 @@ export default function ContactSection() {
       className="
         relative
         overflow-hidden
-        bg-[#F7F5F0]
+        bg-[#211C18]
         py-24
         sm:py-32
       "
     >
-      {/* Subtle accent */}
+      {/* Subtle Terracotta Glow */}
 
       <div
         className="
@@ -53,7 +53,7 @@ export default function ContactSection() {
           -translate-y-1/2
           rounded-full
           bg-[#C96A4A]/5
-          blur-[100px]
+          blur-[110px]
         "
       />
 
@@ -68,7 +68,9 @@ export default function ContactSection() {
           sm:px-8
         "
       >
-        {/* Heading */}
+        {/* =====================================================
+            HEADER
+        ===================================================== */}
 
         <ScrollReveal>
           <div className="flex items-center justify-center gap-3">
@@ -83,7 +85,7 @@ export default function ContactSection() {
                 text-[#C96A4A]
               "
             >
-              Let's Connect
+              Let&apos;s Connect
             </span>
 
             <span className="h-px w-8 bg-[#C96A4A]" />
@@ -95,13 +97,13 @@ export default function ContactSection() {
               text-4xl
               font-bold
               tracking-[-0.04em]
-              text-[#171717]
+              text-[#F4EFE7]
 
               sm:text-5xl
               md:text-6xl
             "
           >
-            Let's work
+            Let&apos;s work
             <span className="text-[#C96A4A]"> together.</span>
           </h2>
 
@@ -112,7 +114,7 @@ export default function ContactSection() {
               max-w-xl
               text-base
               leading-7
-              text-[#6B6B65]
+              text-[#B8AEA4]
 
               sm:text-lg
             "
@@ -122,7 +124,9 @@ export default function ContactSection() {
           </p>
         </ScrollReveal>
 
-        {/* Email */}
+        {/* =====================================================
+            EMAIL
+        ===================================================== */}
 
         <ScrollReveal
           direction="up"
@@ -140,8 +144,8 @@ export default function ContactSection() {
               gap-4
               rounded-2xl
               border
-              border-[#171717]/10
-              bg-white/60
+              border-[#F4EFE7]/10
+              bg-[#2A2420]/80
               px-5
               py-5
               backdrop-blur-sm
@@ -173,7 +177,7 @@ export default function ContactSection() {
                     font-semibold
                     uppercase
                     tracking-[0.2em]
-                    text-[#8A8981]
+                    text-[#8E847B]
                   "
                 >
                   Email
@@ -184,7 +188,7 @@ export default function ContactSection() {
                     mt-0.5
                     text-sm
                     font-medium
-                    text-[#171717]
+                    text-[#F4EFE7]
                   "
                 >
                   {profile.email}
@@ -201,18 +205,18 @@ export default function ContactSection() {
                 gap-2
                 rounded-lg
                 border
-                border-[#171717]/10
+                border-[#F4EFE7]/10
                 px-3
                 py-2
                 text-xs
                 font-medium
-                text-[#55544F]
+                text-[#B8AEA4]
                 transition-all
                 duration-200
 
                 hover:border-[#C96A4A]/40
-                hover:bg-[#C96A4A]/5
-                hover:text-[#C96A4A]
+                hover:bg-[#C96A4A]/10
+                hover:text-[#D77B5B]
               "
             >
               {copied ? (
@@ -230,14 +234,16 @@ export default function ContactSection() {
           </div>
         </ScrollReveal>
 
-        {/* Social links */}
+        {/* =====================================================
+            SOCIAL LINKS
+        ===================================================== */}
 
         <ScrollReveal
           direction="up"
           delay={0.2}
           className="mt-8"
         >
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <a
               href={profile.github}
               target="_blank"
@@ -248,20 +254,20 @@ export default function ContactSection() {
                 gap-2
                 rounded-full
                 border
-                border-[#171717]/10
-                bg-white/40
+                border-[#F4EFE7]/10
+                bg-[#2A2420]/60
                 px-4
                 py-2.5
                 text-sm
                 font-medium
-                text-[#3F3E3A]
+                text-[#B8AEA4]
                 transition-all
                 duration-300
 
                 hover:-translate-y-1
                 hover:border-[#C96A4A]/40
-                hover:bg-[#C96A4A]/5
-                hover:text-[#C96A4A]
+                hover:bg-[#C96A4A]/10
+                hover:text-[#F4EFE7]
               "
             >
               <Github size={16} />
@@ -278,20 +284,20 @@ export default function ContactSection() {
                 gap-2
                 rounded-full
                 border
-                border-[#171717]/10
-                bg-white/40
+                border-[#F4EFE7]/10
+                bg-[#2A2420]/60
                 px-4
                 py-2.5
                 text-sm
                 font-medium
-                text-[#3F3E3A]
+                text-[#B8AEA4]
                 transition-all
                 duration-300
 
                 hover:-translate-y-1
                 hover:border-[#C96A4A]/40
-                hover:bg-[#C96A4A]/5
-                hover:text-[#C96A4A]
+                hover:bg-[#C96A4A]/10
+                hover:text-[#F4EFE7]
               "
             >
               <Linkedin size={16} />
@@ -306,20 +312,20 @@ export default function ContactSection() {
                 gap-2
                 rounded-full
                 border
-                border-[#171717]/10
-                bg-white/40
+                border-[#F4EFE7]/10
+                bg-[#2A2420]/60
                 px-4
                 py-2.5
                 text-sm
                 font-medium
-                text-[#3F3E3A]
+                text-[#B8AEA4]
                 transition-all
                 duration-300
 
                 hover:-translate-y-1
                 hover:border-[#C96A4A]/40
-                hover:bg-[#C96A4A]/5
-                hover:text-[#C96A4A]
+                hover:bg-[#C96A4A]/10
+                hover:text-[#F4EFE7]
               "
             >
               <Mail size={16} />
@@ -328,7 +334,9 @@ export default function ContactSection() {
           </div>
         </ScrollReveal>
 
-        {/* Main CTA */}
+        {/* =====================================================
+            CTA
+        ===================================================== */}
 
         <ScrollReveal
           direction="up"
@@ -343,17 +351,17 @@ export default function ContactSection() {
               items-center
               gap-3
               rounded-xl
-              bg-[#171717]
+              bg-[#C96A4A]
               px-7
               py-3.5
               text-sm
               font-semibold
-              text-white
+              text-[#F4EFE7]
               transition-all
               duration-300
 
               hover:-translate-y-1
-              hover:bg-[#C96A4A]
+              hover:bg-[#D77B5B]
               hover:shadow-[0_12px_30px_rgba(201,106,74,0.22)]
             "
           >
@@ -372,7 +380,9 @@ export default function ContactSection() {
           </a>
         </ScrollReveal>
 
-        {/* Bottom */}
+        {/* =====================================================
+            FOOTER
+        ===================================================== */}
 
         <ScrollReveal
           direction="up"
@@ -384,7 +394,7 @@ export default function ContactSection() {
               mx-auto
               h-px
               max-w-2xl
-              bg-[#171717]/10
+              bg-[#F4EFE7]/10
             "
           />
 
@@ -392,7 +402,7 @@ export default function ContactSection() {
             className="
               mt-6
               text-xs
-              text-[#8A8981]
+              text-[#8E847B]
             "
           >
             © {new Date().getFullYear()} Doha Abdelrahman. All rights reserved.
