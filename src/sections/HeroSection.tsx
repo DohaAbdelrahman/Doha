@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowUpRight,
+  ArrowDown,
+} from "lucide-react";
 
 import { profile } from "@/data/portfolio";
 
@@ -15,7 +21,6 @@ export default function HeroSection() {
 
   const scrollToNextSection = () => {
     const homeSection = document.querySelector("#home");
-
     const nextSection = homeSection?.nextElementSibling;
 
     if (nextSection) {
@@ -32,758 +37,503 @@ export default function HeroSection() {
       className="
         relative
         min-h-screen
-        flex
-        items-center
-        justify-center
         overflow-hidden
         bg-[#06192A]
+        flex
+        items-center
       "
     >
-
-      {/* =========================================================
-          BACKGROUND GLOW
-      ========================================================= */}
+      {/* Background glow */}
 
       <div
         className="
+          pointer-events-none
           absolute
           left-1/2
           top-1/2
+          h-[500px]
+          w-[500px]
           -translate-x-1/2
           -translate-y-1/2
-          w-[650px]
-          h-[650px]
           rounded-full
           bg-[#2D78C8]/10
-          blur-[150px]
-          pointer-events-none
+          blur-[140px]
         "
       />
 
-      {/* =========================================================
-          FLOATING ORBS & PARTICLES
-      ========================================================= */}
+      {/* Subtle grid */}
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.035]
+        "
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "55px 55px",
+        }}
+      />
 
-        {/* Large Orb 1 */}
-        <motion.div
-          className="
-            absolute
-            w-28
-            h-28
-            rounded-full
-            border
-            border-[#7FB2E5]/20
-            bg-[#5B9FE3]/5
-            backdrop-blur-sm
-            shadow-[0_0_60px_rgba(91,159,227,0.10)]
-          "
-          style={{
-            top: "8%",
-            left: "8%",
-          }}
-          animate={{
-            x: [0, 25, -15, 15, 0],
-            y: [0, -20, 15, -10, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+      {/* Decorative glow */}
 
-        {/* Large Orb 2 */}
-        <motion.div
-          className="
-            absolute
-            w-20
-            h-20
-            rounded-full
-            border
-            border-[#6AA7E8]/20
-            bg-[#6AA7E8]/5
-            backdrop-blur-sm
-            shadow-[0_0_50px_rgba(106,167,232,0.10)]
-          "
-          style={{
-            top: "12%",
-            right: "10%",
-          }}
-          animate={{
-            x: [0, -20, 15, -10, 0],
-            y: [0, 20, -15, 10, 0],
-          }}
-          transition={{
-            duration: 11,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+      <motion.div
+        className="
+          pointer-events-none
+          absolute
+          -right-32
+          top-1/4
+          h-72
+          w-72
+          rounded-full
+          bg-[#4F8FD8]/8
+          blur-[100px]
+        "
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.5, 0.8, 0.5],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
-        {/* Medium Orb 1 */}
-        <motion.div
-          className="
-            absolute
-            w-16
-            h-16
-            rounded-full
-            border
-            border-[#7FB2E5]/20
-            bg-[#7FB2E5]/5
-            backdrop-blur-sm
-          "
-          style={{
-            bottom: "18%",
-            left: "12%",
-          }}
-          animate={{
-            x: [0, 20, -10, 15, 0],
-            y: [0, -15, 15, -8, 0],
-          }}
-          transition={{
-            duration: 9,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+      <motion.div
+        className="
+          pointer-events-none
+          absolute
+          -left-32
+          bottom-1/4
+          h-64
+          w-64
+          rounded-full
+          bg-[#6AA7E8]/6
+          blur-[100px]
+        "
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.4, 0.7, 0.4],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
-        {/* Medium Orb 2 */}
-        <motion.div
-          className="
-            absolute
-            w-14
-            h-14
-            rounded-full
-            border
-            border-[#7FB2E5]/20
-            bg-[#7FB2E5]/5
-            backdrop-blur-sm
-          "
-          style={{
-            bottom: "20%",
-            right: "14%",
-          }}
-          animate={{
-            x: [0, -15, 10, -10, 0],
-            y: [0, 15, -15, 10, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-
-        {/* =====================================================
-            MANY SMALL FLOATING PARTICLES
-        ===================================================== */}
-
-        {[
-          [5, 25],
-          [8, 55],
-          [11, 78],
-          [15, 38],
-          [18, 88],
-          [22, 12],
-          [25, 70],
-          [28, 92],
-          [32, 22],
-          [35, 82],
-          [39, 8],
-          [42, 95],
-          [46, 18],
-          [50, 87],
-          [54, 6],
-          [58, 94],
-          [62, 30],
-          [66, 76],
-          [70, 14],
-          [74, 91],
-          [78, 40],
-          [82, 82],
-          [86, 10],
-          [90, 68],
-          [94, 30],
-          [20, 50],
-          [45, 52],
-          [67, 52],
-          [88, 50],
-        ].map(([top, left], index) => {
-          const size = 3 + (index % 3) * 2;
-
-          return (
-            <motion.span
-              key={index}
-              className="
-                absolute
-                rounded-full
-                bg-[#6AA7E8]/45
-                shadow-[0_0_10px_rgba(106,167,232,0.30)]
-              "
-              style={{
-                top: `${top}%`,
-                left: `${left}%`,
-                width: `${size}px`,
-                height: `${size}px`,
-              }}
-              animate={{
-                y: [0, -10, 7, -5, 0],
-                x: [0, 5, -5, 4, 0],
-                opacity: [0.25, 0.7, 0.35, 0.6, 0.25],
-              }}
-              transition={{
-                duration: 4 + (index % 5),
-                repeat: Infinity,
-                delay: index * 0.12,
-                ease: "easeInOut",
-              }}
-            />
-          );
-        })}
-      </div>
-
-      {/* =========================================================
-          GLASS CONTAINER
-      ========================================================= */}
+      {/* Main content */}
 
       <div
         className="
           relative
           z-10
-          w-[90%]
-          max-w-4xl
           mx-auto
+          w-full
+          max-w-6xl
           px-6
-          sm:px-10
-          lg:px-14
-          py-12
-          sm:py-14
-          text-center
-
-          rounded-[28px]
-
-          bg-[#0A2237]/35
-          backdrop-blur-2xl
-
-          border
-          border-[#7FB2E5]/12
-
-          shadow-[0_20px_60px_rgba(0,0,0,0.18)]
+          pb-20
+          pt-32
+          sm:px-8
+          lg:px-12
         "
       >
+        <div className="max-w-4xl">
+          {/* Small intro */}
 
-        {/* =========================================================
-            EXPLORE ME
-        ========================================================= */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 15,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-          className="
-            flex
-            items-center
-            justify-center
-            gap-4
-            mb-10
-          "
-        >
-          <span
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.6,
+            }}
             className="
-              hidden
-              sm:block
-              w-16
-              h-px
-              bg-gradient-to-r
-              from-transparent
-              to-[#5B9FE3]/60
-            "
-          />
-
-          <span
-            className="
-              text-[#6AA7E8]
-              text-2xl
-              sm:text-3xl
-              md:text-4xl
-              lg:text-5xl
-              font-medium
-              tracking-[0.22em]
+              mb-6
+              flex
+              items-center
+              gap-3
             "
           >
-            EXPLORE ME
-          </span>
+            <span
+              className="
+                h-px
+                w-10
+                bg-[#6AA7E8]
+              "
+            />
 
-          <span
+            <span
+              className="
+                text-sm
+                font-medium
+                uppercase
+                tracking-[0.25em]
+                text-[#6AA7E8]
+              "
+            >
+              Hello, I'm
+            </span>
+          </motion.div>
+
+          {/* Name */}
+
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+            }}
             className="
-              hidden
-              sm:block
-              w-16
-              h-px
-              bg-gradient-to-l
-              from-transparent
-              to-[#5B9FE3]/60
+              text-5xl
+              font-bold
+              leading-[1.05]
+              tracking-[-0.04em]
+              text-white
+
+              sm:text-6xl
+              md:text-7xl
+              lg:text-8xl
             "
-          />
-        </motion.div>
+          >
+            {profile.name}
+            <span className="text-[#6AA7E8]">.</span>
+          </motion.h1>
 
-        {/* =========================================================
-            NAME
-        ========================================================= */}
+          {/* Specializations */}
 
-        <motion.h1
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 0.15,
-          }}
-          className="
-            text-4xl
-            sm:text-5xl
-            md:text-6xl
-            lg:text-7xl
-            font-bold
-            tracking-tight
-            text-white
-            mb-7
-          "
-        >
-          {profile.name}
-        </motion.h1>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.25,
+            }}
+            className="
+              mt-7
+              flex
+              flex-wrap
+              items-center
+              gap-x-3
+              gap-y-2
+              text-base
+              font-medium
+              text-[#AFC1D2]
 
-        {/* =========================================================
-            SPECIALIZATION
-        ========================================================= */}
+              sm:text-lg
+              md:text-xl
+            "
+          >
+            <span>Data Science</span>
+
+            <span className="text-[#5B9FE3]/60">•</span>
+
+            <span>Machine Learning</span>
+
+            <span className="text-[#5B9FE3]/60">•</span>
+
+            <span>Data Analysis</span>
+          </motion.div>
+
+          {/* Description */}
+
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.35,
+            }}
+            className="
+              mt-7
+              max-w-2xl
+              text-base
+              leading-8
+              text-[#9FB2C4]
+
+              sm:text-lg
+            "
+          >
+            {profile.description}
+          </motion.p>
+
+          {/* CTA */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.45,
+            }}
+            className="
+              mt-10
+              flex
+              flex-col
+              gap-3
+
+              sm:flex-row
+            "
+          >
+            {/* Projects */}
+
+            <button
+              type="button"
+              onClick={scrollToProjects}
+              className="
+                group
+                inline-flex
+                items-center
+                justify-center
+                gap-3
+                rounded-xl
+                bg-[#4F8FD8]
+                px-6
+                py-3.5
+                text-sm
+                font-semibold
+                text-white
+                shadow-[0_10px_30px_rgba(79,143,216,0.20)]
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+                hover:bg-[#5B9FE3]
+                hover:shadow-[0_15px_35px_rgba(79,143,216,0.30)]
+              "
+            >
+              Explore My Work
+
+              <ArrowUpRight
+                size={17}
+                className="
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-0.5
+                  group-hover:-translate-y-0.5
+                "
+              />
+            </button>
+
+            {/* CV */}
+
+            <a
+              href={profile.resumeUrl}
+              download
+              className="
+                inline-flex
+                items-center
+                justify-center
+                gap-3
+                rounded-xl
+                border
+                border-white/10
+                bg-white/[0.03]
+                px-6
+                py-3.5
+                text-sm
+                font-medium
+                text-[#E5EDF5]
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+                hover:border-[#6AA7E8]/40
+                hover:bg-white/[0.06]
+              "
+            >
+              Download CV
+            </a>
+          </motion.div>
+
+          {/* Social links */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 10,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.6,
+            }}
+            className="
+              mt-10
+              flex
+              items-center
+              gap-3
+            "
+          >
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-lg
+                border
+                border-white/10
+                bg-white/[0.02]
+                text-[#8FA4B7]
+                transition-all
+                duration-300
+                hover:border-[#6AA7E8]/40
+                hover:bg-[#4F8FD8]/10
+                hover:text-white
+                hover:-translate-y-1
+              "
+            >
+              <Github size={18} />
+            </a>
+
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-lg
+                border
+                border-white/10
+                bg-white/[0.02]
+                text-[#8FA4B7]
+                transition-all
+                duration-300
+                hover:border-[#6AA7E8]/40
+                hover:bg-[#4F8FD8]/10
+                hover:text-white
+                hover:-translate-y-1
+              "
+            >
+              <Linkedin size={18} />
+            </a>
+
+            <a
+              href={`mailto:${profile.email}`}
+              aria-label="Email"
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-lg
+                border
+                border-white/10
+                bg-white/[0.02]
+                text-[#8FA4B7]
+                transition-all
+                duration-300
+                hover:border-[#6AA7E8]/40
+                hover:bg-[#4F8FD8]/10
+                hover:text-white
+                hover:-translate-y-1
+              "
+            >
+              <Mail size={18} />
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Bottom metadata */}
 
         <motion.div
           initial={{
             opacity: 0,
-            y: 15,
           }}
           animate={{
             opacity: 1,
-            y: 0,
           }}
           transition={{
-            duration: 0.7,
-            delay: 0.3,
+            duration: 0.8,
+            delay: 0.9,
           }}
           className="
+            absolute
+            bottom-8
+            left-6
+            right-6
             flex
-            flex-wrap
             items-center
-            justify-center
-            gap-y-2
-            text-base
-            sm:text-lg
-            md:text-xl
-            font-medium
-            tracking-wide
-            text-[#AFC1D2]
-            mb-14
+            justify-between
+            text-xs
+            text-[#71879A]
+
+            sm:left-8
+            sm:right-8
+
+            lg:left-12
+            lg:right-12
           "
         >
-          <span>Data Science</span>
-
-          <span className="mx-3 text-[#5B9FE3]/70">
-            |
-          </span>
-
-          <span>Machine Learning</span>
-
-          <span className="mx-3 text-[#5B9FE3]/70">
-            |
-          </span>
-
-          <span>Data Analysis</span>
-        </motion.div>
-
-        {/* =========================================================
-            CTA BUTTONS
-        ========================================================= */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 0.45,
-          }}
-          className="
-            flex
-            flex-col
-            sm:flex-row
-            items-center
-            justify-center
-            gap-4
-            mb-14
-          "
-        >
-
-          {/* View Projects */}
+          <span>Data-driven. Insight-focused.</span>
 
           <button
             type="button"
-            onClick={scrollToProjects}
+            onClick={scrollToNextSection}
             className="
-              group
-
-              inline-flex
+              hidden
               items-center
-              justify-center
-              gap-3
-
-              w-full
-              sm:w-auto
-              min-w-[210px]
-
-              px-7
-              py-3.5
-
-              rounded-xl
-
-              bg-[#4F8FD8]/20
-              backdrop-blur-md
-
-              border
-              border-[#5B9FE3]/50
-
-              text-white
-              font-semibold
-
-              transition-all
+              gap-2
+              transition-colors
               duration-300
+              hover:text-white
 
-              hover:bg-[#4F8FD8]/30
-              hover:border-[#6AA7E8]
-              hover:shadow-[0_0_30px_rgba(79,143,216,0.20)]
-              hover:-translate-y-1
+              sm:flex
             "
           >
-            View My Projects
-
-            <span
-              className="
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            >
-              →
-            </span>
+            Scroll to explore
+            <ArrowDown size={14} />
           </button>
-
-          {/* Download CV */}
-
-          <a
-            href={profile.resumeUrl}
-            download
-            className="
-              group
-
-              inline-flex
-              items-center
-              justify-center
-              gap-3
-
-              w-full
-              sm:w-auto
-              min-w-[210px]
-
-              px-7
-              py-3.5
-
-              rounded-xl
-
-              bg-white/[0.04]
-              backdrop-blur-md
-
-              border
-              border-[#7FB2E5]/25
-
-              text-[#E5EDF5]
-              font-medium
-
-              transition-all
-              duration-300
-
-              hover:bg-white/[0.08]
-              hover:border-[#7FB2E5]/50
-              hover:-translate-y-1
-            "
-          >
-            Download CV
-
-            <span
-              className="
-                transition-transform
-                duration-300
-                group-hover:translate-y-1
-              "
-            >
-              ↓
-            </span>
-          </a>
-        </motion.div>
-
-        {/* =========================================================
-            SOCIAL LINKS
-        ========================================================= */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 0.6,
-          }}
-          className="
-            flex
-            items-center
-            justify-center
-            gap-4
-          "
-        >
-
-          {/* GitHub */}
-
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="
-              flex
-              items-center
-              justify-center
-
-              w-11
-              h-11
-
-              rounded-full
-
-              bg-white/[0.03]
-              backdrop-blur-md
-
-              border
-              border-[#7FB2E5]/20
-
-              text-[#A8B8C8]
-
-              transition-all
-              duration-300
-
-              hover:text-white
-              hover:border-[#5B9FE3]/60
-              hover:bg-[#4F8FD8]/10
-              hover:shadow-[0_0_20px_rgba(79,143,216,0.15)]
-              hover:-translate-y-1
-            "
-          >
-            <Github size={19} />
-          </a>
-
-          {/* LinkedIn */}
-
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="
-              flex
-              items-center
-              justify-center
-
-              w-11
-              h-11
-
-              rounded-full
-
-              bg-white/[0.03]
-              backdrop-blur-md
-
-              border
-              border-[#7FB2E5]/20
-
-              text-[#A8B8C8]
-
-              transition-all
-              duration-300
-
-              hover:text-white
-              hover:border-[#5B9FE3]/60
-              hover:bg-[#4F8FD8]/10
-              hover:shadow-[0_0_20px_rgba(79,143,216,0.15)]
-              hover:-translate-y-1
-            "
-          >
-            <Linkedin size={19} />
-          </a>
-
-          {/* Email */}
-
-          <a
-            href={`mailto:${profile.email}`}
-            aria-label="Email"
-            className="
-              flex
-              items-center
-              justify-center
-
-              w-11
-              h-11
-
-              rounded-full
-
-              bg-white/[0.03]
-              backdrop-blur-md
-
-              border
-              border-[#7FB2E5]/20
-
-              text-[#A8B8C8]
-
-              transition-all
-              duration-300
-
-              hover:text-white
-              hover:border-[#5B9FE3]/60
-              hover:bg-[#4F8FD8]/10
-              hover:shadow-[0_0_20px_rgba(79,143,216,0.15)]
-              hover:-translate-y-1
-            "
-          >
-            <Mail size={19} />
-          </a>
-
         </motion.div>
       </div>
-
-      {/* =========================================================
-          SCROLL INDICATOR
-      ========================================================= */}
-
-      <motion.button
-        type="button"
-        onClick={scrollToNextSection}
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-        }}
-        transition={{
-          duration: 0.8,
-          delay: 1.2,
-        }}
-        aria-label="Scroll to next section"
-        className="
-          absolute
-          bottom-6
-          left-1/2
-          -translate-x-1/2
-
-          flex
-          flex-col
-          items-center
-          gap-2
-
-          cursor-pointer
-        "
-      >
-        <div
-          className="
-            w-6
-            h-10
-            rounded-full
-
-            border
-            border-[#7FB2E5]/50
-
-            flex
-            items-start
-            justify-center
-
-            p-1.5
-
-            bg-white/[0.02]
-            backdrop-blur-sm
-
-            transition-all
-            duration-300
-
-            hover:border-[#6AA7E8]
-            hover:shadow-[0_0_15px_rgba(106,167,232,0.25)]
-          "
-        >
-          <motion.span
-            animate={{
-              y: [0, 12, 0],
-              opacity: [1, 0.4, 1],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.8,
-              ease: "easeInOut",
-            }}
-            className="
-              w-1.5
-              h-1.5
-              rounded-full
-              bg-[#6AA7E8]
-              shadow-[0_0_10px_rgba(106,167,232,0.8)]
-            "
-          />
-        </div>
-
-        <motion.div
-          animate={{
-            y: [0, 4, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 1.8,
-            ease: "easeInOut",
-          }}
-          className="
-            w-2.5
-            h-2.5
-            border-r
-            border-b
-            border-[#7FB2E5]/70
-            rotate-45
-          "
-        />
-      </motion.button>
-
     </section>
   );
 }
