@@ -56,7 +56,7 @@ export default function Navigation() {
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
+      className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 pt-3 sm:pt-4"
     >
       <nav
         className={`
@@ -70,13 +70,14 @@ export default function Navigation() {
             scrolled
               ? `
                 border-white/10
-                bg-[#06192A]/85
+                bg-[#06192A]/90
                 backdrop-blur-xl
                 shadow-[0_10px_40px_rgba(0,0,0,0.25)]
               `
               : `
-                border-transparent
-                bg-transparent
+                border-white/5
+                bg-[#06192A]/55
+                backdrop-blur-md
               `
           }
         `}
