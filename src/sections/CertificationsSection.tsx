@@ -1,49 +1,208 @@
 "use client";
 
-import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/portfolio/ScrollReveal";
-import MouseGlow from "@/components/portfolio/MouseGlow";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Calendar, Award } from "lucide-react";
+
+import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { certifications } from "@/data/portfolio";
-import { Award, ExternalLink, Calendar } from "lucide-react";
+
+const COLORS = {
+  text: "#F4EFE7",
+  secondary: "#B8AEA4",
+  muted: "#8E847B",
+  accent: "#C96A4A",
+  border: "rgba(244,239,231,0.12)",
+};
 
 export default function CertificationsSection() {
   return (
-    <section id="certifications" className="py-24 sm:py-32 bg-[#0A2138]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Certifications</h2>
-          <p className="text-[#A8B8C8] max-w-2xl mx-auto text-base sm:text-lg">
-            Professional certifications earned through dedicated study and hands-on practice.
+    <section
+      id="certifications"
+      className="bg-[#211C18] py-24 sm:py-32"
+    >
+      <div className="mx-auto max-w-5xl px-6 sm:px-8">
+
+        {/* Header */}
+        <ScrollReveal className="mb-16 text-center">
+          <p
+            className="mb-4 text-xs font-semibold uppercase tracking-[0.28em]"
+            style={{ color: COLORS.accent }}
+          >
+            Learning & Credentials
           </p>
-          <div className="w-12 h-1 bg-[#4F8FD8] mx-auto rounded-full mt-4" />
+
+          <h2
+            className="text-4xl font-bold tracking-[-0.04em] sm:text-5xl"
+            style={{ color: COLORS.text }}
+          >
+            Certifications.
+          </h2>
+
+          <p
+            className="mx-auto mt-5 max-w-xl text-sm leading-7 sm:text-base"
+            style={{ color: COLORS.secondary }}
+          >
+            Professional certifications and learning milestones
+            across data science, machine learning, AI, and technology.
+          </p>
         </ScrollReveal>
 
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {certifications.map((cert, idx) => (
-            <StaggerItem key={idx}>
-              <MouseGlow className="glass-subtle rounded-2xl p-5 hover-glass h-full flex flex-col">
-                <div className="w-10 h-10 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8] mb-4">
-                  <Award className="w-5 h-5" />
+        {/* Certifications List */}
+        <div>
+          {certifications.map((cert, index) => (
+            <motion.article
+              key={`${cert.title}-${index}`}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{
+                once: true,
+                margin: "-60px",
+              }}
+              transition={{
+                duration: 0.45,
+                delay: index * 0.04,
+              }}
+              className="group border-t py-7 sm:py-8"
+              style={{
+                borderColor: COLORS.border,
+              }}
+            >
+              <div className="grid gap-5 sm:grid-cols-[70px_1fr_auto] sm:items-center">
+
+                {/* Number */}
+                <div>
+                  <span
+                    className="text-3xl font-light tracking-tight"
+                    style={{
+                      color: `${COLORS.text}28`,
+                    }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <h3 className="font-semibold text-white text-sm mb-1">{cert.title}</h3>
-                <p className="text-[#4F8FD8] text-xs font-medium mb-2">{cert.organization}</p>
-                <div className="flex items-center gap-1.5 text-[#A8B8C8] text-xs mb-3">
-                  <Calendar className="w-3.5 h-3.5" /><span>{cert.date}</span>
+
+                {/* Main Information */}
+                <div className="min-w-0">
+
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <h3
+                      className="text-lg font-semibold tracking-tight sm:text-xl"
+                      style={{ color: COLORS.text }}
+                    >
+                      {cert.title}
+                    </h3>
+
+                    <span
+                      className="hidden h-1 w-1 rounded-full sm:block"
+                      style={{
+                        backgroundColor: COLORS.accent,
+                      }}
+                    />
+
+                    <span
+                      className="text-xs sm:text-sm"
+                      style={{
+                        color: COLORS.accent,
+                      }}
+                    >
+                      {cert.organization}
+                    </span>
+                  </div>
+
+                  <div
+                    className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm"
+                    style={{
+                      color: COLORS.muted,
+                    }}
+                  >
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar size={13} />
+                      {cert.date}
+                    </span>
+
+                    {cert.skills?.length > 0 && (
+                      <>
+                        <span
+                          className="hidden h-1 w-1 rounded-full sm:block"
+                          style={{
+                            backgroundColor: COLORS.muted,
+                          }}
+                        />
+
+                        <span>
+                          {cert.skills.join(" · ")}
+                        </span>
+                      </>
+                    )}
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-1.5 mb-4 flex-1">
-                  {cert.skills.map((s) => (
-                    <span key={s} className="px-2 py-0.5 text-xs text-[#A8B8C8] bg-white/5 rounded-md">{s}</span>
-                  ))}
+
+                {/* Credential */}
+                <div>
+                  {cert.credentialUrl &&
+                  cert.credentialUrl !== "#" ? (
+                    <a
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        inline-flex
+                        items-center
+                        gap-1.5
+                        text-xs
+                        font-medium
+                        transition-all
+                        duration-200
+                        group-hover:translate-x-1
+                      "
+                      style={{
+                        color: COLORS.secondary,
+                      }}
+                    >
+                      View Credential
+                      <ArrowUpRight size={14} />
+                    </a>
+                  ) : (
+                    <span
+                      className="text-xs"
+                      style={{
+                        color: COLORS.muted,
+                      }}
+                    >
+                      Credential unavailable
+                    </span>
+                  )}
                 </div>
-                {cert.credentialUrl && cert.credentialUrl !== "#" && (
-                  <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-[#4F8FD8] hover:text-[#6AA7E8] transition-colors">
-                    <ExternalLink className="w-3.5 h-3.5" />View Credential
-                  </a>
-                )}
-              </MouseGlow>
-            </StaggerItem>
+              </div>
+            </motion.article>
           ))}
-        </StaggerContainer>
+
+          {/* Bottom border */}
+          <div
+            className="border-t"
+            style={{
+              borderColor: COLORS.border,
+            }}
+          />
+        </div>
+
+        {/* Footer Count */}
+        <ScrollReveal className="mt-6 flex items-center justify-between">
+          <span
+            className="text-xs"
+            style={{ color: COLORS.muted }}
+          >
+            {certifications.length} Certifications
+          </span>
+
+          <div
+            className="flex items-center gap-2 text-xs"
+            style={{ color: COLORS.muted }}
+          >
+            <Award size={13} />
+            Continuous Learning
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
