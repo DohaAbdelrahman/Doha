@@ -344,43 +344,84 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     type: "program",
-    title: "Data Science Program",
-    organization: "DEPI — Digital Egypt Pioneers Initiative",
-    date: "2024 — Present",
+    title: "Google Data Analysis Scholarship",
+    organization: "Digital Egypt Pioneers Initiative (DEPI)",
+    date: "November 2024 — May 2025",
     description:
-      "Intensive data science and AI program covering machine learning, deep learning, NLP, and MLOps. Participated in hands-on projects, competitions, and collaborative learning with industry practitioners.",
-    tags: ["Machine Learning", "Deep Learning", "Python", "MLOps"],
+      "Completed a hybrid data analysis scholarship focused on analyzing datasets, identifying trends and patterns, creating reports and visualizations, and applying statistical methods to extract meaningful insights.",
+    tags: [
+      "Python",
+      "SQL",
+      "Excel",
+      "Data Analysis",
+      "Data Cleaning",
+      "EDA",
+      "Data Visualization",
+      "Power BI",
+      "Tableau",
+      "Machine Learning",
+    ],
   },
+
   {
     type: "program",
-    title: "Software Engineering Program",
-    organization: "ALX Africa",
-    date: "2023 — 2024",
+    title: "Machine Learning Summer Training",
+    organization: "ITIDA / NTI",
+    date: "August 2025 — September 2025",
     description:
-      "Full-stack software engineering program emphasizing problem-solving, clean code principles, and collaborative development. Built multiple projects using C, Python, and JavaScript.",
-    tags: ["Software Engineering", "Python", "Problem Solving", "Teamwork"],
+      "Completed a 120-hour summer training program in Machine Learning, including 90 technical hours and 30 freelancing hours, with a final score of 85.5%.",
+    tags: [
+      "Machine Learning",
+      "Technical Training",
+      "Freelancing",
+      "120 Hours",
+      "85.5%",
+    ],
   },
+
+  {
+    type: "program",
+    title: "Artificial Intelligence (AI)",
+    organization: "NTI / Huawei Egyptian Talent Academy",
+    date: "July 2025 — August 2025",
+    description:
+      "Completed an 80-hour Artificial Intelligence training program covering core AI concepts and practical applications, with a final score of 81%.",
+    tags: [
+      "Artificial Intelligence",
+      "AI",
+      "80 Hours",
+      "81%",
+    ],
+  },
+
+  {
+    type: "program",
+    title: ".NET Development Summer Training",
+    organization: "ITI — Information Technology Institute",
+    date: "August 2025 — September 2025",
+    description:
+      "Completed an intensive summer training program focused on .NET development, C#, ASP.NET, and SQL Server through hands-on projects, collaborative development, and mentorship from industry professionals.",
+    tags: [
+      "C#",
+      ".NET",
+      "ASP.NET",
+      "SQL Server",
+      "Full-Stack Development",
+    ],
+  },
+
   {
     type: "education",
     title: "Bachelor's Degree",
     organization: "Faculty of Computers and Information",
     date: "Expected Graduation",
     description:
-      "Studying Computer Science with a focus on data science, algorithms, artificial intelligence, and software development. Actively participating in data science competitions and research projects.",
-    tags: ["Computer Science", "AI", "Algorithms"],
-  },
-  {
-    type: "milestone",
-    title: "Machine Learning Specialization",
-    organization: "Self-Directed Learning & Online Courses",
-    date: "Ongoing",
-    description:
-      "Continuously expanding expertise through specialized courses and certifications in machine learning, deep learning, NLP, and data engineering from leading educational platforms.",
+      "Pursuing a degree in computing with a focus on data science, machine learning, programming, and analytical problem-solving.",
     tags: [
+      "Data Science",
       "Machine Learning",
-      "Deep Learning",
-      "NLP",
-      "Continuous Learning",
+      "Python",
+      "Computer Science",
     ],
   },
 ];
