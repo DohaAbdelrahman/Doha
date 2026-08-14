@@ -67,19 +67,19 @@ export default function Navigation() {
           transition-all
           duration-300
           ${
-            scrolled
-              ? `
-                border-white/10
-                bg-[#06192A]/90
-                backdrop-blur-xl
-                shadow-[0_10px_40px_rgba(0,0,0,0.25)]
-              `
-              : `
-                border-white/5
-                bg-[#06192A]/55
-                backdrop-blur-md
-              `
-          }
+          scrolled
+            ? `
+              border-white/10
+              bg-[#06192A]/95
+              backdrop-blur-xl
+              shadow-[0_10px_40px_rgba(0,0,0,0.25)]
+            `
+            : `
+              border-white/5
+              bg-[#06192A]/55
+              backdrop-blur-md
+            `
+        }
         `}
       >
         <div className="flex h-16 items-center justify-between px-4 sm:px-6">
@@ -268,6 +268,7 @@ export default function Navigation() {
                 overflow-hidden
                 border-t
                 border-white/10
+                bg-[#06192A]/95
                 md:hidden
               "
             >
