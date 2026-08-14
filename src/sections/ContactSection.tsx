@@ -2,104 +2,402 @@
 
 import { useState } from "react";
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
-import MouseGlow from "@/components/portfolio/MouseGlow";
 import { profile } from "@/data/portfolio";
-import { Mail, Send, Github, Linkedin, Copy, CheckCircle2 } from "lucide-react";
+import {
+  Mail,
+  Copy,
+  Check,
+  Github,
+  Linkedin,
+  ArrowUpRight,
+} from "lucide-react";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText(profile.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const link = `mailto:${profile.email}?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${formData.name} (${formData.email})`;
-    window.open(link);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-[#0A2138]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Get In Touch</h2>
-          <p className="text-[#A8B8C8] max-w-2xl mx-auto text-base sm:text-lg">
-            Interested in collaborating, have a data science project, or just want to connect? I&apos;d love to hear from you.
+    <section
+      id="contact"
+      className="
+        relative
+        overflow-hidden
+        bg-[#F7F5F0]
+        py-24
+        sm:py-32
+      "
+    >
+      {/* Subtle accent */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-1/2
+          h-[320px]
+          w-[320px]
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          bg-[#C96A4A]/5
+          blur-[100px]
+        "
+      />
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-4xl
+          px-6
+          text-center
+          sm:px-8
+        "
+      >
+        {/* Heading */}
+
+        <ScrollReveal>
+          <div className="flex items-center justify-center gap-3">
+            <span className="h-px w-8 bg-[#C96A4A]" />
+
+            <span
+              className="
+                text-xs
+                font-semibold
+                uppercase
+                tracking-[0.3em]
+                text-[#C96A4A]
+              "
+            >
+              Let's Connect
+            </span>
+
+            <span className="h-px w-8 bg-[#C96A4A]" />
+          </div>
+
+          <h2
+            className="
+              mt-5
+              text-4xl
+              font-bold
+              tracking-[-0.04em]
+              text-[#171717]
+
+              sm:text-5xl
+              md:text-6xl
+            "
+          >
+            Let's work
+            <span className="text-[#C96A4A]"> together.</span>
+          </h2>
+
+          <p
+            className="
+              mx-auto
+              mt-5
+              max-w-xl
+              text-base
+              leading-7
+              text-[#6B6B65]
+
+              sm:text-lg
+            "
+          >
+            Have a project, an opportunity, or simply want to connect?
+            I&apos;d love to hear from you.
           </p>
-          <div className="w-12 h-1 bg-[#4F8FD8] mx-auto rounded-full mt-4" />
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <ScrollReveal direction="left">
-            <div className="space-y-6">
-              <h3 className="text-xl font-semibold text-white">Let&apos;s work together</h3>
-              <p className="text-[#A8B8C8] leading-relaxed">
-                Whether you&apos;re looking for a data scientist to join your team, need help with a machine learning project, or want to discuss data science opportunities — feel free to reach out.
-              </p>
+        {/* Email */}
 
-              <MouseGlow className="glass-subtle rounded-2xl p-5 hover-glass">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#4F8FD8]/10 flex items-center justify-center text-[#4F8FD8]">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-[#A8B8C8]">Email</p>
-                    <p className="text-white font-medium text-sm">{profile.email}</p>
-                  </div>
-                </div>
-                <button onClick={copyEmail}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#A8B8C8] bg-white/5 hover:bg-white/10 rounded-md transition-colors hover-lift">
-                  {copied ? <><CheckCircle2 className="w-3.5 h-3.5 text-[#4F8FD8]" />Copied</> : <><Copy className="w-3.5 h-3.5" />Copy Email</>}
-                </button>
-              </MouseGlow>
+        <ScrollReveal
+          direction="up"
+          delay={0.1}
+          className="mt-12"
+        >
+          <div
+            className="
+              mx-auto
+              flex
+              max-w-xl
+              flex-col
+              items-center
+              justify-between
+              gap-4
+              rounded-2xl
+              border
+              border-[#171717]/10
+              bg-white/60
+              px-5
+              py-5
+              backdrop-blur-sm
 
-              <div className="flex items-center gap-3">
-                <a href={profile.github} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white glass-subtle rounded-xl hover-glass">
-                  <Github size={16} />GitHub
-                </a>
-                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-white glass-subtle rounded-xl hover-glass">
-                  <Linkedin size={16} />LinkedIn
-                </a>
+              sm:flex-row
+              sm:px-6
+            "
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-xl
+                  bg-[#C96A4A]/10
+                  text-[#C96A4A]
+                "
+              >
+                <Mail size={18} />
+              </div>
+
+              <div className="text-left">
+                <p
+                  className="
+                    text-[10px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.2em]
+                    text-[#8A8981]
+                  "
+                >
+                  Email
+                </p>
+
+                <p
+                  className="
+                    mt-0.5
+                    text-sm
+                    font-medium
+                    text-[#171717]
+                  "
+                >
+                  {profile.email}
+                </p>
               </div>
             </div>
-          </ScrollReveal>
 
-          <ScrollReveal direction="right">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label htmlFor="contact-name" className="block text-sm font-medium text-white mb-1.5">Name</label>
-                <input id="contact-name" type="text" required value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2.5 text-sm bg-white/5 border border-[rgba(150,195,225,0.15)] rounded-xl text-white placeholder-[#71859A] focus:outline-none focus:ring-2 focus:ring-[#4F8FD8]/30 focus:border-[#4F8FD8]/50 transition-colors"
-                  placeholder="Your name" />
-              </div>
-              <div>
-                <label htmlFor="contact-email" className="block text-sm font-medium text-white mb-1.5">Email</label>
-                <input id="contact-email" type="email" required value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-2.5 text-sm bg-white/5 border border-[rgba(150,195,225,0.15)] rounded-xl text-white placeholder-[#71859A] focus:outline-none focus:ring-2 focus:ring-[#4F8FD8]/30 focus:border-[#4F8FD8]/50 transition-colors"
-                  placeholder="your@email.com" />
-              </div>
-              <div>
-                <label htmlFor="contact-message" className="block text-sm font-medium text-white mb-1.5">Message</label>
-                <textarea id="contact-message" required rows={5} value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-2.5 text-sm bg-white/5 border border-[rgba(150,195,225,0.15)] rounded-xl text-white placeholder-[#71859A] focus:outline-none focus:ring-2 focus:ring-[#4F8FD8]/30 focus:border-[#4F8FD8]/50 transition-colors resize-none"
-                  placeholder="Tell me about your project or opportunity..." />
-              </div>
-              <button type="submit"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F8FD8] text-[#071A2B] rounded-xl text-sm font-semibold hover:bg-[#6AA7E8] transition-colors duration-200 w-full sm:w-auto justify-center hover-lift">
-                <Send className="w-4 h-4" />Send Message
-              </button>
-            </form>
-          </ScrollReveal>
-        </div>
+            <button
+              type="button"
+              onClick={copyEmail}
+              className="
+                inline-flex
+                items-center
+                gap-2
+                rounded-lg
+                border
+                border-[#171717]/10
+                px-3
+                py-2
+                text-xs
+                font-medium
+                text-[#55544F]
+                transition-all
+                duration-200
+
+                hover:border-[#C96A4A]/40
+                hover:bg-[#C96A4A]/5
+                hover:text-[#C96A4A]
+              "
+            >
+              {copied ? (
+                <>
+                  <Check size={14} />
+                  Copied
+                </>
+              ) : (
+                <>
+                  <Copy size={14} />
+                  Copy Email
+                </>
+              )}
+            </button>
+          </div>
+        </ScrollReveal>
+
+        {/* Social links */}
+
+        <ScrollReveal
+          direction="up"
+          delay={0.2}
+          className="mt-8"
+        >
+          <div className="flex items-center justify-center gap-3">
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                border-[#171717]/10
+                bg-white/40
+                px-4
+                py-2.5
+                text-sm
+                font-medium
+                text-[#3F3E3A]
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+                hover:border-[#C96A4A]/40
+                hover:bg-[#C96A4A]/5
+                hover:text-[#C96A4A]
+              "
+            >
+              <Github size={16} />
+              GitHub
+            </a>
+
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                border-[#171717]/10
+                bg-white/40
+                px-4
+                py-2.5
+                text-sm
+                font-medium
+                text-[#3F3E3A]
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+                hover:border-[#C96A4A]/40
+                hover:bg-[#C96A4A]/5
+                hover:text-[#C96A4A]
+              "
+            >
+              <Linkedin size={16} />
+              LinkedIn
+            </a>
+
+            <a
+              href={`mailto:${profile.email}`}
+              className="
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                border-[#171717]/10
+                bg-white/40
+                px-4
+                py-2.5
+                text-sm
+                font-medium
+                text-[#3F3E3A]
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+                hover:border-[#C96A4A]/40
+                hover:bg-[#C96A4A]/5
+                hover:text-[#C96A4A]
+              "
+            >
+              <Mail size={16} />
+              Email
+            </a>
+          </div>
+        </ScrollReveal>
+
+        {/* Main CTA */}
+
+        <ScrollReveal
+          direction="up"
+          delay={0.3}
+          className="mt-10"
+        >
+          <a
+            href={`mailto:${profile.email}`}
+            className="
+              group
+              inline-flex
+              items-center
+              gap-3
+              rounded-xl
+              bg-[#171717]
+              px-7
+              py-3.5
+              text-sm
+              font-semibold
+              text-white
+              transition-all
+              duration-300
+
+              hover:-translate-y-1
+              hover:bg-[#C96A4A]
+              hover:shadow-[0_12px_30px_rgba(201,106,74,0.22)]
+            "
+          >
+            Send me an email
+
+            <ArrowUpRight
+              size={17}
+              className="
+                transition-transform
+                duration-300
+
+                group-hover:-translate-y-0.5
+                group-hover:translate-x-0.5
+              "
+            />
+          </a>
+        </ScrollReveal>
+
+        {/* Bottom */}
+
+        <ScrollReveal
+          direction="up"
+          delay={0.4}
+          className="mt-20"
+        >
+          <div
+            className="
+              mx-auto
+              h-px
+              max-w-2xl
+              bg-[#171717]/10
+            "
+          />
+
+          <p
+            className="
+              mt-6
+              text-xs
+              text-[#8A8981]
+            "
+          >
+            © {new Date().getFullYear()} Doha Abdelrahman. All rights reserved.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );
