@@ -391,7 +391,7 @@ export const certifications = [
     organization: "Digital Egypt Pioneers Program (DEPI)",
     date: "November – May 2025",
     skills: ["Data Analysis"],
-    image:"public/certifications/certificate DEPI.jpg",
+    image: "/certifications/certificate DEPI.jpg",
     credentialUrl:
       "https://drive.google.com/file/d/1jcC5HyN3MtiE6JEf8LtSp32C9mMBH5UD/view?usp=sharing",
   },
@@ -400,18 +400,20 @@ export const certifications = [
     title: "Machine Learning",
     organization: "ITIDA / NTI",
     date: "31 August – 25 September 2025",
-    skills: ["Machine Learning"],
-    image:"public/certifications/machine-learning.png",
-    credentialUrl: "https://drive.google.com/file/d/1mIdeC9qjMbKe8YeqcIwW6F8WayF6GWHL/view?usp=sharing",
+    skills: ["Machine Learning", "120 Hours", "Score 85.5%"],
+    image: "/certifications/machine-learning.png",
+    credentialUrl:
+      "https://drive.google.com/file/d/1mIdeC9qjMbKe8YeqcIwW6F8WayF6GWHL/view?usp=sharing",
   },
 
   {
     title: "Artificial Intelligence (AI)",
     organization: "NTI / Huawei Egyptian Talent Academy",
     date: "11 July – 16 August 2025",
-    skills: ["Artificial Intelligence"],
-    image:"public/certifications/artificial-intelligence.png",
-    credentialUrl: "https://drive.google.com/file/d/1qS3vnxXfzcNN3H4LUHhMmZMdDFXWuHnM/view?usp=sharing",
+    skills: ["Artificial Intelligence", "80 Hours", "Score 81%"],
+    image: "/certifications/artificial-intelligence.png",
+    credentialUrl:
+      "https://drive.google.com/file/d/1qS3vnxXfzcNN3H4LUHhMmZMdDFXWuHnM/view?usp=sharing",
   },
 
   {
@@ -419,8 +421,9 @@ export const certifications = [
     organization: "Huawei ICT Academy",
     date: "16 August 2025",
     skills: ["Artificial Intelligence"],
-    image:"public/certifications/certificate Huawei(1).png",
-    credentialUrl: "https://drive.google.com/file/d/1EqDnMZV-IQoJx8USInegDpQd94jB6lCH/view?usp=sharing",
+    image: "/certifications/certificate Huawei(1).png",
+    credentialUrl:
+      "https://drive.google.com/file/d/1EqDnMZV-IQoJx8USInegDpQd94jB6lCH/view?usp=sharing",
   },
 
   {
@@ -428,7 +431,7 @@ export const certifications = [
     organization: "ALX Africa",
     date: "30 September 2025",
     skills: ["Professional Development"],
-    image:"public/certifications/certificate professional-foundations.png",
+    image: "/certifications/certificate professional-foundations.png",
     credentialUrl:
       "https://drive.google.com/file/d/1K5AnDxJEwFDRu4M8y8s9LbO0ibfvtj1y/view?usp=sharing",
   },
@@ -438,11 +441,11 @@ export const certifications = [
     organization: "Berlitz Egypt / Digital Egypt Pioneers Initiative",
     date: "November 2024 – May 2025",
     skills: ["Business English"],
-    image:"public/certifications/English DEPI.jpg",
-    credentialUrl: "https://drive.google.com/file/d/1vmYaZ3C_ymf47Cs5tA_2lC3ryoKTi6nz/view?usp=sharing",
+    image: "/certifications/English DEPI.jpg",
+    credentialUrl:
+      "https://drive.google.com/file/d/1vmYaZ3C_ymf47Cs5tA_2lC3ryoKTi6nz/view?usp=sharing",
   },
 ];
-
 export const githubProfile = {
   username: "dohadelrahman",
   url: "https://github.com/dohadelrahman",
