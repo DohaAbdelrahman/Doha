@@ -23,13 +23,13 @@ export default function ExperienceSection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Top-right orbital circles */}
+        {/* Top right circles */}
 
         <div
           className="
             absolute
-            -right-40
-            -top-40
+            -right-36
+            -top-36
             h-[420px]
             w-[420px]
             rounded-full
@@ -41,8 +41,8 @@ export default function ExperienceSection() {
         <div
           className="
             absolute
-            -right-20
-            -top-20
+            -right-16
+            -top-16
             h-[280px]
             w-[280px]
             rounded-full
@@ -51,22 +51,22 @@ export default function ExperienceSection() {
           "
         />
 
-        {/* Bottom-left orbital circle */}
+        {/* Bottom left circle */}
 
         <div
           className="
             absolute
-            -bottom-48
-            -left-36
-            h-[420px]
-            w-[420px]
+            -bottom-52
+            -left-40
+            h-[450px]
+            w-[450px]
             rounded-full
             border
             border-[#A7B68D]/[0.06]
           "
         />
 
-        {/* Center glow */}
+        {/* Soft glow */}
 
         <div
           className="
@@ -97,30 +97,6 @@ export default function ExperienceSection() {
           "
         >
           {Array.from({ length: 20 }).map((_, index) => (
-            <span
-              key={index}
-              className="
-                h-1
-                w-1
-                rounded-full
-                bg-[#A7B68D]/50
-              "
-            />
-          ))}
-        </div>
-
-        <div
-          className="
-            absolute
-            bottom-[18%]
-            right-[5%]
-            grid
-            grid-cols-4
-            gap-4
-            opacity-20
-          "
-        >
-          {Array.from({ length: 16 }).map((_, index) => (
             <span
               key={index}
               className="
@@ -228,25 +204,43 @@ export default function ExperienceSection() {
         ================================================= */}
 
         <div className="relative">
-          {/* Central timeline */}
+          {/* Center line */}
 
           <div
             className="
               absolute
               bottom-0
-              left-4
+              left-1/2
+              top-0
+              hidden
+              w-px
+              -translate-x-1/2
+              bg-gradient-to-b
+              from-transparent
+              via-[#A7B68D]/30
+              to-transparent
+              md:block
+            "
+          />
+
+          {/* Mobile line */}
+
+          <div
+            className="
+              absolute
+              bottom-0
+              left-[10px]
               top-0
               w-px
               bg-gradient-to-b
               from-transparent
               via-[#A7B68D]/30
               to-transparent
-              md:left-1/2
-              md:-translate-x-1/2
+              md:hidden
             "
           />
 
-          <div className="space-y-8 md:space-y-12">
+          <div className="space-y-10 md:space-y-16">
             {experiences.map((exp, index) => {
               const isLeft = index % 2 === 0;
 
@@ -255,7 +249,7 @@ export default function ExperienceSection() {
                   key={`${exp.title}-${index}`}
                   initial={{
                     opacity: 0,
-                    y: 30,
+                    y: 25,
                   }}
                   whileInView={{
                     opacity: 1,
@@ -263,31 +257,69 @@ export default function ExperienceSection() {
                   }}
                   viewport={{
                     once: true,
-                    margin: "-70px",
+                    margin: "-60px",
                   }}
                   transition={{
-                    duration: 0.55,
-                    delay: index * 0.08,
+                    duration: 0.5,
+                    delay: index * 0.07,
                   }}
-                  className="
-                    relative
-                    grid
-                    md:grid-cols-2
-                    md:gap-16
-                  "
+                  className="relative"
                 >
                   {/* =================================================
-                      TIMELINE DOT
+                      DESKTOP LAYOUT
+                  ================================================= */}
+
+                  <div className="hidden md:grid md:grid-cols-2 md:gap-16">
+                    {/* LEFT */}
+
+                    <div
+                      className={
+                        isLeft
+                          ? "flex justify-end"
+                          : "invisible"
+                      }
+                    >
+                      {isLeft && (
+                        <ExperienceCard
+                          exp={exp}
+                          index={index}
+                          align="right"
+                        />
+                      )}
+                    </div>
+
+                    {/* RIGHT */}
+
+                    <div
+                      className={
+                        !isLeft
+                          ? "flex justify-start"
+                          : "invisible"
+                      }
+                    >
+                      {!isLeft && (
+                        <ExperienceCard
+                          exp={exp}
+                          index={index}
+                          align="left"
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* =================================================
+                      CENTER DOT
                   ================================================= */}
 
                   <div
                     className="
                       absolute
-                      left-4
+                      left-1/2
                       top-8
                       z-20
+                      hidden
                       -translate-x-1/2
-                      md:left-1/2
+                      md:block
                     "
                   >
                     <div
@@ -299,7 +331,7 @@ export default function ExperienceSection() {
                         justify-center
                         rounded-full
                         border
-                        border-[#A7B68D]/50
+                        border-[#A7B68D]/45
                         bg-[#07100D]
                       "
                     >
@@ -316,49 +348,51 @@ export default function ExperienceSection() {
                   </div>
 
                   {/* =================================================
-                      LEFT SIDE
+                      MOBILE
                   ================================================= */}
 
-                  <div
-                    className={`
-                      ${
-                        isLeft
-                          ? "md:col-start-1 md:pr-0"
-                          : "md:col-start-2 md:pl-0"
-                      }
-                      ml-10
-                      md:ml-0
-                    `}
-                  >
-                    {isLeft && (
-                      <ExperienceCard
-                        exp={exp}
-                        index={index}
-                      />
-                    )}
+                  <div className="pl-8 md:hidden">
+                    <ExperienceCard
+                      exp={exp}
+                      index={index}
+                      align="left"
+                    />
                   </div>
 
-                  {/* =================================================
-                      RIGHT SIDE
-                  ================================================= */}
+                  {/* Mobile dot */}
 
                   <div
-                    className={`
-                      ${
-                        isLeft
-                          ? "md:col-start-2"
-                          : "md:col-start-1 md:row-start-1"
-                      }
-                      ml-10
-                      md:ml-0
-                    `}
+                    className="
+                      absolute
+                      left-[10px]
+                      top-8
+                      z-20
+                      -translate-x-1/2
+                      md:hidden
+                    "
                   >
-                    {!isLeft && (
-                      <ExperienceCard
-                        exp={exp}
-                        index={index}
+                    <div
+                      className="
+                        flex
+                        h-5
+                        w-5
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-[#A7B68D]/45
+                        bg-[#07100D]
+                      "
+                    >
+                      <span
+                        className="
+                          h-1.5
+                          w-1.5
+                          rounded-full
+                          bg-[#A7B68D]
+                        "
                       />
-                    )}
+                    </div>
                   </div>
                 </motion.div>
               );
@@ -367,12 +401,12 @@ export default function ExperienceSection() {
         </div>
 
         {/* =================================================
-            BOTTOM DECORATION
+            BOTTOM
         ================================================= */}
 
         <ScrollReveal
           direction="up"
-          delay={0.25}
+          delay={0.2}
           className="mt-16"
         >
           <div
@@ -421,6 +455,7 @@ export default function ExperienceSection() {
 function ExperienceCard({
   exp,
   index,
+  align,
 }: {
   exp: {
     title: string;
@@ -431,12 +466,15 @@ function ExperienceCard({
     type?: string;
   };
   index: number;
+  align: "left" | "right";
 }) {
   return (
     <article
-      className="
+      className={`
         group
         relative
+        w-full
+        max-w-[510px]
         overflow-hidden
         rounded-2xl
         border
@@ -449,9 +487,13 @@ function ExperienceCard({
         hover:-translate-y-1
         hover:border-[#A7B68D]/50
         hover:bg-[#A7B68D]/[0.035]
-        hover:shadow-[0_20px_60px_rgba(0,0,0,0.25)]
         sm:p-7
-      "
+        ${
+          align === "right"
+            ? "text-left md:text-right"
+            : "text-left"
+        }
+      `}
     >
       {/* Glass highlight */}
 
@@ -470,10 +512,9 @@ function ExperienceCard({
       {/* Decorative circle */}
 
       <div
-        className="
+        className={`
           pointer-events-none
           absolute
-          -right-12
           -top-12
           h-32
           w-32
@@ -483,12 +524,30 @@ function ExperienceCard({
           transition-transform
           duration-700
           group-hover:scale-125
-        "
+          ${
+            align === "right"
+              ? "-left-12"
+              : "-right-12"
+          }
+        `}
       />
 
-      {/* Number */}
+      {/* Top */}
 
-      <div className="relative flex items-start justify-between">
+      <div
+        className={`
+          relative
+          flex
+          items-start
+          justify-between
+          gap-4
+          ${
+            align === "right"
+              ? "md:flex-row-reverse"
+              : ""
+          }
+        `}
+      >
         <span
           className="
             text-4xl
@@ -523,7 +582,7 @@ function ExperienceCard({
       <p
         className="
           relative
-          mt-8
+          mt-7
           text-[9px]
           font-medium
           uppercase
@@ -574,9 +633,9 @@ function ExperienceCard({
       <p
         className="
           relative
-          mt-5
+          mt-4
           text-sm
-          leading-7
+          leading-6
           text-[#8D9489]
         "
       >
@@ -587,14 +646,19 @@ function ExperienceCard({
 
       {exp.tags && exp.tags.length > 0 && (
         <div
-          className="
+          className={`
             relative
-            mt-5
+            mt-4
             flex
             flex-wrap
             gap-x-3
-            gap-y-2
-          "
+            gap-y-1.5
+            ${
+              align === "right"
+                ? "md:justify-end"
+                : ""
+            }
+          `}
         >
           {exp.tags.map((tag) => (
             <span
@@ -602,7 +666,7 @@ function ExperienceCard({
               className="
                 text-[9px]
                 uppercase
-                tracking-[0.12em]
+                tracking-[0.1em]
                 text-[#707A72]
               "
             >
