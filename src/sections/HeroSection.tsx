@@ -1,34 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ArrowUpRight,
-} from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 
 import { profile } from "@/data/portfolio";
 
-const skills = [
-  "Data Science",
-  "Machine Learning",
-  "Data Analysis",
-];
-
 export default function HeroSection() {
-  const [activeSkill, setActiveSkill] = useState("Data Science");
-
   const scrollToProjects = () => {
     document.querySelector("#projects")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  const scrollToNextSection = () => {
-    document.querySelector("#about")?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
@@ -41,146 +20,63 @@ export default function HeroSection() {
         relative
         min-h-screen
         overflow-hidden
-        bg-[#06192A]
-        text-white
+        bg-[#3A2A23]
+        text-[#F4F0E8]
       "
     >
-      {/* =========================================================
-          BACKGROUND
-      ========================================================= */}
+      {/* Background details */}
 
       <div className="pointer-events-none absolute inset-0">
-        {/* Main glow */}
-
-        <motion.div
+        <div
           className="
             absolute
-            left-1/2
-            top-[42%]
+            right-[-120px]
+            top-[18%]
             h-[420px]
             w-[420px]
-            -translate-x-1/2
-            -translate-y-1/2
             rounded-full
-            bg-[#4F8FD8]/8
-            blur-[130px]
+            bg-[#A8AD8A]/[0.04]
+            blur-[120px]
           "
-          animate={{
-            scale: [1, 1.08, 1],
-            opacity: [0.45, 0.7, 0.45],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
         />
-
-        {/* Subtle grid */}
 
         <div
           className="
             absolute
-            inset-0
-            opacity-[0.025]
-          "
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        {/* Small data points */}
-
-        <motion.span
-          animate={{
-            opacity: [0.15, 0.6, 0.15],
-            scale: [1, 1.4, 1],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-          }}
-          className="
-            absolute
-            left-[12%]
-            top-[30%]
-            h-1.5
-            w-1.5
+            bottom-[-160px]
+            left-[-100px]
+            h-[360px]
+            w-[360px]
             rounded-full
-            bg-[#6AA7E8]
-            shadow-[0_0_12px_rgba(106,167,232,0.8)]
+            bg-[#B5ADA0]/[0.025]
+            blur-[110px]
           "
         />
 
-        <motion.span
-          animate={{
-            opacity: [0.15, 0.5, 0.15],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            delay: 1,
-          }}
+        <div
           className="
             absolute
-            right-[15%]
-            top-[25%]
-            h-1
-            w-1
-            rounded-full
-            bg-[#6AA7E8]
-            shadow-[0_0_10px_rgba(106,167,232,0.8)]
+            left-[8%]
+            top-0
+            h-full
+            w-px
+            bg-[#D6CEC1]/[0.06]
           "
         />
 
-        <motion.span
-          animate={{
-            opacity: [0.15, 0.55, 0.15],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            delay: 2,
-          }}
+        <div
           className="
             absolute
-            bottom-[22%]
-            left-[18%]
-            h-1
-            w-1
-            rounded-full
-            bg-[#6AA7E8]
-          "
-        />
-
-        <motion.span
-          animate={{
-            opacity: [0.15, 0.5, 0.15],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            delay: 1.5,
-          }}
-          className="
-            absolute
-            bottom-[27%]
-            right-[12%]
-            h-1.5
-            w-1.5
-            rounded-full
-            bg-[#6AA7E8]
-            shadow-[0_0_10px_rgba(106,167,232,0.8)]
+            right-[8%]
+            top-0
+            h-full
+            w-px
+            bg-[#D6CEC1]/[0.06]
           "
         />
       </div>
 
-      {/* =========================================================
-          HERO CONTENT
-      ========================================================= */}
+      {/* Main Hero */}
 
       <div
         className="
@@ -189,457 +85,671 @@ export default function HeroSection() {
           mx-auto
           flex
           min-h-screen
-          w-full
-          max-w-6xl
+          max-w-7xl
           items-center
-          justify-center
           px-6
-          pb-24
-          pt-28
-          text-center
+          pb-20
+          pt-32
           sm:px-8
+          lg:px-12
         "
       >
-        <div className="flex w-full flex-col items-center">
+        <div className="grid w-full items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
 
-          {/* Hello */}
+          {/* LEFT */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
-            className="
-              mb-6
-              flex
-              items-center
-              justify-center
-              gap-3
-            "
-          >
-            <span className="h-px w-8 bg-[#6AA7E8]" />
+          <div className="max-w-3xl">
 
-            <span
+            {/* Eyebrow */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
               className="
-                text-xs
-                font-semibold
-                uppercase
-                tracking-[0.32em]
-                text-[#6AA7E8]
-              "
-            >
-              Hello, I'm
-            </span>
-
-            <span className="h-px w-8 bg-[#6AA7E8]" />
-          </motion.div>
-
-          {/* Name */}
-
-          <motion.h1
-            initial={{
-              opacity: 0,
-              y: 25,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.1,
-            }}
-            className="
-              text-5xl
-              font-bold
-              leading-[0.98]
-              tracking-[-0.045em]
-              text-white
-
-              sm:text-6xl
-              md:text-7xl
-              lg:text-[92px]
-            "
-          >
-            {profile.name}
-            <span
-              className="
-                text-[#6AA7E8]
-                drop-shadow-[0_0_20px_rgba(106,167,232,0.45)]
-              "
-            >
-              .
-            </span>
-          </motion.h1>
-
-          {/* Specializations */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 0.3,
-            }}
-            className="
-              mt-8
-              flex
-              flex-wrap
-              items-center
-              justify-center
-              gap-x-4
-              gap-y-3
-            "
-          >
-            {skills.map((skill, index) => {
-              const active = activeSkill === skill;
-
-              return (
-                <div
-                  key={skill}
-                  className="flex items-center gap-4"
-                >
-                  <button
-                    type="button"
-                    onClick={() => setActiveSkill(skill)}
-                    className={`
-                      relative
-                      cursor-pointer
-                      pb-2
-                      text-base
-                      font-medium
-                      transition-all
-                      duration-300
-
-                      sm:text-lg
-                      md:text-xl
-
-                      ${
-                        active
-                          ? `
-                            text-white
-                            drop-shadow-[0_0_14px_rgba(106,167,232,0.9)]
-                          `
-                          : `
-                            text-[#8297AA]
-                            hover:text-[#DCEBFA]
-                          `
-                      }
-                    `}
-                  >
-                    {skill}
-
-                    {active && (
-                      <motion.span
-                        layoutId="activeSkill"
-                        className="
-                          absolute
-                          bottom-0
-                          left-0
-                          h-[2px]
-                          w-full
-                          rounded-full
-                          bg-[#6AA7E8]
-                          shadow-[0_0_14px_rgba(106,167,232,0.95)]
-                        "
-                        transition={{
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-                  </button>
-
-                  {index < skills.length - 1 && (
-                    <span
-                      className="
-                        text-[#5B9FE3]/35
-                      "
-                    >
-                      |
-                    </span>
-                  )}
-                </div>
-              );
-            })}
-          </motion.div>
-
-          {/* Buttons */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 15,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 0.45,
-            }}
-            className="
-              mt-10
-              flex
-              flex-col
-              items-center
-              justify-center
-              gap-3
-
-              sm:flex-row
-            "
-          >
-            <button
-              type="button"
-              onClick={scrollToProjects}
-              className="
-                group
-                inline-flex
+                mb-8
+                flex
                 items-center
-                justify-center
-                gap-3
-                rounded-xl
-                bg-[#4F8FD8]
-                px-7
-                py-3.5
-                text-sm
-                font-semibold
-                text-white
-                shadow-[0_12px_35px_rgba(79,143,216,0.22)]
-                transition-all
-                duration-300
-
-                hover:-translate-y-1
-                hover:bg-[#5B9FE3]
-                hover:shadow-[0_18px_45px_rgba(79,143,216,0.3)]
+                gap-4
               "
             >
-              Explore My Work
-
-              <ArrowUpRight
-                size={17}
+              <span
                 className="
-                  transition-transform
-                  duration-300
-                  group-hover:-translate-y-0.5
-                  group-hover:translate-x-0.5
+                  h-px
+                  w-12
+                  bg-[#A8AD8A]
                 "
               />
-            </button>
-              
-            
 
-            <a
-              href="https://drive.google.com/file/d/1vlPN2HeH4bDd-tXfGg2ckXORN8nZMT-C/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+              <span
+                className="
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.3em]
+                  text-[#A8AD8A]
+                "
+              >
+                Data Scientist
+              </span>
+            </motion.div>
+
+            {/* Heading */}
+
+            <motion.h1
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.1,
+              }}
               className="
-                inline-flex
-                items-center
-                justify-center
-                rounded-xl
-                border
-                border-white/10
-                bg-white/[0.03]
-                px-7
-                py-3.5
-                text-sm
+                max-w-4xl
+                text-[58px]
                 font-medium
-                text-[#E5EDF5]
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-[#6AA7E8]/40
-                hover:bg-[#4F8FD8]/10
+                leading-[0.95]
+                tracking-[-0.055em]
+                text-[#F4F0E8]
+
+                sm:text-[72px]
+                md:text-[88px]
+                lg:text-[96px]
               "
             >
-              View CV
-              <ArrowUpRight size={16} />
-            </a>
-          </motion.div>
+              I turn complex
+              <br />
 
-          {/* Social links */}
+              <span className="text-[#B5ADA0]">
+                data
+              </span>{" "}
+              into
+              <br />
+
+              <span className="text-[#A8AD8A]">
+                decisions.
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.3,
+              }}
+              className="
+                mt-8
+                max-w-xl
+                text-base
+                leading-7
+                text-[#D6CEC1]
+                sm:text-lg
+              "
+            >
+              {profile.description}
+            </motion.p>
+
+            {/* Expertise */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.4,
+              }}
+              className="
+                mt-8
+                flex
+                flex-wrap
+                gap-x-6
+                gap-y-3
+              "
+            >
+              {[
+                "Data Analysis",
+                "Machine Learning",
+                "Predictive Modeling",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="
+                    flex
+                    items-center
+                    gap-2
+                    text-xs
+                    uppercase
+                    tracking-[0.12em]
+                    text-[#B5ADA0]
+                  "
+                >
+                  <span
+                    className="
+                      h-1.5
+                      w-1.5
+                      rounded-full
+                      bg-[#A8AD8A]
+                    "
+                  />
+
+                  {item}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* Actions */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.5,
+              }}
+              className="
+                mt-10
+                flex
+                flex-wrap
+                items-center
+                gap-4
+              "
+            >
+              <button
+                type="button"
+                onClick={scrollToProjects}
+                className="
+                  group
+                  inline-flex
+                  items-center
+                  gap-3
+                  bg-[#A8AD8A]
+                  px-6
+                  py-3.5
+                  text-sm
+                  font-medium
+                  text-[#3A2A23]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:bg-[#B5ADA0]
+                "
+              >
+                Explore My Work
+
+                <ArrowUpRight
+                  size={16}
+                  className="
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-0.5
+                    group-hover:-translate-y-0.5
+                  "
+                />
+              </button>
+
+              <a
+                href="https://drive.google.com/file/d/1vlPN2HeH4bDd-tXfGg2ckXORN8nZMT-C/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  border-b
+                  border-[#D6CEC1]/30
+                  pb-1
+                  text-sm
+                  text-[#F4F0E8]
+                  transition-colors
+                  duration-300
+                  hover:border-[#A8AD8A]
+                  hover:text-[#A8AD8A]
+                "
+              >
+                View CV
+
+                <ArrowUpRight size={15} />
+              </a>
+            </motion.div>
+
+            {/* Socials */}
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.7,
+              }}
+              className="
+                mt-10
+                flex
+                items-center
+                gap-5
+              "
+            >
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="
+                  text-[#B5ADA0]
+                  transition-colors
+                  duration-300
+                  hover:text-[#A8AD8A]
+                "
+              >
+                <Github size={18} strokeWidth={1.5} />
+              </a>
+
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="
+                  text-[#B5ADA0]
+                  transition-colors
+                  duration-300
+                  hover:text-[#A8AD8A]
+                "
+              >
+                <Linkedin size={18} strokeWidth={1.5} />
+              </a>
+
+              <a
+                href={`mailto:${profile.email}`}
+                aria-label="Email"
+                className="
+                  text-[#B5ADA0]
+                  transition-colors
+                  duration-300
+                  hover:text-[#A8AD8A]
+                "
+              >
+                <Mail size={18} strokeWidth={1.5} />
+              </a>
+            </motion.div>
+          </div>
+
+          {/* RIGHT — DATA VISUAL */}
 
           <motion.div
             initial={{
               opacity: 0,
-              y: 10,
+              x: 35,
             }}
             animate={{
               opacity: 1,
-              y: 0,
+              x: 0,
             }}
             transition={{
-              duration: 0.7,
-              delay: 0.6,
+              duration: 0.9,
+              delay: 0.2,
             }}
             className="
-              mt-9
-              flex
-              items-center
-              justify-center
-              gap-3
+              relative
+              mx-auto
+              w-full
+              max-w-md
+              lg:ml-auto
             "
           >
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-lg
-                border
-                border-white/10
-                bg-white/[0.02]
-                text-[#8297AA]
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-[#6AA7E8]/40
-                hover:bg-[#4F8FD8]/10
-                hover:text-white
-              "
-            >
-              <Github size={18} />
-            </a>
+            {/* Index */}
 
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
+            <div
               className="
+                mb-5
                 flex
-                h-10
-                w-10
                 items-center
-                justify-center
-                rounded-lg
-                border
-                border-white/10
-                bg-white/[0.02]
-                text-[#8297AA]
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-[#6AA7E8]/40
-                hover:bg-[#4F8FD8]/10
-                hover:text-white
+                justify-between
+                border-b
+                border-[#D6CEC1]/10
+                pb-3
               "
             >
-              <Linkedin size={18} />
-            </a>
+              <span
+                className="
+                  text-[10px]
+                  uppercase
+                  tracking-[0.25em]
+                  text-[#B5ADA0]
+                "
+              >
+                Selected Discipline
+              </span>
 
-            <a
-              href={`mailto:${profile.email}`}
-              aria-label="Email"
+              <span
+                className="
+                  text-[10px]
+                  tracking-[0.2em]
+                  text-[#A8AD8A]
+                "
+              >
+                01 / 03
+              </span>
+            </div>
+
+            {/* Visual */}
+
+            <div
               className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-lg
+                relative
+                aspect-[4/5]
+                overflow-hidden
                 border
-                border-white/10
-                bg-white/[0.02]
-                text-[#8297AA]
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:border-[#6AA7E8]/40
-                hover:bg-[#4F8FD8]/10
-                hover:text-white
+                border-[#D6CEC1]/10
+                bg-[#44352D]/45
               "
             >
-              <Mail size={18} />
-            </a>
+              {/* Vertical labels */}
+
+              <div
+                className="
+                  absolute
+                  bottom-6
+                  left-6
+                  top-6
+                  flex
+                  flex-col
+                  justify-between
+                "
+              >
+                <span
+                  className="
+                    text-[9px]
+                    uppercase
+                    tracking-[0.25em]
+                    text-[#B5ADA0]
+                  "
+                >
+                  DATA
+                </span>
+
+                <span
+                  className="
+                    rotate-[-90deg]
+                    text-[9px]
+                    uppercase
+                    tracking-[0.25em]
+                    text-[#B5ADA0]
+                  "
+                >
+                  ANALYSIS
+                </span>
+              </div>
+
+              {/* Chart */}
+
+              <div
+                className="
+                  absolute
+                  inset-x-12
+                  top-1/2
+                  h-40
+                  -translate-y-1/2
+                "
+              >
+                <div
+                  className="
+                    absolute
+                    inset-x-0
+                    top-1/2
+                    h-px
+                    bg-[#D6CEC1]/10
+                  "
+                />
+
+                <div
+                  className="
+                    absolute
+                    left-0
+                    right-0
+                    top-0
+                    h-full
+                    bg-[linear-gradient(to_bottom,transparent_49.5%,rgba(214,206,193,0.07)_50%,transparent_50.5%)]
+                  "
+                />
+
+                <svg
+                  viewBox="0 0 400 160"
+                  className="absolute inset-0 h-full w-full"
+                  fill="none"
+                  preserveAspectRatio="none"
+                >
+                  <motion.path
+                    d="
+                      M0 132
+                      C35 125 45 102 72 108
+                      C100 114 110 80 138 88
+                      C165 96 176 55 204 70
+                      C232 85 244 45 270 52
+                      C300 60 312 24 338 35
+                      C362 45 378 20 400 8
+                    "
+                    stroke="#A8AD8A"
+                    strokeWidth="2"
+                    initial={{
+                      pathLength: 0,
+                      opacity: 0,
+                    }}
+                    animate={{
+                      pathLength: 1,
+                      opacity: 1,
+                    }}
+                    transition={{
+                      duration: 2,
+                      delay: 0.5,
+                      ease: "easeOut",
+                    }}
+                  />
+
+                  <motion.path
+                    d="
+                      M0 132
+                      C35 125 45 102 72 108
+                      C100 114 110 80 138 88
+                      C165 96 176 55 204 70
+                      C232 85 244 45 270 52
+                      C300 60 312 24 338 35
+                      C362 45 378 20 400 8
+                      L400 160
+                      L0 160
+                      Z
+                    "
+                    fill="url(#chartFill)"
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: 1,
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      delay: 1,
+                    }}
+                  />
+
+                  <defs>
+                    <linearGradient
+                      id="chartFill"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop
+                        offset="0%"
+                        stopColor="#A8AD8A"
+                        stopOpacity="0.12"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stopColor="#A8AD8A"
+                        stopOpacity="0"
+                      />
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* Data points */}
+
+                {[
+                  ["left-[4%]", "top-[82%]"],
+                  ["left-[35%]", "top-[55%]"],
+                  ["left-[67%]", "top-[33%]"],
+                  ["right-[1%]", "top-[4%]"],
+                ].map(([x, y], index) => (
+                  <motion.span
+                    key={index}
+                    initial={{
+                      scale: 0,
+                      opacity: 0,
+                    }}
+                    animate={{
+                      scale: 1,
+                      opacity: 1,
+                    }}
+                    transition={{
+                      delay: 1 + index * 0.15,
+                    }}
+                    className={`
+                      absolute
+                      ${x}
+                      ${y}
+                      h-2
+                      w-2
+                      rounded-full
+                      bg-[#A8AD8A]
+                      ring-4
+                      ring-[#A8AD8A]/10
+                    `}
+                  />
+                ))}
+              </div>
+
+              {/* Bottom information */}
+
+              <div
+                className="
+                  absolute
+                  bottom-6
+                  left-12
+                  right-8
+                  border-t
+                  border-[#D6CEC1]/10
+                  pt-4
+                "
+              >
+                <div className="flex items-end justify-between gap-4">
+                  <div>
+                    <p
+                      className="
+                        text-[10px]
+                        uppercase
+                        tracking-[0.2em]
+                        text-[#B5ADA0]
+                      "
+                    >
+                      Focus
+                    </p>
+
+                    <p
+                      className="
+                        mt-1
+                        text-sm
+                        text-[#F4F0E8]
+                      "
+                    >
+                      Analysis → Modeling → Insight
+                    </p>
+                  </div>
+
+                  <ArrowDownRight
+                    size={18}
+                    className="text-[#A8AD8A]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom label */}
+
+            <div
+              className="
+                mt-5
+                flex
+                items-center
+                justify-between
+              "
+            >
+              <span
+                className="
+                  text-[10px]
+                  uppercase
+                  tracking-[0.25em]
+                  text-[#B5ADA0]
+                "
+              >
+                Doha Abdelrahman
+              </span>
+
+              <span
+                className="
+                  text-[10px]
+                  text-[#A8AD8A]
+                "
+              >
+                DS.01
+              </span>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* =========================================================
-          SCROLL INDICATOR
-      ========================================================= */}
+      {/* Bottom scroll */}
 
-      <motion.button
-        type="button"
-        onClick={scrollToNextSection}
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-        }}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{
           duration: 0.8,
-          delay: 1,
+          delay: 1.2,
         }}
-        aria-label="Scroll to About section"
         className="
           absolute
           bottom-7
           left-1/2
-          z-20
+          hidden
           -translate-x-1/2
-          text-[#71879A]
-          transition-colors
-          duration-300
-          hover:text-[#6AA7E8]
+          items-center
+          gap-3
+          md:flex
         "
       >
-        <div className="flex flex-col items-center gap-2">
-          <span
-            className="
-              text-[9px]
-              font-medium
-              uppercase
-              tracking-[0.35em]
-            "
-          >
-            Scroll
-          </span>
+        <span
+          className="
+            text-[9px]
+            uppercase
+            tracking-[0.3em]
+            text-[#B5ADA0]
+          "
+        >
+          Scroll to explore
+        </span>
 
-          <motion.span
-            animate={{
-              y: [0, 5, 0],
-              opacity: [0.4, 1, 0.4],
-            }}
-            transition={{
-              duration: 1.8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="
-              h-7
-              w-px
-              bg-gradient-to-b
-              from-[#6AA7E8]
-              to-transparent
-            "
-          />
-        </div>
-      </motion.button>
+        <span
+          className="
+            h-px
+            w-8
+            bg-[#A8AD8A]/60
+          "
+        />
+      </motion.div>
     </section>
   );
 }
