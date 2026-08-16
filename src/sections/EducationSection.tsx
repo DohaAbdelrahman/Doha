@@ -18,7 +18,7 @@ export default function EducationSection() {
       className="
         relative
         overflow-hidden
-        bg-[#07100D]
+        bg-[#081412]
         py-28
         sm:py-36
       "
@@ -28,6 +28,7 @@ export default function EducationSection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
         {/* Top right orbit */}
 
         <div
@@ -39,7 +40,7 @@ export default function EducationSection() {
             w-[430px]
             rounded-full
             border
-            border-[#A7B68D]/[0.08]
+            border-[#C7A86B]/[0.08]
           "
         />
 
@@ -52,7 +53,7 @@ export default function EducationSection() {
             w-[300px]
             rounded-full
             border
-            border-[#A7B68D]/[0.05]
+            border-[#C7A86B]/[0.05]
           "
         />
 
@@ -67,7 +68,7 @@ export default function EducationSection() {
             w-[420px]
             rounded-full
             border
-            border-[#A7B68D]/[0.06]
+            border-[#C7A86B]/[0.06]
           "
         />
 
@@ -83,7 +84,7 @@ export default function EducationSection() {
             -translate-x-1/2
             -translate-y-1/2
             rounded-full
-            bg-[#A7B68D]/[0.018]
+            bg-[#C7A86B]/[0.015]
             blur-[140px]
           "
         />
@@ -108,7 +109,7 @@ export default function EducationSection() {
                 h-1
                 w-1
                 rounded-full
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/40
               "
             />
           ))}
@@ -147,7 +148,7 @@ export default function EducationSection() {
               className="
                 h-px
                 w-12
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/50
               "
             />
 
@@ -157,7 +158,7 @@ export default function EducationSection() {
                 font-medium
                 uppercase
                 tracking-[0.35em]
-                text-[#A7B68D]
+                text-[#C7A86B]
               "
             >
               Education
@@ -167,7 +168,7 @@ export default function EducationSection() {
               className="
                 h-px
                 w-12
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/50
               "
             />
           </div>
@@ -177,13 +178,13 @@ export default function EducationSection() {
               text-5xl
               font-medium
               tracking-[-0.06em]
-              text-[#F5F3EC]
+              text-[#F5F1E8]
               sm:text-6xl
               md:text-7xl
             "
           >
             Academic Background
-            <span className="text-[#A7B68D]">
+            <span className="text-[#C7A86B]">
               .
             </span>
           </h2>
@@ -195,7 +196,7 @@ export default function EducationSection() {
               max-w-xl
               text-sm
               leading-7
-              text-[#8D9489]
+              text-[#9BA8A2]
               sm:text-base
             "
           >
@@ -216,13 +217,13 @@ export default function EducationSection() {
               overflow-hidden
               rounded-2xl
               border
-              border-[#A7B68D]/25
+              border-[#C7A86B]/20
               bg-white/[0.018]
               backdrop-blur-2xl
               transition-all
               duration-500
-              hover:border-[#A7B68D]/45
-              hover:bg-[#A7B68D]/[0.025]
+              hover:border-[#C7A86B]/40
+              hover:bg-[#C7A86B]/[0.02]
             "
           >
             {/* Glass highlight */}
@@ -251,7 +252,7 @@ export default function EducationSection() {
                 w-52
                 rounded-full
                 border
-                border-[#A7B68D]/10
+                border-[#C7A86B]/10
               "
             />
 
@@ -265,7 +266,7 @@ export default function EducationSection() {
                 w-28
                 rounded-full
                 border
-                border-[#A7B68D]/10
+                border-[#C7A86B]/10
               "
             />
 
@@ -293,7 +294,7 @@ export default function EducationSection() {
                   items-center
                   justify-center
                   border-b
-                  border-[#A7B68D]/10
+                  border-[#C7A86B]/10
                   px-6
                   lg:min-h-[390px]
                   lg:border-b-0
@@ -311,7 +312,7 @@ export default function EducationSection() {
                     font-light
                     leading-none
                     tracking-[-0.08em]
-                    text-[#A7B68D]/20
+                    text-[#C7A86B]/20
                   "
                 >
                   01
@@ -329,12 +330,12 @@ export default function EducationSection() {
                     justify-center
                     rounded-full
                     border
-                    border-[#A7B68D]/30
-                    bg-[#A7B68D]/[0.025]
-                    shadow-[inset_0_0_35px_rgba(167,182,141,0.025)]
+                    border-[#C7A86B]/30
+                    bg-[#C7A86B]/[0.025]
+                    shadow-[inset_0_0_35px_rgba(199,168,107,0.025)]
                     transition-all
                     duration-500
-                    group-hover:border-[#A7B68D]/55
+                    group-hover:border-[#C7A86B]/55
                   "
                 >
                   <div
@@ -343,7 +344,7 @@ export default function EducationSection() {
                       inset-3
                       rounded-full
                       border
-                      border-[#A7B68D]/10
+                      border-[#C7A86B]/10
                     "
                   />
 
@@ -352,7 +353,7 @@ export default function EducationSection() {
                     strokeWidth={1.1}
                     className="
                       relative
-                      text-[#A7B68D]
+                      text-[#C7A86B]
                     "
                   />
                 </div>
@@ -366,8 +367,8 @@ export default function EducationSection() {
                     h-1.5
                     w-1.5
                     rounded-full
-                    bg-[#A7B68D]
-                    shadow-[0_0_12px_rgba(167,182,141,0.7)]
+                    bg-[#C7A86B]
+                    shadow-[0_0_12px_rgba(199,168,107,0.65)]
                   "
                 />
               </div>
@@ -382,7 +383,7 @@ export default function EducationSection() {
                   flex-col
                   justify-center
                   border-b
-                  border-[#A7B68D]/10
+                  border-[#C7A86B]/10
                   px-7
                   py-9
                   sm:px-10
@@ -402,10 +403,13 @@ export default function EducationSection() {
                     font-medium
                     uppercase
                     tracking-[0.22em]
-                    text-[#A7B68D]
+                    text-[#C7A86B]
                   "
                 >
-                  <Calendar size={13} strokeWidth={1.5} />
+                  <Calendar
+                    size={13}
+                    strokeWidth={1.5}
+                  />
 
                   <span>
                     October 2023 — Present
@@ -421,7 +425,7 @@ export default function EducationSection() {
                     font-medium
                     leading-tight
                     tracking-[-0.045em]
-                    text-[#F5F3EC]
+                    text-[#F5F1E8]
                     sm:text-4xl
                   "
                 >
@@ -436,7 +440,7 @@ export default function EducationSection() {
                     text-base
                     font-medium
                     leading-6
-                    text-[#A7B68D]
+                    text-[#C7A86B]
                     sm:text-lg
                   "
                 >
@@ -453,16 +457,18 @@ export default function EducationSection() {
                     items-center
                     gap-2
                     text-sm
-                    text-[#8D9489]
+                    text-[#9BA8A2]
                   "
                 >
                   <MapPin
                     size={14}
                     strokeWidth={1.5}
-                    className="text-[#A7B68D]"
+                    className="text-[#C7A86B]"
                   />
 
-                  <span>Cairo, Egypt</span>
+                  <span>
+                    Cairo, Egypt
+                  </span>
                 </div>
 
                 {/* Description */}
@@ -473,7 +479,7 @@ export default function EducationSection() {
                     max-w-xl
                     text-sm
                     leading-7
-                    text-[#8D9489]
+                    text-[#9BA8A2]
                   "
                 >
                   Building a strong academic foundation
@@ -506,7 +512,7 @@ export default function EducationSection() {
                     font-medium
                     uppercase
                     tracking-[0.28em]
-                    text-[#A7B68D]
+                    text-[#C7A86B]
                   "
                 >
                   Academic Focus
@@ -518,37 +524,35 @@ export default function EducationSection() {
                     space-y-5
                   "
                 >
-                  {academicFocus.map(
-                    (item, index) => (
-                      <div
-                        key={item}
+                  {academicFocus.map((item) => (
+                    <div
+                      key={item}
+                      className="
+                        flex
+                        items-center
+                        gap-3
+                      "
+                    >
+                      <span
                         className="
-                          flex
-                          items-center
-                          gap-3
+                          h-1.5
+                          w-1.5
+                          shrink-0
+                          rounded-full
+                          bg-[#C7A86B]
+                        "
+                      />
+
+                      <span
+                        className="
+                          text-sm
+                          text-[#B8C1BC]
                         "
                       >
-                        <span
-                          className="
-                            h-1.5
-                            w-1.5
-                            shrink-0
-                            rounded-full
-                            bg-[#A7B68D]
-                          "
-                        />
-
-                        <span
-                          className="
-                            text-sm
-                            text-[#C5CBC4]
-                          "
-                        >
-                          {item}
-                        </span>
-                      </div>
-                    )
-                  )}
+                        {item}
+                      </span>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Bottom accent */}
@@ -558,7 +562,7 @@ export default function EducationSection() {
                     mt-8
                     h-px
                     w-16
-                    bg-[#A7B68D]/40
+                    bg-[#C7A86B]/40
                   "
                 />
               </div>
@@ -574,8 +578,8 @@ export default function EducationSection() {
                 h-px
                 w-0
                 -translate-x-1/2
-                bg-[#A7B68D]
-                shadow-[0_0_15px_rgba(167,182,141,0.6)]
+                bg-[#C7A86B]
+                shadow-[0_0_15px_rgba(199,168,107,0.5)]
                 transition-all
                 duration-700
                 group-hover:w-1/2
@@ -605,7 +609,7 @@ export default function EducationSection() {
               className="
                 h-px
                 w-16
-                bg-[#A7B68D]/15
+                bg-[#C7A86B]/15
               "
             />
 
@@ -614,7 +618,7 @@ export default function EducationSection() {
                 h-1.5
                 w-1.5
                 rounded-full
-                bg-[#A7B68D]/60
+                bg-[#C7A86B]/60
               "
             />
 
@@ -622,7 +626,7 @@ export default function EducationSection() {
               className="
                 h-px
                 w-16
-                bg-[#A7B68D]/15
+                bg-[#C7A86B]/15
               "
             />
           </div>
