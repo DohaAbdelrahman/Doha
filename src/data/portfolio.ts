@@ -8,6 +8,7 @@ export const profile = {
   description:
     "Computer Science student specializing in Data Science, with hands-on experience in Python, SQL, Power BI, data analysis, and machine learning.",
   email: "dohaabdo757@gmail.com",
+  phone: "+201029474155",
   github: "https://github.com/DohaAbdelrahman",
   linkedin: "https://www.linkedin.com/in/doha-abdelrahman-3540292a5/",
   resumeUrl: "#",

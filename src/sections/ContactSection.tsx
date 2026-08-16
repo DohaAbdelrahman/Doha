@@ -1,59 +1,44 @@
 "use client";
 
-import { useState } from "react";
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { profile } from "@/data/portfolio";
 import {
   Mail,
-  Copy,
-  Check,
+  Phone,
   Github,
   Linkedin,
   ArrowUpRight,
 } from "lucide-react";
 
-const colors = {
-  background: "#07100D",
-  cream: "#F5F3EC",
-  olive: "#A7B68D",
-  muted: "#8D9489",
-  line: "rgba(167, 182, 141, 0.16)",
-};
-
 export default function ContactSection() {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(profile.email);
-      setCopied(true);
-
-      setTimeout(() => {
-        setCopied(false);
-      }, 2000);
-    } catch {
-      setCopied(false);
-    }
-  };
-
-  const socials = [
+  const contactItems = [
+    {
+      label: "Email",
+      value: profile.email,
+      href: `mailto:${profile.email}`,
+      icon: Mail,
+    },
+    {
+      label: "Phone",
+      value: profile.phone || "Add your phone",
+      href: profile.phone
+        ? `tel:${profile.phone}`
+        : "#",
+      icon: Phone,
+    },
     {
       label: "GitHub",
+      value: "DohaAbdelrahman",
       href: profile.github,
       icon: Github,
       external: true,
     },
     {
       label: "LinkedIn",
+      value: "Connect with me",
       href: profile.linkedin,
       icon: Linkedin,
       external: true,
-    },
-    {
-      label: "Email",
-      href: `mailto:${profile.email}`,
-      icon: Mail,
-      external: false,
     },
   ];
 
@@ -64,16 +49,16 @@ export default function ContactSection() {
         relative
         overflow-hidden
         bg-[#07100D]
+        px-6
         py-28
+        sm:px-10
         sm:py-36
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
+      {/* Background */}
 
       <div className="pointer-events-none absolute inset-0">
-        {/* Main glow */}
+        {/* Glow */}
 
         <div
           className="
@@ -90,15 +75,28 @@ export default function ContactSection() {
           "
         />
 
-        {/* Orbital circles */}
+        {/* Large circles */}
 
         <div
           className="
             absolute
             -right-32
-            top-16
-            h-[350px]
-            w-[350px]
+            top-[-80px]
+            h-[380px]
+            w-[380px]
+            rounded-full
+            border
+            border-[#A7B68D]/10
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-10
+            top-[-30px]
+            h-[250px]
+            w-[250px]
             rounded-full
             border
             border-[#A7B68D]/[0.07]
@@ -108,10 +106,10 @@ export default function ContactSection() {
         <div
           className="
             absolute
-            -right-12
-            top-36
-            h-[220px]
-            w-[220px]
+            bottom-[-180px]
+            left-[-120px]
+            h-[400px]
+            w-[400px]
             rounded-full
             border
             border-[#A7B68D]/[0.06]
@@ -123,8 +121,8 @@ export default function ContactSection() {
         <div
           className="
             absolute
-            bottom-[15%]
-            left-[7%]
+            bottom-[18%]
+            left-[6%]
             grid
             grid-cols-4
             gap-4
@@ -139,7 +137,7 @@ export default function ContactSection() {
                   h-1
                   w-1
                   rounded-full
-                  bg-[#A7B68D]/40
+                  bg-[#A7B68D]/50
                 "
               />
             )
@@ -147,9 +145,7 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* =====================================================
-          CONTENT
-      ===================================================== */}
+      {/* Content */}
 
       <div
         className="
@@ -157,20 +153,17 @@ export default function ContactSection() {
           z-10
           mx-auto
           max-w-5xl
-          px-6
-          sm:px-10
         "
       >
-        {/* =================================================
-            HEADER
-        ================================================= */}
+        {/* Header */}
 
         <ScrollReveal>
           <div
             className="
-              mb-7
+              mb-6
               flex
               items-center
+              justify-center
               gap-4
             "
           >
@@ -178,7 +171,7 @@ export default function ContactSection() {
               className="
                 h-px
                 w-12
-                bg-[#A7B68D]/70
+                bg-[#A7B68D]/60
               "
             />
 
@@ -187,355 +180,296 @@ export default function ContactSection() {
                 text-[10px]
                 font-medium
                 uppercase
-                tracking-[0.3em]
+                tracking-[0.35em]
+                text-[#A7B68D]
               "
-              style={{
-                color: colors.olive,
-              }}
             >
               Contact
             </span>
+
+            <span
+              className="
+                h-px
+                w-12
+                bg-[#A7B68D]/60
+              "
+            />
           </div>
 
           <h2
             className="
-              max-w-4xl
-              text-6xl
+              text-center
+              text-5xl
               font-medium
-              leading-[0.92]
+              leading-[0.95]
               tracking-[-0.065em]
-              sm:text-7xl
-              md:text-8xl
+              text-[#F5F3EC]
+              sm:text-6xl
+              md:text-7xl
             "
-            style={{
-              color: colors.cream,
-            }}
           >
-            Let&apos;s
-            <br />
-
-            <span
-              style={{
-                color: colors.olive,
-              }}
-            >
-              connect.
+            Let&apos;s talk
+            <span className="text-[#A7B68D]">
+              .
             </span>
           </h2>
 
           <p
             className="
-              mt-8
+              mx-auto
+              mt-6
               max-w-xl
-              text-base
+              text-center
+              text-sm
               leading-7
-              sm:text-lg
+              text-[#8D9489]
+              sm:text-base
             "
-            style={{
-              color: colors.muted,
-            }}
           >
-            Have a data problem, an opportunity, or
-            an interesting idea? Let&apos;s turn it
-            into something meaningful.
+            Have an opportunity, a project, or a
+            data problem? Let&apos;s connect.
           </p>
         </ScrollReveal>
 
-        {/* =================================================
-            EMAIL ROW
-        ================================================= */}
+        {/* Glass Cards */}
 
-        <ScrollReveal
-          direction="up"
-          delay={0.1}
-          className="mt-16"
+        <div
+          className="
+            mt-14
+            grid
+            grid-cols-1
+            gap-4
+            sm:grid-cols-2
+          "
         >
-          <div
-            className="
-              border-y
-              border-[#A7B68D]/15
-              py-6
-            "
-          >
-            <div
-              className="
-                flex
-                flex-col
-                gap-5
-                sm:flex-row
-                sm:items-center
-                sm:justify-between
-              "
-            >
-              {/* Email */}
-
-              <div>
-                <p
-                  className="
-                    mb-2
-                    text-[9px]
-                    font-medium
-                    uppercase
-                    tracking-[0.25em]
-                  "
-                  style={{
-                    color: colors.olive,
-                  }}
-                >
-                  Email
-                </p>
-
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="
-                    text-lg
-                    tracking-[-0.02em]
-                    transition-colors
-                    duration-300
-                    hover:text-[#A7B68D]
-                    sm:text-xl
-                  "
-                  style={{
-                    color: colors.cream,
-                  }}
-                >
-                  {profile.email}
-                </a>
-              </div>
-
-              {/* Copy */}
-
-              <button
-                type="button"
-                onClick={copyEmail}
-                className="
-                  group
-                  inline-flex
-                  w-fit
-                  items-center
-                  gap-3
-                  border
-                  border-[#A7B68D]/20
-                  bg-[#A7B68D]/[0.025]
-                  px-4
-                  py-2.5
-                  text-[9px]
-                  font-medium
-                  uppercase
-                  tracking-[0.18em]
-                  transition-all
-                  duration-300
-                  hover:border-[#A7B68D]/60
-                  hover:bg-[#A7B68D]/[0.06]
-                "
-                style={{
-                  color: colors.muted,
-                }}
-              >
-                {copied ? (
-                  <>
-                    <Check
-                      size={14}
-                      style={{
-                        color: colors.olive,
-                      }}
-                    />
-
-                    Copied
-                  </>
-                ) : (
-                  <>
-                    <Copy
-                      size={14}
-                      className="
-                        transition-colors
-                        group-hover:text-[#A7B68D]
-                      "
-                    />
-
-                    Copy Email
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* =================================================
-            SOCIAL LINKS
-        ================================================= */}
-
-        <ScrollReveal
-          direction="up"
-          delay={0.2}
-          className="mt-7"
-        >
-          <div
-            className="
-              flex
-              flex-wrap
-              items-center
-              gap-x-8
-              gap-y-4
-            "
-          >
-            {socials.map(
-              ({
+          {contactItems.map(
+            (
+              {
                 label,
+                value,
                 href,
                 icon: Icon,
                 external,
-              }) => (
+              },
+              index
+            ) => (
+              <ScrollReveal
+                key={label}
+                direction="up"
+                delay={index * 0.08}
+              >
                 <a
-                  key={label}
                   href={href}
                   target={
-                    external ? "_blank" : undefined
+                    external
+                      ? "_blank"
+                      : undefined
                   }
                   rel={
                     external
                       ? "noopener noreferrer"
                       : undefined
                   }
+                  onClick={(event) => {
+                    if (
+                      label === "Phone" &&
+                      !profile.phone
+                    ) {
+                      event.preventDefault();
+                    }
+                  }}
                   className="
                     group
-                    inline-flex
-                    items-center
-                    gap-2.5
-                    text-[10px]
-                    font-medium
-                    uppercase
-                    tracking-[0.2em]
+                    relative
+                    block
+                    min-h-[190px]
+                    overflow-hidden
+                    rounded-2xl
+                    border
+                    border-[#A7B68D]/20
+                    bg-[#A7B68D]/[0.025]
+                    p-6
+                    backdrop-blur-xl
+                    transition-all
+                    duration-500
+                    hover:-translate-y-1
+                    hover:border-[#A7B68D]/55
+                    hover:bg-[#A7B68D]/[0.05]
+                    hover:shadow-[0_20px_60px_rgba(167,182,141,0.06)]
                   "
-                  style={{
-                    color: colors.muted,
-                  }}
                 >
-                  <Icon
-                    size={14}
+                  {/* Card glow */}
+
+                  <div
                     className="
-                      transition-colors
-                      duration-300
-                      group-hover:text-[#A7B68D]
+                      pointer-events-none
+                      absolute
+                      -right-16
+                      -top-16
+                      h-36
+                      w-36
+                      rounded-full
+                      border
+                      border-[#A7B68D]/10
+                      transition-transform
+                      duration-700
+                      group-hover:scale-125
                     "
                   />
 
-                  <span
+                  {/* Icon */}
+
+                  <div
                     className="
-                      transition-colors
+                      relative
+                      flex
+                      h-11
+                      w-11
+                      items-center
+                      justify-center
+                      rounded-xl
+                      border
+                      border-[#A7B68D]/20
+                      bg-[#A7B68D]/[0.035]
+                      text-[#A7B68D]
+                      transition-all
                       duration-300
-                      group-hover:text-[#F5F3EC]
+                      group-hover:border-[#A7B68D]/50
+                    "
+                  >
+                    <Icon
+                      size={18}
+                      strokeWidth={1.5}
+                    />
+                  </div>
+
+                  {/* Label */}
+
+                  <p
+                    className="
+                      relative
+                      mt-8
+                      text-[9px]
+                      font-medium
+                      uppercase
+                      tracking-[0.25em]
+                      text-[#A7B68D]
                     "
                   >
                     {label}
-                  </span>
+                  </p>
 
-                  <ArrowUpRight
-                    size={12}
+                  {/* Value */}
+
+                  <div
                     className="
+                      relative
+                      mt-2
+                      flex
+                      items-center
+                      justify-between
+                      gap-4
+                    "
+                  >
+                    <p
+                      className="
+                        truncate
+                        text-sm
+                        text-[#F5F3EC]
+                        sm:text-base
+                      "
+                    >
+                      {value}
+                    </p>
+
+                    <ArrowUpRight
+                      size={17}
+                      className="
+                        shrink-0
+                        text-[#8D9489]
+                        transition-all
+                        duration-300
+                        group-hover:-translate-y-1
+                        group-hover:translate-x-1
+                        group-hover:text-[#A7B68D]
+                      "
+                    />
+                  </div>
+
+                  {/* Bottom line */}
+
+                  <span
+                    className="
+                      absolute
+                      bottom-0
+                      left-0
+                      h-px
+                      w-0
+                      bg-[#A7B68D]
                       transition-all
-                      duration-300
-                      group-hover:-translate-y-0.5
-                      group-hover:translate-x-0.5
-                      group-hover:text-[#A7B68D]
+                      duration-500
+                      group-hover:w-full
                     "
                   />
                 </a>
-              )
-            )}
-          </div>
-        </ScrollReveal>
+              </ScrollReveal>
+            )
+          )}
+        </div>
 
-        {/* =================================================
-            CLOSING
-        ================================================= */}
+        {/* Bottom */}
 
         <ScrollReveal
           direction="up"
-          delay={0.3}
-          className="mt-24"
+          delay={0.4}
+          className="mt-16"
         >
           <div
             className="
               flex
-              flex-col
-              gap-5
-              border-t
-              border-[#A7B68D]/10
-              pt-7
-              sm:flex-row
-              sm:items-center
-              sm:justify-between
+              items-center
+              justify-center
+              gap-4
             "
           >
-            <p
+            <span
               className="
-                text-[9px]
-                uppercase
-                tracking-[0.22em]
+                h-px
+                w-16
+                bg-[#A7B68D]/15
               "
-              style={{
-                color: "#667068",
-              }}
-            >
-              Data
-              <span
-                className="mx-2"
-                style={{
-                  color: colors.olive,
-                }}
-              >
-                ·
-              </span>
-              Insight
-              <span
-                className="mx-2"
-                style={{
-                  color: colors.olive,
-                }}
-              >
-                ·
-              </span>
-              Impact
-            </p>
+            />
 
-            <button
-              type="button"
-              onClick={() =>
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                })
-              }
+            <span
               className="
-                group
-                flex
-                items-center
-                gap-2
-                text-[9px]
-                uppercase
-                tracking-[0.2em]
-                transition-colors
-                duration-300
-                hover:text-[#A7B68D]
+                h-1.5
+                w-1.5
+                rounded-full
+                bg-[#A7B68D]/60
               "
-              style={{
-                color: colors.muted,
-              }}
-            >
-              Back to top
+            />
 
-              <ArrowUpRight
-                size={12}
-                className="
-                  rotate-[-45deg]
-                  transition-transform
-                  duration-300
-                  group-hover:-translate-y-0.5
-                "
-              />
-            </button>
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
           </div>
+
+          <p
+            className="
+              mt-5
+              text-center
+              text-[9px]
+              uppercase
+              tracking-[0.3em]
+              text-[#667068]
+            "
+          >
+            Data · Insight · Impact
+          </p>
         </ScrollReveal>
       </div>
     </section>
