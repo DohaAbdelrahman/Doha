@@ -1,451 +1,665 @@
 "use client";
 
-import ScrollReveal, {
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/portfolio/ScrollReveal";
+import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { about } from "@/data/portfolio";
 
-const focusIcons: Record<string, React.ReactNode> = {
-  "bar-chart-3": (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <line x1="12" y1="20" x2="12" y2="10" />
-      <line x1="18" y1="20" x2="18" y2="4" />
-      <line x1="6" y1="20" x2="6" y2="16" />
-    </svg>
-  ),
-
-  brain: (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <path d="M12 2a4 4 0 0 1 4 4c0 1.1-.45 2.1-1.17 2.83L12 11.66l-2.83-2.83A4 4 0 0 1 12 2z" />
-      <path d="M8 10c-2.21 0-4 1.79-4 4v2h16v-2c0-2.21-1.79-4-4-4H8z" />
-    </svg>
-  ),
-
-  search: (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  ),
-
-  sparkles: (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" />
-      <path d="M19 14l.75 2.75L22.5 17.5l-2.75.75L19 21l-.75-2.75-2.75-.75 2.75-.75L19 14z" />
-    </svg>
-  ),
-};
-
 export default function AboutSection() {
+  const approachSteps = [
+    "Explore",
+    "Clean",
+    "Analyze",
+    "Model",
+    "Insight",
+  ];
+
   return (
     <section
       id="about"
       className="
         relative
         overflow-hidden
-        bg-[#0A2138]
-        py-24
-        sm:py-32
+        bg-[#07100D]
+        py-28
+        sm:py-36
       "
     >
-      {/* Subtle background glow */}
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
+
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Top-left orbit */}
+
+        <div
+          className="
+            absolute
+            -left-40
+            -top-40
+            h-[420px]
+            w-[420px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.07]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -left-20
+            -top-20
+            h-[280px]
+            w-[280px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.05]
+          "
+        />
+
+        {/* Bottom-right orbit */}
+
+        <div
+          className="
+            absolute
+            -bottom-48
+            -right-40
+            h-[450px]
+            w-[450px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.06]
+          "
+        />
+
+        {/* Soft center glow */}
+
+        <div
+          className="
+            absolute
+            left-1/2
+            top-1/2
+            h-[500px]
+            w-[500px]
+            -translate-x-1/2
+            -translate-y-1/2
+            rounded-full
+            bg-[#A7B68D]/[0.018]
+            blur-[140px]
+          "
+        />
+
+        {/* Dot pattern */}
+
+        <div
+          className="
+            absolute
+            right-[5%]
+            top-[22%]
+            grid
+            grid-cols-4
+            gap-4
+            opacity-25
+          "
+        >
+          {Array.from({ length: 20 }).map((_, index) => (
+            <span
+              key={index}
+              className="
+                h-1
+                w-1
+                rounded-full
+                bg-[#A7B68D]/50
+              "
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
 
       <div
         className="
-          pointer-events-none
-          absolute
-          left-1/2
-          top-1/4
-          h-[400px]
-          w-[400px]
-          -translate-x-1/2
-          rounded-full
-          bg-[#4F8FD8]/5
-          blur-[130px]
+          relative
+          z-10
+          mx-auto
+          max-w-6xl
+          px-6
+          sm:px-10
         "
-      />
-
-      <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-
-        {/* =====================================================
+      >
+        {/* =================================================
             HEADER
-        ===================================================== */}
+        ================================================= */}
 
         <ScrollReveal className="text-center">
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-8 bg-[#6AA7E8]" />
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-12
+                bg-[#A7B68D]/50
+              "
+            />
 
             <span
               className="
-                text-xs
-                font-semibold
+                text-[10px]
+                font-medium
                 uppercase
-                tracking-[0.3em]
-                text-[#6AA7E8]
+                tracking-[0.38em]
+                text-[#A7B68D]
               "
             >
               About Me
             </span>
 
-            <span className="h-px w-8 bg-[#6AA7E8]" />
+            <span
+              className="
+                h-px
+                w-12
+                bg-[#A7B68D]/50
+              "
+            />
           </div>
 
           <h2
             className="
-              mt-5
-              text-3xl
-              font-bold
-              tracking-[-0.03em]
-              text-white
-
-              sm:text-4xl
-              md:text-5xl
+              mt-6
+              text-5xl
+              font-medium
+              tracking-[-0.06em]
+              text-[#F5F3EC]
+              sm:text-6xl
+              md:text-7xl
             "
           >
-            Turning data into
-            <span className="text-[#6AA7E8]"> insight.</span>
+            Turning data into{" "}
+            <span className="text-[#A7B68D]">
+              insight.
+            </span>
           </h2>
         </ScrollReveal>
 
-        {/* =====================================================
-            INTRO
-        ===================================================== */}
+        {/* =================================================
+            MAIN GLASS PANEL
+        ================================================= */}
 
         <ScrollReveal
           direction="up"
           delay={0.1}
-          className="mx-auto mt-10 max-w-3xl text-center"
+          className="mt-14"
         >
-          <p
+          <article
             className="
-              text-base
-              leading-8
-              text-[#A8B8C8]
-
-              sm:text-lg
-            "
-          >
-            {about.bio[0]}
-          </p>
-        </ScrollReveal>
-
-        {/* =====================================================
-            MY APPROACH
-        ===================================================== */}
-
-        <ScrollReveal
-          direction="up"
-          delay={0.15}
-          className="mx-auto mt-14 max-w-4xl"
-        >
-          <div
-            className="
+              group
               relative
               overflow-hidden
               rounded-2xl
               border
-              border-white/10
-              bg-white/[0.025]
-              px-6
-              py-7
-              sm:px-8
-              sm:py-8
+              border-[#A7B68D]/25
+              bg-white/[0.018]
+              backdrop-blur-2xl
+              transition-all
+              duration-500
+              hover:border-[#A7B68D]/45
             "
           >
-            {/* Accent line */}
+            {/* Glass highlight */}
 
             <div
               className="
+                pointer-events-none
                 absolute
-                left-0
-                top-0
-                h-full
-                w-[2px]
-                bg-gradient-to-b
-                from-[#6AA7E8]
-                via-[#4F8FD8]/60
+                inset-0
+                bg-gradient-to-br
+                from-white/[0.035]
+                via-transparent
                 to-transparent
               "
             />
 
-            <div className="flex items-start gap-5">
-              <div className="hidden pt-1 sm:block">
+            {/* Decorative circle */}
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -right-20
+                -top-20
+                h-52
+                w-52
+                rounded-full
+                border
+                border-[#A7B68D]/10
+                transition-transform
+                duration-700
+                group-hover:scale-110
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -right-8
+                -top-8
+                h-28
+                w-28
+                rounded-full
+                border
+                border-[#A7B68D]/[0.07]
+              "
+            />
+
+            <div
+              className="
+                relative
+                grid
+                lg:grid-cols-[150px_1fr]
+              "
+            >
+              {/* =================================================
+                  NUMBER
+              ================================================= */}
+
+              <div
+                className="
+                  relative
+                  border-b
+                  border-[#A7B68D]/10
+                  px-7
+                  py-8
+                  lg:border-b-0
+                  lg:border-r
+                  lg:px-8
+                  lg:py-10
+                "
+              >
                 <span
                   className="
-                    text-xs
-                    font-semibold
-                    tracking-[0.2em]
-                    text-[#6AA7E8]
+                    text-6xl
+                    font-light
+                    leading-none
+                    tracking-[-0.08em]
+                    text-[#A7B68D]/20
                   "
                 >
                   01
                 </span>
+
+                <span
+                  className="
+                    absolute
+                    bottom-8
+                    left-8
+                    h-1.5
+                    w-1.5
+                    rounded-full
+                    bg-[#A7B68D]
+                    shadow-[0_0_12px_rgba(167,182,141,0.7)]
+                  "
+                />
               </div>
 
-              <div>
-                <p
-                  className="
-                    text-xs
-                    font-semibold
-                    uppercase
-                    tracking-[0.25em]
-                    text-[#71879A]
-                  "
-                >
-                  My Approach
-                </p>
+              {/* =================================================
+                  CONTENT
+              ================================================= */}
+
+              <div className="px-7 py-9 sm:px-10 sm:py-10 lg:px-12">
+                {/* Intro */}
 
                 <p
                   className="
-                    mt-3
-                    text-base
+                    max-w-4xl
+                    text-lg
                     leading-8
-                    text-[#C0CEDB]
-
-                    sm:text-lg
+                    tracking-[-0.015em]
+                    text-[#D2D6D0]
+                    sm:text-xl
                   "
                 >
-                  {about.bio[1]}
-                </p>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* =====================================================
-            FOCUS AREAS
-        ===================================================== */}
-
-        <div className="mt-20">
-          <ScrollReveal className="mb-8">
-            <div className="flex items-end justify-between">
-              <div>
-                <p
-                  className="
-                    text-xs
-                    font-semibold
-                    uppercase
-                    tracking-[0.25em]
-                    text-[#6AA7E8]
-                  "
-                >
-                  What I Focus On
+                  {about.bio[0]}
                 </p>
 
-                <h3
-                  className="
-                    mt-2
-                    text-2xl
-                    font-semibold
-                    tracking-tight
-                    text-white
-                  "
-                >
-                  Areas of expertise
-                </h3>
-              </div>
+                {/* Divider */}
 
-              <span
-                className="
-                  hidden
-                  text-xs
-                  text-[#71879A]
+                <div className="my-9 h-px bg-[#A7B68D]/10" />
 
-                  sm:block
-                "
-              >
-                04 areas
-              </span>
-            </div>
-          </ScrollReveal>
+                {/* Approach */}
 
-          <StaggerContainer
-            className="
-              grid
-              grid-cols-1
-              gap-3
+                <div>
+                  <p
+                    className="
+                      text-[10px]
+                      font-medium
+                      uppercase
+                      tracking-[0.3em]
+                      text-[#A7B68D]
+                    "
+                  >
+                    My Approach
+                  </p>
 
-              sm:grid-cols-2
-            "
-          >
-            {about.focusAreas.map((area, index) => (
-              <StaggerItem key={area.title}>
-                <div
-                  className="
-                    group
-                    relative
-                    overflow-hidden
-                    rounded-2xl
-                    border
-                    border-white/10
-                    bg-white/[0.02]
-                    p-6
-                    transition-all
-                    duration-300
+                  <p
+                    className="
+                      mt-4
+                      max-w-4xl
+                      text-sm
+                      leading-7
+                      text-[#8D9489]
+                      sm:text-base
+                    "
+                  >
+                    {about.bio[1]}
+                  </p>
+                </div>
 
-                    hover:-translate-y-1
-                    hover:border-[#6AA7E8]/30
-                    hover:bg-white/[0.04]
-                  "
-                >
-                  {/* Hover glow */}
+                {/* =================================================
+                    PROCESS
+                ================================================= */}
 
+                <div className="mt-8">
                   <div
                     className="
-                      pointer-events-none
-                      absolute
-                      -right-16
-                      -top-16
-                      h-32
-                      w-32
-                      rounded-full
-                      bg-[#4F8FD8]/0
-                      blur-[50px]
-                      transition-all
-                      duration-500
-
-                      group-hover:bg-[#4F8FD8]/10
+                      flex
+                      flex-wrap
+                      items-center
+                      gap-y-3
                     "
-                  />
+                  >
+                    {approachSteps.map(
+                      (step, index) => (
+                        <div
+                          key={step}
+                          className="flex items-center"
+                        >
+                          <span
+                            className="
+                              text-xs
+                              font-medium
+                              uppercase
+                              tracking-[0.16em]
+                              text-[#C5CBC4]
+                            "
+                          >
+                            {step}
+                          </span>
 
-                  <div className="relative z-10">
-
-                    {/* Number + Icon */}
-
-                    <div className="flex items-center justify-between">
-                      <span
-                        className="
-                          text-xs
-                          font-medium
-                          tracking-[0.2em]
-                          text-[#526B80]
-                        "
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-
-                      <div
-                        className="
-                          flex
-                          h-10
-                          w-10
-                          items-center
-                          justify-center
-                          rounded-xl
-                          border
-                          border-white/10
-                          bg-[#4F8FD8]/5
-                          text-[#6AA7E8]
-                          transition-all
-                          duration-300
-
-                          group-hover:border-[#6AA7E8]/30
-                          group-hover:bg-[#4F8FD8]/10
-                          group-hover:shadow-[0_0_20px_rgba(106,167,232,0.15)]
-                        "
-                      >
-                        {focusIcons[area.icon]}
-                      </div>
-                    </div>
-
-                    {/* Title */}
-
-                    <h4
-                      className="
-                        mt-7
-                        text-lg
-                        font-semibold
-                        text-white
-                        transition-colors
-                        duration-300
-
-                        group-hover:text-[#8CC1F0]
-                      "
-                    >
-                      {area.title}
-                    </h4>
-
-                    {/* Description */}
-
-                    <p
-                      className="
-                        mt-2
-                        text-sm
-                        leading-7
-                        text-[#8297AA]
-                        transition-colors
-                        duration-300
-
-                        group-hover:text-[#A8B8C8]
-                      "
-                    >
-                      {area.description}
-                    </p>
-
-                    {/* Bottom line */}
-
-                    <div
-                      className="
-                        mt-6
-                        h-px
-                        w-0
-                        bg-[#6AA7E8]
-                        transition-all
-                        duration-500
-
-                        group-hover:w-12
-                      "
-                    />
+                          {index <
+                            approachSteps.length - 1 && (
+                            <span
+                              className="
+                                mx-4
+                                text-[#A7B68D]/50
+                              "
+                            >
+                              →
+                            </span>
+                          )}
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
+              </div>
+            </div>
 
-        {/* =====================================================
-            CLOSING STATEMENT
-        ===================================================== */}
+            {/* Bottom glow line */}
+
+            <span
+              className="
+                absolute
+                bottom-0
+                left-1/2
+                h-px
+                w-0
+                -translate-x-1/2
+                bg-[#A7B68D]
+                shadow-[0_0_15px_rgba(167,182,141,0.6)]
+                transition-all
+                duration-700
+                group-hover:w-1/2
+              "
+            />
+          </article>
+        </ScrollReveal>
+
+        {/* =================================================
+            FOCUS AREAS
+        ================================================= */}
 
         <ScrollReveal
           direction="up"
-          delay={0.1}
+          delay={0.15}
+          className="mt-16"
+        >
+          <div
+            className="
+              flex
+              flex-col
+              gap-5
+              border-t
+              border-[#A7B68D]/10
+              pt-8
+              sm:flex-row
+              sm:items-end
+              sm:justify-between
+            "
+          >
+            <div>
+              <p
+                className="
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.3em]
+                  text-[#A7B68D]
+                "
+              >
+                What I Focus On
+              </p>
+
+              <h3
+                className="
+                  mt-2
+                  text-2xl
+                  font-medium
+                  tracking-[-0.04em]
+                  text-[#F5F3EC]
+                "
+              >
+                Areas of expertise
+              </h3>
+            </div>
+
+            <span
+              className="
+                text-[10px]
+                uppercase
+                tracking-[0.2em]
+                text-[#667068]
+              "
+            >
+              {String(about.focusAreas.length).padStart(
+                2,
+                "0"
+              )}{" "}
+              areas
+            </span>
+          </div>
+        </ScrollReveal>
+
+        {/* =================================================
+            FOCUS AREA ROWS
+        ================================================= */}
+
+        <div className="mt-5">
+          {about.focusAreas.map((area, index) => (
+            <ScrollReveal
+              key={area.title}
+              direction="up"
+              delay={index * 0.05}
+            >
+              <div
+                className="
+                  group
+                  relative
+                  flex
+                  items-center
+                  gap-5
+                  border-b
+                  border-[#A7B68D]/10
+                  py-5
+                  transition-all
+                  duration-300
+                  hover:px-3
+                "
+              >
+                {/* Number */}
+
+                <span
+                  className="
+                    w-8
+                    shrink-0
+                    text-[10px]
+                    tracking-[0.18em]
+                    text-[#667068]
+                    transition-colors
+                    duration-300
+                    group-hover:text-[#A7B68D]
+                  "
+                >
+                  {String(index + 1).padStart(
+                    2,
+                    "0"
+                  )}
+                </span>
+
+                {/* Title */}
+
+                <h4
+                  className="
+                    min-w-0
+                    text-base
+                    font-medium
+                    text-[#D2D6D0]
+                    transition-colors
+                    duration-300
+                    group-hover:text-[#A7B68D]
+                    sm:text-lg
+                  "
+                >
+                  {area.title}
+                </h4>
+
+                {/* Description */}
+
+                <p
+                  className="
+                    ml-auto
+                    hidden
+                    max-w-md
+                    text-right
+                    text-sm
+                    leading-6
+                    text-[#707A72]
+                    md:block
+                  "
+                >
+                  {area.description}
+                </p>
+
+                {/* Arrow */}
+
+                <span
+                  className="
+                    shrink-0
+                    text-[#667068]
+                    transition-all
+                    duration-300
+                    group-hover:translate-x-1
+                    group-hover:text-[#A7B68D]
+                  "
+                >
+                  ↗
+                </span>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* =================================================
+            CLOSING STATEMENT
+        ================================================= */}
+
+        <ScrollReveal
+          direction="up"
+          delay={0.2}
           className="mx-auto mt-16 max-w-3xl text-center"
         >
           <p
             className="
               text-sm
               leading-7
-              text-[#71879A]
+              text-[#707A72]
+              sm:text-base
             "
           >
             {about.bio[3]}
           </p>
+        </ScrollReveal>
+
+        {/* =================================================
+            BOTTOM DECORATION
+        ================================================= */}
+
+        <ScrollReveal
+          direction="up"
+          delay={0.25}
+          className="mt-12"
+        >
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
+
+            <span
+              className="
+                h-1.5
+                w-1.5
+                rounded-full
+                bg-[#A7B68D]/60
+              "
+            />
+
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
+          </div>
         </ScrollReveal>
       </div>
     </section>
