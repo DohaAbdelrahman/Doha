@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   Github,
   X,
@@ -12,14 +10,13 @@ import {
 
 import { projects, type Project } from "@/data/portfolio";
 
-const PROJECTS_PER_PAGE = 6;
-
 const colors = {
   bg: "#07100D",
+  card: "#0A130F",
   cream: "#F5F3EC",
   olive: "#A7B68D",
   muted: "#8D9489",
-  border: "rgba(167, 182, 141, 0.20)",
+  line: "rgba(167, 182, 141, 0.16)",
 };
 
 /* =========================================================
@@ -77,8 +74,13 @@ function CaseStudyModal({
           y: 20,
           scale: 0.97,
         }}
-        transition={{ duration: 0.3 }}
-        onClick={(e) => e.stopPropagation()}
+        transition={{
+          duration: 0.3,
+          ease: "easeOut",
+        }}
+        onClick={(event) =>
+          event.stopPropagation()
+        }
         className="
           relative
           max-h-[90vh]
@@ -89,16 +91,21 @@ function CaseStudyModal({
           border
           border-[#A7B68D]/20
           bg-[#0C1511]/95
-          shadow-[0_30px_100px_rgba(0,0,0,.55)]
+          shadow-[0_30px_100px_rgba(0,0,0,0.55)]
           backdrop-blur-2xl
         "
       >
+        {/* Close */}
+
         <button
+          type="button"
           onClick={onClose}
+          aria-label="Close case study"
           className="
             absolute
             right-5
             top-5
+            z-20
             flex
             h-10
             w-10
@@ -108,31 +115,39 @@ function CaseStudyModal({
             border
             border-[#A7B68D]/20
             text-[#8D9489]
-            transition
+            transition-all
+            duration-300
             hover:border-[#A7B68D]/60
             hover:text-[#A7B68D]
           "
         >
-          <X size={18} />
+          <X size={18} strokeWidth={1.5} />
         </button>
+
+        {/* Header */}
 
         <div
           className="
             border-b
             border-[#A7B68D]/10
             px-6
-            py-8
+            pb-8
+            pt-8
             sm:px-10
+            sm:pt-10
           "
         >
           <p
             className="
               mb-4
               text-[10px]
+              font-medium
               uppercase
               tracking-[0.3em]
             "
-            style={{ color: colors.olive }}
+            style={{
+              color: colors.olive,
+            }}
           >
             Case Study
           </p>
@@ -142,10 +157,13 @@ function CaseStudyModal({
               pr-12
               text-3xl
               font-medium
+              leading-tight
               tracking-[-0.04em]
               sm:text-5xl
             "
-            style={{ color: colors.cream }}
+            style={{
+              color: colors.cream,
+            }}
           >
             {project.title}
             <span style={{ color: colors.olive }}>
@@ -155,22 +173,31 @@ function CaseStudyModal({
 
           <p
             className="mt-3 text-sm"
-            style={{ color: colors.olive }}
+            style={{
+              color: colors.olive,
+            }}
           >
             {project.category}
           </p>
         </div>
 
+        {/* Body */}
+
         <div className="px-6 py-8 sm:px-10">
+          {/* Overview */}
+
           <div className="mb-10">
             <p
               className="
                 mb-3
                 text-[10px]
+                font-medium
                 uppercase
                 tracking-[0.25em]
               "
-              style={{ color: colors.olive }}
+              style={{
+                color: colors.olive,
+              }}
             >
               Overview
             </p>
@@ -181,11 +208,15 @@ function CaseStudyModal({
                 text-sm
                 leading-7
               "
-              style={{ color: colors.muted }}
+              style={{
+                color: colors.muted,
+              }}
             >
               {project.shortDescription}
             </p>
           </div>
+
+          {/* Sections */}
 
           <div>
             {sections.map(([label, value], index) => (
@@ -203,18 +234,26 @@ function CaseStudyModal({
                 <div className="flex gap-3">
                   <span
                     className="text-[10px]"
-                    style={{ color: colors.olive }}
+                    style={{
+                      color: colors.olive,
+                    }}
                   >
-                    {String(index + 1).padStart(2, "0")}
+                    {String(index + 1).padStart(
+                      2,
+                      "0"
+                    )}
                   </span>
 
                   <span
                     className="
                       text-[10px]
+                      font-medium
                       uppercase
                       tracking-[0.2em]
                     "
-                    style={{ color: colors.cream }}
+                    style={{
+                      color: colors.cream,
+                    }}
                   >
                     {label}
                   </span>
@@ -225,7 +264,9 @@ function CaseStudyModal({
                     text-sm
                     leading-7
                   "
-                  style={{ color: colors.muted }}
+                  style={{
+                    color: colors.muted,
+                  }}
                 >
                   {value}
                 </p>
@@ -233,41 +274,69 @@ function CaseStudyModal({
             ))}
           </div>
 
-          <div className="mt-6 border-t border-[#A7B68D]/10 pt-7">
+          {/* Technologies */}
+
+          <div
+            className="
+              mt-6
+              border-t
+              border-[#A7B68D]/10
+              pt-7
+            "
+          >
             <p
               className="
                 mb-4
                 text-[10px]
+                font-medium
                 uppercase
                 tracking-[0.25em]
               "
-              style={{ color: colors.olive }}
+              style={{
+                color: colors.olive,
+              }}
             >
               Technologies
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="
-                    rounded-full
-                    border
-                    border-[#A7B68D]/20
-                    bg-[#A7B68D]/[0.03]
-                    px-3
-                    py-1.5
-                    text-xs
-                  "
-                  style={{ color: colors.muted }}
-                >
-                  {tech}
-                </span>
-              ))}
+              {project.technologies.map(
+                (technology) => (
+                  <span
+                    key={technology}
+                    className="
+                      rounded-full
+                      border
+                      border-[#A7B68D]/20
+                      bg-[#A7B68D]/[0.03]
+                      px-3
+                      py-1.5
+                      text-xs
+                    "
+                    style={{
+                      color: colors.muted,
+                    }}
+                  >
+                    {technology}
+                  </span>
+                )
+              )}
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          {/* Links */}
+
+          <div
+            className="
+              mt-8
+              flex
+              flex-wrap
+              gap-3
+              border-t
+              border-[#A7B68D]/10
+              pt-7
+            "
+          >
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -279,18 +348,24 @@ function CaseStudyModal({
                   gap-2
                   rounded-xl
                   border
-                  border-[#A7B68D]/25
+                  border-[#A7B68D]/30
+                  bg-[#A7B68D]/[0.025]
                   px-5
                   py-3
                   text-sm
-                  transition
+                  transition-all
+                  duration-300
                   hover:border-[#A7B68D]/70
-                  hover:bg-[#A7B68D]/[0.05]
+                  hover:bg-[#A7B68D]/[0.08]
                 "
-                style={{ color: colors.cream }}
+                style={{
+                  color: colors.cream,
+                }}
               >
                 <Github size={16} />
+
                 GitHub
+
                 <ArrowUpRight size={14} />
               </a>
             )}
@@ -311,12 +386,16 @@ function CaseStudyModal({
                   px-5
                   py-3
                   text-sm
-                  transition
+                  transition-all
+                  duration-300
                   hover:bg-[#A7B68D]/[0.13]
                 "
-                style={{ color: colors.cream }}
+                style={{
+                  color: colors.cream,
+                }}
               >
                 Live Demo
+
                 <ArrowUpRight size={14} />
               </a>
             )}
@@ -341,37 +420,43 @@ function FeaturedProject({
   onOpen: () => void;
 }) {
   return (
-    <motion.div
+    <motion.article
       initial={{
         opacity: 0,
-        y: 30,
+        y: 20,
       }}
       whileInView={{
         opacity: 1,
         y: 0,
       }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
+      viewport={{
+        once: true,
+        margin: "-80px",
+      }}
+      transition={{
+        duration: 0.65,
+        ease: "easeOut",
+      }}
       className="
         relative
         overflow-hidden
         rounded-xl
         border
-        border-[#A7B68D]/35
-        bg-[#0A130F]/60
+        border-[#A7B68D]/25
+        bg-[#0A130F]/70
         backdrop-blur-xl
       "
     >
-      {/* Decorative glow */}
+      {/* Background circles */}
 
       <div
         className="
           pointer-events-none
           absolute
-          right-[-100px]
-          top-[-120px]
-          h-[350px]
-          w-[350px]
+          -right-24
+          -top-28
+          h-72
+          w-72
           rounded-full
           border
           border-[#A7B68D]/10
@@ -382,49 +467,99 @@ function FeaturedProject({
         className="
           pointer-events-none
           absolute
-          right-[-30px]
-          top-[-50px]
-          h-[220px]
-          w-[220px]
+          -right-8
+          -top-12
+          h-48
+          w-48
           rounded-full
           border
           border-[#A7B68D]/10
         "
       />
 
-      <div className="relative grid lg:grid-cols-[1.1fr_0.9fr]">
-        {/* Left */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-20
+          top-20
+          h-1.5
+          w-1.5
+          rounded-full
+          bg-[#A7B68D]/70
+          shadow-[0_0_15px_rgba(167,182,141,0.7)]
+        "
+      />
 
-        <div className="p-7 sm:p-10 lg:p-12">
-          <div className="mb-7 flex items-center gap-4">
-            <span
-              className="
-                text-[10px]
-                uppercase
-                tracking-[0.3em]
-              "
-              style={{ color: colors.olive }}
-            >
-              Featured Project
-            </span>
+      <div
+        className="
+          relative
+          grid
+          lg:grid-cols-[1.05fr_0.95fr]
+        "
+      >
+        {/* =================================================
+            LEFT
+        ================================================= */}
 
-            <span className="h-px w-8 bg-[#A7B68D]/40" />
-          </div>
+        <div
+          className="
+            p-7
+            sm:p-9
+            lg:p-10
+          "
+        >
+          {/* Label */}
 
           <div
             className="
               mb-5
-              text-[100px]
+              flex
+              items-center
+              gap-4
+            "
+          >
+            <span
+              className="
+                text-[9px]
+                font-medium
+                uppercase
+                tracking-[0.3em]
+              "
+              style={{
+                color: colors.olive,
+              }}
+            >
+              Featured Project
+            </span>
+
+            <span
+              className="
+                h-px
+                w-8
+                bg-[#A7B68D]/40
+              "
+            />
+          </div>
+
+          {/* Number */}
+
+          <div
+            className="
+              mb-3
+              text-[82px]
               font-light
               leading-none
               tracking-[-0.08em]
             "
             style={{
-              color: "rgba(167,182,141,.15)",
+              color: "rgba(167,182,141,0.13)",
             }}
           >
             {String(index + 1).padStart(2, "0")}
           </div>
+
+          {/* Title */}
 
           <h3
             className="
@@ -432,43 +567,61 @@ function FeaturedProject({
               text-4xl
               font-medium
               uppercase
-              leading-[0.95]
-              tracking-[-0.045em]
-              sm:text-5xl
+              leading-[0.94]
+              tracking-[-0.05em]
+              sm:text-[46px]
             "
-            style={{ color: colors.cream }}
+            style={{
+              color: colors.cream,
+            }}
           >
             {project.title}
           </h3>
 
+          {/* Category */}
+
           <p
-            className="mt-5 text-sm"
-            style={{ color: colors.olive }}
+            className="
+              mt-4
+              text-xs
+            "
+            style={{
+              color: colors.olive,
+            }}
           >
             {project.category}
           </p>
 
+          {/* Description */}
+
           <p
             className="
-              mt-5
+              mt-4
               max-w-xl
               text-sm
-              leading-7
+              leading-6
             "
-            style={{ color: colors.muted }}
+            style={{
+              color: colors.muted,
+            }}
           >
             {project.shortDescription}
           </p>
 
-          <div className="mt-7">
+          {/* Technologies */}
+
+          <div className="mt-6">
             <p
               className="
                 mb-3
-                text-[10px]
+                text-[9px]
+                font-medium
                 uppercase
                 tracking-[0.25em]
               "
-              style={{ color: colors.olive }}
+              style={{
+                color: colors.olive,
+              }}
             >
               Technologies
             </p>
@@ -476,100 +629,115 @@ function FeaturedProject({
             <div className="flex flex-wrap gap-2">
               {project.technologies
                 .slice(0, 6)
-                .map((tech) => (
+                .map((technology) => (
                   <span
-                    key={tech}
+                    key={technology}
                     className="
                       rounded-full
                       border
-                      border-[#A7B68D]/25
+                      border-[#A7B68D]/20
+                      bg-[#A7B68D]/[0.02]
                       px-3
                       py-1.5
-                      text-[10px]
+                      text-[9px]
                     "
-                    style={{ color: colors.muted }}
+                    style={{
+                      color: colors.muted,
+                    }}
                   >
-                    {tech}
+                    {technology}
                   </span>
                 ))}
             </div>
           </div>
 
+          {/* Button */}
+
           <button
+            type="button"
             onClick={onOpen}
             className="
-              mt-8
+              mt-7
               inline-flex
               items-center
               gap-4
               rounded-lg
               border
-              border-[#A7B68D]/60
-              bg-[#A7B68D]/[0.05]
-              px-6
-              py-3.5
-              text-xs
+              border-[#A7B68D]/55
+              bg-[#A7B68D]/[0.04]
+              px-5
+              py-3
+              text-[10px]
+              font-medium
               uppercase
-              tracking-[0.15em]
+              tracking-[0.16em]
               transition-all
-              hover:bg-[#A7B68D]/[0.12]
+              duration-300
+              hover:border-[#A7B68D]
+              hover:bg-[#A7B68D]/[0.10]
             "
-            style={{ color: colors.cream }}
+            style={{
+              color: colors.cream,
+            }}
           >
             View Case Study
 
             <ArrowUpRight
-              size={17}
-              style={{ color: colors.olive }}
+              size={15}
+              style={{
+                color: colors.olive,
+              }}
             />
           </button>
         </div>
 
-        {/* Right */}
+        {/* =================================================
+            RIGHT
+        ================================================= */}
 
         <div
           className="
             border-t
             border-[#A7B68D]/10
             p-7
-            sm:p-10
+            sm:p-9
             lg:border-l
             lg:border-t-0
-            lg:p-12
+            lg:p-10
           "
         >
-          <div className="space-y-8">
-            <InfoItem
-              label="PROBLEM"
+          <div className="space-y-7">
+            <FeaturedInfo
+              label="Problem"
               value={project.problem}
             />
 
-            <InfoItem
-              label="APPROACH"
+            <FeaturedInfo
+              label="Approach"
               value={project.analysis}
             />
 
-            <InfoItem
-              label="RESULT"
+            <FeaturedInfo
+              label="Result"
               value={project.results}
             />
 
-            <InfoItem
-              label="DATA"
+            <FeaturedInfo
+              label="Data"
               value={project.data}
             />
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
 /* =========================================================
-   INFO ITEM
+   FEATURED INFO
 ========================================================= */
 
-function InfoItem({
+function FeaturedInfo({
   label,
   value,
 }: {
@@ -580,41 +748,53 @@ function InfoItem({
     <div className="flex gap-4">
       <div
         className="
-          mt-1
+          mt-0.5
           flex
-          h-10
-          w-10
+          h-9
+          w-9
           shrink-0
           items-center
           justify-center
           rounded-full
           border
-          border-[#A7B68D]/30
-          text-[#A7B68D]
+          border-[#A7B68D]/25
         "
       >
-        <span className="h-1.5 w-1.5 rounded-full bg-[#A7B68D]" />
+        <span
+          className="
+            h-1.5
+            w-1.5
+            rounded-full
+            bg-[#A7B68D]
+          "
+        />
       </div>
 
       <div>
         <p
           className="
             mb-2
-            text-[10px]
+            text-[9px]
+            font-medium
             uppercase
-            tracking-[0.2em]
+            tracking-[0.25em]
           "
-          style={{ color: colors.olive }}
+          style={{
+            color: colors.olive,
+          }}
         >
           {label}
         </p>
 
         <p
           className="
+            max-w-xl
             text-sm
             leading-6
           "
-          style={{ color: colors.muted }}
+          style={{
+            color: colors.muted,
+          }}
         >
           {value}
         </p>
@@ -637,10 +817,10 @@ function ProjectRow({
   onOpen: () => void;
 }) {
   return (
-    <motion.div
+    <motion.article
       initial={{
         opacity: 0,
-        y: 12,
+        y: 10,
       }}
       whileInView={{
         opacity: 1,
@@ -648,38 +828,42 @@ function ProjectRow({
       }}
       viewport={{
         once: true,
+        margin: "-40px",
       }}
       transition={{
-        duration: 0.5,
+        duration: 0.45,
       }}
       className="
         group
         grid
-        grid-cols-[60px_1fr_auto]
+        grid-cols-[50px_1fr_auto]
         items-center
         gap-4
         border-t
         border-[#A7B68D]/10
         px-4
-        py-7
+        py-6
         transition-all
         duration-300
         hover:bg-[#A7B68D]/[0.025]
-        sm:grid-cols-[80px_1fr_auto]
-        sm:px-8
+        sm:grid-cols-[65px_1fr_auto]
+        sm:px-6
+        sm:py-7
       "
     >
       {/* Number */}
 
       <span
         className="
-          text-2xl
+          text-xl
           font-light
-          tracking-[-0.04em]
+          tracking-[-0.03em]
           transition-colors
           group-hover:text-[#A7B68D]
         "
-        style={{ color: colors.olive }}
+        style={{
+          color: colors.olive,
+        }}
       >
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -687,163 +871,139 @@ function ProjectRow({
       {/* Content */}
 
       <button
+        type="button"
         onClick={onOpen}
-        className="min-w-0 text-left"
+        className="
+          min-w-0
+          text-left
+        "
       >
         <h3
           className="
-            text-lg
+            truncate
+            text-base
             font-medium
-            tracking-[-0.025em]
-            transition
+            tracking-[-0.02em]
+            transition-transform
+            duration-300
             group-hover:translate-x-1
-            sm:text-xl
+            sm:text-lg
           "
-          style={{ color: colors.cream }}
+          style={{
+            color: colors.cream,
+          }}
         >
           {project.title}
         </h3>
 
-        <p
-          className="
-            mt-1
-            text-xs
-          "
-          style={{ color: colors.olive }}
-        >
-          {project.category}
-        </p>
+        <div className="mt-1 flex items-center gap-3">
+          <span
+            className="
+              text-[9px]
+              uppercase
+              tracking-[0.16em]
+            "
+            style={{
+              color: colors.olive,
+            }}
+          >
+            {project.category}
+          </span>
 
-        <p
-          className="
-            mt-2
-            hidden
-            max-w-xl
-            text-xs
-            leading-5
-            sm:block
-          "
-          style={{ color: colors.muted }}
-        >
-          {project.shortDescription}
-        </p>
+          <span
+            className="
+              hidden
+              h-px
+              w-4
+              bg-[#A7B68D]/20
+              sm:block
+            "
+          />
+
+          <span
+            className="
+              hidden
+              text-[10px]
+              sm:block
+            "
+            style={{
+              color: colors.muted,
+            }}
+          >
+            {project.technologies
+              .slice(0, 3)
+              .join(" · ")}
+          </span>
+        </div>
       </button>
-
-      {/* Technologies */}
-
-      <div
-        className="
-          hidden
-          items-center
-          gap-2
-          lg:flex
-        "
-      >
-        {project.technologies
-          .slice(0, 4)
-          .map((tech) => (
-            <span
-              key={tech}
-              className="
-                rounded-full
-                border
-                border-[#A7B68D]/20
-                px-2.5
-                py-1
-                text-[9px]
-              "
-              style={{ color: colors.muted }}
-            >
-              {tech}
-            </span>
-          ))}
-      </div>
 
       {/* View */}
 
       <button
+        type="button"
         onClick={onOpen}
         className="
           flex
           items-center
           gap-3
-          text-[10px]
+          text-[9px]
           uppercase
           tracking-[0.15em]
         "
-        style={{ color: colors.olive }}
+        style={{
+          color: colors.olive,
+        }}
       >
         <span className="hidden sm:block">
-          View
+          View Project
         </span>
 
         <span
           className="
             flex
-            h-10
-            w-10
+            h-9
+            w-9
             items-center
             justify-center
             rounded-full
             border
-            border-[#A7B68D]/40
+            border-[#A7B68D]/30
             transition-all
+            duration-300
             group-hover:border-[#A7B68D]
-            group-hover:bg-[#A7B68D]/[0.07]
+            group-hover:bg-[#A7B68D]/[0.06]
           "
         >
           <ArrowUpRight
-            size={15}
+            size={14}
             className="
               transition-transform
+              duration-300
               group-hover:-translate-y-0.5
               group-hover:translate-x-0.5
             "
           />
         </span>
       </button>
-    </motion.div>
+    </motion.article>
   );
 }
 
 /* =========================================================
-   MAIN
+   MAIN PROJECTS SECTION
 ========================================================= */
 
 export default function ProjectsSection() {
-  const [currentPage, setCurrentPage] = useState(1);
   const [selectedProject, setSelectedProject] =
     useState<Project | null>(null);
 
-  const totalPages = Math.max(
-    1,
-    Math.ceil(projects.length / PROJECTS_PER_PAGE)
+  const featuredProject =
+    projects.find((project) => project.featured) ??
+    projects[0];
+
+  const remainingProjects = projects.filter(
+    (project) => project.id !== featuredProject?.id
   );
-
-  const startIndex =
-    (currentPage - 1) * PROJECTS_PER_PAGE;
-
-  const currentProjects = projects.slice(
-    startIndex,
-    startIndex + PROJECTS_PER_PAGE
-  );
-
-  const featuredProject = currentProjects[0];
-
-  const remainingProjects =
-    currentProjects.slice(1);
-
-  const goPrevious = () => {
-    setCurrentPage((page) =>
-      page > 1 ? page - 1 : totalPages
-    );
-  };
-
-  const goNext = () => {
-    setCurrentPage((page) =>
-      page < totalPages ? page + 1 : 1
-    );
-  };
 
   return (
     <>
@@ -857,26 +1017,28 @@ export default function ProjectsSection() {
           sm:py-36
         "
       >
-        {/* Background */}
+        {/* =====================================================
+            BACKGROUND
+        ===================================================== */}
 
         <div className="pointer-events-none absolute inset-0">
-          {/* Dot grid */}
+          {/* Dot pattern */}
 
           <div
             className="
               absolute
-              left-[3%]
+              left-[4%]
               top-[8%]
               grid
               grid-cols-5
               gap-5
-              opacity-40
+              opacity-35
             "
           >
             {Array.from({ length: 25 }).map(
-              (_, i) => (
+              (_, index) => (
                 <span
-                  key={i}
+                  key={index}
                   className="
                     h-1
                     w-1
@@ -888,13 +1050,13 @@ export default function ProjectsSection() {
             )}
           </div>
 
-          {/* Orbital circles */}
+          {/* Right circles */}
 
           <div
             className="
               absolute
-              right-[-130px]
-              top-[80px]
+              right-[-120px]
+              top-[-100px]
               h-[360px]
               w-[360px]
               rounded-full
@@ -906,30 +1068,36 @@ export default function ProjectsSection() {
           <div
             className="
               absolute
-              right-[-70px]
-              top-[140px]
-              h-[240px]
-              w-[240px]
+              right-[-55px]
+              top-[-35px]
+              h-[230px]
+              w-[230px]
               rounded-full
               border
               border-[#A7B68D]/10
             "
           />
 
+          {/* Center glow */}
+
           <div
             className="
               absolute
               left-1/2
-              top-[35%]
+              top-[45%]
               h-[500px]
               w-[500px]
               -translate-x-1/2
               rounded-full
-              bg-[#A7B68D]/[0.018]
+              bg-[#A7B68D]/[0.015]
               blur-[140px]
             "
           />
         </div>
+
+        {/* =====================================================
+            CONTENT
+        ===================================================== */}
 
         <div
           className="
@@ -941,9 +1109,7 @@ export default function ProjectsSection() {
             sm:px-10
           "
         >
-          {/* =================================================
-              HEADER
-          ================================================= */}
+          {/* Header */}
 
           <motion.header
             initial={{
@@ -954,8 +1120,16 @@ export default function ProjectsSection() {
               opacity: 1,
               y: 0,
             }}
-            viewport={{ once: true }}
-            className="mb-16 text-center"
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.6,
+            }}
+            className="
+              mb-14
+              text-center
+            "
           >
             <div
               className="
@@ -963,23 +1137,38 @@ export default function ProjectsSection() {
                 flex
                 items-center
                 justify-center
-                gap-5
+                gap-4
               "
             >
-              <span className="h-px w-12 bg-[#A7B68D]/60" />
+              <span
+                className="
+                  h-px
+                  w-10
+                  bg-[#A7B68D]/60
+                "
+              />
 
               <span
                 className="
                   text-[10px]
+                  font-medium
                   uppercase
                   tracking-[0.35em]
                 "
-                style={{ color: colors.olive }}
+                style={{
+                  color: colors.olive,
+                }}
               >
                 Selected Work
               </span>
 
-              <span className="h-px w-12 bg-[#A7B68D]/60" />
+              <span
+                className="
+                  h-px
+                  w-10
+                  bg-[#A7B68D]/60
+                "
+              />
             </div>
 
             <h2
@@ -990,210 +1179,160 @@ export default function ProjectsSection() {
                 sm:text-7xl
                 md:text-8xl
               "
-              style={{ color: colors.cream }}
+              style={{
+                color: colors.cream,
+              }}
             >
               Projects
-              <span style={{ color: colors.olive }}>
+              <span
+                style={{
+                  color: colors.olive,
+                }}
+              >
                 .
               </span>
             </h2>
-
-            <p
-              className="
-                mx-auto
-                mt-5
-                max-w-xl
-                text-sm
-                leading-7
-              "
-              style={{ color: colors.muted }}
-            >
-              A collection of data-driven projects
-              solving real-world problems with
-              analytics, machine learning and insight.
-            </p>
           </motion.header>
 
-          {/* =================================================
-              FEATURED
-          ================================================= */}
+          {/* Featured */}
 
           {featuredProject && (
             <FeaturedProject
               project={featuredProject}
-              index={startIndex}
+              index={0}
               onOpen={() =>
-                setSelectedProject(featuredProject)
+                setSelectedProject(
+                  featuredProject
+                )
               }
             />
           )}
 
-          {/* =================================================
-              PROJECT LIST
-          ================================================= */}
+          {/* Project list */}
 
-          {remainingProjects.length > 0 && (
-            <div
-              className="
-                mt-4
-                overflow-hidden
-                rounded-xl
-                border
-                border-[#A7B68D]/15
-                bg-[#08110E]/50
-                backdrop-blur-md
-              "
-            >
-              {remainingProjects.map(
-                (project, index) => (
-                  <ProjectRow
-                    key={project.id}
-                    project={project}
-                    index={startIndex + index + 1}
-                    onOpen={() =>
-                      setSelectedProject(project)
-                    }
-                  />
-                )
-              )}
-            </div>
-          )}
-
-          {/* =================================================
-              PAGINATION
-          ================================================= */}
-
-          <div className="mt-8 flex justify-center">
-            <div
-              className="
-                flex
-                items-center
-                overflow-hidden
-                rounded-xl
-                border
-                border-[#A7B68D]/35
-                bg-[#A7B68D]/[0.025]
-                backdrop-blur-xl
-              "
-            >
-              <button
-                onClick={goPrevious}
-                className="
-                  flex
-                  items-center
-                  gap-2
-                  px-5
-                  py-3
-                  text-[10px]
-                  uppercase
-                  tracking-[0.18em]
-                  transition
-                  hover:bg-[#A7B68D]/[0.07]
-                "
-                style={{ color: colors.olive }}
-              >
-                <ArrowLeft size={14} />
-
-                <span>Less Than</span>
-              </button>
-
-              <span
-                className="
-                  h-6
-                  w-px
-                  bg-[#A7B68D]/20
-                "
-              />
-
-              <span
-                className="
-                  px-5
-                  text-xs
-                  tracking-[0.15em]
-                "
-                style={{ color: colors.cream }}
-              >
-                {currentPage} / {totalPages}
-              </span>
-
-              <span
-                className="
-                  h-6
-                  w-px
-                  bg-[#A7B68D]/20
-                "
-              />
-
-              <button
-                onClick={goNext}
-                className="
-                  flex
-                  items-center
-                  gap-2
-                  px-5
-                  py-3
-                  text-[10px]
-                  uppercase
-                  tracking-[0.18em]
-                  transition
-                  hover:bg-[#A7B68D]/[0.07]
-                "
-                style={{ color: colors.olive }}
-              >
-                <span>More</span>
-
-                <ArrowRight size={14} />
-              </button>
-            </div>
+          <div
+            className="
+              mt-4
+              overflow-hidden
+              rounded-xl
+              border
+              border-[#A7B68D]/15
+              bg-[#08110E]/45
+              backdrop-blur-md
+            "
+          >
+            {remainingProjects.map(
+              (project, index) => (
+                <ProjectRow
+                  key={project.id}
+                  project={project}
+                  index={index + 1}
+                  onOpen={() =>
+                    setSelectedProject(project)
+                  }
+                />
+              )
+            )}
           </div>
 
           {/* =================================================
-              GITHUB
+              EXPLORE MORE ON GITHUB
           ================================================= */}
 
-          <div className="mt-5 flex justify-center">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 12,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="
+              mt-8
+              flex
+              justify-center
+            "
+          >
             <a
               href="https://github.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="
+                group
                 inline-flex
                 items-center
-                gap-3
-                rounded-xl
+                gap-4
+                rounded-lg
                 border
-                border-[#A7B68D]/45
+                border-[#A7B68D]/50
                 bg-[#A7B68D]/[0.025]
-                px-6
+                px-7
                 py-3.5
                 text-[10px]
+                font-medium
                 uppercase
                 tracking-[0.2em]
+                backdrop-blur-md
                 transition-all
                 duration-300
                 hover:border-[#A7B68D]
                 hover:bg-[#A7B68D]/[0.08]
+                hover:shadow-[0_0_30px_rgba(167,182,141,0.08)]
               "
-              style={{ color: colors.olive }}
+              style={{
+                color: colors.cream,
+              }}
             >
+              <Github
+                size={17}
+                className="
+                  text-[#A7B68D]
+                  transition-transform
+                  duration-300
+                  group-hover:scale-110
+                "
+              />
+
               Explore More on GitHub
 
-              <Github size={17} />
+              <ArrowUpRight
+                size={15}
+                className="
+                  text-[#A7B68D]
+                  transition-transform
+                  duration-300
+                  group-hover:-translate-y-0.5
+                  group-hover:translate-x-0.5
+                "
+              />
             </a>
-          </div>
+          </motion.div>
 
           {/* Bottom decoration */}
 
           <div
             className="
-              mt-20
+              mt-16
               flex
               items-center
               justify-center
               gap-4
             "
           >
-            <span className="h-px w-20 bg-[#A7B68D]/15" />
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
 
             <span
               className="
@@ -1204,14 +1343,18 @@ export default function ProjectsSection() {
               "
             />
 
-            <span className="h-px w-20 bg-[#A7B68D]/15" />
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          MODAL
-      ===================================================== */}
+      {/* Modal */}
 
       <AnimatePresence>
         {selectedProject && (
