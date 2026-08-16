@@ -1,33 +1,213 @@
 "use client";
 
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
-import { Calendar, MapPin, BookOpen } from "lucide-react";
+import { Calendar, MapPin, GraduationCap } from "lucide-react";
 
 export default function EducationSection() {
+  const academicFocus = [
+    "Problem Solving",
+    "Algorithms & Data Structures",
+    "Object-Oriented Programming",
+    "Database Management",
+    "Software Development",
+  ];
+
   return (
     <section
       id="education"
-      className="bg-[#211C18] py-24 sm:py-32"
+      className="
+        relative
+        overflow-hidden
+        bg-[#07100D]
+        py-28
+        sm:py-36
+      "
     >
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
 
-        {/* Header */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Top right orbit */}
+
+        <div
+          className="
+            absolute
+            -right-36
+            -top-36
+            h-[430px]
+            w-[430px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.08]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-16
+            -top-16
+            h-[300px]
+            w-[300px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.05]
+          "
+        />
+
+        {/* Bottom left orbit */}
+
+        <div
+          className="
+            absolute
+            -bottom-48
+            -left-36
+            h-[420px]
+            w-[420px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.06]
+          "
+        />
+
+        {/* Soft glow */}
+
+        <div
+          className="
+            absolute
+            left-1/2
+            top-1/2
+            h-[500px]
+            w-[500px]
+            -translate-x-1/2
+            -translate-y-1/2
+            rounded-full
+            bg-[#A7B68D]/[0.018]
+            blur-[140px]
+          "
+        />
+
+        {/* Dots */}
+
+        <div
+          className="
+            absolute
+            left-[4%]
+            top-[25%]
+            grid
+            grid-cols-4
+            gap-4
+            opacity-30
+          "
+        >
+          {Array.from({ length: 20 }).map((_, index) => (
+            <span
+              key={index}
+              className="
+                h-1
+                w-1
+                rounded-full
+                bg-[#A7B68D]/50
+              "
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-6xl
+          px-6
+          sm:px-10
+        "
+      >
+        {/* =================================================
+            HEADER
+        ================================================= */}
+
         <ScrollReveal className="mb-14 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#C96A4A]">
-            Education
-          </p>
+          <div
+            className="
+              mb-5
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-12
+                bg-[#A7B68D]/50
+              "
+            />
 
-          <h2 className="text-4xl font-bold tracking-tight text-[#F4EFE7] sm:text-5xl">
-            Academic Background.
+            <span
+              className="
+                text-[10px]
+                font-medium
+                uppercase
+                tracking-[0.35em]
+                text-[#A7B68D]
+              "
+            >
+              Education
+            </span>
+
+            <span
+              className="
+                h-px
+                w-12
+                bg-[#A7B68D]/50
+              "
+            />
+          </div>
+
+          <h2
+            className="
+              text-5xl
+              font-medium
+              tracking-[-0.06em]
+              text-[#F5F3EC]
+              sm:text-6xl
+              md:text-7xl
+            "
+          >
+            Academic Background
+            <span className="text-[#A7B68D]">
+              .
+            </span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#B8AEA4] sm:text-base">
-            My academic foundation in computer science and information
-            technology.
+          <p
+            className="
+              mx-auto
+              mt-5
+              max-w-xl
+              text-sm
+              leading-7
+              text-[#8D9489]
+              sm:text-base
+            "
+          >
+            My academic foundation in computer science
+            and information technology.
           </p>
         </ScrollReveal>
 
-        {/* Education Card */}
+        {/* =================================================
+            EDUCATION GLASS PANEL
+        ================================================= */}
+
         <ScrollReveal>
           <article
             className="
@@ -36,189 +216,417 @@ export default function EducationSection() {
               overflow-hidden
               rounded-2xl
               border
-              border-white/[0.10]
-              bg-[#2A2420]
+              border-[#A7B68D]/25
+              bg-white/[0.018]
+              backdrop-blur-2xl
               transition-all
-              duration-300
-              hover:border-[#C96A4A]/40
-              hover:shadow-2xl
+              duration-500
+              hover:border-[#A7B68D]/45
+              hover:bg-[#A7B68D]/[0.025]
             "
           >
-            {/* Accent */}
+            {/* Glass highlight */}
+
             <div
               className="
+                pointer-events-none
                 absolute
-                left-0
-                top-0
-                h-full
-                w-[2px]
-                bg-[#C96A4A]
-                opacity-60
-                transition-opacity
-                duration-300
-                group-hover:opacity-100
+                inset-0
+                bg-gradient-to-br
+                from-white/[0.035]
+                via-transparent
+                to-transparent
               "
             />
 
-            <div className="grid md:grid-cols-[0.9fr_1.1fr]">
+            {/* Decorative orbit */}
 
-              {/* ================= IMAGE ================= */}
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -left-24
+                -top-24
+                h-52
+                w-52
+                rounded-full
+                border
+                border-[#A7B68D]/10
+              "
+            />
 
-              <div className="relative min-h-[280px] overflow-hidden md:min-h-[500px]">
-                <img
-                  src="Image/helwan.jpg"
-                  alt="Helwan National University"
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -left-10
+                -top-10
+                h-28
+                w-28
+                rounded-full
+                border
+                border-[#A7B68D]/10
+              "
+            />
+
+            {/* =================================================
+                DESKTOP GRID
+            ================================================= */}
+
+            <div
+              className="
+                relative
+                grid
+                lg:grid-cols-[180px_1fr_0.8fr]
+              "
+            >
+              {/* =================================================
+                  NUMBER / ICON
+              ================================================= */}
+
+              <div
+                className="
+                  relative
+                  flex
+                  min-h-[220px]
+                  flex-col
+                  items-center
+                  justify-center
+                  border-b
+                  border-[#A7B68D]/10
+                  px-6
+                  lg:min-h-[390px]
+                  lg:border-b-0
+                  lg:border-r
+                "
+              >
+                {/* Number */}
+
+                <span
                   className="
                     absolute
-                    inset-0
-                    h-full
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-700
-                    group-hover:scale-[1.03]
-                  "
-                />
-
-                {/* Image Overlay */}
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-[#211C18]/70
-                    via-transparent
-                    to-transparent
-                  "
-                />
-
-                {/* Location */}
-                <div
-                  className="
-                    absolute
-                    bottom-5
-                    left-5
-                    inline-flex
-                    items-center
-                    gap-2
-                    rounded-full
-                    border
-                    border-white/10
-                    bg-[#211C18]/75
-                    px-3
-                    py-2
-                    text-xs
-                    text-[#F4EFE7]
-                    backdrop-blur-md
+                    left-6
+                    top-6
+                    text-6xl
+                    font-light
+                    leading-none
+                    tracking-[-0.08em]
+                    text-[#A7B68D]/20
                   "
                 >
-                  <MapPin size={14} className="text-[#C96A4A]" />
-                  Cairo, Egypt
+                  01
+                </span>
+
+                {/* University Icon */}
+
+                <div
+                  className="
+                    relative
+                    flex
+                    h-28
+                    w-28
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#A7B68D]/30
+                    bg-[#A7B68D]/[0.025]
+                    shadow-[inset_0_0_35px_rgba(167,182,141,0.025)]
+                    transition-all
+                    duration-500
+                    group-hover:border-[#A7B68D]/55
+                  "
+                >
+                  <div
+                    className="
+                      absolute
+                      inset-3
+                      rounded-full
+                      border
+                      border-[#A7B68D]/10
+                    "
+                  />
+
+                  <GraduationCap
+                    size={42}
+                    strokeWidth={1.1}
+                    className="
+                      relative
+                      text-[#A7B68D]
+                    "
+                  />
                 </div>
+
+                {/* Small dot */}
+
+                <span
+                  className="
+                    absolute
+                    bottom-8
+                    h-1.5
+                    w-1.5
+                    rounded-full
+                    bg-[#A7B68D]
+                    shadow-[0_0_12px_rgba(167,182,141,0.7)]
+                  "
+                />
               </div>
 
-              {/* ================= CONTENT ================= */}
+              {/* =================================================
+                  UNIVERSITY INFO
+              ================================================= */}
 
-              <div className="flex flex-col justify-center p-7 sm:p-9 md:p-12">
-
+              <div
+                className="
+                  flex
+                  flex-col
+                  justify-center
+                  border-b
+                  border-[#A7B68D]/10
+                  px-7
+                  py-9
+                  sm:px-10
+                  lg:border-b-0
+                  lg:border-r
+                  lg:px-12
+                "
+              >
                 {/* Date */}
+
                 <div
                   className="
-                    mb-5
                     flex
-                    w-fit
                     items-center
                     gap-2
-                    rounded-full
-                    border
-                    border-[#C96A4A]/20
-                    bg-[#C96A4A]/10
-                    px-3
-                    py-1.5
-                    text-xs
+                    text-[9px]
                     font-medium
-                    text-[#C96A4A]
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#A7B68D]
                   "
                 >
-                  <Calendar size={14} />
-                  October 2023 — Present
+                  <Calendar size={13} strokeWidth={1.5} />
+
+                  <span>
+                    October 2023 — Present
+                  </span>
                 </div>
 
                 {/* University */}
+
                 <h3
                   className="
-                    text-2xl
-                    font-bold
+                    mt-5
+                    text-3xl
+                    font-medium
                     leading-tight
-                    text-[#F4EFE7]
-                    sm:text-3xl
+                    tracking-[-0.045em]
+                    text-[#F5F3EC]
+                    sm:text-4xl
                   "
                 >
                   Helwan National University
                 </h3>
 
                 {/* Major */}
-                <p className="mt-3 text-base font-medium text-[#C96A4A]">
-                  Computer Science &amp; Information Technology
+
+                <p
+                  className="
+                    mt-3
+                    text-base
+                    font-medium
+                    leading-6
+                    text-[#A7B68D]
+                    sm:text-lg
+                  "
+                >
+                  Computer Science &amp;
+                  Information Technology
                 </p>
+
+                {/* Location */}
+
+                <div
+                  className="
+                    mt-5
+                    flex
+                    items-center
+                    gap-2
+                    text-sm
+                    text-[#8D9489]
+                  "
+                >
+                  <MapPin
+                    size={14}
+                    strokeWidth={1.5}
+                    className="text-[#A7B68D]"
+                  />
+
+                  <span>Cairo, Egypt</span>
+                </div>
 
                 {/* Description */}
-                <p className="mt-6 text-sm leading-7 text-[#B8AEA4] sm:text-base">
-                  Building a strong academic foundation in computer science
-                  and information technology, with an emphasis on
-                  problem-solving, programming, algorithms, and teamwork.
+
+                <p
+                  className="
+                    mt-6
+                    max-w-xl
+                    text-sm
+                    leading-7
+                    text-[#8D9489]
+                  "
+                >
+                  Building a strong academic foundation
+                  in computer science and information
+                  technology, with an emphasis on
+                  problem-solving, programming,
+                  algorithms, and teamwork.
+                </p>
+              </div>
+
+              {/* =================================================
+                  ACADEMIC FOCUS
+              ================================================= */}
+
+              <div
+                className="
+                  flex
+                  flex-col
+                  justify-center
+                  px-7
+                  py-9
+                  sm:px-10
+                  lg:px-10
+                  xl:px-12
+                "
+              >
+                <p
+                  className="
+                    text-[10px]
+                    font-medium
+                    uppercase
+                    tracking-[0.28em]
+                    text-[#A7B68D]
+                  "
+                >
+                  Academic Focus
                 </p>
 
-                {/* Divider */}
-                <div className="my-7 h-px bg-white/[0.08]" />
-
-                {/* Key Takeaways */}
-                <div>
-                  <div className="mb-4 flex items-center gap-2">
-                    <BookOpen
-                      size={17}
-                      className="text-[#C96A4A]"
-                    />
-
-                    <h4 className="text-sm font-semibold text-[#F4EFE7]">
-                      Key Takeaways
-                    </h4>
-                  </div>
-
-                  <ul className="space-y-3">
-                    {[
-                      "Teamwork and project management",
-                      "C++, Java, and Python programming",
-                      "Object-Oriented Programming, data structures, and algorithms",
-                      "Web development and database management",
-                      "Building a strong foundation for specialization",
-                    ].map((item) => (
-                      <li
+                <div
+                  className="
+                    mt-7
+                    space-y-5
+                  "
+                >
+                  {academicFocus.map(
+                    (item, index) => (
+                      <div
                         key={item}
-                        className="flex items-start gap-3 text-sm leading-6 text-[#B8AEA4]"
+                        className="
+                          flex
+                          items-center
+                          gap-3
+                        "
                       >
                         <span
                           className="
-                            mt-2
                             h-1.5
                             w-1.5
                             shrink-0
                             rounded-full
-                            bg-[#C96A4A]
+                            bg-[#A7B68D]
                           "
                         />
 
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                        <span
+                          className="
+                            text-sm
+                            text-[#C5CBC4]
+                          "
+                        >
+                          {item}
+                        </span>
+                      </div>
+                    )
+                  )}
                 </div>
 
+                {/* Bottom accent */}
+
+                <div
+                  className="
+                    mt-8
+                    h-px
+                    w-16
+                    bg-[#A7B68D]/40
+                  "
+                />
               </div>
             </div>
+
+            {/* Bottom glass line */}
+
+            <span
+              className="
+                absolute
+                bottom-0
+                left-1/2
+                h-px
+                w-0
+                -translate-x-1/2
+                bg-[#A7B68D]
+                shadow-[0_0_15px_rgba(167,182,141,0.6)]
+                transition-all
+                duration-700
+                group-hover:w-1/2
+              "
+            />
           </article>
         </ScrollReveal>
 
+        {/* =================================================
+            BOTTOM DECORATION
+        ================================================= */}
+
+        <ScrollReveal
+          direction="up"
+          delay={0.2}
+          className="mt-14"
+        >
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
+
+            <span
+              className="
+                h-1.5
+                w-1.5
+                rounded-full
+                bg-[#A7B68D]/60
+              "
+            />
+
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
