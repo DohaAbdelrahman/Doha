@@ -18,7 +18,7 @@ export default function AboutSection() {
       className="
         relative
         overflow-hidden
-        bg-[#07100D]
+        bg-[#080D18]
         py-28
         sm:py-36
       "
@@ -39,7 +39,7 @@ export default function AboutSection() {
             w-[420px]
             rounded-full
             border
-            border-[#A7B68D]/[0.07]
+            border-[#38BDF8]/[0.07]
           "
         />
 
@@ -52,7 +52,7 @@ export default function AboutSection() {
             w-[280px]
             rounded-full
             border
-            border-[#A7B68D]/[0.05]
+            border-[#38BDF8]/[0.05]
           "
         />
 
@@ -67,7 +67,7 @@ export default function AboutSection() {
             w-[450px]
             rounded-full
             border
-            border-[#A7B68D]/[0.06]
+            border-[#38BDF8]/[0.06]
           "
         />
 
@@ -83,7 +83,7 @@ export default function AboutSection() {
             -translate-x-1/2
             -translate-y-1/2
             rounded-full
-            bg-[#A7B68D]/[0.018]
+            bg-[#38BDF8]/[0.018]
             blur-[140px]
           "
         />
@@ -108,7 +108,7 @@ export default function AboutSection() {
                 h-1
                 w-1
                 rounded-full
-                bg-[#A7B68D]/50
+                bg-[#38BDF8]/50
               "
             />
           ))}
@@ -146,7 +146,7 @@ export default function AboutSection() {
               className="
                 h-px
                 w-12
-                bg-[#A7B68D]/50
+                bg-[#38BDF8]/50
               "
             />
 
@@ -156,7 +156,7 @@ export default function AboutSection() {
                 font-medium
                 uppercase
                 tracking-[0.38em]
-                text-[#A7B68D]
+                text-[#38BDF8]
               "
             >
               About Me
@@ -166,7 +166,7 @@ export default function AboutSection() {
               className="
                 h-px
                 w-12
-                bg-[#A7B68D]/50
+                bg-[#38BDF8]/50
               "
             />
           </div>
@@ -177,13 +177,13 @@ export default function AboutSection() {
               text-5xl
               font-medium
               tracking-[-0.06em]
-              text-[#F5F3EC]
+              text-[#F8FAFC]
               sm:text-6xl
               md:text-7xl
             "
           >
             Turning data into{" "}
-            <span className="text-[#A7B68D]">
+            <span className="text-[#38BDF8]">
               insight.
             </span>
           </h2>
@@ -205,12 +205,12 @@ export default function AboutSection() {
               overflow-hidden
               rounded-2xl
               border
-              border-[#A7B68D]/25
+              border-[#38BDF8]/25
               bg-white/[0.018]
               backdrop-blur-2xl
               transition-all
               duration-500
-              hover:border-[#A7B68D]/45
+              hover:border-[#38BDF8]/45
             "
           >
             {/* Glass highlight */}
@@ -239,7 +239,7 @@ export default function AboutSection() {
                 w-52
                 rounded-full
                 border
-                border-[#A7B68D]/10
+                border-[#38BDF8]/10
                 transition-transform
                 duration-700
                 group-hover:scale-110
@@ -256,7 +256,7 @@ export default function AboutSection() {
                 w-28
                 rounded-full
                 border
-                border-[#A7B68D]/[0.07]
+                border-[#38BDF8]/[0.07]
               "
             />
 
@@ -275,7 +275,7 @@ export default function AboutSection() {
                 className="
                   relative
                   border-b
-                  border-[#A7B68D]/10
+                  border-[#38BDF8]/10
                   px-7
                   py-8
                   lg:border-b-0
@@ -290,7 +290,7 @@ export default function AboutSection() {
                     font-light
                     leading-none
                     tracking-[-0.08em]
-                    text-[#A7B68D]/20
+                    text-[#38BDF8]/20
                   "
                 >
                   01
@@ -304,8 +304,8 @@ export default function AboutSection() {
                     h-1.5
                     w-1.5
                     rounded-full
-                    bg-[#A7B68D]
-                    shadow-[0_0_12px_rgba(167,182,141,0.7)]
+                    bg-[#38BDF8]
+                    shadow-[0_0_12px_rgba(56,189,248,0.7)]
                   "
                 />
               </div>
@@ -323,7 +323,7 @@ export default function AboutSection() {
                     text-lg
                     leading-8
                     tracking-[-0.015em]
-                    text-[#D2D6D0]
+                    text-[#CBD5E1]
                     sm:text-xl
                   "
                 >
@@ -332,7 +332,7 @@ export default function AboutSection() {
 
                 {/* Divider */}
 
-                <div className="my-9 h-px bg-[#A7B68D]/10" />
+                <div className="my-9 h-px bg-[#38BDF8]/10" />
 
                 {/* Approach */}
 
@@ -343,7 +343,7 @@ export default function AboutSection() {
                       font-medium
                       uppercase
                       tracking-[0.3em]
-                      text-[#A7B68D]
+                      text-[#38BDF8]
                     "
                   >
                     My Approach
@@ -355,7 +355,7 @@ export default function AboutSection() {
                       max-w-4xl
                       text-sm
                       leading-7
-                      text-[#8D9489]
+                      text-[#94A3B8]
                       sm:text-base
                     "
                   >
@@ -388,7 +388,7 @@ export default function AboutSection() {
                               font-medium
                               uppercase
                               tracking-[0.16em]
-                              text-[#C5CBC4]
+                              text-[#CBD5E1]
                             "
                           >
                             {step}
@@ -399,7 +399,7 @@ export default function AboutSection() {
                             <span
                               className="
                                 mx-4
-                                text-[#A7B68D]/50
+                                text-[#38BDF8]/50
                               "
                             >
                               →
@@ -423,8 +423,8 @@ export default function AboutSection() {
                 h-px
                 w-0
                 -translate-x-1/2
-                bg-[#A7B68D]
-                shadow-[0_0_15px_rgba(167,182,141,0.6)]
+                bg-[#38BDF8]
+                shadow-[0_0_15px_rgba(56,189,248,0.6)]
                 transition-all
                 duration-700
                 group-hover:w-1/2
@@ -448,7 +448,7 @@ export default function AboutSection() {
               flex-col
               gap-5
               border-t
-              border-[#A7B68D]/10
+              border-[#38BDF8]/10
               pt-8
               sm:flex-row
               sm:items-end
@@ -462,7 +462,7 @@ export default function AboutSection() {
                   font-medium
                   uppercase
                   tracking-[0.3em]
-                  text-[#A7B68D]
+                  text-[#38BDF8]
                 "
               >
                 What I Focus On
@@ -474,10 +474,10 @@ export default function AboutSection() {
                   text-2xl
                   font-medium
                   tracking-[-0.04em]
-                  text-[#F5F3EC]
+                  text-[#F8FAFC]
                 "
               >
-                Areas of expertise
+                Areas I am exploring
               </h3>
             </div>
 
@@ -486,7 +486,7 @@ export default function AboutSection() {
                 text-[10px]
                 uppercase
                 tracking-[0.2em]
-                text-[#667068]
+                text-[#64748B]
               "
             >
               {String(about.focusAreas.length).padStart(
@@ -517,7 +517,7 @@ export default function AboutSection() {
                   items-center
                   gap-5
                   border-b
-                  border-[#A7B68D]/10
+                  border-[#38BDF8]/10
                   py-5
                   transition-all
                   duration-300
@@ -532,10 +532,10 @@ export default function AboutSection() {
                     shrink-0
                     text-[10px]
                     tracking-[0.18em]
-                    text-[#667068]
+                    text-[#64748B]
                     transition-colors
                     duration-300
-                    group-hover:text-[#A7B68D]
+                    group-hover:text-[#38BDF8]
                   "
                 >
                   {String(index + 1).padStart(
@@ -551,10 +551,10 @@ export default function AboutSection() {
                     min-w-0
                     text-base
                     font-medium
-                    text-[#D2D6D0]
+                    text-[#CBD5E1]
                     transition-colors
                     duration-300
-                    group-hover:text-[#A7B68D]
+                    group-hover:text-[#38BDF8]
                     sm:text-lg
                   "
                 >
@@ -571,7 +571,7 @@ export default function AboutSection() {
                     text-right
                     text-sm
                     leading-6
-                    text-[#707A72]
+                    text-[#64748B]
                     md:block
                   "
                 >
@@ -583,11 +583,11 @@ export default function AboutSection() {
                 <span
                   className="
                     shrink-0
-                    text-[#667068]
+                    text-[#64748B]
                     transition-all
                     duration-300
                     group-hover:translate-x-1
-                    group-hover:text-[#A7B68D]
+                    group-hover:text-[#38BDF8]
                   "
                 >
                   ↗
@@ -610,7 +610,7 @@ export default function AboutSection() {
             className="
               text-sm
               leading-7
-              text-[#707A72]
+              text-[#64748B]
               sm:text-base
             "
           >
@@ -639,7 +639,7 @@ export default function AboutSection() {
               className="
                 h-px
                 w-16
-                bg-[#A7B68D]/15
+                bg-[#38BDF8]/15
               "
             />
 
@@ -648,7 +648,7 @@ export default function AboutSection() {
                 h-1.5
                 w-1.5
                 rounded-full
-                bg-[#A7B68D]/60
+                bg-[#38BDF8]/60
               "
             />
 
@@ -656,7 +656,7 @@ export default function AboutSection() {
               className="
                 h-px
                 w-16
-                bg-[#A7B68D]/15
+                bg-[#38BDF8]/15
               "
             />
           </div>
