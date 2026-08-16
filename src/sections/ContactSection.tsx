@@ -12,18 +12,16 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
+const colors = {
+  background: "#07100D",
+  cream: "#F5F3EC",
+  olive: "#A7B68D",
+  muted: "#8D9489",
+  line: "rgba(167, 182, 141, 0.16)",
+};
+
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
-
-  const colors = {
-    background: "#211C18",
-    surface: "#2A2420",
-    text: "#F4EFE7",
-    secondary: "#B8AEA4",
-    muted: "#8E847B",
-    accent: "#C96A4A",
-    accentHover: "#D77B5B",
-  };
 
   const copyEmail = async () => {
     try {
@@ -38,506 +36,507 @@ export default function ContactSection() {
     }
   };
 
+  const socials = [
+    {
+      label: "GitHub",
+      href: profile.github,
+      icon: Github,
+      external: true,
+    },
+    {
+      label: "LinkedIn",
+      href: profile.linkedin,
+      icon: Linkedin,
+      external: true,
+    },
+    {
+      label: "Email",
+      href: `mailto:${profile.email}`,
+      icon: Mail,
+      external: false,
+    },
+  ];
+
   return (
     <section
       id="contact"
       className="
         relative
-        min-h-screen
         overflow-hidden
-        py-20
-        sm:py-24
+        bg-[#07100D]
+        py-28
+        sm:py-36
       "
-      style={{
-        backgroundColor: colors.background,
-      }}
     >
-      {/* Background Glow */}
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          left-1/2
-          top-1/2
-          h-[420px]
-          w-[420px]
-          -translate-x-1/2
-          -translate-y-1/2
-          rounded-full
-          blur-[130px]
-        "
-        style={{
-          backgroundColor: colors.accent,
-          opacity: 0.045,
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0">
+        {/* Main glow */}
+
+        <div
+          className="
+            absolute
+            left-1/2
+            top-1/2
+            h-[500px]
+            w-[500px]
+            -translate-x-1/2
+            -translate-y-1/2
+            rounded-full
+            bg-[#A7B68D]/[0.025]
+            blur-[140px]
+          "
+        />
+
+        {/* Orbital circles */}
+
+        <div
+          className="
+            absolute
+            -right-32
+            top-16
+            h-[350px]
+            w-[350px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.07]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-12
+            top-36
+            h-[220px]
+            w-[220px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.06]
+          "
+        />
+
+        {/* Dots */}
+
+        <div
+          className="
+            absolute
+            bottom-[15%]
+            left-[7%]
+            grid
+            grid-cols-4
+            gap-4
+            opacity-40
+          "
+        >
+          {Array.from({ length: 16 }).map(
+            (_, index) => (
+              <span
+                key={index}
+                className="
+                  h-1
+                  w-1
+                  rounded-full
+                  bg-[#A7B68D]/40
+                "
+              />
+            )
+          )}
+        </div>
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
 
       <div
         className="
           relative
           z-10
           mx-auto
-          flex
           max-w-5xl
-          flex-col
-          items-center
-          justify-center
           px-6
-          sm:px-8
+          sm:px-10
         "
       >
-        {/* =====================================================
+        {/* =================================================
             HEADER
-        ===================================================== */}
+        ================================================= */}
 
-        <ScrollReveal className="w-full text-center">
-          <div className="flex items-center justify-center gap-3">
+        <ScrollReveal>
+          <div
+            className="
+              mb-7
+              flex
+              items-center
+              gap-4
+            "
+          >
             <span
-              className="h-px w-10"
-              style={{
-                backgroundColor: colors.accent,
-              }}
+              className="
+                h-px
+                w-12
+                bg-[#A7B68D]/70
+              "
             />
 
             <span
               className="
-                text-xs
-                font-semibold
+                text-[10px]
+                font-medium
                 uppercase
-                tracking-[0.32em]
+                tracking-[0.3em]
               "
               style={{
-                color: colors.accent,
+                color: colors.olive,
               }}
             >
-              Let&apos;s Connect
+              Contact
             </span>
-
-            <span
-              className="h-px w-10"
-              style={{
-                backgroundColor: colors.accent,
-              }}
-            />
           </div>
 
           <h2
             className="
-              mt-6
-              text-4xl
-              font-bold
-              leading-tight
-              tracking-[-0.045em]
-              sm:text-5xl
-              md:text-6xl
-              lg:text-7xl
+              max-w-4xl
+              text-6xl
+              font-medium
+              leading-[0.92]
+              tracking-[-0.065em]
+              sm:text-7xl
+              md:text-8xl
             "
             style={{
-              color: colors.text,
+              color: colors.cream,
             }}
           >
-            Let&apos;s work{" "}
+            Let&apos;s
+            <br />
+
             <span
               style={{
-                color: colors.accent,
+                color: colors.olive,
               }}
             >
-              together.
+              connect.
             </span>
           </h2>
 
           <p
             className="
-              mx-auto
-              mt-6
-              max-w-2xl
+              mt-8
+              max-w-xl
               text-base
               leading-7
               sm:text-lg
             "
             style={{
-              color: colors.secondary,
+              color: colors.muted,
             }}
           >
-            Have a project, an opportunity, or simply want to
-            connect? I&apos;d love to hear from you.
+            Have a data problem, an opportunity, or
+            an interesting idea? Let&apos;s turn it
+            into something meaningful.
           </p>
         </ScrollReveal>
 
-        {/* =====================================================
-            EMAIL CARD
-        ===================================================== */}
+        {/* =================================================
+            EMAIL ROW
+        ================================================= */}
 
         <ScrollReveal
           direction="up"
           delay={0.1}
-          className="
-            mt-12
-            w-full
-            max-w-2xl
-          "
+          className="mt-16"
         >
           <div
             className="
-              flex
-              flex-col
-              items-center
-              justify-between
-              gap-5
-              rounded-2xl
-              border
-              px-5
-              py-5
-              sm:flex-row
-              sm:px-6
-              sm:py-6
+              border-y
+              border-[#A7B68D]/15
+              py-6
             "
-            style={{
-              backgroundColor: `${colors.surface}CC`,
-              borderColor: `${colors.text}18`,
-              boxShadow: `0 20px 60px ${colors.accent}08`,
-            }}
           >
-            {/* Email Information */}
+            <div
+              className="
+                flex
+                flex-col
+                gap-5
+                sm:flex-row
+                sm:items-center
+                sm:justify-between
+              "
+            >
+              {/* Email */}
 
-            <div className="flex items-center gap-4">
-              <div
-                className="
-                  flex
-                  h-12
-                  w-12
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-xl
-                "
-                style={{
-                  backgroundColor: `${colors.accent}18`,
-                  color: colors.accent,
-                }}
-              >
-                <Mail size={21} />
-              </div>
-
-              <div className="text-left">
+              <div>
                 <p
                   className="
-                    text-[10px]
-                    font-semibold
+                    mb-2
+                    text-[9px]
+                    font-medium
                     uppercase
-                    tracking-[0.22em]
+                    tracking-[0.25em]
                   "
                   style={{
-                    color: colors.muted,
+                    color: colors.olive,
                   }}
                 >
                   Email
                 </p>
 
-                <p
+                <a
+                  href={`mailto:${profile.email}`}
                   className="
-                    mt-1
-                    text-sm
-                    font-medium
-                    sm:text-base
+                    text-lg
+                    tracking-[-0.02em]
+                    transition-colors
+                    duration-300
+                    hover:text-[#A7B68D]
+                    sm:text-xl
                   "
                   style={{
-                    color: colors.text,
+                    color: colors.cream,
                   }}
                 >
                   {profile.email}
-                </p>
+                </a>
               </div>
+
+              {/* Copy */}
+
+              <button
+                type="button"
+                onClick={copyEmail}
+                className="
+                  group
+                  inline-flex
+                  w-fit
+                  items-center
+                  gap-3
+                  border
+                  border-[#A7B68D]/20
+                  bg-[#A7B68D]/[0.025]
+                  px-4
+                  py-2.5
+                  text-[9px]
+                  font-medium
+                  uppercase
+                  tracking-[0.18em]
+                  transition-all
+                  duration-300
+                  hover:border-[#A7B68D]/60
+                  hover:bg-[#A7B68D]/[0.06]
+                "
+                style={{
+                  color: colors.muted,
+                }}
+              >
+                {copied ? (
+                  <>
+                    <Check
+                      size={14}
+                      style={{
+                        color: colors.olive,
+                      }}
+                    />
+
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <Copy
+                      size={14}
+                      className="
+                        transition-colors
+                        group-hover:text-[#A7B68D]
+                      "
+                    />
+
+                    Copy Email
+                  </>
+                )}
+              </button>
             </div>
-
-            {/* Copy Button */}
-
-            <button
-              type="button"
-              onClick={copyEmail}
-              className="
-                inline-flex
-                shrink-0
-                items-center
-                gap-2
-                rounded-lg
-                border
-                px-4
-                py-2.5
-                text-xs
-                font-medium
-                transition-all
-                duration-200
-              "
-              style={{
-                borderColor: `${colors.text}18`,
-                color: colors.secondary,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor =
-                  `${colors.accent}66`;
-
-                e.currentTarget.style.color =
-                  colors.accentHover;
-
-                e.currentTarget.style.backgroundColor =
-                  `${colors.accent}12`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor =
-                  `${colors.text}18`;
-
-                e.currentTarget.style.color =
-                  colors.secondary;
-
-                e.currentTarget.style.backgroundColor =
-                  "transparent";
-              }}
-            >
-              {copied ? (
-                <>
-                  <Check size={15} />
-                  Copied
-                </>
-              ) : (
-                <>
-                  <Copy size={15} />
-                  Copy Email
-                </>
-              )}
-            </button>
           </div>
         </ScrollReveal>
 
-        {/* =====================================================
+        {/* =================================================
             SOCIAL LINKS
-        ===================================================== */}
+        ================================================= */}
 
         <ScrollReveal
           direction="up"
           delay={0.2}
-          className="mt-8"
+          className="mt-7"
         >
           <div
             className="
               flex
               flex-wrap
               items-center
-              justify-center
-              gap-3
+              gap-x-8
+              gap-y-4
             "
           >
-            {/* GitHub */}
+            {socials.map(
+              ({
+                label,
+                href,
+                icon: Icon,
+                external,
+              }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={
+                    external ? "_blank" : undefined
+                  }
+                  rel={
+                    external
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="
+                    group
+                    inline-flex
+                    items-center
+                    gap-2.5
+                    text-[10px]
+                    font-medium
+                    uppercase
+                    tracking-[0.2em]
+                  "
+                  style={{
+                    color: colors.muted,
+                  }}
+                >
+                  <Icon
+                    size={14}
+                    className="
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#A7B68D]
+                    "
+                  />
 
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                group
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                border
-                px-5
-                py-2.5
-                text-sm
-                font-medium
-                transition-all
-                duration-300
-                hover:-translate-y-1
-              "
-              style={{
-                borderColor: `${colors.text}18`,
-                color: colors.secondary,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor =
-                  `${colors.accent}66`;
+                  <span
+                    className="
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#F5F3EC]
+                    "
+                  >
+                    {label}
+                  </span>
 
-                e.currentTarget.style.color =
-                  colors.text;
-
-                e.currentTarget.style.backgroundColor =
-                  `${colors.accent}0D`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor =
-                  `${colors.text}18`;
-
-                e.currentTarget.style.color =
-                  colors.secondary;
-
-                e.currentTarget.style.backgroundColor =
-                  "transparent";
-              }}
-            >
-              <Github size={17} />
-              GitHub
-            </a>
-
-            {/* LinkedIn */}
-
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                group
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                border
-                px-5
-                py-2.5
-                text-sm
-                font-medium
-                transition-all
-                duration-300
-                hover:-translate-y-1
-              "
-              style={{
-                borderColor: `${colors.text}18`,
-                color: colors.secondary,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor =
-                  `${colors.accent}66`;
-
-                e.currentTarget.style.color =
-                  colors.text;
-
-                e.currentTarget.style.backgroundColor =
-                  `${colors.accent}0D`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor =
-                  `${colors.text}18`;
-
-                e.currentTarget.style.color =
-                  colors.secondary;
-
-                e.currentTarget.style.backgroundColor =
-                  "transparent";
-              }}
-            >
-              <Linkedin size={17} />
-              LinkedIn
-            </a>
-
-            {/* Email */}
-
-            <a
-              href={`mailto:${profile.email}`}
-              className="
-                group
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                border
-                px-5
-                py-2.5
-                text-sm
-                font-medium
-                transition-all
-                duration-300
-                hover:-translate-y-1
-              "
-              style={{
-                borderColor: `${colors.text}18`,
-                color: colors.secondary,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor =
-                  `${colors.accent}66`;
-
-                e.currentTarget.style.color =
-                  colors.text;
-
-                e.currentTarget.style.backgroundColor =
-                  `${colors.accent}0D`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor =
-                  `${colors.text}18`;
-
-                e.currentTarget.style.color =
-                  colors.secondary;
-
-                e.currentTarget.style.backgroundColor =
-                  "transparent";
-              }}
-            >
-              <Mail size={17} />
-              Email
-            </a>
+                  <ArrowUpRight
+                    size={12}
+                    className="
+                      transition-all
+                      duration-300
+                      group-hover:-translate-y-0.5
+                      group-hover:translate-x-0.5
+                      group-hover:text-[#A7B68D]
+                    "
+                  />
+                </a>
+              )
+            )}
           </div>
         </ScrollReveal>
 
-        {/* =====================================================
-            MAIN CTA
-        ===================================================== */}
+        {/* =================================================
+            CLOSING
+        ================================================= */}
 
         <ScrollReveal
           direction="up"
           delay={0.3}
-          className="mt-10"
+          className="mt-24"
         >
-          <a
-            href={`mailto:${profile.email}`}
+          <div
             className="
-              group
-              inline-flex
-              items-center
-              gap-3
-              rounded-xl
-              px-8
-              py-4
-              text-sm
-              font-semibold
-              transition-all
-              duration-300
-              hover:-translate-y-1
+              flex
+              flex-col
+              gap-5
+              border-t
+              border-[#A7B68D]/10
+              pt-7
+              sm:flex-row
+              sm:items-center
+              sm:justify-between
             "
-            style={{
-              backgroundColor: colors.accent,
-              color: colors.text,
-              boxShadow: `0 12px 35px ${colors.accent}20`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor =
-                colors.accentHover;
-
-              e.currentTarget.style.boxShadow =
-                `0 16px 40px ${colors.accent}35`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor =
-                colors.accent;
-
-              e.currentTarget.style.boxShadow =
-                `0 12px 35px ${colors.accent}20`;
-            }}
           >
-            Send me an email
-
-            <ArrowUpRight
-              size={18}
+            <p
               className="
-                transition-transform
-                duration-300
-                group-hover:-translate-y-0.5
-                group-hover:translate-x-0.5
+                text-[9px]
+                uppercase
+                tracking-[0.22em]
               "
-            />
-          </a>
-        </ScrollReveal>
+              style={{
+                color: "#667068",
+              }}
+            >
+              Data
+              <span
+                className="mx-2"
+                style={{
+                  color: colors.olive,
+                }}
+              >
+                ·
+              </span>
+              Insight
+              <span
+                className="mx-2"
+                style={{
+                  color: colors.olive,
+                }}
+              >
+                ·
+              </span>
+              Impact
+            </p>
 
-        
+            <button
+              type="button"
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                })
+              }
+              className="
+                group
+                flex
+                items-center
+                gap-2
+                text-[9px]
+                uppercase
+                tracking-[0.2em]
+                transition-colors
+                duration-300
+                hover:text-[#A7B68D]
+              "
+              style={{
+                color: colors.muted,
+              }}
+            >
+              Back to top
+
+              <ArrowUpRight
+                size={12}
+                className="
+                  rotate-[-45deg]
+                  transition-transform
+                  duration-300
+                  group-hover:-translate-y-0.5
+                "
+              />
+            </button>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
