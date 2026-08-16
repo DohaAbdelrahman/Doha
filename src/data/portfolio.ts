@@ -47,12 +47,7 @@ export const about = {
         "Exploratory data analysis, data cleaning, feature engineering, and creating compelling visualizations.",
       icon: "search",
     },
-    {
-      title: "Artificial Intelligence",
-      description:
-        "Deep learning, NLP, transformer models, and applying cutting-edge AI research to practical problems.",
-      icon: "sparkles",
-    },
+
   ],
 };
 
@@ -63,7 +58,7 @@ export const skillCategories = [
     skills: [
       {
         name: "Python",
-        context: ["Data Analysis", "Machine Learning", "Automation"],
+        context: ["Data Analysis", "Machine Learning"],
       },
       {
         name: "SQL",
@@ -138,36 +133,6 @@ export const skillCategories = [
     ],
   },
 
-  {
-    title: "Deployment & MLOps",
-    icon: "rocket",
-    skills: [
-      {
-        name: "Streamlit",
-        context: ["ML Apps", "Dashboards", "Prototyping"],
-      },
-      {
-        name: "Flask",
-        context: ["APIs", "ML Serving"],
-      },
-      {
-        name: "MLflow",
-        context: ["Experiment Tracking", "Model Registry"],
-      },
-      {
-        name: "DVC",
-        context: ["Data Versioning", "Pipelines"],
-      },
-      {
-        name: "Docker",
-        context: ["Containerization", "Reproducibility"],
-      },
-      {
-        name: "Git / GitHub",
-        context: ["Version Control", "Collaboration"],
-      },
-    ],
-  },
 ];
 
 export interface Project {
@@ -368,14 +333,7 @@ export const projects: Project[] = [
   },
  ]; 
 
-export interface Experience {
-  type: "education" | "program" | "milestone";
-  title: string;
-  organization: string;
-  date: string;
-  description: string;
-  tags?: string[];
-}
+
 
 export interface Experience {
   type: "program" | "milestone";
