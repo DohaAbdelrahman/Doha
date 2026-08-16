@@ -1,115 +1,338 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Calendar } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { certifications } from "@/data/portfolio";
+
+const colors = {
+  background: "#07100D",
+  cream: "#F5F3EC",
+  olive: "#A7B68D",
+  muted: "#8D9489",
+  border: "rgba(167, 182, 141, 0.20)",
+};
 
 export default function CertificationsSection() {
   return (
     <section
       id="certifications"
-      className="bg-[#211C18] py-24 sm:py-32"
+      className="
+        relative
+        overflow-hidden
+        bg-[#07100D]
+        py-28
+        sm:py-36
+      "
     >
-      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
 
-        {/* Header */}
+      <div className="pointer-events-none absolute inset-0">
+        {/* Large orbital circles */}
+
+        <div
+          className="
+            absolute
+            -right-40
+            -top-40
+            h-[420px]
+            w-[420px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.07]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-20
+            -top-20
+            h-[280px]
+            w-[280px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.05]
+          "
+        />
+
+        {/* Bottom orbit */}
+
+        <div
+          className="
+            absolute
+            -bottom-52
+            -left-40
+            h-[440px]
+            w-[440px]
+            rounded-full
+            border
+            border-[#A7B68D]/[0.06]
+          "
+        />
+
+        {/* Soft glow */}
+
+        <div
+          className="
+            absolute
+            left-1/2
+            top-1/2
+            h-[500px]
+            w-[500px]
+            -translate-x-1/2
+            -translate-y-1/2
+            rounded-full
+            bg-[#A7B68D]/[0.018]
+            blur-[140px]
+          "
+        />
+
+        {/* Dot pattern */}
+
+        <div
+          className="
+            absolute
+            left-[5%]
+            top-[20%]
+            grid
+            grid-cols-4
+            gap-4
+            opacity-30
+          "
+        >
+          {Array.from({ length: 20 }).map((_, index) => (
+            <span
+              key={index}
+              className="
+                h-1
+                w-1
+                rounded-full
+                bg-[#A7B68D]/50
+              "
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          max-w-6xl
+          px-6
+          sm:px-10
+        "
+      >
+        {/* =================================================
+            HEADER
+        ================================================= */}
+
         <ScrollReveal className="mb-14 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#C96A4A]">
-            Learning & Credentials
-          </p>
+          <div
+            className="
+              mb-5
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-10
+                bg-[#A7B68D]/50
+              "
+            />
 
-          <h2 className="text-4xl font-bold tracking-tight text-[#F4EFE7] sm:text-5xl">
-            Certifications.
+            <p
+              className="
+                text-[10px]
+                font-medium
+                uppercase
+                tracking-[0.35em]
+                text-[#A7B68D]
+              "
+            >
+              Learning & Credentials
+            </p>
+
+            <span
+              className="
+                h-px
+                w-10
+                bg-[#A7B68D]/50
+              "
+            />
+          </div>
+
+          <h2
+            className="
+              text-5xl
+              font-medium
+              tracking-[-0.06em]
+              text-[#F5F3EC]
+              sm:text-6xl
+              md:text-7xl
+            "
+          >
+            Certifications
+            <span className="text-[#A7B68D]">
+              .
+            </span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#B8AEA4] sm:text-base">
-            Professional certifications and learning milestones across
-            data science, machine learning, AI, and technology.
+          <p
+            className="
+              mx-auto
+              mt-5
+              max-w-xl
+              text-sm
+              leading-7
+              text-[#8D9489]
+              sm:text-base
+            "
+          >
+            Professional certifications and learning
+            milestones across data science,
+            machine learning, and AI.
           </p>
         </ScrollReveal>
 
-        {/* Certification Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {/* =================================================
+            CERTIFICATION GRID
+        ================================================= */}
+
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-4
+            sm:grid-cols-2
+            lg:grid-cols-3
+          "
+        >
           {certifications.map((cert, index) => (
             <motion.article
               key={`${cert.title}-${index}`}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-70px" }}
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                margin: "-60px",
+              }}
               transition={{
-                duration: 0.45,
-                delay: index * 0.05,
+                duration: 0.5,
+                delay: index * 0.06,
               }}
               className="
                 group
+                relative
                 flex
-                min-h-[500px]
+                min-h-[250px]
                 flex-col
                 overflow-hidden
                 rounded-2xl
                 border
-                border-white/[0.10]
-                bg-[#2A2420]
+                border-[#A7B68D]/20
+                bg-white/[0.018]
+                p-6
+                backdrop-blur-xl
                 transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:border-[#C96A4A]/40
-                hover:shadow-2xl
+                duration-500
+                hover:-translate-y-1
+                hover:border-[#A7B68D]/55
+                hover:bg-[#A7B68D]/[0.035]
+                hover:shadow-[0_20px_60px_rgba(0,0,0,0.25)]
               "
             >
-              {/* ================= IMAGE ================= */}
+              {/* =================================================
+                  CARD DECORATION
+              ================================================= */}
 
-              <a
-                href={cert.credentialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  -right-10
+                  -top-10
+                  h-28
+                  w-28
+                  rounded-full
+                  border
+                  border-[#A7B68D]/10
+                  transition-transform
+                  duration-700
+                  group-hover:scale-125
+                "
+              />
+
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  right-6
+                  top-7
+                  h-1
+                  w-1
+                  rounded-full
+                  bg-[#A7B68D]/50
+                  shadow-[0_0_10px_rgba(167,182,141,0.5)]
+                "
+              />
+
+              {/* =================================================
+                  TOP ROW
+              ================================================= */}
+
+              <div
                 className="
                   relative
-                  block
-                  h-[230px]
-                  overflow-hidden
-                  bg-[#181411]
+                  flex
+                  items-start
+                  justify-between
                 "
               >
-                <img
-                  src={cert.image}
-                  alt={`${cert.title} certificate`}
-                  className="
-                    h-full
-                    w-full
-                    object-contain
-                    p-4
-                    transition-transform
-                    duration-500
-                    group-hover:scale-[1.03]
-                  "
-                />
+                {/* Number */}
 
-                {/* Image overlay */}
-                <div
+                <span
                   className="
-                    pointer-events-none
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-[#2A2420]/50
-                    via-transparent
-                    to-transparent
-                    opacity-0
-                    transition-opacity
+                    text-4xl
+                    font-light
+                    leading-none
+                    tracking-[-0.07em]
+                    text-[#A7B68D]/25
+                    transition-colors
                     duration-300
-                    group-hover:opacity-100
+                    group-hover:text-[#A7B68D]/60
                   "
-                />
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
 
-                {/* View image */}
-                <div
+                {/* Credential */}
+
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${cert.title} credential`}
                   className="
-                    absolute
-                    right-4
-                    top-4
                     flex
                     h-9
                     w-9
@@ -117,57 +340,92 @@ export default function CertificationsSection() {
                     justify-center
                     rounded-full
                     border
-                    border-white/10
-                    bg-[#211C18]/80
-                    text-[#F4EFE7]
-                    opacity-0
-                    backdrop-blur-sm
+                    border-[#A7B68D]/20
+                    text-[#8D9489]
                     transition-all
                     duration-300
-                    group-hover:opacity-100
+                    hover:border-[#A7B68D]/70
+                    hover:bg-[#A7B68D]/[0.07]
+                    hover:text-[#A7B68D]
                   "
                 >
-                  <ArrowUpRight size={16} />
-                </div>
-              </a>
+                  <ArrowUpRight
+                    size={15}
+                    strokeWidth={1.5}
+                  />
+                </a>
+              </div>
 
-              {/* ================= CONTENT ================= */}
+              {/* =================================================
+                  CONTENT
+              ================================================= */}
 
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
+              <div className="relative mt-auto pt-10">
+                {/* Organization */}
+
+                <p
+                  className="
+                    mb-2
+                    text-[9px]
+                    font-medium
+                    uppercase
+                    tracking-[0.25em]
+                    text-[#A7B68D]
+                  "
+                >
+                  {cert.organization}
+                </p>
 
                 {/* Title */}
-                <div>
-                  <h3 className="text-xl font-semibold leading-snug text-[#F4EFE7]">
-                    {cert.title}
-                  </h3>
 
-                  <p className="mt-2 text-sm font-medium text-[#C96A4A]">
-                    {cert.organization}
-                  </p>
-                </div>
+                <h3
+                  className="
+                    max-w-[90%]
+                    text-xl
+                    font-medium
+                    leading-tight
+                    tracking-[-0.03em]
+                    text-[#F5F3EC]
+                    transition-colors
+                    duration-300
+                    group-hover:text-[#A7B68D]
+                  "
+                >
+                  {cert.title}
+                </h3>
 
                 {/* Date */}
-                <div className="mt-5 flex items-center gap-2 text-sm text-[#B8AEA4]">
-                  <Calendar size={14} className="text-[#8E847B]" />
 
-                  <span>{cert.date}</span>
-                </div>
+                <p
+                  className="
+                    mt-3
+                    text-[10px]
+                    uppercase
+                    tracking-[0.16em]
+                    text-[#667068]
+                  "
+                >
+                  {cert.date}
+                </p>
 
-                {/* Skills / Details */}
+                {/* Skills */}
+
                 {cert.skills?.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div
+                    className="
+                      mt-4
+                      flex
+                      flex-wrap
+                      gap-x-3
+                      gap-y-1.5
+                    "
+                  >
                     {cert.skills.map((skill) => (
                       <span
                         key={skill}
                         className="
-                          rounded-full
-                          border
-                          border-white/[0.08]
-                          bg-white/[0.04]
-                          px-3
-                          py-1
-                          text-xs
-                          text-[#B8AEA4]
+                          text-[9px]
+                          text-[#707A72]
                         "
                       >
                         {skill}
@@ -175,52 +433,74 @@ export default function CertificationsSection() {
                     ))}
                   </div>
                 )}
-
-                {/* Spacer */}
-                <div className="flex-1" />
-
-                {/* Divider */}
-                <div className="my-6 h-px bg-white/[0.09]" />
-
-                {/* Credential Button */}
-                <a
-                  href={cert.credentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    inline-flex
-                    items-center
-                    justify-between
-                    rounded-xl
-                    border
-                    border-white/[0.10]
-                    px-4
-                    py-3
-                    text-sm
-                    font-medium
-                    text-[#F4EFE7]
-                    transition-all
-                    duration-200
-                    hover:border-[#C96A4A]/50
-                    hover:bg-[#C96A4A]/10
-                  "
-                >
-                  <span>View Credential</span>
-
-                  <ArrowUpRight
-                    size={16}
-                    className="
-                      transition-transform
-                      duration-200
-                      group-hover:-translate-y-0.5
-                      group-hover:translate-x-0.5
-                    "
-                  />
-                </a>
               </div>
+
+              {/* =================================================
+                  BOTTOM LINE
+              ================================================= */}
+
+              <span
+                className="
+                  absolute
+                  bottom-0
+                  left-1/2
+                  h-px
+                  w-0
+                  -translate-x-1/2
+                  bg-[#A7B68D]
+                  shadow-[0_0_12px_rgba(167,182,141,0.6)]
+                  transition-all
+                  duration-500
+                  group-hover:w-2/3
+                "
+              />
             </motion.article>
           ))}
         </div>
+
+        {/* =================================================
+            BOTTOM DECORATION
+        ================================================= */}
+
+        <ScrollReveal
+          direction="up"
+          delay={0.25}
+          className="mt-14"
+        >
+          <div
+            className="
+              flex
+              items-center
+              justify-center
+              gap-4
+            "
+          >
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
+
+            <span
+              className="
+                h-1.5
+                w-1.5
+                rounded-full
+                bg-[#A7B68D]/60
+              "
+            />
+
+            <span
+              className="
+                h-px
+                w-16
+                bg-[#A7B68D]/15
+              "
+            />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
