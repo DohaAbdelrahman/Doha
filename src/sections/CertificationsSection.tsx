@@ -7,11 +7,13 @@ import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { certifications } from "@/data/portfolio";
 
 const colors = {
-  background: "#07100D",
-  cream: "#F5F3EC",
-  olive: "#A7B68D",
-  muted: "#8D9489",
-  border: "rgba(167, 182, 141, 0.20)",
+  background: "#081412",
+  card: "#0D1C19",
+  gold: "#C7A86B",
+  goldHover: "#D8BC82",
+  cream: "#F5F1E8",
+  muted: "#9BA8A2",
+  subtle: "#65736D",
 };
 
 export default function CertificationsSection() {
@@ -21,17 +23,18 @@ export default function CertificationsSection() {
       className="
         relative
         overflow-hidden
-        bg-[#07100D]
-        py-28
-        sm:py-36
+        bg-[#081412]
+        py-24
+        sm:py-32
       "
     >
       {/* =====================================================
           BACKGROUND
       ===================================================== */}
 
-      <div className="pointer-events-none absolute inset-0">
-        {/* Large orbital circles */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
+        {/* Top right circles */}
 
         <div
           className="
@@ -42,7 +45,7 @@ export default function CertificationsSection() {
             w-[420px]
             rounded-full
             border
-            border-[#A7B68D]/[0.07]
+            border-[#C7A86B]/[0.07]
           "
         />
 
@@ -55,11 +58,11 @@ export default function CertificationsSection() {
             w-[280px]
             rounded-full
             border
-            border-[#A7B68D]/[0.05]
+            border-[#C7A86B]/[0.05]
           "
         />
 
-        {/* Bottom orbit */}
+        {/* Bottom left circle */}
 
         <div
           className="
@@ -70,7 +73,7 @@ export default function CertificationsSection() {
             w-[440px]
             rounded-full
             border
-            border-[#A7B68D]/[0.06]
+            border-[#C7A86B]/[0.05]
           "
         />
 
@@ -86,7 +89,7 @@ export default function CertificationsSection() {
             -translate-x-1/2
             -translate-y-1/2
             rounded-full
-            bg-[#A7B68D]/[0.018]
+            bg-[#C7A86B]/[0.012]
             blur-[140px]
           "
         />
@@ -101,7 +104,7 @@ export default function CertificationsSection() {
             grid
             grid-cols-4
             gap-4
-            opacity-30
+            opacity-25
           "
         >
           {Array.from({ length: 20 }).map((_, index) => (
@@ -111,7 +114,7 @@ export default function CertificationsSection() {
                 h-1
                 w-1
                 rounded-full
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/40
               "
             />
           ))}
@@ -150,7 +153,7 @@ export default function CertificationsSection() {
               className="
                 h-px
                 w-10
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/50
               "
             />
 
@@ -160,7 +163,7 @@ export default function CertificationsSection() {
                 font-medium
                 uppercase
                 tracking-[0.35em]
-                text-[#A7B68D]
+                text-[#C7A86B]
               "
             >
               Learning & Credentials
@@ -170,7 +173,7 @@ export default function CertificationsSection() {
               className="
                 h-px
                 w-10
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/50
               "
             />
           </div>
@@ -180,15 +183,13 @@ export default function CertificationsSection() {
               text-5xl
               font-medium
               tracking-[-0.06em]
-              text-[#F5F3EC]
+              text-[#F5F1E8]
               sm:text-6xl
               md:text-7xl
             "
           >
             Certifications
-            <span className="text-[#A7B68D]">
-              .
-            </span>
+            <span className="text-[#C7A86B]">.</span>
           </h2>
 
           <p
@@ -198,7 +199,7 @@ export default function CertificationsSection() {
               max-w-xl
               text-sm
               leading-7
-              text-[#8D9489]
+              text-[#9BA8A2]
               sm:text-base
             "
           >
@@ -216,7 +217,7 @@ export default function CertificationsSection() {
           className="
             grid
             grid-cols-1
-            gap-4
+            gap-5
             sm:grid-cols-2
             lg:grid-cols-3
           "
@@ -243,96 +244,95 @@ export default function CertificationsSection() {
               className="
                 group
                 relative
-                flex
-                min-h-[250px]
-                flex-col
                 overflow-hidden
                 rounded-2xl
                 border
-                border-[#A7B68D]/20
-                bg-white/[0.018]
-                p-6
+                border-[#C7A86B]/20
+                bg-[#0D1C19]/70
                 backdrop-blur-xl
                 transition-all
                 duration-500
                 hover:-translate-y-1
-                hover:border-[#A7B68D]/55
-                hover:bg-[#A7B68D]/[0.035]
+                hover:border-[#C7A86B]/50
+                hover:bg-[#C7A86B]/[0.025]
                 hover:shadow-[0_20px_60px_rgba(0,0,0,0.25)]
               "
             >
               {/* =================================================
-                  CARD DECORATION
+                  CERTIFICATE IMAGE
               ================================================= */}
 
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  -right-10
-                  -top-10
-                  h-28
-                  w-28
-                  rounded-full
-                  border
-                  border-[#A7B68D]/10
-                  transition-transform
-                  duration-700
-                  group-hover:scale-125
-                "
-              />
-
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  right-6
-                  top-7
-                  h-1
-                  w-1
-                  rounded-full
-                  bg-[#A7B68D]/50
-                  shadow-[0_0_10px_rgba(167,182,141,0.5)]
-                "
-              />
-
-              {/* =================================================
-                  TOP ROW
-              ================================================= */}
-
-              <div
+              <a
+                href={cert.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${cert.title} credential`}
                 className="
                   relative
-                  flex
-                  items-start
-                  justify-between
+                  block
+                  h-[210px]
+                  overflow-hidden
+                  border-b
+                  border-[#C7A86B]/10
+                  bg-[#06100E]
                 "
               >
-                {/* Number */}
+                {cert.image ? (
+                  <img
+                    src={cert.image}
+                    alt={`${cert.title} certificate`}
+                    className="
+                      h-full
+                      w-full
+                      object-contain
+                      p-3
+                      transition-transform
+                      duration-500
+                      group-hover:scale-[1.025]
+                    "
+                  />
+                ) : (
+                  <div
+                    className="
+                      flex
+                      h-full
+                      items-center
+                      justify-center
+                      text-xs
+                      uppercase
+                      tracking-[0.2em]
+                      text-[#65736D]
+                    "
+                  >
+                    Certificate
+                  </div>
+                )}
 
-                <span
+                {/* Image overlay */}
+
+                <div
                   className="
-                    text-4xl
-                    font-light
-                    leading-none
-                    tracking-[-0.07em]
-                    text-[#A7B68D]/25
-                    transition-colors
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-[#081412]/45
+                    via-transparent
+                    to-transparent
+                    opacity-0
+                    transition-opacity
                     duration-300
-                    group-hover:text-[#A7B68D]/60
+                    group-hover:opacity-100
                   "
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                />
 
-                {/* Credential */}
+                {/* Open icon */}
 
-                <a
-                  href={cert.credentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View ${cert.title} credential`}
+                <div
                   className="
+                    absolute
+                    right-4
+                    top-4
                     flex
                     h-9
                     w-9
@@ -340,37 +340,66 @@ export default function CertificationsSection() {
                     justify-center
                     rounded-full
                     border
-                    border-[#A7B68D]/20
-                    text-[#8D9489]
+                    border-[#C7A86B]/30
+                    bg-[#081412]/80
+                    text-[#C7A86B]
+                    opacity-0
+                    backdrop-blur-md
                     transition-all
                     duration-300
-                    hover:border-[#A7B68D]/70
-                    hover:bg-[#A7B68D]/[0.07]
-                    hover:text-[#A7B68D]
+                    group-hover:opacity-100
                   "
                 >
-                  <ArrowUpRight
-                    size={15}
-                    strokeWidth={1.5}
-                  />
-                </a>
-              </div>
+                  <ArrowUpRight size={15} />
+                </div>
+              </a>
 
               {/* =================================================
-                  CONTENT
+                  CARD CONTENT
               ================================================= */}
 
-              <div className="relative mt-auto pt-10">
+              <div className="relative p-5 sm:p-6">
+
+                {/* Number + Label */}
+
+                <div className="flex items-start justify-between">
+                  <span
+                    className="
+                      text-3xl
+                      font-light
+                      leading-none
+                      tracking-[-0.07em]
+                      text-[#C7A86B]/25
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#C7A86B]/55
+                    "
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <span
+                    className="
+                      text-[9px]
+                      uppercase
+                      tracking-[0.22em]
+                      text-[#65736D]
+                    "
+                  >
+                    Certificate
+                  </span>
+                </div>
+
                 {/* Organization */}
 
                 <p
                   className="
-                    mb-2
+                    mt-6
                     text-[9px]
                     font-medium
                     uppercase
                     tracking-[0.25em]
-                    text-[#A7B68D]
+                    text-[#C7A86B]
                   "
                 >
                   {cert.organization}
@@ -380,15 +409,16 @@ export default function CertificationsSection() {
 
                 <h3
                   className="
-                    max-w-[90%]
+                    mt-2
+                    max-w-[92%]
                     text-xl
                     font-medium
                     leading-tight
                     tracking-[-0.03em]
-                    text-[#F5F3EC]
+                    text-[#F5F1E8]
                     transition-colors
                     duration-300
-                    group-hover:text-[#A7B68D]
+                    group-hover:text-[#C7A86B]
                   "
                 >
                   {cert.title}
@@ -402,7 +432,7 @@ export default function CertificationsSection() {
                     text-[10px]
                     uppercase
                     tracking-[0.16em]
-                    text-[#667068]
+                    text-[#65736D]
                   "
                 >
                   {cert.date}
@@ -416,16 +446,25 @@ export default function CertificationsSection() {
                       mt-4
                       flex
                       flex-wrap
-                      gap-x-3
-                      gap-y-1.5
+                      gap-1.5
                     "
                   >
                     {cert.skills.map((skill) => (
                       <span
                         key={skill}
                         className="
+                          rounded-full
+                          border
+                          border-[#C7A86B]/10
+                          bg-[#C7A86B]/[0.025]
+                          px-2.5
+                          py-1
                           text-[9px]
-                          text-[#707A72]
+                          text-[#65736D]
+                          transition-all
+                          duration-200
+                          group-hover:border-[#C7A86B]/20
+                          group-hover:text-[#9BA8A2]
                         "
                       >
                         {skill}
@@ -435,9 +474,7 @@ export default function CertificationsSection() {
                 )}
               </div>
 
-              {/* =================================================
-                  BOTTOM LINE
-              ================================================= */}
+              {/* Bottom hover line */}
 
               <span
                 className="
@@ -447,8 +484,8 @@ export default function CertificationsSection() {
                   h-px
                   w-0
                   -translate-x-1/2
-                  bg-[#A7B68D]
-                  shadow-[0_0_12px_rgba(167,182,141,0.6)]
+                  bg-[#C7A86B]
+                  shadow-[0_0_12px_rgba(199,168,107,0.6)]
                   transition-all
                   duration-500
                   group-hover:w-2/3
@@ -479,7 +516,7 @@ export default function CertificationsSection() {
               className="
                 h-px
                 w-16
-                bg-[#A7B68D]/15
+                bg-[#C7A86B]/15
               "
             />
 
@@ -488,7 +525,7 @@ export default function CertificationsSection() {
                 h-1.5
                 w-1.5
                 rounded-full
-                bg-[#A7B68D]/60
+                bg-[#C7A86B]/60
               "
             />
 
@@ -496,7 +533,7 @@ export default function CertificationsSection() {
               className="
                 h-px
                 w-16
-                bg-[#A7B68D]/15
+                bg-[#C7A86B]/15
               "
             />
           </div>
