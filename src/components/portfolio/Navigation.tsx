@@ -5,10 +5,36 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navigation = [
-  { label: "WORK", href: "#projects", section: "projects" },
-  { label: "ABOUT", href: "#about", section: "about" },
-  { label: "JOURNEY", href: "#experience", section: "experience" },
-  { label: "CONTACT", href: "#contact", section: "contact" },
+  {
+    label: "ABOUT",
+    href: "#about",
+    section: "about",
+  },
+  {
+    label: "PROJECTS",
+    href: "#projects",
+    section: "projects",
+  },
+  {
+    label: "JOURNEY",
+    href: "#experience",
+    section: "experience",
+  },
+  {
+    label: "EDUCATION",
+    href: "#education",
+    section: "education",
+  },
+  {
+    label: "CERTIFICATIONS",
+    href: "#certifications",
+    section: "certifications",
+  },
+  {
+    label: "CONTACT",
+    href: "#contact",
+    section: "contact",
+  },
 ];
 
 export default function Navigation() {
@@ -18,19 +44,26 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      const scrollY = window.scrollY;
+
+      setScrolled(scrollY > 40);
+
+      if (scrollY < 250) {
+        setActiveSection("home");
+        return;
+      }
 
       let currentSection = "home";
 
       navigation.forEach(({ section }) => {
         const element = document.getElementById(section);
 
-        if (element) {
-          const rect = element.getBoundingClientRect();
+        if (!element) return;
 
-          if (rect.top <= 160) {
-            currentSection = section;
-          }
+        const rect = element.getBoundingClientRect();
+
+        if (rect.top <= 180) {
+          currentSection = section;
         }
       });
 
@@ -51,7 +84,11 @@ export default function Navigation() {
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
 
-    document.querySelector(href)?.scrollIntoView({
+    const element = document.querySelector(href);
+
+    if (!element) return;
+
+    element.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
@@ -64,6 +101,8 @@ export default function Navigation() {
       top: 0,
       behavior: "smooth",
     });
+
+    setActiveSection("home");
   };
 
   return (
@@ -86,13 +125,14 @@ export default function Navigation() {
         right-0
         top-0
         z-50
-        px-5
-        pt-5
-        sm:px-8
+        px-4
+        pt-4
+        sm:px-6
+        sm:pt-5
       "
     >
       {/* =====================================================
-          DESKTOP / MAIN NAVIGATION
+          NAVBAR
       ===================================================== */}
 
       <nav
@@ -105,22 +145,22 @@ export default function Navigation() {
           justify-between
           rounded-2xl
           border
-          px-5
+          px-4
           transition-all
           duration-500
-          sm:px-7
+          sm:px-6
 
           ${
             scrolled
               ? `
-                border-[#A7B68D]/20
-                bg-[#0F1714]/70
-                shadow-[0_8px_35px_rgba(0,0,0,0.18)]
+                border-[#C7A86B]/20
+                bg-[#081412]/80
+                shadow-[0_10px_40px_rgba(0,0,0,0.25)]
                 backdrop-blur-xl
               `
               : `
-                border-[#D6CEC1]/10
-                bg-[#F5F3EC]/[0.018]
+                border-[#F5F1E8]/[0.08]
+                bg-[#F5F1E8]/[0.02]
                 backdrop-blur-md
               `
           }
@@ -137,6 +177,7 @@ export default function Navigation() {
           className="
             group
             flex
+            shrink-0
             items-baseline
             gap-0.5
           "
@@ -146,10 +187,10 @@ export default function Navigation() {
               text-lg
               font-semibold
               tracking-[-0.04em]
-              text-[#F5F3EC]
+              text-[#F5F1E8]
               transition-colors
               duration-300
-              group-hover:text-[#D6CEC1]
+              group-hover:text-white
               sm:text-xl
             "
           >
@@ -161,11 +202,11 @@ export default function Navigation() {
               text-xl
               font-semibold
               leading-none
-              text-[#A7B68D]
+              text-[#C7A86B]
               transition-all
               duration-300
-              group-hover:text-[#B8C49F]
-              group-hover:drop-shadow-[0_0_8px_rgba(167,182,141,0.45)]
+              group-hover:text-[#D8BC82]
+              group-hover:drop-shadow-[0_0_8px_rgba(199,168,107,0.45)]
             "
           >
             .
@@ -173,12 +214,21 @@ export default function Navigation() {
         </button>
 
         {/* =================================================
-            DESKTOP LINKS
+            DESKTOP NAVIGATION
         ================================================= */}
 
-        <div className="hidden items-center gap-7 md:flex lg:gap-9">
+        <div
+          className="
+            hidden
+            items-center
+            gap-5
+            md:flex
+            lg:gap-7
+          "
+        >
           {navigation.map((item) => {
-            const isActive = activeSection === item.section;
+            const isActive =
+              activeSection === item.section;
 
             return (
               <button
@@ -188,27 +238,31 @@ export default function Navigation() {
                 className="
                   group
                   relative
+                  whitespace-nowrap
                   py-2
-                  text-[10px]
+                  text-[9px]
                   font-medium
-                  tracking-[0.2em]
+                  tracking-[0.17em]
+                  lg:text-[10px]
+                  lg:tracking-[0.19em]
                 "
               >
                 <span
                   className={`
                     transition-colors
                     duration-300
+
                     ${
                       isActive
-                        ? "text-[#F5F3EC]"
-                        : "text-[#8E988F] group-hover:text-[#F5F3EC]"
+                        ? "text-[#F5F1E8]"
+                        : "text-[#9BA8A2] group-hover:text-[#F5F1E8]"
                     }
                   `}
                 >
                   {item.label}
                 </span>
 
-                {/* Active / Hover Line */}
+                {/* Active Line */}
 
                 <span
                   className={`
@@ -217,10 +271,11 @@ export default function Navigation() {
                     left-1/2
                     h-px
                     -translate-x-1/2
-                    bg-[#A7B68D]
-                    shadow-[0_0_8px_rgba(167,182,141,0.4)]
+                    bg-[#C7A86B]
+                    shadow-[0_0_8px_rgba(199,168,107,0.45)]
                     transition-all
                     duration-300
+
                     ${
                       isActive
                         ? "w-full"
@@ -239,38 +294,35 @@ export default function Navigation() {
 
         <button
           type="button"
-          onClick={() => setMobileOpen((prev) => !prev)}
+          onClick={() =>
+            setMobileOpen((prev) => !prev)
+          }
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileOpen}
           className="
             flex
             h-9
             w-9
+            shrink-0
             items-center
             justify-center
             rounded-lg
             border
-            border-[#D6CEC1]/10
-            bg-[#F5F3EC]/[0.025]
-            text-[#F5F3EC]
+            border-[#C7A86B]/15
+            bg-[#F5F1E8]/[0.025]
+            text-[#F5F1E8]
             backdrop-blur-md
             transition-all
             duration-300
-            hover:border-[#A7B68D]/40
-            hover:bg-[#A7B68D]/[0.06]
+            hover:border-[#C7A86B]/40
+            hover:bg-[#C7A86B]/[0.06]
             md:hidden
           "
-          aria-label="Toggle navigation menu"
-          aria-expanded={mobileOpen}
         >
           {mobileOpen ? (
-            <X
-              size={18}
-              strokeWidth={1.5}
-            />
+            <X size={18} strokeWidth={1.5} />
           ) : (
-            <Menu
-              size={18}
-              strokeWidth={1.5}
-            />
+            <Menu size={18} strokeWidth={1.5} />
           )}
         </button>
       </nav>
@@ -308,22 +360,25 @@ export default function Navigation() {
               overflow-hidden
               rounded-2xl
               border
-              border-[#A7B68D]/15
-              bg-[#0F1714]/85
-              shadow-[0_15px_50px_rgba(0,0,0,0.25)]
+              border-[#C7A86B]/15
+              bg-[#081412]/90
+              shadow-[0_15px_50px_rgba(0,0,0,0.3)]
               backdrop-blur-xl
               md:hidden
             "
           >
             <div className="px-3 py-3">
               {navigation.map((item, index) => {
-                const isActive = activeSection === item.section;
+                const isActive =
+                  activeSection === item.section;
 
                 return (
                   <motion.button
                     key={item.href}
                     type="button"
-                    onClick={() => handleNavClick(item.href)}
+                    onClick={() =>
+                      handleNavClick(item.href)
+                    }
                     initial={{
                       opacity: 0,
                       x: -12,
@@ -347,7 +402,7 @@ export default function Navigation() {
                       text-left
                       transition-all
                       duration-300
-                      hover:bg-[#F5F3EC]/[0.035]
+                      hover:bg-[#C7A86B]/[0.04]
                     "
                   >
                     <span
@@ -357,10 +412,11 @@ export default function Navigation() {
                         tracking-[0.2em]
                         transition-colors
                         duration-300
+
                         ${
                           isActive
-                            ? "text-[#F5F3EC]"
-                            : "text-[#8E988F] group-hover:text-[#F5F3EC]"
+                            ? "text-[#F5F1E8]"
+                            : "text-[#9BA8A2] group-hover:text-[#F5F1E8]"
                         }
                       `}
                     >
@@ -374,10 +430,11 @@ export default function Navigation() {
                         rounded-full
                         transition-all
                         duration-300
+
                         ${
                           isActive
-                            ? "bg-[#A7B68D] shadow-[0_0_10px_rgba(167,182,141,0.7)]"
-                            : "bg-[#6B7468]/30"
+                            ? "bg-[#C7A86B] shadow-[0_0_10px_rgba(199,168,107,0.7)]"
+                            : "bg-[#65736D]/30"
                         }
                       `}
                     />
