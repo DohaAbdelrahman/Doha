@@ -377,75 +377,146 @@ export interface Experience {
   tags?: string[];
 }
 
+export interface Experience {
+  type: "program" | "milestone";
+  title: string;
+  organization: string;
+  location: string;
+  mode: "Remote" | "On-Site" | "Hybrid";
+  date: string;
+  description: string;
+  achievements: string[];
+  tags: string[];
+  verifyUrl?: string;
+}
+
 export const experiences: Experience[] = [
-  {
-    type: "program",
-    title: "Google Data Analysis Scholarship",
-    organization: "Digital Egypt Pioneers Initiative (DEPI)",
-    date: "November 2024 — May 2025",
-    description:
-      "Completed a hybrid data analysis scholarship focused on analyzing datasets, identifying trends and patterns, creating reports and visualizations, and applying statistical methods to extract meaningful insights.",
-    tags: [
-      "Python",
-      "SQL",
-      "Excel",
-      "Data Analysis",
-      "Data Cleaning",
-      "EDA",
-      "Data Visualization",
-      "Power BI",
-      "Tableau",
-      "Machine Learning",
-    ],
-  },
-
-  {
-    type: "program",
-    title: "Machine Learning Summer Training",
-    organization: "ITIDA / NTI",
-    date: "August 2025 — September 2025",
-    description:
-      "Completed a 120-hour summer training program in Machine Learning, including 90 technical hours and 30 freelancing hours, with a final score of 85.5%.",
-    tags: [
-      "Machine Learning",
-      "Technical Training",
-      "Freelancing",
-      "120 Hours",
-      "85.5%",
-    ],
-  },
-
-  {
-    type: "program",
-    title: "Artificial Intelligence (AI)",
-    organization: "NTI / Huawei Egyptian Talent Academy",
-    date: "July 2025 — August 2025",
-    description:
-      "Completed an 80-hour Artificial Intelligence training program covering core AI concepts and practical applications, with a final score of 81%.",
-    tags: [
-      "Artificial Intelligence",
-      "AI",
-      "80 Hours",
-      "81%",
-    ],
-  },
+  // =========================================================
+  // 01 — LATEST
+  // =========================================================
 
   {
     type: "program",
     title: ".NET Development Summer Training",
     organization: "ITI — Information Technology Institute",
+    location: "Giza, Egypt",
+    mode: "Remote",
     date: "August 2025 — September 2025",
+
     description:
-      "Completed an intensive summer training program focused on .NET development, C#, ASP.NET, and SQL Server through hands-on projects, collaborative development, and mentorship from industry professionals.",
+      "Intensive training program focused on core concepts and practical applications of .NET development, C#, ASP.NET, and SQL Server. The program included hands-on projects, collaborative learning, and mentorship from industry professionals, equipping participants to build scalable and maintainable web and desktop applications.",
+
+    achievements: [
+      "Developed and deployed web and desktop applications using C# and ASP.NET",
+      "Designed and implemented database-driven applications with SQL Server",
+      "Collaborated in a team environment to build full-stack projects",
+      "Gained strong understanding of software design patterns and best coding practices",
+    ],
+
     tags: [
       "C#",
-      ".NET",
       "ASP.NET",
       "SQL Server",
-      "Full-Stack Development",
     ],
   },
 
+  // =========================================================
+  // 02
+  // =========================================================
+
+  {
+    type: "program",
+    title: "Machine Learning Summer Training",
+    organization: "ITIDA / NTI",
+    location: "Giza, Egypt",
+    mode: "Remote",
+    date: "August 2025 — September 2025",
+
+    description:
+      "Completed a 120-hour summer training program in Machine Learning, including 90 technical hours and 30 freelancing hours, with a final score of 85.5%.",
+
+    achievements: [
+      "Developed and implemented machine learning models including Linear Regression, Logistic Regression, and Decision Trees on real datasets",
+      "Applied data preprocessing techniques including data cleaning, normalization, and feature engineering",
+      "Worked with real-world datasets and explored predictive modeling workflows",
+      "Gained hands-on experience in understanding the end-to-end machine learning process",
+    ],
+
+    tags: [
+      "Machine Learning",
+      "Python",
+      "Scikit-learn",
+      "120 Hours",
+      "Score 85.5%",
+    ],
+  },
+
+  // =========================================================
+  // 03
+  // =========================================================
+
+  {
+    type: "program",
+    title: "Artificial Intelligence (AI)",
+    organization: "NTI / Huawei Egyptian Talent Academy",
+    location: "Giza, Egypt",
+    mode: "On-Site",
+    date: "July 2025 — August 2025",
+
+    description:
+      "Completed an 80-hour Artificial Intelligence training program covering core AI concepts and practical applications, with a final score of 81%.",
+
+    achievements: [
+      "Built and implemented machine learning models for real-world datasets",
+      "Worked on practical AI applications through hands-on training",
+      "Collaborated in a learning environment focused on solving AI-driven problems",
+      "Developed a stronger understanding of artificial intelligence and machine learning concepts",
+    ],
+
+    tags: [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Python",
+      "80 Hours",
+      "Score 81%",
+    ],
+  },
+
+  // =========================================================
+  // 04 — OLDEST
+  // =========================================================
+
+  {
+    type: "program",
+    title: "Google Data Analysis Scholarship",
+    organization: "Digital Egypt Pioneers Initiative (DEPI)",
+    location: "Cairo, Egypt",
+    mode: "Hybrid",
+    date: "November 2024 — May 2025",
+
+    description:
+      "Completed a hybrid data analysis scholarship focused on analyzing datasets, identifying trends and patterns, creating reports and visualizations, and applying statistical methods to extract meaningful insights.",
+
+    achievements: [
+      "Analyzed datasets to identify trends and patterns",
+      "Created comprehensive reports and data visualizations",
+      "Collaborated with teams to support data-driven decision making",
+      "Applied statistical methods to extract meaningful insights",
+    ],
+
+    tags: [
+      "Excel",
+      "Python",
+      "Data Analysis",
+      "SQL",
+      "Tableau",
+      "Power BI",
+      "Data Cleaning",
+      "EDA",
+      "Data Visualization",
+      "Machine Learning",
+    ],
+  },
 ];
 
 export const certifications = [
