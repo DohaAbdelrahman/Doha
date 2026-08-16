@@ -348,14 +348,14 @@ export default function ContactSection() {
                     group
                     relative
                     flex
-                    min-h-[290px]
+                    min-h-[210px]
                     flex-col
                     overflow-hidden
                     rounded-[18px]
                     border
                     border-[#A7B68D]/25
                     bg-white/[0.025]
-                    p-7
+                    p-5
                     backdrop-blur-2xl
                     transition-all
                     duration-500
@@ -363,7 +363,7 @@ export default function ContactSection() {
                     hover:border-[#A7B68D]/65
                     hover:bg-[#A7B68D]/[0.045]
                     hover:shadow-[0_25px_80px_rgba(0,0,0,0.35)]
-                    sm:p-8
+                    sm:p-6
                   "
                 >
                   {/* Glass highlight */}
@@ -449,8 +449,8 @@ export default function ContactSection() {
                     className="
                       relative
                       flex
-                      h-14
-                      w-14
+                      h-11
+                      w-11
                       items-center
                       justify-center
                       rounded-full
@@ -466,14 +466,14 @@ export default function ContactSection() {
                     "
                   >
                     <Icon
-                      size={22}
+                      size={18}
                       strokeWidth={1.35}
                     />
                   </div>
 
                   {/* Card content */}
 
-                  <div className="relative mt-auto">
+                  <div className="relative mt-6">
                     <p
                       className="
                         text-[10px]
