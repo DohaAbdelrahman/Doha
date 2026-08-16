@@ -26,8 +26,8 @@ export default function HeroSection() {
         relative
         min-h-screen
         overflow-hidden
-        bg-[#080D18]
-        text-[#F8FAFC]
+        bg-[#081412]
+        text-[#F5F1E8]
       "
     >
       {/* =====================================================
@@ -35,7 +35,9 @@ export default function HeroSection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
         {/* Center subtle glow */}
+
         <div
           className="
             absolute
@@ -46,12 +48,13 @@ export default function HeroSection() {
             -translate-x-1/2
             -translate-y-1/2
             rounded-full
-            bg-[#38BDF8]/[0.025]
+            bg-[#C7A86B]/[0.025]
             blur-[130px]
           "
         />
 
         {/* Top Left Orbit */}
+
         <div
           className="
             absolute
@@ -61,7 +64,7 @@ export default function HeroSection() {
             w-[460px]
             rounded-full
             border
-            border-[#38BDF8]/25
+            border-[#C7A86B]/25
           "
         />
 
@@ -73,12 +76,13 @@ export default function HeroSection() {
             h-3
             w-3
             rounded-full
-            bg-[#38BDF8]
-            shadow-[0_0_18px_rgba(56,189,248,0.8)]
+            bg-[#C7A86B]
+            shadow-[0_0_18px_rgba(199,168,107,0.65)]
           "
         />
 
         {/* Bottom Left Circle */}
+
         <div
           className="
             absolute
@@ -88,12 +92,13 @@ export default function HeroSection() {
             w-[380px]
             rounded-full
             border
-            border-[#38BDF8]/15
-            bg-[#38BDF8]/[0.012]
+            border-[#C7A86B]/15
+            bg-[#C7A86B]/[0.012]
           "
         />
 
         {/* Right Orbit */}
+
         <div
           className="
             absolute
@@ -103,7 +108,7 @@ export default function HeroSection() {
             w-[600px]
             rounded-full
             border
-            border-[#38BDF8]/25
+            border-[#C7A86B]/25
           "
         />
 
@@ -115,12 +120,13 @@ export default function HeroSection() {
             h-3
             w-3
             rounded-full
-            bg-[#38BDF8]
-            shadow-[0_0_20px_rgba(56,189,248,0.8)]
+            bg-[#C7A86B]
+            shadow-[0_0_20px_rgba(199,168,107,0.65)]
           "
         />
 
         {/* Right Floating Circle */}
+
         <div
           className="
             absolute
@@ -130,12 +136,13 @@ export default function HeroSection() {
             w-[175px]
             rounded-full
             border
-            border-[#38BDF8]/20
-            bg-[#38BDF8]/[0.015]
+            border-[#C7A86B]/20
+            bg-[#C7A86B]/[0.015]
           "
         />
 
         {/* Right Orbit Connection */}
+
         <div
           className="
             absolute
@@ -144,7 +151,7 @@ export default function HeroSection() {
             h-px
             w-[430px]
             rotate-[-22deg]
-            bg-[#38BDF8]/15
+            bg-[#C7A86B]/15
           "
         />
 
@@ -169,7 +176,7 @@ export default function HeroSection() {
                 h-1
                 w-1
                 rounded-full
-                bg-[#38BDF8]/30
+                bg-[#C7A86B]/30
               "
             />
           ))}
@@ -196,7 +203,7 @@ export default function HeroSection() {
                 h-1
                 w-1
                 rounded-full
-                bg-[#38BDF8]/20
+                bg-[#C7A86B]/20
               "
             />
           ))}
@@ -212,8 +219,8 @@ export default function HeroSection() {
             h-2
             w-2
             rounded-full
-            bg-[#38BDF8]/55
-            shadow-[0_0_12px_rgba(56,189,248,0.5)]
+            bg-[#C7A86B]/55
+            shadow-[0_0_12px_rgba(199,168,107,0.45)]
           "
         />
 
@@ -225,8 +232,8 @@ export default function HeroSection() {
             h-2
             w-2
             rounded-full
-            bg-[#38BDF8]/55
-            shadow-[0_0_12px_rgba(56,189,248,0.5)]
+            bg-[#C7A86B]/55
+            shadow-[0_0_12px_rgba(199,168,107,0.45)]
           "
         />
 
@@ -238,7 +245,7 @@ export default function HeroSection() {
             h-1.5
             w-1.5
             rounded-full
-            bg-[#38BDF8]/35
+            bg-[#C7A86B]/35
           "
         />
       </div>
@@ -309,8 +316,8 @@ export default function HeroSection() {
                 className="
                   h-px
                   w-10
-                  bg-[#38BDF8]/80
-                  shadow-[0_0_10px_rgba(56,189,248,0.35)]
+                  bg-[#C7A86B]/80
+                  shadow-[0_0_10px_rgba(199,168,107,0.3)]
                   sm:w-14
                 "
               />
@@ -320,7 +327,7 @@ export default function HeroSection() {
                   text-sm
                   font-medium
                   tracking-[0.12em]
-                  text-[#38BDF8]
+                  text-[#C7A86B]
                 "
               >
                 Hello, I am
@@ -330,8 +337,8 @@ export default function HeroSection() {
                 className="
                   h-px
                   w-10
-                  bg-[#38BDF8]/80
-                  shadow-[0_0_10px_rgba(56,189,248,0.35)]
+                  bg-[#C7A86B]/80
+                  shadow-[0_0_10px_rgba(199,168,107,0.3)]
                   sm:w-14
                 "
               />
@@ -365,7 +372,7 @@ export default function HeroSection() {
                   hidden
                   h-px
                   w-20
-                  bg-[#38BDF8]/35
+                  bg-[#C7A86B]/35
                   sm:block
                   md:w-28
                 "
@@ -376,7 +383,7 @@ export default function HeroSection() {
                   text-xs
                   font-medium
                   tracking-[0.38em]
-                  text-[#38BDF8]
+                  text-[#C7A86B]
                   sm:text-sm
                 "
               >
@@ -388,7 +395,7 @@ export default function HeroSection() {
                   hidden
                   h-px
                   w-20
-                  bg-[#38BDF8]/35
+                  bg-[#C7A86B]/35
                   sm:block
                   md:w-28
                 "
@@ -416,7 +423,7 @@ export default function HeroSection() {
                 font-medium
                 leading-none
                 tracking-[-0.055em]
-                text-[#F8FAFC]
+                text-[#F5F1E8]
 
                 sm:text-[62px]
                 md:text-[76px]
@@ -424,10 +431,10 @@ export default function HeroSection() {
               "
             >
               {profile.name}
-              <span className="text-[#38BDF8]">.</span>
+              <span className="text-[#C7A86B]">.</span>
             </motion.h1>
 
-            {/* SKILLS */}
+            {/* SPECIALIZATIONS */}
 
             <motion.div
               initial={{
@@ -469,17 +476,17 @@ export default function HeroSection() {
                 >
                   <span
                     className="
-                      text-[#CBD5E1]
+                      text-[#9BA8A2]
                       transition-colors
                       duration-300
-                      hover:text-[#F8FAFC]
+                      hover:text-[#F5F1E8]
                     "
                   >
                     {skill}
                   </span>
 
                   {index < 2 && (
-                    <span className="text-[#38BDF8]/60">
+                    <span className="text-[#C7A86B]/60">
                       ·
                     </span>
                   )}
@@ -529,19 +536,19 @@ export default function HeroSection() {
                   gap-3
                   rounded-xl
                   border
-                  border-[#38BDF8]/60
-                  bg-[#38BDF8]/[0.08]
+                  border-[#C7A86B]/60
+                  bg-[#C7A86B]/[0.08]
                   px-8
                   text-sm
                   font-medium
-                  text-[#F8FAFC]
-                  shadow-[inset_0_1px_0_rgba(248,250,252,0.05)]
+                  text-[#F5F1E8]
+                  shadow-[inset_0_1px_0_rgba(245,241,232,0.05)]
                   backdrop-blur-xl
                   transition-all
                   duration-300
-                  hover:border-[#38BDF8]
-                  hover:bg-[#38BDF8]/[0.14]
-                  hover:shadow-[0_0_28px_rgba(56,189,248,0.13)]
+                  hover:border-[#D8BC82]
+                  hover:bg-[#C7A86B]/[0.14]
+                  hover:shadow-[0_0_28px_rgba(199,168,107,0.13)]
                 "
               >
                 View Projects
@@ -550,7 +557,7 @@ export default function HeroSection() {
                   size={17}
                   strokeWidth={1.7}
                   className="
-                    text-[#38BDF8]
+                    text-[#C7A86B]
                     transition-transform
                     duration-300
                     group-hover:-translate-y-0.5
@@ -575,18 +582,18 @@ export default function HeroSection() {
                   gap-3
                   rounded-xl
                   border
-                  border-[#CBD5E1]/15
-                  bg-[#F8FAFC]/[0.025]
+                  border-[#F5F1E8]/15
+                  bg-[#F5F1E8]/[0.025]
                   px-8
                   text-sm
                   font-medium
-                  text-[#F8FAFC]
-                  shadow-[inset_0_1px_0_rgba(248,250,252,0.04)]
+                  text-[#F5F1E8]
+                  shadow-[inset_0_1px_0_rgba(245,241,232,0.04)]
                   backdrop-blur-xl
                   transition-all
                   duration-300
-                  hover:border-[#38BDF8]/60
-                  hover:bg-[#F8FAFC]/[0.05]
+                  hover:border-[#C7A86B]/60
+                  hover:bg-[#F5F1E8]/[0.05]
                 "
               >
                 View CV
@@ -595,12 +602,12 @@ export default function HeroSection() {
                   size={17}
                   strokeWidth={1.7}
                   className="
-                    text-[#94A3B8]
+                    text-[#65736D]
                     transition-all
                     duration-300
                     group-hover:-translate-y-0.5
                     group-hover:translate-x-0.5
-                    group-hover:text-[#38BDF8]
+                    group-hover:text-[#C7A86B]
                   "
                 />
               </a>
@@ -630,6 +637,8 @@ export default function HeroSection() {
                 gap-4
               "
             >
+              {/* GitHub */}
+
               <a
                 href={profile.github}
                 target="_blank"
@@ -643,20 +652,22 @@ export default function HeroSection() {
                   justify-center
                   rounded-xl
                   border
-                  border-[#CBD5E1]/15
-                  bg-[#F8FAFC]/[0.025]
-                  text-[#94A3B8]
-                  shadow-[inset_0_1px_0_rgba(248,250,252,0.04)]
+                  border-[#F5F1E8]/15
+                  bg-[#F5F1E8]/[0.025]
+                  text-[#9BA8A2]
+                  shadow-[inset_0_1px_0_rgba(245,241,232,0.04)]
                   backdrop-blur-xl
                   transition-all
                   duration-300
-                  hover:border-[#38BDF8]/60
-                  hover:bg-[#38BDF8]/[0.08]
-                  hover:text-[#38BDF8]
+                  hover:border-[#C7A86B]/60
+                  hover:bg-[#C7A86B]/[0.08]
+                  hover:text-[#C7A86B]
                 "
               >
                 <Github size={18} strokeWidth={1.5} />
               </a>
+
+              {/* LinkedIn */}
 
               <a
                 href={profile.linkedin}
@@ -671,20 +682,22 @@ export default function HeroSection() {
                   justify-center
                   rounded-xl
                   border
-                  border-[#CBD5E1]/15
-                  bg-[#F8FAFC]/[0.025]
-                  text-[#94A3B8]
-                  shadow-[inset_0_1px_0_rgba(248,250,252,0.04)]
+                  border-[#F5F1E8]/15
+                  bg-[#F5F1E8]/[0.025]
+                  text-[#9BA8A2]
+                  shadow-[inset_0_1px_0_rgba(245,241,232,0.04)]
                   backdrop-blur-xl
                   transition-all
                   duration-300
-                  hover:border-[#38BDF8]/60
-                  hover:bg-[#38BDF8]/[0.08]
-                  hover:text-[#38BDF8]
+                  hover:border-[#C7A86B]/60
+                  hover:bg-[#C7A86B]/[0.08]
+                  hover:text-[#C7A86B]
                 "
               >
                 <Linkedin size={18} strokeWidth={1.5} />
               </a>
+
+              {/* Email */}
 
               <a
                 href={`mailto:${profile.email}`}
@@ -697,16 +710,16 @@ export default function HeroSection() {
                   justify-center
                   rounded-xl
                   border
-                  border-[#CBD5E1]/15
-                  bg-[#F8FAFC]/[0.025]
-                  text-[#94A3B8]
-                  shadow-[inset_0_1px_0_rgba(248,250,252,0.04)]
+                  border-[#F5F1E8]/15
+                  bg-[#F5F1E8]/[0.025]
+                  text-[#9BA8A2]
+                  shadow-[inset_0_1px_0_rgba(245,241,232,0.04)]
                   backdrop-blur-xl
                   transition-all
                   duration-300
-                  hover:border-[#38BDF8]/60
-                  hover:bg-[#38BDF8]/[0.08]
-                  hover:text-[#38BDF8]
+                  hover:border-[#C7A86B]/60
+                  hover:bg-[#C7A86B]/[0.08]
+                  hover:text-[#C7A86B]
                 "
               >
                 <Mail size={18} strokeWidth={1.5} />
@@ -744,7 +757,7 @@ export default function HeroSection() {
               font-medium
               uppercase
               tracking-[0.35em]
-              text-[#38BDF8]
+              text-[#C7A86B]
             "
           >
             Scroll to Explore
@@ -769,14 +782,14 @@ export default function HeroSection() {
               justify-center
               rounded-full
               border
-              border-[#38BDF8]/60
-              bg-[#38BDF8]/[0.035]
-              text-[#38BDF8]
-              shadow-[0_0_18px_rgba(56,189,248,0.07)]
+              border-[#C7A86B]/60
+              bg-[#C7A86B]/[0.035]
+              text-[#C7A86B]
+              shadow-[0_0_18px_rgba(199,168,107,0.07)]
               backdrop-blur-md
               transition-all
               duration-300
-              hover:bg-[#38BDF8]/10
+              hover:bg-[#C7A86B]/10
             "
             aria-label="Scroll to projects"
           >
