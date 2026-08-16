@@ -23,13 +23,9 @@ export default function AboutSection() {
         sm:py-32
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ===================================================== */}
+      {/* Background */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Orbit */}
-
         <div
           className="
             absolute
@@ -56,24 +52,6 @@ export default function AboutSection() {
           "
         />
 
-        {/* Soft glow */}
-
-        <div
-          className="
-            absolute
-            left-1/2
-            top-[35%]
-            h-[500px]
-            w-[500px]
-            -translate-x-1/2
-            rounded-full
-            bg-[#C7A86B]/[0.012]
-            blur-[140px]
-          "
-        />
-
-        {/* Dots */}
-
         <div
           className="
             absolute
@@ -99,9 +77,7 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* =====================================================
-          CONTENT
-      ===================================================== */}
+      {/* Content */}
 
       <div
         className="
@@ -176,7 +152,7 @@ export default function AboutSection() {
         </ScrollReveal>
 
         {/* =================================================
-            INTRO / APPROACH
+            APPROACH CARD
         ================================================= */}
 
         <ScrollReveal
@@ -218,107 +194,109 @@ export default function AboutSection() {
               "
             />
 
-            <div className="relative p-7 sm:p-9 md:p-10">
-              <div
-                className="
-                  grid
-                  gap-8
-                  md:grid-cols-[80px_1fr]
-                "
-              >
-                {/* Number */}
+            <div
+              className="
+                relative
+                grid
+                gap-8
+                p-7
+                sm:p-9
+                md:grid-cols-[90px_1fr]
+                md:p-10
+              "
+            >
+              {/* Number */}
 
-                <div>
-                  <span
-                    className="
-                      text-5xl
-                      font-light
-                      tracking-[-0.08em]
-                      text-[#C7A86B]/25
-                    "
-                  >
-                    01
-                  </span>
-                </div>
+              <div>
+                <span
+                  className="
+                    text-5xl
+                    font-light
+                    tracking-[-0.08em]
+                    text-[#C7A86B]/25
+                  "
+                >
+                  01
+                </span>
+              </div>
 
-                {/* Text */}
+              {/* Content */}
 
-                <div>
-                  <p
-                    className="
-                      max-w-3xl
-                      text-xl
-                      leading-8
-                      text-[#F5F1E8]
-                      sm:text-2xl
-                    "
-                  >
-                    I turn data into meaningful insights
-                    through a structured, problem-focused
-                    approach.
-                  </p>
+              <div>
+                <p
+                  className="
+                    max-w-3xl
+                    text-xl
+                    leading-8
+                    text-[#F5F1E8]
+                    sm:text-2xl
+                  "
+                >
+                  I turn data into meaningful insights
+                  through a structured, problem-focused
+                  approach.
+                </p>
 
-                  <div className="my-7 h-px bg-[#C7A86B]/10" />
+                <div className="my-7 h-px bg-[#C7A86B]/10" />
 
-                  <p
-                    className="
-                      max-w-3xl
-                      text-sm
-                      leading-7
-                      text-[#9BA8A2]
-                      sm:text-base
-                    "
-                  >
-                    {about.bio[1]}
-                  </p>
+                <p
+                  className="
+                    max-w-3xl
+                    text-sm
+                    leading-7
+                    text-[#9BA8A2]
+                    sm:text-base
+                  "
+                >
+                  {about.bio[1]}
+                </p>
 
-                  {/* Process */}
+                {/* Process */}
 
-                  <div
-                    className="
-                      mt-7
-                      flex
-                      flex-wrap
-                      items-center
-                      gap-y-3
-                    "
-                  >
-                    {approachSteps.map((step, index) => (
-                      <div
-                        key={step}
-                        className="flex items-center"
+                <div
+                  className="
+                    mt-8
+                    flex
+                    flex-wrap
+                    items-center
+                    gap-y-4
+                  "
+                >
+                  {approachSteps.map((step, index) => (
+                    <div
+                      key={step}
+                      className="flex items-center"
+                    >
+                      <span
+                        className="
+                          text-[10px]
+                          font-medium
+                          uppercase
+                          tracking-[0.16em]
+                          text-[#D6D1C7]
+                        "
                       >
+                        {step}
+                      </span>
+
+                      {index <
+                        approachSteps.length - 1 && (
                         <span
                           className="
-                            text-[10px]
-                            font-medium
-                            uppercase
-                            tracking-[0.16em]
-                            text-[#D6D1C7]
+                            mx-3
+                            text-[#C7A86B]/50
                           "
                         >
-                          {step}
+                          →
                         </span>
-
-                        {index <
-                          approachSteps.length - 1 && (
-                          <span
-                            className="
-                              mx-3
-                              text-[#C7A86B]/50
-                            "
-                          >
-                            →
-                          </span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Bottom accent */}
+            {/* Bottom hover line */}
 
             <div
               className="
@@ -337,7 +315,7 @@ export default function AboutSection() {
         </ScrollReveal>
 
         {/* =================================================
-            FOCUS + SKILLS
+            FOCUS AREAS + SKILLS
         ================================================= */}
 
         <div
@@ -375,38 +353,47 @@ export default function AboutSection() {
                     text-[#C7A86B]
                   "
                 >
-                  What I Focus On
+                  Focus Areas
                 </p>
               </div>
 
-              <div className="space-y-0">
+              <div className="space-y-3">
                 {about.focusAreas.map((area, index) => (
                   <div
                     key={area.title}
                     className="
                       group
-                      border-b
+                      rounded-xl
+                      border
                       border-[#C7A86B]/10
-                      py-5
-                      first:border-t
+                      bg-white/[0.012]
+                      p-5
+                      transition-all
+                      duration-300
+                      hover:border-[#C7A86B]/25
+                      hover:bg-[#C7A86B]/[0.025]
                     "
                   >
                     <div className="flex items-start gap-4">
                       <span
                         className="
-                          pt-1
+                          flex
+                          h-9
+                          w-9
+                          shrink-0
+                          items-center
+                          justify-center
+                          rounded-full
+                          border
+                          border-[#C7A86B]/20
                           text-[10px]
-                          tracking-[0.15em]
-                          text-[#65736D]
-                          transition-colors
-                          duration-300
-                          group-hover:text-[#C7A86B]
+                          text-[#C7A86B]
                         "
                       >
                         {String(index + 1).padStart(2, "0")}
                       </span>
 
-                      <div className="min-w-0 flex-1">
+                      <div className="min-w-0">
                         <h3
                           className="
                             text-base
@@ -431,19 +418,6 @@ export default function AboutSection() {
                           {area.description}
                         </p>
                       </div>
-
-                      <span
-                        className="
-                          pt-1
-                          text-[#65736D]
-                          transition-all
-                          duration-300
-                          group-hover:translate-x-1
-                          group-hover:text-[#C7A86B]
-                        "
-                      >
-                        ↗
-                      </span>
                     </div>
                   </div>
                 ))}
@@ -460,46 +434,31 @@ export default function AboutSection() {
             delay={0.1}
           >
             <div>
-              <div className="mb-7 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span
-                    className="
-                      h-1.5
-                      w-1.5
-                      rounded-full
-                      bg-[#C7A86B]
-                      shadow-[0_0_8px_rgba(199,168,107,0.5)]
-                    "
-                  />
-
-                  <p
-                    className="
-                      text-[10px]
-                      font-medium
-                      uppercase
-                      tracking-[0.3em]
-                      text-[#C7A86B]
-                    "
-                  >
-                    Skills
-                  </p>
-                </div>
-
+              <div className="mb-7 flex items-center gap-3">
                 <span
                   className="
+                    h-1.5
+                    w-1.5
+                    rounded-full
+                    bg-[#C7A86B]
+                    shadow-[0_0_8px_rgba(199,168,107,0.5)]
+                  "
+                />
+
+                <p
+                  className="
                     text-[10px]
+                    font-medium
                     uppercase
-                    tracking-[0.18em]
-                    text-[#65736D]
+                    tracking-[0.3em]
+                    text-[#C7A86B]
                   "
                 >
-                  My Toolkit
-                </span>
+                  Skills
+                </p>
               </div>
 
-              {/* Skill Categories */}
-
-              <div className="space-y-8">
+              <div className="space-y-7">
                 {skillCategories.map(
                   (category, categoryIndex) => (
                     <div key={category.title}>
@@ -531,65 +490,38 @@ export default function AboutSection() {
                         <span className="h-px flex-1 bg-[#C7A86B]/10" />
                       </div>
 
-                      {/* Skills Grid */}
+                      {/* Skills */}
 
                       <div
                         className="
-                          grid
-                          grid-cols-2
+                          flex
+                          flex-wrap
                           gap-2
-                          sm:grid-cols-3
                         "
                       >
                         {category.skills.map(
                           (skill) => (
-                            <div
+                            <span
                               key={skill.name}
                               className="
                                 group
-                                flex
-                                min-h-[42px]
-                                items-center
                                 rounded-lg
                                 border
                                 border-[#C7A86B]/10
                                 bg-white/[0.015]
                                 px-3
-                                py-2.5
+                                py-2
+                                text-xs
+                                text-[#9BA8A2]
                                 transition-all
                                 duration-300
-                                hover:-translate-y-0.5
                                 hover:border-[#C7A86B]/30
-                                hover:bg-[#C7A86B]/[0.035]
+                                hover:bg-[#C7A86B]/[0.04]
+                                hover:text-[#F5F1E8]
                               "
                             >
-                              <span
-                                className="
-                                  mr-2
-                                  h-1
-                                  w-1
-                                  shrink-0
-                                  rounded-full
-                                  bg-[#C7A86B]/40
-                                  transition-all
-                                  duration-300
-                                  group-hover:bg-[#C7A86B]
-                                "
-                              />
-
-                              <span
-                                className="
-                                  truncate
-                                  text-xs
-                                  text-[#9BA8A2]
-                                  transition-colors
-                                  duration-300
-                                  group-hover:text-[#F5F1E8]
-                                "
-                              >
-                                {skill.name}
-                              </span>
-                            </div>
+                              {skill.name}
+                            </span>
                           )
                         )}
                       </div>
@@ -600,53 +532,6 @@ export default function AboutSection() {
             </div>
           </ScrollReveal>
         </div>
-
-        {/* =================================================
-            CLOSING
-        ================================================= */}
-
-        <ScrollReveal
-          direction="up"
-          delay={0.15}
-          className="mt-16"
-        >
-          <div
-            className="
-              flex
-              flex-col
-              gap-4
-              border-t
-              border-[#C7A86B]/10
-              pt-7
-              sm:flex-row
-              sm:items-center
-              sm:justify-between
-            "
-          >
-            <p
-              className="
-                max-w-2xl
-                text-sm
-                leading-7
-                text-[#65736D]
-              "
-            >
-              {about.bio[3]}
-            </p>
-
-            <span
-              className="
-                shrink-0
-                text-[10px]
-                uppercase
-                tracking-[0.25em]
-                text-[#C7A86B]/70
-              "
-            >
-              Data · Insight · Impact
-            </span>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );
