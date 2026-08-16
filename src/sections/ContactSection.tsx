@@ -463,7 +463,7 @@ export default function ContactSection() {
               text-[#C7A86B]/60
             "
           >
-            Abdallah Adel
+            Doha Abdelrahman
           </p>
 
           <p
