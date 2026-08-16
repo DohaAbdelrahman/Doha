@@ -3,27 +3,23 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  X,
+  ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   Github,
-  ExternalLink,
+  X,
 } from "lucide-react";
 
 import { projects, type Project } from "@/data/portfolio";
 
-/* =========================================================
-   COLORS
-========================================================= */
+const PROJECTS_PER_PAGE = 6;
 
 const colors = {
-  background: "#0F1714",
+  bg: "#07100D",
   cream: "#F5F3EC",
   olive: "#A7B68D",
-  sage: "#6B7468",
-  taupe: "#B5ADA0",
-  line: "rgba(214, 206, 193, 0.12)",
-  glass: "rgba(245, 243, 236, 0.018)",
-  glassHover: "rgba(167, 182, 141, 0.045)",
+  muted: "#8D9489",
+  border: "rgba(167, 182, 141, 0.20)",
 };
 
 /* =========================================================
@@ -38,34 +34,13 @@ function CaseStudyModal({
   onClose: () => void;
 }) {
   const sections = [
-    {
-      label: "Problem",
-      value: project.problem,
-    },
-    {
-      label: "Data",
-      value: project.data,
-    },
-    {
-      label: "Process",
-      value: project.process,
-    },
-    {
-      label: "Analysis",
-      value: project.analysis,
-    },
-    {
-      label: "Modeling",
-      value: project.modeling,
-    },
-    {
-      label: "Evaluation",
-      value: project.evaluation,
-    },
-    {
-      label: "Results",
-      value: project.results,
-    },
+    ["Problem", project.problem],
+    ["Data", project.data],
+    ["Process", project.process],
+    ["Analysis", project.analysis],
+    ["Modeling", project.modeling],
+    ["Evaluation", project.evaluation],
+    ["Results", project.results],
   ];
 
   return (
@@ -73,7 +48,6 @@ function CaseStudyModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
       className="
         fixed
         inset-0
@@ -81,7 +55,7 @@ function CaseStudyModal({
         flex
         items-center
         justify-center
-        bg-[#0F1714]/90
+        bg-[#07100D]/90
         p-4
         backdrop-blur-xl
       "
@@ -91,7 +65,7 @@ function CaseStudyModal({
         initial={{
           opacity: 0,
           y: 25,
-          scale: 0.98,
+          scale: 0.97,
         }}
         animate={{
           opacity: 1,
@@ -101,13 +75,10 @@ function CaseStudyModal({
         exit={{
           opacity: 0,
           y: 20,
-          scale: 0.98,
+          scale: 0.97,
         }}
-        transition={{
-          duration: 0.3,
-          ease: "easeOut",
-        }}
-        onClick={(event) => event.stopPropagation()}
+        transition={{ duration: 0.3 }}
+        onClick={(e) => e.stopPropagation()}
         className="
           relative
           max-h-[90vh]
@@ -116,23 +87,18 @@ function CaseStudyModal({
           overflow-y-auto
           rounded-2xl
           border
-          border-[#D6CEC1]/15
-          bg-[#111A16]/95
-          shadow-[0_30px_100px_rgba(0,0,0,0.45)]
+          border-[#A7B68D]/20
+          bg-[#0C1511]/95
+          shadow-[0_30px_100px_rgba(0,0,0,.55)]
           backdrop-blur-2xl
         "
       >
-        {/* Close */}
-
         <button
-          type="button"
           onClick={onClose}
-          aria-label="Close case study"
           className="
             absolute
             right-5
             top-5
-            z-20
             flex
             h-10
             w-10
@@ -140,94 +106,71 @@ function CaseStudyModal({
             justify-center
             rounded-full
             border
-            border-[#D6CEC1]/10
-            bg-[#F5F3EC]/[0.025]
-            text-[#B5ADA0]
-            backdrop-blur-md
-            transition-all
-            duration-300
-            hover:border-[#A7B68D]/50
+            border-[#A7B68D]/20
+            text-[#8D9489]
+            transition
+            hover:border-[#A7B68D]/60
             hover:text-[#A7B68D]
           "
         >
-          <X size={18} strokeWidth={1.5} />
+          <X size={18} />
         </button>
-
-        {/* Header */}
 
         <div
           className="
             border-b
-            border-[#D6CEC1]/10
+            border-[#A7B68D]/10
             px-6
-            pb-8
-            pt-8
+            py-8
             sm:px-10
-            sm:pt-10
           "
         >
           <p
             className="
               mb-4
               text-[10px]
-              font-medium
               uppercase
               tracking-[0.3em]
             "
-            style={{
-              color: colors.olive,
-            }}
+            style={{ color: colors.olive }}
           >
             Case Study
           </p>
 
-          <h3
+          <h2
             className="
-              max-w-3xl
               pr-12
               text-3xl
               font-medium
-              leading-tight
               tracking-[-0.04em]
-              sm:text-4xl
+              sm:text-5xl
             "
-            style={{
-              color: colors.cream,
-            }}
+            style={{ color: colors.cream }}
           >
             {project.title}
             <span style={{ color: colors.olive }}>
               .
             </span>
-          </h3>
+          </h2>
 
           <p
             className="mt-3 text-sm"
-            style={{
-              color: colors.olive,
-            }}
+            style={{ color: colors.olive }}
           >
             {project.category}
           </p>
         </div>
 
-        {/* Body */}
-
-        <div className="px-6 py-8 sm:px-10 sm:py-10">
-          {/* Overview */}
-
-          <div className="mb-12">
+        <div className="px-6 py-8 sm:px-10">
+          <div className="mb-10">
             <p
               className="
-                mb-4
+                mb-3
                 text-[10px]
-                font-medium
                 uppercase
                 tracking-[0.25em]
               "
-              style={{
-                color: colors.olive,
-              }}
+              style={{ color: colors.olive }}
             >
               Overview
             </p>
@@ -237,40 +180,30 @@ function CaseStudyModal({
                 max-w-3xl
                 text-sm
                 leading-7
-                sm:text-base
               "
-              style={{
-                color: colors.taupe,
-              }}
+              style={{ color: colors.muted }}
             >
               {project.shortDescription}
             </p>
           </div>
 
-          {/* Case Study Content */}
-
           <div>
-            {sections.map((section, index) => (
+            {sections.map(([label, value], index) => (
               <div
-                key={section.label}
+                key={label}
                 className="
                   grid
                   gap-4
                   border-t
-                  border-[#D6CEC1]/10
+                  border-[#A7B68D]/10
                   py-6
                   sm:grid-cols-[170px_1fr]
                 "
               >
-                <div className="flex items-start gap-3">
+                <div className="flex gap-3">
                   <span
-                    className="
-                      text-[10px]
-                      tracking-[0.2em]
-                    "
-                    style={{
-                      color: colors.olive,
-                    }}
+                    className="text-[10px]"
+                    style={{ color: colors.olive }}
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -278,15 +211,12 @@ function CaseStudyModal({
                   <span
                     className="
                       text-[10px]
-                      font-medium
                       uppercase
                       tracking-[0.2em]
                     "
-                    style={{
-                      color: colors.cream,
-                    }}
+                    style={{ color: colors.cream }}
                   >
-                    {section.label}
+                    {label}
                   </span>
                 </div>
 
@@ -295,77 +225,49 @@ function CaseStudyModal({
                     text-sm
                     leading-7
                   "
-                  style={{
-                    color: colors.taupe,
-                  }}
+                  style={{ color: colors.muted }}
                 >
-                  {section.value}
+                  {value}
                 </p>
               </div>
             ))}
           </div>
 
-          {/* Technologies */}
-
-          <div
-            className="
-              mt-4
-              border-t
-              border-[#D6CEC1]/10
-              pt-7
-            "
-          >
+          <div className="mt-6 border-t border-[#A7B68D]/10 pt-7">
             <p
               className="
                 mb-4
                 text-[10px]
-                font-medium
                 uppercase
                 tracking-[0.25em]
               "
-              style={{
-                color: colors.olive,
-              }}
+              style={{ color: colors.olive }}
             >
               Technologies
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {project.technologies.map((technology) => (
+              {project.technologies.map((tech) => (
                 <span
-                  key={technology}
+                  key={tech}
                   className="
                     rounded-full
                     border
-                    border-[#D6CEC1]/12
-                    bg-[#F5F3EC]/[0.02]
+                    border-[#A7B68D]/20
+                    bg-[#A7B68D]/[0.03]
                     px-3
                     py-1.5
                     text-xs
                   "
-                  style={{
-                    color: colors.taupe,
-                  }}
+                  style={{ color: colors.muted }}
                 >
-                  {technology}
+                  {tech}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Links */}
-
-          <div
-            className="
-              mt-8
-              flex
-              flex-wrap
-              gap-3
-              border-t
-              border-[#D6CEC1]/10
-              pt-7
-            "
-          >
+          <div className="mt-8 flex flex-wrap gap-3">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -377,24 +279,18 @@ function CaseStudyModal({
                   gap-2
                   rounded-xl
                   border
-                  border-[#D6CEC1]/12
-                  bg-[#F5F3EC]/[0.02]
+                  border-[#A7B68D]/25
                   px-5
                   py-3
                   text-sm
-                  transition-all
-                  duration-300
-                  hover:border-[#A7B68D]/50
+                  transition
+                  hover:border-[#A7B68D]/70
                   hover:bg-[#A7B68D]/[0.05]
                 "
-                style={{
-                  color: colors.cream,
-                }}
+                style={{ color: colors.cream }}
               >
                 <Github size={16} />
-
                 GitHub
-
                 <ArrowUpRight size={14} />
               </a>
             )}
@@ -410,23 +306,17 @@ function CaseStudyModal({
                   gap-2
                   rounded-xl
                   border
-                  border-[#A7B68D]/50
+                  border-[#A7B68D]/60
                   bg-[#A7B68D]/[0.07]
                   px-5
                   py-3
                   text-sm
-                  transition-all
-                  duration-300
-                  hover:bg-[#A7B68D]/[0.12]
+                  transition
+                  hover:bg-[#A7B68D]/[0.13]
                 "
-                style={{
-                  color: colors.cream,
-                }}
+                style={{ color: colors.cream }}
               >
-                <ExternalLink size={16} />
-
                 Live Demo
-
                 <ArrowUpRight size={14} />
               </a>
             )}
@@ -434,6 +324,302 @@ function CaseStudyModal({
         </div>
       </motion.div>
     </motion.div>
+  );
+}
+
+/* =========================================================
+   FEATURED PROJECT
+========================================================= */
+
+function FeaturedProject({
+  project,
+  index,
+  onOpen,
+}: {
+  project: Project;
+  index: number;
+  onOpen: () => void;
+}) {
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 30,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="
+        relative
+        overflow-hidden
+        rounded-xl
+        border
+        border-[#A7B68D]/35
+        bg-[#0A130F]/60
+        backdrop-blur-xl
+      "
+    >
+      {/* Decorative glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-[-100px]
+          top-[-120px]
+          h-[350px]
+          w-[350px]
+          rounded-full
+          border
+          border-[#A7B68D]/10
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-[-30px]
+          top-[-50px]
+          h-[220px]
+          w-[220px]
+          rounded-full
+          border
+          border-[#A7B68D]/10
+        "
+      />
+
+      <div className="relative grid lg:grid-cols-[1.1fr_0.9fr]">
+        {/* Left */}
+
+        <div className="p-7 sm:p-10 lg:p-12">
+          <div className="mb-7 flex items-center gap-4">
+            <span
+              className="
+                text-[10px]
+                uppercase
+                tracking-[0.3em]
+              "
+              style={{ color: colors.olive }}
+            >
+              Featured Project
+            </span>
+
+            <span className="h-px w-8 bg-[#A7B68D]/40" />
+          </div>
+
+          <div
+            className="
+              mb-5
+              text-[100px]
+              font-light
+              leading-none
+              tracking-[-0.08em]
+            "
+            style={{
+              color: "rgba(167,182,141,.15)",
+            }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </div>
+
+          <h3
+            className="
+              max-w-xl
+              text-4xl
+              font-medium
+              uppercase
+              leading-[0.95]
+              tracking-[-0.045em]
+              sm:text-5xl
+            "
+            style={{ color: colors.cream }}
+          >
+            {project.title}
+          </h3>
+
+          <p
+            className="mt-5 text-sm"
+            style={{ color: colors.olive }}
+          >
+            {project.category}
+          </p>
+
+          <p
+            className="
+              mt-5
+              max-w-xl
+              text-sm
+              leading-7
+            "
+            style={{ color: colors.muted }}
+          >
+            {project.shortDescription}
+          </p>
+
+          <div className="mt-7">
+            <p
+              className="
+                mb-3
+                text-[10px]
+                uppercase
+                tracking-[0.25em]
+              "
+              style={{ color: colors.olive }}
+            >
+              Technologies
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {project.technologies
+                .slice(0, 6)
+                .map((tech) => (
+                  <span
+                    key={tech}
+                    className="
+                      rounded-full
+                      border
+                      border-[#A7B68D]/25
+                      px-3
+                      py-1.5
+                      text-[10px]
+                    "
+                    style={{ color: colors.muted }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+            </div>
+          </div>
+
+          <button
+            onClick={onOpen}
+            className="
+              mt-8
+              inline-flex
+              items-center
+              gap-4
+              rounded-lg
+              border
+              border-[#A7B68D]/60
+              bg-[#A7B68D]/[0.05]
+              px-6
+              py-3.5
+              text-xs
+              uppercase
+              tracking-[0.15em]
+              transition-all
+              hover:bg-[#A7B68D]/[0.12]
+            "
+            style={{ color: colors.cream }}
+          >
+            View Case Study
+
+            <ArrowUpRight
+              size={17}
+              style={{ color: colors.olive }}
+            />
+          </button>
+        </div>
+
+        {/* Right */}
+
+        <div
+          className="
+            border-t
+            border-[#A7B68D]/10
+            p-7
+            sm:p-10
+            lg:border-l
+            lg:border-t-0
+            lg:p-12
+          "
+        >
+          <div className="space-y-8">
+            <InfoItem
+              label="PROBLEM"
+              value={project.problem}
+            />
+
+            <InfoItem
+              label="APPROACH"
+              value={project.analysis}
+            />
+
+            <InfoItem
+              label="RESULT"
+              value={project.results}
+            />
+
+            <InfoItem
+              label="DATA"
+              value={project.data}
+            />
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* =========================================================
+   INFO ITEM
+========================================================= */
+
+function InfoItem({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex gap-4">
+      <div
+        className="
+          mt-1
+          flex
+          h-10
+          w-10
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#A7B68D]/30
+          text-[#A7B68D]
+        "
+      >
+        <span className="h-1.5 w-1.5 rounded-full bg-[#A7B68D]" />
+      </div>
+
+      <div>
+        <p
+          className="
+            mb-2
+            text-[10px]
+            uppercase
+            tracking-[0.2em]
+          "
+          style={{ color: colors.olive }}
+        >
+          {label}
+        </p>
+
+        <p
+          className="
+            text-sm
+            leading-6
+          "
+          style={{ color: colors.muted }}
+        >
+          {value}
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -450,13 +636,11 @@ function ProjectRow({
   index: number;
   onOpen: () => void;
 }) {
-  const number = String(index + 1).padStart(2, "0");
-
   return (
-    <motion.article
+    <motion.div
       initial={{
         opacity: 0,
-        y: 18,
+        y: 12,
       }}
       whileInView={{
         opacity: 1,
@@ -464,281 +648,202 @@ function ProjectRow({
       }}
       viewport={{
         once: true,
-        margin: "-60px",
       }}
       transition={{
-        duration: 0.55,
-        ease: "easeOut",
+        duration: 0.5,
       }}
       className="
         group
-        relative
+        grid
+        grid-cols-[60px_1fr_auto]
+        items-center
+        gap-4
         border-t
-        border-[#D6CEC1]/10
-        py-8
+        border-[#A7B68D]/10
+        px-4
+        py-7
         transition-all
-        duration-500
-        sm:py-10
+        duration-300
+        hover:bg-[#A7B68D]/[0.025]
+        sm:grid-cols-[80px_1fr_auto]
+        sm:px-8
       "
     >
-      {/* subtle glass hover layer */}
+      {/* Number */}
 
-      <div
+      <span
         className="
-          pointer-events-none
-          absolute
-          inset-x-0
-          inset-y-2
-          -z-10
-          rounded-2xl
-          border
-          border-transparent
-          bg-transparent
-          opacity-0
-          backdrop-blur-sm
-          transition-all
-          duration-500
-          group-hover:border-[#A7B68D]/15
-          group-hover:bg-[#A7B68D]/[0.025]
-          group-hover:opacity-100
+          text-2xl
+          font-light
+          tracking-[-0.04em]
+          transition-colors
+          group-hover:text-[#A7B68D]
         "
-      />
+        style={{ color: colors.olive }}
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      {/* Content */}
+
+      <button
+        onClick={onOpen}
+        className="min-w-0 text-left"
+      >
+        <h3
+          className="
+            text-lg
+            font-medium
+            tracking-[-0.025em]
+            transition
+            group-hover:translate-x-1
+            sm:text-xl
+          "
+          style={{ color: colors.cream }}
+        >
+          {project.title}
+        </h3>
+
+        <p
+          className="
+            mt-1
+            text-xs
+          "
+          style={{ color: colors.olive }}
+        >
+          {project.category}
+        </p>
+
+        <p
+          className="
+            mt-2
+            hidden
+            max-w-xl
+            text-xs
+            leading-5
+            sm:block
+          "
+          style={{ color: colors.muted }}
+        >
+          {project.shortDescription}
+        </p>
+      </button>
+
+      {/* Technologies */}
 
       <div
         className="
-          grid
+          hidden
           items-center
-          gap-6
-          lg:grid-cols-[70px_minmax(0,1fr)_180px_150px]
-          lg:gap-8
+          gap-2
+          lg:flex
         "
       >
-        {/* Number */}
-
-        <div className="flex items-center gap-3">
-          <span
-            className="
-              text-xs
-              font-medium
-              tracking-[0.2em]
-              transition-colors
-              duration-300
-              group-hover:text-[#A7B68D]
-            "
-            style={{
-              color: colors.sage,
-            }}
-          >
-            {number}
-          </span>
-
-          <span
-            className="
-              hidden
-              h-px
-              w-5
-              bg-[#A7B68D]/20
-              transition-all
-              duration-500
-              group-hover:w-8
-              group-hover:bg-[#A7B68D]/60
-              lg:block
-            "
-          />
-        </div>
-
-        {/* Main Information */}
-
-        <div className="min-w-0">
-          <button
-            type="button"
-            onClick={onOpen}
-            className="
-              block
-              text-left
-            "
-          >
-            <h3
-              className="
-                text-2xl
-                font-medium
-                leading-tight
-                tracking-[-0.035em]
-                transition-all
-                duration-400
-                group-hover:translate-x-1
-                sm:text-3xl
-              "
-              style={{
-                color: colors.cream,
-              }}
-            >
-              {project.title}
-              <span
-                className="
-                  transition-colors
-                  duration-300
-                  group-hover:text-[#A7B68D]
-                "
-                style={{
-                  color: colors.cream,
-                }}
-              >
-                .
-              </span>
-            </h3>
-
-            <p
-              className="
-                mt-2
-                max-w-2xl
-                text-sm
-                leading-6
-              "
-              style={{
-                color: colors.sage,
-              }}
-            >
-              {project.shortDescription}
-            </p>
-          </button>
-        </div>
-
-        {/* Category */}
-
-        <div>
-          <span
-            className="
-              text-[10px]
-              font-medium
-              uppercase
-              tracking-[0.2em]
-            "
-            style={{
-              color: colors.olive,
-            }}
-          >
-            {project.category}
-          </span>
-
-          <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
-            {project.technologies
-              .slice(0, 3)
-              .map((technology) => (
-                <span
-                  key={technology}
-                  className="
-                    text-[10px]
-                  "
-                  style={{
-                    color: colors.sage,
-                  }}
-                >
-                  {technology}
-                </span>
-              ))}
-          </div>
-        </div>
-
-        {/* Action */}
-
-        <div className="lg:text-right">
-          <button
-            type="button"
-            onClick={onOpen}
-            className="
-              group/action
-              inline-flex
-              items-center
-              gap-3
-              text-[10px]
-              font-medium
-              uppercase
-              tracking-[0.18em]
-            "
-            style={{
-              color: colors.taupe,
-            }}
-          >
+        {project.technologies
+          .slice(0, 4)
+          .map((tech) => (
             <span
+              key={tech}
               className="
-                border-b
-                border-transparent
-                pb-1
-                transition-all
-                duration-300
-                group-hover/action:border-[#A7B68D]/60
-                group-hover/action:text-[#F5F3EC]
-              "
-            >
-              View Project
-            </span>
-
-            <span
-              className="
-                flex
-                h-8
-                w-8
-                items-center
-                justify-center
                 rounded-full
                 border
-                border-[#D6CEC1]/12
-                bg-[#F5F3EC]/[0.018]
-                transition-all
-                duration-300
-                group-hover/action:border-[#A7B68D]/50
-                group-hover/action:bg-[#A7B68D]/[0.07]
+                border-[#A7B68D]/20
+                px-2.5
+                py-1
+                text-[9px]
               "
+              style={{ color: colors.muted }}
             >
-              <ArrowUpRight
-                size={14}
-                className="
-                  transition-transform
-                  duration-300
-                  group-hover/action:-translate-y-0.5
-                  group-hover/action:translate-x-0.5
-                "
-              />
+              {tech}
             </span>
-          </button>
-        </div>
+          ))}
       </div>
 
-      {/* Mobile technology line */}
+      {/* View */}
 
-      <div className="mt-6 flex flex-wrap gap-2 lg:hidden">
-        {project.technologies.map((technology) => (
-          <span
-            key={technology}
+      <button
+        onClick={onOpen}
+        className="
+          flex
+          items-center
+          gap-3
+          text-[10px]
+          uppercase
+          tracking-[0.15em]
+        "
+        style={{ color: colors.olive }}
+      >
+        <span className="hidden sm:block">
+          View
+        </span>
+
+        <span
+          className="
+            flex
+            h-10
+            w-10
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-[#A7B68D]/40
+            transition-all
+            group-hover:border-[#A7B68D]
+            group-hover:bg-[#A7B68D]/[0.07]
+          "
+        >
+          <ArrowUpRight
+            size={15}
             className="
-              rounded-full
-              border
-              border-[#D6CEC1]/10
-              bg-[#F5F3EC]/[0.018]
-              px-2.5
-              py-1
-              text-[9px]
+              transition-transform
+              group-hover:-translate-y-0.5
+              group-hover:translate-x-0.5
             "
-            style={{
-              color: colors.sage,
-            }}
-          >
-            {technology}
-          </span>
-        ))}
-      </div>
-    </motion.article>
+          />
+        </span>
+      </button>
+    </motion.div>
   );
 }
 
 /* =========================================================
-   PROJECTS SECTION
+   MAIN
 ========================================================= */
 
 export default function ProjectsSection() {
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedProject, setSelectedProject] =
     useState<Project | null>(null);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(projects.length / PROJECTS_PER_PAGE)
+  );
+
+  const startIndex =
+    (currentPage - 1) * PROJECTS_PER_PAGE;
+
+  const currentProjects = projects.slice(
+    startIndex,
+    startIndex + PROJECTS_PER_PAGE
+  );
+
+  const featuredProject = currentProjects[0];
+
+  const remainingProjects =
+    currentProjects.slice(1);
+
+  const goPrevious = () => {
+    setCurrentPage((page) =>
+      page > 1 ? page - 1 : totalPages
+    );
+  };
+
+  const goNext = () => {
+    setCurrentPage((page) =>
+      page < totalPages ? page + 1 : 1
+    );
+  };
 
   return (
     <>
@@ -747,101 +852,100 @@ export default function ProjectsSection() {
         className="
           relative
           overflow-hidden
-          bg-[#0F1714]
+          bg-[#07100D]
           py-28
           sm:py-36
         "
       >
-        {/* =====================================================
-            BACKGROUND
-        ===================================================== */}
+        {/* Background */}
 
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-0
-            overflow-hidden
-          "
-        >
-          {/* subtle center glow */}
+        <div className="pointer-events-none absolute inset-0">
+          {/* Dot grid */}
 
           <div
             className="
               absolute
-              left-1/2
-              top-[35%]
-              h-[550px]
-              w-[550px]
-              -translate-x-1/2
-              rounded-full
-              bg-[#A7B68D]/[0.018]
-              blur-[140px]
-            "
-          />
-
-          {/* Top right dots */}
-
-          <div
-            className="
-              absolute
-              right-[7%]
-              top-[12%]
+              left-[3%]
+              top-[8%]
               grid
               grid-cols-5
-              gap-4
+              gap-5
               opacity-40
             "
           >
-            {Array.from({ length: 20 }).map(
-              (_, index) => (
+            {Array.from({ length: 25 }).map(
+              (_, i) => (
                 <span
-                  key={index}
+                  key={i}
                   className="
                     h-1
                     w-1
                     rounded-full
-                    bg-[#A7B68D]/35
+                    bg-[#A7B68D]/40
                   "
                 />
               )
             )}
           </div>
 
-          {/* Bottom orbit */}
+          {/* Orbital circles */}
 
           <div
             className="
               absolute
-              -bottom-[250px]
-              -left-[180px]
-              h-[500px]
-              w-[500px]
+              right-[-130px]
+              top-[80px]
+              h-[360px]
+              w-[360px]
               rounded-full
               border
-              border-[#A7B68D]/[0.07]
+              border-[#A7B68D]/10
+            "
+          />
+
+          <div
+            className="
+              absolute
+              right-[-70px]
+              top-[140px]
+              h-[240px]
+              w-[240px]
+              rounded-full
+              border
+              border-[#A7B68D]/10
+            "
+          />
+
+          <div
+            className="
+              absolute
+              left-1/2
+              top-[35%]
+              h-[500px]
+              w-[500px]
+              -translate-x-1/2
+              rounded-full
+              bg-[#A7B68D]/[0.018]
+              blur-[140px]
             "
           />
         </div>
-
-        {/* =====================================================
-            CONTENT
-        ===================================================== */}
 
         <div
           className="
             relative
             z-10
             mx-auto
-            max-w-7xl
+            max-w-6xl
             px-6
             sm:px-10
-            lg:px-14
           "
         >
-          {/* Header */}
+          {/* =================================================
+              HEADER
+          ================================================= */}
 
-          <motion.div
+          <motion.header
             initial={{
               opacity: 0,
               y: 20,
@@ -850,190 +954,258 @@ export default function ProjectsSection() {
               opacity: 1,
               y: 0,
             }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.65,
-            }}
-            className="
-              mb-16
-              flex
-              flex-col
-              justify-between
-              gap-8
-              md:flex-row
-              md:items-end
-            "
+            viewport={{ once: true }}
+            className="mb-16 text-center"
           >
-            <div>
-              {/* Label */}
-
-              <div
-                className="
-                  mb-6
-                  flex
-                  items-center
-                  gap-4
-                "
-              >
-                <span
-                  className="
-                    h-px
-                    w-12
-                    bg-[#A7B68D]/70
-                  "
-                />
-
-                <span
-                  className="
-                    text-[10px]
-                    font-medium
-                    uppercase
-                    tracking-[0.3em]
-                  "
-                  style={{
-                    color: colors.olive,
-                  }}
-                >
-                  Selected Work
-                </span>
-              </div>
-
-              {/* Title */}
-
-              <h2
-                className="
-                  text-5xl
-                  font-medium
-                  tracking-[-0.06em]
-                  sm:text-6xl
-                  md:text-7xl
-                "
-                style={{
-                  color: colors.cream,
-                }}
-              >
-                Projects
-                <span
-                  style={{
-                    color: colors.olive,
-                  }}
-                >
-                  .
-                </span>
-              </h2>
-            </div>
-
-            {/* Right side */}
-
             <div
               className="
+                mb-5
                 flex
                 items-center
-                gap-4
+                justify-center
+                gap-5
               "
             >
-              <span
-                className="
-                  h-px
-                  w-8
-                  bg-[#D6CEC1]/15
-                "
-              />
+              <span className="h-px w-12 bg-[#A7B68D]/60" />
 
               <span
                 className="
                   text-[10px]
                   uppercase
-                  tracking-[0.25em]
+                  tracking-[0.35em]
                 "
-                style={{
-                  color: colors.sage,
-                }}
+                style={{ color: colors.olive }}
               >
-                {String(projects.length).padStart(
-                  2,
-                  "0"
-                )}{" "}
-                Projects
+                Selected Work
               </span>
+
+              <span className="h-px w-12 bg-[#A7B68D]/60" />
             </div>
-          </motion.div>
+
+            <h2
+              className="
+                text-6xl
+                font-medium
+                tracking-[-0.07em]
+                sm:text-7xl
+                md:text-8xl
+              "
+              style={{ color: colors.cream }}
+            >
+              Projects
+              <span style={{ color: colors.olive }}>
+                .
+              </span>
+            </h2>
+
+            <p
+              className="
+                mx-auto
+                mt-5
+                max-w-xl
+                text-sm
+                leading-7
+              "
+              style={{ color: colors.muted }}
+            >
+              A collection of data-driven projects
+              solving real-world problems with
+              analytics, machine learning and insight.
+            </p>
+          </motion.header>
+
+          {/* =================================================
+              FEATURED
+          ================================================= */}
+
+          {featuredProject && (
+            <FeaturedProject
+              project={featuredProject}
+              index={startIndex}
+              onOpen={() =>
+                setSelectedProject(featuredProject)
+              }
+            />
+          )}
 
           {/* =================================================
               PROJECT LIST
           ================================================= */}
 
-          <div
-            className="
-              border-b
-              border-[#D6CEC1]/10
-            "
-          >
-            {projects.map((project, index) => (
-              <ProjectRow
-                key={project.id}
-                project={project}
-                index={index}
-                onOpen={() =>
-                  setSelectedProject(project)
-                }
+          {remainingProjects.length > 0 && (
+            <div
+              className="
+                mt-4
+                overflow-hidden
+                rounded-xl
+                border
+                border-[#A7B68D]/15
+                bg-[#08110E]/50
+                backdrop-blur-md
+              "
+            >
+              {remainingProjects.map(
+                (project, index) => (
+                  <ProjectRow
+                    key={project.id}
+                    project={project}
+                    index={startIndex + index + 1}
+                    onOpen={() =>
+                      setSelectedProject(project)
+                    }
+                  />
+                )
+              )}
+            </div>
+          )}
+
+          {/* =================================================
+              PAGINATION
+          ================================================= */}
+
+          <div className="mt-8 flex justify-center">
+            <div
+              className="
+                flex
+                items-center
+                overflow-hidden
+                rounded-xl
+                border
+                border-[#A7B68D]/35
+                bg-[#A7B68D]/[0.025]
+                backdrop-blur-xl
+              "
+            >
+              <button
+                onClick={goPrevious}
+                className="
+                  flex
+                  items-center
+                  gap-2
+                  px-5
+                  py-3
+                  text-[10px]
+                  uppercase
+                  tracking-[0.18em]
+                  transition
+                  hover:bg-[#A7B68D]/[0.07]
+                "
+                style={{ color: colors.olive }}
+              >
+                <ArrowLeft size={14} />
+
+                <span>Less Than</span>
+              </button>
+
+              <span
+                className="
+                  h-6
+                  w-px
+                  bg-[#A7B68D]/20
+                "
               />
-            ))}
+
+              <span
+                className="
+                  px-5
+                  text-xs
+                  tracking-[0.15em]
+                "
+                style={{ color: colors.cream }}
+              >
+                {currentPage} / {totalPages}
+              </span>
+
+              <span
+                className="
+                  h-6
+                  w-px
+                  bg-[#A7B68D]/20
+                "
+              />
+
+              <button
+                onClick={goNext}
+                className="
+                  flex
+                  items-center
+                  gap-2
+                  px-5
+                  py-3
+                  text-[10px]
+                  uppercase
+                  tracking-[0.18em]
+                  transition
+                  hover:bg-[#A7B68D]/[0.07]
+                "
+                style={{ color: colors.olive }}
+              >
+                <span>More</span>
+
+                <ArrowRight size={14} />
+              </button>
+            </div>
           </div>
 
-          {/* Bottom signature */}
+          {/* =================================================
+              GITHUB
+          ================================================= */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-            }}
-            whileInView={{
-              opacity: 1,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: 0.15,
-            }}
+          <div className="mt-5 flex justify-center">
+            <a
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-flex
+                items-center
+                gap-3
+                rounded-xl
+                border
+                border-[#A7B68D]/45
+                bg-[#A7B68D]/[0.025]
+                px-6
+                py-3.5
+                text-[10px]
+                uppercase
+                tracking-[0.2em]
+                transition-all
+                duration-300
+                hover:border-[#A7B68D]
+                hover:bg-[#A7B68D]/[0.08]
+              "
+              style={{ color: colors.olive }}
+            >
+              Explore More on GitHub
+
+              <Github size={17} />
+            </a>
+          </div>
+
+          {/* Bottom decoration */}
+
+          <div
             className="
-              mt-8
+              mt-20
               flex
               items-center
-              justify-between
+              justify-center
+              gap-4
             "
           >
-            <span
-              className="
-                text-[9px]
-                uppercase
-                tracking-[0.25em]
-              "
-              style={{
-                color: colors.sage,
-              }}
-            >
-              Data · Analysis · Machine Learning
-            </span>
+            <span className="h-px w-20 bg-[#A7B68D]/15" />
 
             <span
               className="
-                hidden
-                text-[9px]
-                uppercase
-                tracking-[0.25em]
-                sm:block
+                h-1.5
+                w-1.5
+                rounded-full
+                bg-[#A7B68D]/50
               "
-              style={{
-                color: colors.sage,
-              }}
-            >
-              2024 — 2026
-            </span>
-          </motion.div>
+            />
+
+            <span className="h-px w-20 bg-[#A7B68D]/15" />
+          </div>
         </div>
       </section>
 
