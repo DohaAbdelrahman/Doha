@@ -1,7 +1,7 @@
 "use client";
 
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
-import { about } from "@/data/portfolio";
+import { about, skillCategories } from "@/data/portfolio";
 
 export default function AboutSection() {
   const approachSteps = [
@@ -18,9 +18,9 @@ export default function AboutSection() {
       className="
         relative
         overflow-hidden
-        bg-[#080D18]
-        py-28
-        sm:py-36
+        bg-[#081412]
+        py-24
+        sm:py-32
       "
     >
       {/* =====================================================
@@ -28,77 +28,61 @@ export default function AboutSection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Top-left orbit */}
+        {/* Orbit */}
 
         <div
           className="
             absolute
-            -left-40
+            -right-40
             -top-40
-            h-[420px]
-            w-[420px]
+            h-[430px]
+            w-[430px]
             rounded-full
             border
-            border-[#38BDF8]/[0.07]
+            border-[#C7A86B]/[0.06]
           "
         />
 
         <div
           className="
             absolute
-            -left-20
+            -right-20
             -top-20
             h-[280px]
             w-[280px]
             rounded-full
             border
-            border-[#38BDF8]/[0.05]
+            border-[#C7A86B]/[0.045]
           "
         />
 
-        {/* Bottom-right orbit */}
-
-        <div
-          className="
-            absolute
-            -bottom-48
-            -right-40
-            h-[450px]
-            w-[450px]
-            rounded-full
-            border
-            border-[#38BDF8]/[0.06]
-          "
-        />
-
-        {/* Soft center glow */}
+        {/* Soft glow */}
 
         <div
           className="
             absolute
             left-1/2
-            top-1/2
+            top-[35%]
             h-[500px]
             w-[500px]
             -translate-x-1/2
-            -translate-y-1/2
             rounded-full
-            bg-[#38BDF8]/[0.018]
+            bg-[#C7A86B]/[0.012]
             blur-[140px]
           "
         />
 
-        {/* Dot pattern */}
+        {/* Dots */}
 
         <div
           className="
             absolute
-            right-[5%]
-            top-[22%]
+            left-[5%]
+            top-[25%]
             grid
             grid-cols-4
             gap-4
-            opacity-25
+            opacity-20
           "
         >
           {Array.from({ length: 20 }).map((_, index) => (
@@ -108,7 +92,7 @@ export default function AboutSection() {
                 h-1
                 w-1
                 rounded-full
-                bg-[#38BDF8]/50
+                bg-[#C7A86B]
               "
             />
           ))}
@@ -126,77 +110,79 @@ export default function AboutSection() {
           mx-auto
           max-w-6xl
           px-6
-          sm:px-10
+          sm:px-8
         "
       >
         {/* =================================================
             HEADER
         ================================================= */}
 
-        <ScrollReveal className="text-center">
-          <div
-            className="
-              flex
-              items-center
-              justify-center
-              gap-4
-            "
-          >
-            <span
-              className="
-                h-px
-                w-12
-                bg-[#38BDF8]/50
-              "
-            />
+        <ScrollReveal>
+          <div className="flex items-center gap-4">
+            <span className="h-px w-10 bg-[#C7A86B]/50" />
 
             <span
               className="
                 text-[10px]
                 font-medium
                 uppercase
-                tracking-[0.38em]
-                text-[#38BDF8]
+                tracking-[0.35em]
+                text-[#C7A86B]
               "
             >
               About Me
             </span>
-
-            <span
-              className="
-                h-px
-                w-12
-                bg-[#38BDF8]/50
-              "
-            />
           </div>
 
-          <h2
+          <div
             className="
-              mt-6
-              text-5xl
-              font-medium
-              tracking-[-0.06em]
-              text-[#F8FAFC]
-              sm:text-6xl
-              md:text-7xl
+              mt-7
+              grid
+              gap-8
+              lg:grid-cols-[1fr_0.8fr]
+              lg:items-end
             "
           >
-            Turning data into{" "}
-            <span className="text-[#38BDF8]">
-              insight.
-            </span>
-          </h2>
+            <h2
+              className="
+                max-w-3xl
+                text-4xl
+                font-medium
+                leading-[1.05]
+                tracking-[-0.055em]
+                text-[#F5F1E8]
+                sm:text-5xl
+                md:text-6xl
+              "
+            >
+              A little about how I{" "}
+              <span className="text-[#C7A86B]">
+                work with data.
+              </span>
+            </h2>
+
+            <p
+              className="
+                max-w-lg
+                text-sm
+                leading-7
+                text-[#9BA8A2]
+                lg:pb-1
+              "
+            >
+              {about.bio[0]}
+            </p>
+          </div>
         </ScrollReveal>
 
         {/* =================================================
-            MAIN GLASS PANEL
+            INTRO / APPROACH
         ================================================= */}
 
         <ScrollReveal
           direction="up"
-          delay={0.1}
-          className="mt-14"
+          delay={0.08}
+          className="mt-12"
         >
           <article
             className="
@@ -205,28 +191,14 @@ export default function AboutSection() {
               overflow-hidden
               rounded-2xl
               border
-              border-[#38BDF8]/25
+              border-[#C7A86B]/20
               bg-white/[0.018]
-              backdrop-blur-2xl
+              backdrop-blur-xl
               transition-all
               duration-500
-              hover:border-[#38BDF8]/45
+              hover:border-[#C7A86B]/35
             "
           >
-            {/* Glass highlight */}
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-0
-                bg-gradient-to-br
-                from-white/[0.035]
-                via-transparent
-                to-transparent
-              "
-            />
-
             {/* Decorative circle */}
 
             <div
@@ -235,206 +207,402 @@ export default function AboutSection() {
                 absolute
                 -right-20
                 -top-20
-                h-52
-                w-52
+                h-56
+                w-56
                 rounded-full
                 border
-                border-[#38BDF8]/10
+                border-[#C7A86B]/10
                 transition-transform
                 duration-700
                 group-hover:scale-110
               "
             />
 
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -right-8
-                -top-8
-                h-28
-                w-28
-                rounded-full
-                border
-                border-[#38BDF8]/[0.07]
-              "
-            />
-
-            <div
-              className="
-                relative
-                grid
-                lg:grid-cols-[150px_1fr]
-              "
-            >
-              {/* =================================================
-                  NUMBER
-              ================================================= */}
-
+            <div className="relative p-7 sm:p-9 md:p-10">
               <div
                 className="
-                  relative
-                  border-b
-                  border-[#38BDF8]/10
-                  px-7
-                  py-8
-                  lg:border-b-0
-                  lg:border-r
-                  lg:px-8
-                  lg:py-10
+                  grid
+                  gap-8
+                  md:grid-cols-[80px_1fr]
                 "
               >
-                <span
-                  className="
-                    text-6xl
-                    font-light
-                    leading-none
-                    tracking-[-0.08em]
-                    text-[#38BDF8]/20
-                  "
-                >
-                  01
-                </span>
+                {/* Number */}
 
-                <span
-                  className="
-                    absolute
-                    bottom-8
-                    left-8
-                    h-1.5
-                    w-1.5
-                    rounded-full
-                    bg-[#38BDF8]
-                    shadow-[0_0_12px_rgba(56,189,248,0.7)]
-                  "
-                />
-              </div>
+                <div>
+                  <span
+                    className="
+                      text-5xl
+                      font-light
+                      tracking-[-0.08em]
+                      text-[#C7A86B]/25
+                    "
+                  >
+                    01
+                  </span>
+                </div>
 
-              {/* =================================================
-                  CONTENT
-              ================================================= */}
-
-              <div className="px-7 py-9 sm:px-10 sm:py-10 lg:px-12">
-                {/* Intro */}
-
-                <p
-                  className="
-                    max-w-4xl
-                    text-lg
-                    leading-8
-                    tracking-[-0.015em]
-                    text-[#CBD5E1]
-                    sm:text-xl
-                  "
-                >
-                  {about.bio[0]}
-                </p>
-
-                {/* Divider */}
-
-                <div className="my-9 h-px bg-[#38BDF8]/10" />
-
-                {/* Approach */}
+                {/* Text */}
 
                 <div>
                   <p
                     className="
-                      text-[10px]
-                      font-medium
-                      uppercase
-                      tracking-[0.3em]
-                      text-[#38BDF8]
+                      max-w-3xl
+                      text-xl
+                      leading-8
+                      text-[#F5F1E8]
+                      sm:text-2xl
                     "
                   >
-                    My Approach
+                    I turn data into meaningful insights
+                    through a structured, problem-focused
+                    approach.
                   </p>
+
+                  <div className="my-7 h-px bg-[#C7A86B]/10" />
 
                   <p
                     className="
-                      mt-4
-                      max-w-4xl
+                      max-w-3xl
                       text-sm
                       leading-7
-                      text-[#94A3B8]
+                      text-[#9BA8A2]
                       sm:text-base
                     "
                   >
                     {about.bio[1]}
                   </p>
-                </div>
 
-                {/* =================================================
-                    PROCESS
-                ================================================= */}
+                  {/* Process */}
 
-                <div className="mt-8">
                   <div
                     className="
+                      mt-7
                       flex
                       flex-wrap
                       items-center
                       gap-y-3
                     "
                   >
-                    {approachSteps.map(
-                      (step, index) => (
-                        <div
-                          key={step}
-                          className="flex items-center"
+                    {approachSteps.map((step, index) => (
+                      <div
+                        key={step}
+                        className="flex items-center"
+                      >
+                        <span
+                          className="
+                            text-[10px]
+                            font-medium
+                            uppercase
+                            tracking-[0.16em]
+                            text-[#D6D1C7]
+                          "
                         >
+                          {step}
+                        </span>
+
+                        {index <
+                          approachSteps.length - 1 && (
                           <span
                             className="
-                              text-xs
-                              font-medium
-                              uppercase
-                              tracking-[0.16em]
-                              text-[#CBD5E1]
+                              mx-3
+                              text-[#C7A86B]/50
                             "
                           >
-                            {step}
+                            →
                           </span>
-
-                          {index <
-                            approachSteps.length - 1 && (
-                            <span
-                              className="
-                                mx-4
-                                text-[#38BDF8]/50
-                              "
-                            >
-                              →
-                            </span>
-                          )}
-                        </div>
-                      )
-                    )}
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Bottom glow line */}
+            {/* Bottom accent */}
 
-            <span
+            <div
               className="
                 absolute
                 bottom-0
-                left-1/2
+                left-0
                 h-px
                 w-0
-                -translate-x-1/2
-                bg-[#38BDF8]
-                shadow-[0_0_15px_rgba(56,189,248,0.6)]
+                bg-[#C7A86B]
                 transition-all
                 duration-700
-                group-hover:w-1/2
+                group-hover:w-full
               "
             />
           </article>
         </ScrollReveal>
 
         {/* =================================================
-            FOCUS AREAS
+            FOCUS + SKILLS
+        ================================================= */}
+
+        <div
+          className="
+            mt-16
+            grid
+            gap-12
+            lg:grid-cols-[0.85fr_1.15fr]
+            lg:gap-16
+          "
+        >
+          {/* =================================================
+              FOCUS AREAS
+          ================================================= */}
+
+          <ScrollReveal direction="up">
+            <div>
+              <div className="mb-7 flex items-center gap-3">
+                <span
+                  className="
+                    h-1.5
+                    w-1.5
+                    rounded-full
+                    bg-[#C7A86B]
+                    shadow-[0_0_8px_rgba(199,168,107,0.5)]
+                  "
+                />
+
+                <p
+                  className="
+                    text-[10px]
+                    font-medium
+                    uppercase
+                    tracking-[0.3em]
+                    text-[#C7A86B]
+                  "
+                >
+                  What I Focus On
+                </p>
+              </div>
+
+              <div className="space-y-0">
+                {about.focusAreas.map((area, index) => (
+                  <div
+                    key={area.title}
+                    className="
+                      group
+                      border-b
+                      border-[#C7A86B]/10
+                      py-5
+                      first:border-t
+                    "
+                  >
+                    <div className="flex items-start gap-4">
+                      <span
+                        className="
+                          pt-1
+                          text-[10px]
+                          tracking-[0.15em]
+                          text-[#65736D]
+                          transition-colors
+                          duration-300
+                          group-hover:text-[#C7A86B]
+                        "
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      <div className="min-w-0 flex-1">
+                        <h3
+                          className="
+                            text-base
+                            font-medium
+                            text-[#F5F1E8]
+                            transition-colors
+                            duration-300
+                            group-hover:text-[#C7A86B]
+                          "
+                        >
+                          {area.title}
+                        </h3>
+
+                        <p
+                          className="
+                            mt-2
+                            text-sm
+                            leading-6
+                            text-[#65736D]
+                          "
+                        >
+                          {area.description}
+                        </p>
+                      </div>
+
+                      <span
+                        className="
+                          pt-1
+                          text-[#65736D]
+                          transition-all
+                          duration-300
+                          group-hover:translate-x-1
+                          group-hover:text-[#C7A86B]
+                        "
+                      >
+                        ↗
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* =================================================
+              SKILLS
+          ================================================= */}
+
+          <ScrollReveal
+            direction="up"
+            delay={0.1}
+          >
+            <div>
+              <div className="mb-7 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="
+                      h-1.5
+                      w-1.5
+                      rounded-full
+                      bg-[#C7A86B]
+                      shadow-[0_0_8px_rgba(199,168,107,0.5)]
+                    "
+                  />
+
+                  <p
+                    className="
+                      text-[10px]
+                      font-medium
+                      uppercase
+                      tracking-[0.3em]
+                      text-[#C7A86B]
+                    "
+                  >
+                    Skills
+                  </p>
+                </div>
+
+                <span
+                  className="
+                    text-[10px]
+                    uppercase
+                    tracking-[0.18em]
+                    text-[#65736D]
+                  "
+                >
+                  My Toolkit
+                </span>
+              </div>
+
+              {/* Skill Categories */}
+
+              <div className="space-y-8">
+                {skillCategories.map(
+                  (category, categoryIndex) => (
+                    <div key={category.title}>
+                      {/* Category */}
+
+                      <div className="mb-3 flex items-center gap-3">
+                        <span
+                          className="
+                            text-[10px]
+                            tracking-[0.16em]
+                            text-[#65736D]
+                          "
+                        >
+                          {String(
+                            categoryIndex + 1
+                          ).padStart(2, "0")}
+                        </span>
+
+                        <h3
+                          className="
+                            text-sm
+                            font-medium
+                            text-[#D6D1C7]
+                          "
+                        >
+                          {category.title}
+                        </h3>
+
+                        <span className="h-px flex-1 bg-[#C7A86B]/10" />
+                      </div>
+
+                      {/* Skills Grid */}
+
+                      <div
+                        className="
+                          grid
+                          grid-cols-2
+                          gap-2
+                          sm:grid-cols-3
+                        "
+                      >
+                        {category.skills.map(
+                          (skill) => (
+                            <div
+                              key={skill.name}
+                              className="
+                                group
+                                flex
+                                min-h-[42px]
+                                items-center
+                                rounded-lg
+                                border
+                                border-[#C7A86B]/10
+                                bg-white/[0.015]
+                                px-3
+                                py-2.5
+                                transition-all
+                                duration-300
+                                hover:-translate-y-0.5
+                                hover:border-[#C7A86B]/30
+                                hover:bg-[#C7A86B]/[0.035]
+                              "
+                            >
+                              <span
+                                className="
+                                  mr-2
+                                  h-1
+                                  w-1
+                                  shrink-0
+                                  rounded-full
+                                  bg-[#C7A86B]/40
+                                  transition-all
+                                  duration-300
+                                  group-hover:bg-[#C7A86B]
+                                "
+                              />
+
+                              <span
+                                className="
+                                  truncate
+                                  text-xs
+                                  text-[#9BA8A2]
+                                  transition-colors
+                                  duration-300
+                                  group-hover:text-[#F5F1E8]
+                                "
+                              >
+                                {skill.name}
+                              </span>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* =================================================
+            CLOSING
         ================================================= */}
 
         <ScrollReveal
@@ -446,219 +614,37 @@ export default function AboutSection() {
             className="
               flex
               flex-col
-              gap-5
+              gap-4
               border-t
-              border-[#38BDF8]/10
-              pt-8
+              border-[#C7A86B]/10
+              pt-7
               sm:flex-row
-              sm:items-end
+              sm:items-center
               sm:justify-between
             "
           >
-            <div>
-              <p
-                className="
-                  text-[10px]
-                  font-medium
-                  uppercase
-                  tracking-[0.3em]
-                  text-[#38BDF8]
-                "
-              >
-                What I Focus On
-              </p>
-
-              <h3
-                className="
-                  mt-2
-                  text-2xl
-                  font-medium
-                  tracking-[-0.04em]
-                  text-[#F8FAFC]
-                "
-              >
-                Areas I am exploring
-              </h3>
-            </div>
+            <p
+              className="
+                max-w-2xl
+                text-sm
+                leading-7
+                text-[#65736D]
+              "
+            >
+              {about.bio[3]}
+            </p>
 
             <span
               className="
+                shrink-0
                 text-[10px]
                 uppercase
-                tracking-[0.2em]
-                text-[#64748B]
+                tracking-[0.25em]
+                text-[#C7A86B]/70
               "
             >
-              {String(about.focusAreas.length).padStart(
-                2,
-                "0"
-              )}{" "}
-              areas
+              Data · Insight · Impact
             </span>
-          </div>
-        </ScrollReveal>
-
-        {/* =================================================
-            FOCUS AREA ROWS
-        ================================================= */}
-
-        <div className="mt-5">
-          {about.focusAreas.map((area, index) => (
-            <ScrollReveal
-              key={area.title}
-              direction="up"
-              delay={index * 0.05}
-            >
-              <div
-                className="
-                  group
-                  relative
-                  flex
-                  items-center
-                  gap-5
-                  border-b
-                  border-[#38BDF8]/10
-                  py-5
-                  transition-all
-                  duration-300
-                  hover:px-3
-                "
-              >
-                {/* Number */}
-
-                <span
-                  className="
-                    w-8
-                    shrink-0
-                    text-[10px]
-                    tracking-[0.18em]
-                    text-[#64748B]
-                    transition-colors
-                    duration-300
-                    group-hover:text-[#38BDF8]
-                  "
-                >
-                  {String(index + 1).padStart(
-                    2,
-                    "0"
-                  )}
-                </span>
-
-                {/* Title */}
-
-                <h4
-                  className="
-                    min-w-0
-                    text-base
-                    font-medium
-                    text-[#CBD5E1]
-                    transition-colors
-                    duration-300
-                    group-hover:text-[#38BDF8]
-                    sm:text-lg
-                  "
-                >
-                  {area.title}
-                </h4>
-
-                {/* Description */}
-
-                <p
-                  className="
-                    ml-auto
-                    hidden
-                    max-w-md
-                    text-right
-                    text-sm
-                    leading-6
-                    text-[#64748B]
-                    md:block
-                  "
-                >
-                  {area.description}
-                </p>
-
-                {/* Arrow */}
-
-                <span
-                  className="
-                    shrink-0
-                    text-[#64748B]
-                    transition-all
-                    duration-300
-                    group-hover:translate-x-1
-                    group-hover:text-[#38BDF8]
-                  "
-                >
-                  ↗
-                </span>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        {/* =================================================
-            CLOSING STATEMENT
-        ================================================= */}
-
-        <ScrollReveal
-          direction="up"
-          delay={0.2}
-          className="mx-auto mt-16 max-w-3xl text-center"
-        >
-          <p
-            className="
-              text-sm
-              leading-7
-              text-[#64748B]
-              sm:text-base
-            "
-          >
-            {about.bio[3]}
-          </p>
-        </ScrollReveal>
-
-        {/* =================================================
-            BOTTOM DECORATION
-        ================================================= */}
-
-        <ScrollReveal
-          direction="up"
-          delay={0.25}
-          className="mt-12"
-        >
-          <div
-            className="
-              flex
-              items-center
-              justify-center
-              gap-4
-            "
-          >
-            <span
-              className="
-                h-px
-                w-16
-                bg-[#38BDF8]/15
-              "
-            />
-
-            <span
-              className="
-                h-1.5
-                w-1.5
-                rounded-full
-                bg-[#38BDF8]/60
-              "
-            />
-
-            <span
-              className="
-                h-px
-                w-16
-                bg-[#38BDF8]/15
-              "
-            />
           </div>
         </ScrollReveal>
       </div>
