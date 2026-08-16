@@ -4,30 +4,20 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
-  ExternalLink,
-  Github,
   ArrowUpRight,
-  FileText,
-  Database,
-  BarChart3,
-  BrainCircuit,
-  FlaskConical,
-  CheckCircle2,
+  Github,
+  ExternalLink,
+  ChevronDown,
 } from "lucide-react";
 
-import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { projects, type Project } from "@/data/portfolio";
 
 const COLORS = {
-  background: "#211C18",
-  surface: "#2A2420",
-  surfaceHover: "#302923",
-  text: "#F4EFE7",
-  secondary: "#B8AEA4",
-  muted: "#8E847B",
-  accent: "#C96A4A",
-  accentHover: "#D77B5B",
-  border: "rgba(244,239,231,0.12)",
+  bg: "#0F1714",
+  cream: "#F5F3EC",
+  olive: "#A7B68D",
+  sage: "#6B7468",
+  taupe: "#D6CEC1",
 };
 
 /* =========================================================
@@ -42,36 +32,13 @@ function CaseStudyModal({
   onClose: () => void;
 }) {
   const steps = [
-    {
-      icon: <FileText size={16} />,
-      label: "Problem",
-      key: "problem" as const,
-    },
-    {
-      icon: <Database size={16} />,
-      label: "Data",
-      key: "data" as const,
-    },
-    {
-      icon: <BarChart3 size={16} />,
-      label: "Analysis",
-      key: "analysis" as const,
-    },
-    {
-      icon: <BrainCircuit size={16} />,
-      label: "Modeling",
-      key: "modeling" as const,
-    },
-    {
-      icon: <FlaskConical size={16} />,
-      label: "Evaluation",
-      key: "evaluation" as const,
-    },
-    {
-      icon: <CheckCircle2 size={16} />,
-      label: "Results",
-      key: "results" as const,
-    },
+    ["Problem", project.problem],
+    ["Data", project.data],
+    ["Process", project.process],
+    ["Analysis", project.analysis],
+    ["Modeling", project.modeling],
+    ["Evaluation", project.evaluation],
+    ["Results", project.results],
   ];
 
   return (
@@ -79,42 +46,86 @@ function CaseStudyModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#211C18]/90 p-4 backdrop-blur-md"
+      className="
+        fixed
+        inset-0
+        z-[100]
+        flex
+        items-center
+        justify-center
+        bg-[#0F1714]/90
+        p-4
+        backdrop-blur-xl
+      "
       onClick={onClose}
     >
       <motion.div
-        initial={{ opacity: 0, y: 25, scale: 0.97 }}
+        initial={{ opacity: 0, y: 30, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.97 }}
-        transition={{ duration: 0.25 }}
-        className="w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-2xl border bg-[#2A2420] shadow-2xl"
-        style={{ borderColor: COLORS.border }}
+        transition={{ duration: 0.3 }}
         onClick={(e) => e.stopPropagation()}
+        className="
+          max-h-[90vh]
+          w-full
+          max-w-4xl
+          overflow-y-auto
+          rounded-3xl
+          border
+          border-[#D6CEC1]/15
+          bg-[#111A16]/95
+          shadow-[0_30px_100px_rgba(0,0,0,0.5)]
+          backdrop-blur-2xl
+        "
       >
         {/* Header */}
 
         <div
-          className="sticky top-0 z-10 flex items-start justify-between border-b bg-[#2A2420]/95 px-6 py-5 backdrop-blur-md"
-          style={{ borderColor: COLORS.border }}
+          className="
+            sticky
+            top-0
+            z-10
+            flex
+            items-start
+            justify-between
+            border-b
+            border-[#D6CEC1]/10
+            bg-[#111A16]/90
+            px-6
+            py-6
+            backdrop-blur-xl
+            sm:px-8
+          "
         >
           <div>
             <p
-              className="mb-2 text-[10px] font-semibold uppercase tracking-[0.25em]"
-              style={{ color: COLORS.accent }}
+              className="
+                mb-3
+                text-[10px]
+                uppercase
+                tracking-[0.3em]
+              "
+              style={{ color: COLORS.olive }}
             >
               Case Study
             </p>
 
             <h3
-              className="text-xl font-bold sm:text-2xl"
-              style={{ color: COLORS.text }}
+              className="
+                max-w-2xl
+                text-2xl
+                font-medium
+                tracking-[-0.04em]
+                sm:text-3xl
+              "
+              style={{ color: COLORS.cream }}
             >
               {project.title}
             </h3>
 
             <p
-              className="mt-2 text-xs"
-              style={{ color: COLORS.secondary }}
+              className="mt-2 text-sm"
+              style={{ color: COLORS.olive }}
             >
               {project.category}
             </p>
@@ -122,72 +133,122 @@ function CaseStudyModal({
 
           <button
             onClick={onClose}
-            className="rounded-lg p-2 transition-colors hover:bg-white/5"
-            style={{ color: COLORS.secondary }}
-            aria-label="Close"
+            className="
+              flex
+              h-10
+              w-10
+              shrink-0
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-[#D6CEC1]/15
+              text-[#B5ADA0]
+              transition-all
+              hover:border-[#A7B68D]/50
+              hover:text-[#A7B68D]
+            "
+            aria-label="Close case study"
           >
-            <X size={20} />
+            <X size={18} strokeWidth={1.5} />
           </button>
         </div>
 
         {/* Content */}
 
-        <div className="space-y-8 p-6 sm:p-8">
+        <div className="space-y-10 p-6 sm:p-8">
+          {/* Overview */}
 
           <div>
             <p
-              className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em]"
-              style={{ color: COLORS.accent }}
+              className="
+                mb-3
+                text-[10px]
+                uppercase
+                tracking-[0.25em]
+              "
+              style={{ color: COLORS.olive }}
             >
-              Process
+              Overview
             </p>
 
             <p
-              className="text-sm leading-7"
-              style={{ color: COLORS.secondary }}
+              className="max-w-3xl text-sm leading-7 sm:text-base"
+              style={{ color: COLORS.taupe }}
             >
-              {project.process}
+              {project.shortDescription}
             </p>
           </div>
 
-          <div className="space-y-7">
-            {steps.map((step) => (
-              <div key={step.key} className="flex gap-4">
-                <div
-                  className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-                  style={{
-                    backgroundColor: `${COLORS.accent}15`,
-                    color: COLORS.accent,
-                  }}
+          {/* Case Study Steps */}
+
+          <div className="space-y-8">
+            {steps.map(([label, content], index) => (
+              <div
+                key={label}
+                className="
+                  grid
+                  gap-4
+                  border-t
+                  border-[#D6CEC1]/10
+                  pt-6
+                  sm:grid-cols-[150px_1fr]
+                "
+              >
+                <div className="flex items-start gap-3">
+                  <span
+                    className="
+                      text-xs
+                      tracking-[0.2em]
+                    "
+                    style={{ color: COLORS.olive }}
+                  >
+                    0{index + 1}
+                  </span>
+
+                  <span
+                    className="
+                      text-[10px]
+                      font-medium
+                      uppercase
+                      tracking-[0.2em]
+                    "
+                    style={{ color: COLORS.cream }}
+                  >
+                    {label}
+                  </span>
+                </div>
+
+                <p
+                  className="
+                    text-sm
+                    leading-7
+                  "
+                  style={{ color: COLORS.taupe }}
                 >
-                  {step.icon}
-                </div>
-
-                <div>
-                  <h4
-                    className="mb-1.5 text-sm font-semibold"
-                    style={{ color: COLORS.text }}
-                  >
-                    {step.label}
-                  </h4>
-
-                  <p
-                    className="text-sm leading-7"
-                    style={{ color: COLORS.secondary }}
-                  >
-                    {project[step.key]}
-                  </p>
-                </div>
+                  {content}
+                </p>
               </div>
             ))}
           </div>
 
           {/* Technologies */}
 
-          <div>
+          <div
+            className="
+              border-t
+              border-[#D6CEC1]/10
+              pt-6
+            "
+          >
             <p
-              className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em]"
-              style={{ color: COLORS.accent }}
+              className="
+                mb-4
+                text-[10px]
+                uppercase
+                tracking-[0.25em]
+              "
+              style={{ color: COLORS.olive }}
             >
               Technologies
             </p>
@@ -196,11 +257,16 @@ function CaseStudyModal({
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-md border px-3 py-1.5 text-xs"
-                  style={{
-                    borderColor: COLORS.border,
-                    color: COLORS.secondary,
-                  }}
+                  className="
+                    rounded-full
+                    border
+                    border-[#D6CEC1]/15
+                    bg-[#F5F3EC]/[0.025]
+                    px-3
+                    py-1.5
+                    text-xs
+                  "
+                  style={{ color: COLORS.taupe }}
                 >
                   {tech}
                 </span>
@@ -211,19 +277,36 @@ function CaseStudyModal({
           {/* Links */}
 
           <div
-            className="flex flex-wrap gap-3 border-t pt-6"
-            style={{ borderColor: COLORS.border }}
+            className="
+              flex
+              flex-wrap
+              gap-3
+              border-t
+              border-[#D6CEC1]/10
+              pt-6
+            "
           >
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-white/5"
-                style={{
-                  borderColor: COLORS.border,
-                  color: COLORS.text,
-                }}
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-xl
+                  border
+                  border-[#D6CEC1]/15
+                  bg-[#F5F3EC]/[0.025]
+                  px-5
+                  py-3
+                  text-sm
+                  transition-all
+                  hover:border-[#A7B68D]/50
+                  hover:bg-[#A7B68D]/[0.06]
+                "
+                style={{ color: COLORS.cream }}
               >
                 <Github size={16} />
                 GitHub
@@ -236,14 +319,25 @@ function CaseStudyModal({
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold"
-                style={{
-                  backgroundColor: COLORS.accent,
-                  color: COLORS.text,
-                }}
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-xl
+                  border
+                  border-[#A7B68D]/50
+                  bg-[#A7B68D]/[0.08]
+                  px-5
+                  py-3
+                  text-sm
+                  transition-all
+                  hover:bg-[#A7B68D]/[0.14]
+                "
+                style={{ color: COLORS.cream }}
               >
                 <ExternalLink size={16} />
                 Live Demo
+                <ArrowUpRight size={14} />
               </a>
             )}
           </div>
@@ -254,256 +348,630 @@ function CaseStudyModal({
 }
 
 /* =========================================================
-   PROJECT CARD
+   SINGLE FULL SCREEN PROJECT
 ========================================================= */
 
-function ProjectCard({
+function ProjectSlide({
   project,
   index,
-  side,
+  total,
   onOpen,
 }: {
   project: Project;
   index: number;
-  side: "left" | "right";
+  total: number;
   onOpen: () => void;
 }) {
   const number = String(index + 1).padStart(2, "0");
+  const totalNumber = String(total).padStart(2, "0");
 
   return (
-    <motion.article
-      initial={{
-        opacity: 0,
-        x: side === "left" ? -40 : 40,
-      }}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-      }}
-      viewport={{
-        once: true,
-        margin: "-80px",
-      }}
-      transition={{
-        duration: 0.55,
-        ease: "easeOut",
-      }}
-      className={`
+    <article
+      className="
         relative
-        w-full
-        md:w-[calc(50%-48px)]
-        ${side === "left" ? "md:mr-auto" : "md:ml-auto"}
-      `}
+        flex
+        min-h-screen
+        items-center
+        overflow-hidden
+        border-b
+        border-[#D6CEC1]/10
+      "
     >
-      {/* Connector to center line */}
+      {/* =====================================================
+          DECORATIVE BACKGROUND
+      ===================================================== */}
 
-      <div
-        className={`
-          hidden
-          md:block
-          absolute
-          top-1/2
-          w-12
-          h-px
-          ${side === "left" ? "right-[-48px]" : "left-[-48px]"}
-        `}
-        style={{
-          backgroundColor: COLORS.accent,
-          opacity: 0.45,
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Huge number */}
 
-      {/* Center Dot */}
+        <span
+          className="
+            absolute
+            -left-8
+            top-1/2
+            -translate-y-1/2
+            select-none
+            text-[240px]
+            font-light
+            leading-none
+            tracking-[-0.08em]
+            text-[#A7B68D]/[0.045]
+            sm:text-[330px]
+            lg:text-[430px]
+          "
+        >
+          {number}
+        </span>
 
-      <div
-        className={`
-          hidden
-          md:block
-          absolute
-          top-1/2
-          -translate-y-1/2
-          w-3
-          h-3
-          rounded-full
-          border-2
-          border-[#211C18]
-          z-20
-          ${side === "left" ? "right-[-54px]" : "left-[-54px]"}
-        `}
-        style={{
-          backgroundColor: COLORS.accent,
-          boxShadow: `0 0 0 4px ${COLORS.accent}18`,
-        }}
-      />
+        {/* Orbital circles */}
 
-      {/* Card */}
+        <div
+          className="
+            absolute
+            -right-40
+            top-1/2
+            h-[500px]
+            w-[500px]
+            -translate-y-1/2
+            rounded-full
+            border
+            border-[#A7B68D]/15
+            sm:h-[650px]
+            sm:w-[650px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -right-20
+            top-1/2
+            h-[360px]
+            w-[360px]
+            -translate-y-1/2
+            rounded-full
+            border
+            border-[#A7B68D]/10
+            sm:h-[480px]
+            sm:w-[480px]
+          "
+        />
+
+        {/* Glow */}
+
+        <div
+          className="
+            absolute
+            right-[12%]
+            top-1/2
+            h-[250px]
+            w-[250px]
+            -translate-y-1/2
+            rounded-full
+            bg-[#A7B68D]/[0.025]
+            blur-[100px]
+          "
+        />
+
+        {/* Dots */}
+
+        <div
+          className="
+            absolute
+            right-[8%]
+            top-[25%]
+            grid
+            grid-cols-4
+            gap-4
+          "
+        >
+          {Array.from({ length: 12 }).map((_, i) => (
+            <span
+              key={i}
+              className="
+                h-1
+                w-1
+                rounded-full
+                bg-[#A7B68D]/35
+              "
+            />
+          ))}
+        </div>
+
+        {/* Small glowing point */}
+
+        <span
+          className="
+            absolute
+            right-[25%]
+            top-[34%]
+            h-2
+            w-2
+            rounded-full
+            bg-[#A7B68D]
+            shadow-[0_0_18px_rgba(167,182,141,0.8)]
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
 
       <div
         className="
-          group
-          rounded-2xl
-          border
-          p-6
-          sm:p-7
-          transition-all
-          duration-300
+          relative
+          z-10
+          mx-auto
+          w-full
+          max-w-7xl
+          px-6
+          py-28
+          sm:px-10
+          lg:px-14
         "
-        style={{
-          backgroundColor: COLORS.surface,
-          borderColor: COLORS.border,
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor =
-            COLORS.surfaceHover;
-
-          e.currentTarget.style.borderColor =
-            `${COLORS.accent}45`;
-
-          e.currentTarget.style.transform =
-            "translateY(-5px)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor =
-            COLORS.surface;
-
-          e.currentTarget.style.borderColor =
-            COLORS.border;
-
-          e.currentTarget.style.transform =
-            "translateY(0)";
-        }}
       >
-        {/* Top */}
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+          {/* LEFT */}
 
-        <div className="flex items-center justify-between gap-4">
-          <span
-            className="text-3xl font-light tracking-tight"
-            style={{
-              color: `${COLORS.text}25`,
-            }}
-          >
-            {number}
-          </span>
+          <div className="lg:col-span-8">
+            {/* Counter */}
 
-          <div className="flex items-center gap-2">
-            {project.featured && (
-              <span
-                className="rounded-full border px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wider"
-                style={{
-                  borderColor: `${COLORS.accent}45`,
-                  color: COLORS.accent,
-                }}
-              >
-                Featured
-              </span>
-            )}
-
-            <span
-              className="rounded-full px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wider"
-              style={{
-                backgroundColor: `${COLORS.accent}12`,
-                color: COLORS.accent,
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 15,
               }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className="
+                mb-8
+                flex
+                items-center
+                gap-4
+              "
+            >
+              <span
+                className="
+                  text-sm
+                  font-medium
+                  tracking-[0.2em]
+                "
+                style={{ color: COLORS.olive }}
+              >
+                {number}
+              </span>
+
+              <span
+                className="
+                  h-px
+                  w-10
+                  bg-[#A7B68D]/40
+                "
+              />
+
+              <span
+                className="
+                  text-xs
+                  tracking-[0.2em]
+                "
+                style={{ color: COLORS.sage }}
+              >
+                / {totalNumber}
+              </span>
+            </motion.div>
+
+            {/* Category */}
+
+            <motion.p
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.08,
+              }}
+              className="
+                mb-5
+                text-[10px]
+                font-medium
+                uppercase
+                tracking-[0.35em]
+              "
+              style={{ color: COLORS.olive }}
             >
               {project.category}
-            </span>
+            </motion.p>
+
+            {/* Title */}
+
+            <motion.h2
+              initial={{
+                opacity: 0,
+                y: 25,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.12,
+                duration: 0.7,
+              }}
+              className="
+                max-w-4xl
+                text-5xl
+                font-medium
+                uppercase
+                leading-[0.95]
+                tracking-[-0.055em]
+                sm:text-6xl
+                md:text-7xl
+                lg:text-[92px]
+              "
+              style={{ color: COLORS.cream }}
+            >
+              {project.title}
+              <span style={{ color: COLORS.olive }}>
+                .
+              </span>
+            </motion.h2>
+
+            {/* Description */}
+
+            <motion.p
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.22,
+              }}
+              className="
+                mt-7
+                max-w-2xl
+                text-sm
+                leading-7
+                sm:text-base
+              "
+              style={{ color: COLORS.taupe }}
+            >
+              {project.shortDescription}
+            </motion.p>
+
+            {/* Technologies */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.3,
+              }}
+              className="
+                mt-7
+                flex
+                max-w-2xl
+                flex-wrap
+                gap-x-4
+                gap-y-2
+              "
+            >
+              {project.technologies.map((tech, i) => (
+                <div
+                  key={tech}
+                  className="flex items-center gap-4"
+                >
+                  <span
+                    className="text-xs"
+                    style={{ color: COLORS.sage }}
+                  >
+                    {tech}
+                  </span>
+
+                  {i <
+                    project.technologies.length - 1 && (
+                    <span
+                      className="text-xs"
+                      style={{
+                        color: COLORS.olive,
+                      }}
+                    >
+                      |
+                    </span>
+                  )}
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTA */}
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.38,
+              }}
+              className="
+                mt-10
+                flex
+                flex-wrap
+                items-center
+                gap-4
+              "
+            >
+              <button
+                type="button"
+                onClick={onOpen}
+                className="
+                  group
+                  inline-flex
+                  h-14
+                  items-center
+                  gap-4
+                  rounded-xl
+                  border
+                  border-[#A7B68D]/55
+                  bg-[#A7B68D]/[0.06]
+                  px-7
+                  text-sm
+                  font-medium
+                  backdrop-blur-md
+                  transition-all
+                  duration-300
+                  hover:border-[#A7B68D]
+                  hover:bg-[#A7B68D]/[0.12]
+                  hover:shadow-[0_0_30px_rgba(167,182,141,0.1)]
+                "
+                style={{ color: COLORS.cream }}
+              >
+                View Case Study
+
+                <ArrowUpRight
+                  size={17}
+                  className="
+                    text-[#A7B68D]
+                    transition-transform
+                    duration-300
+                    group-hover:-translate-y-0.5
+                    group-hover:translate-x-0.5
+                  "
+                />
+              </button>
+
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-flex
+                    h-14
+                    items-center
+                    gap-3
+                    rounded-xl
+                    border
+                    border-[#D6CEC1]/15
+                    bg-[#F5F3EC]/[0.02]
+                    px-5
+                    text-sm
+                    transition-all
+                    duration-300
+                    hover:border-[#A7B68D]/40
+                    hover:bg-[#F5F3EC]/[0.05]
+                  "
+                  style={{ color: COLORS.taupe }}
+                >
+                  <Github size={17} />
+
+                  GitHub
+
+                  <ArrowUpRight size={14} />
+                </a>
+              )}
+            </motion.div>
+          </div>
+
+          {/* RIGHT */}
+
+          <div className="hidden lg:col-span-4 lg:block">
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: 30,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              className="
+                relative
+                ml-auto
+                max-w-[330px]
+              "
+            >
+              {/* Vertical line */}
+
+              <div
+                className="
+                  absolute
+                  left-0
+                  top-0
+                  h-full
+                  w-px
+                  bg-[#A7B68D]/20
+                "
+              />
+
+              <div className="space-y-8 pl-8">
+                <div>
+                  <span
+                    className="
+                      mb-2
+                      block
+                      text-[9px]
+                      uppercase
+                      tracking-[0.25em]
+                    "
+                    style={{ color: COLORS.olive }}
+                  >
+                    Problem
+                  </span>
+
+                  <p
+                    className="
+                      text-sm
+                      leading-6
+                    "
+                    style={{ color: COLORS.taupe }}
+                  >
+                    {project.problem}
+                  </p>
+                </div>
+
+                <div>
+                  <span
+                    className="
+                      mb-2
+                      block
+                      text-[9px]
+                      uppercase
+                      tracking-[0.25em]
+                    "
+                    style={{ color: COLORS.olive }}
+                  >
+                    Results
+                  </span>
+
+                  <p
+                    className="
+                      text-sm
+                      leading-6
+                    "
+                    style={{ color: COLORS.taupe }}
+                  >
+                    {project.results}
+                  </p>
+                </div>
+
+                <div
+                  className="
+                    border-t
+                    border-[#D6CEC1]/10
+                    pt-6
+                  "
+                >
+                  <span
+                    className="
+                      text-[9px]
+                      uppercase
+                      tracking-[0.25em]
+                    "
+                    style={{ color: COLORS.sage }}
+                  >
+                    Explore
+                  </span>
+
+                  <div className="mt-3 flex items-center gap-3">
+                    <span
+                      className="
+                        h-2
+                        w-2
+                        rounded-full
+                        bg-[#A7B68D]
+                        shadow-[0_0_12px_rgba(167,182,141,0.7)]
+                      "
+                    />
+
+                    <span
+                      className="text-xs"
+                      style={{ color: COLORS.taupe }}
+                    >
+                      Case Study {number} /{" "}
+                      {totalNumber}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
-
-        {/* Content */}
-
-        <button
-          type="button"
-          onClick={onOpen}
-          className="mt-7 block w-full text-left"
-        >
-          <h3
-            className="text-xl font-semibold tracking-tight sm:text-2xl"
-            style={{ color: COLORS.text }}
-          >
-            {project.title}
-          </h3>
-
-          <p
-            className="mt-3 text-sm leading-7"
-            style={{ color: COLORS.secondary }}
-          >
-            {project.shortDescription}
-          </p>
-        </button>
-
-        {/* Technologies */}
-
-        <div className="mt-6 flex flex-wrap gap-2">
-          {project.technologies.slice(0, 5).map((tech) => (
-            <span
-              key={tech}
-              className="rounded-md border px-2.5 py-1 text-[10px] font-medium"
-              style={{
-                borderColor: COLORS.border,
-                color: COLORS.muted,
-              }}
-            >
-              {tech}
-            </span>
-          ))}
-
-          {project.technologies.length > 5 && (
-            <span
-              className="px-1 py-1 text-[10px]"
-              style={{
-                color: COLORS.muted,
-              }}
-            >
-              +{project.technologies.length - 5}
-            </span>
-          )}
-        </div>
-
-        {/* Divider */}
-
-        <div
-          className="my-6 h-px"
-          style={{
-            backgroundColor: COLORS.border,
-          }}
-        />
-
-        {/* Buttons */}
-
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <button
-            type="button"
-            onClick={onOpen}
-            className="inline-flex items-center gap-2 text-sm font-medium"
-            style={{
-              color: COLORS.accent,
-            }}
-          >
-            View Case Study
-            <ArrowUpRight size={15} />
-          </button>
-
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5"
-              style={{
-                borderColor: COLORS.border,
-                color: COLORS.secondary,
-              }}
-            >
-              <Github size={15} />
-              GitHub
-              <ArrowUpRight size={13} />
-            </a>
-          )}
-        </div>
       </div>
-    </motion.article>
+
+      {/* Scroll cue */}
+
+      {index < total - 1 && (
+        <motion.div
+          animate={{
+            y: [0, 6, 0],
+          }}
+          transition={{
+            duration: 1.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="
+            absolute
+            bottom-8
+            left-1/2
+            hidden
+            -translate-x-1/2
+            md:block
+          "
+        >
+          <ChevronDown
+            size={18}
+            strokeWidth={1.3}
+            style={{ color: COLORS.olive }}
+          />
+        </motion.div>
+      )}
+    </article>
   );
 }
 
@@ -516,131 +984,191 @@ export default function ProjectsSection() {
     useState<Project | null>(null);
 
   return (
-    <section
-      id="projects"
-      className="
-        relative
-        overflow-hidden
-        bg-[#211C18]
-        py-24
-        sm:py-32
-      "
-    >
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+    <>
+      <section
+        id="projects"
+        className="
+          relative
+          bg-[#0F1714]
+        "
+      >
+        {/* Section intro */}
 
-        {/* Header */}
-
-        <ScrollReveal className="mb-20 text-center">
-          <p
-            className="mb-4 text-xs font-semibold uppercase tracking-[0.28em]"
-            style={{
-              color: COLORS.accent,
-            }}
-          >
-            Selected Work
-          </p>
-
-          <h2
-            className="text-4xl font-bold tracking-[-0.04em] sm:text-5xl md:text-6xl"
-            style={{
-              color: COLORS.text,
-            }}
-          >
-            Projects.
-          </h2>
-
-          <p
-            className="mx-auto mt-5 max-w-2xl text-sm leading-7 sm:text-base"
-            style={{
-              color: COLORS.secondary,
-            }}
-          >
-            A selection of data science and machine learning
-            projects built around real problems and practical analysis.
-          </p>
-        </ScrollReveal>
-
-        {/* =====================================================
-            TIMELINE
-        ===================================================== */}
-
-        <div className="relative">
-
-          {/* Center Rope */}
+        <div
+          className="
+            relative
+            flex
+            min-h-[55vh]
+            items-center
+            justify-center
+            overflow-hidden
+            border-b
+            border-[#D6CEC1]/10
+            px-6
+            py-24
+          "
+        >
+          {/* Decorative orbit */}
 
           <div
             className="
-              hidden
-              md:block
+              pointer-events-none
               absolute
               left-1/2
-              top-0
-              bottom-0
-              w-px
+              top-1/2
+              h-[350px]
+              w-[350px]
               -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              border
+              border-[#A7B68D]/10
+              sm:h-[500px]
+              sm:w-[500px]
             "
-            style={{
-              backgroundColor: COLORS.accent,
-              opacity: 0.25,
-            }}
           />
 
-          {/* Projects */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              h-[220px]
+              w-[220px]
+              -translate-x-1/2
+              -translate-y-1/2
+              rounded-full
+              bg-[#A7B68D]/[0.025]
+              blur-[80px]
+            "
+          />
 
-          <div className="space-y-10 md:space-y-16">
-            {projects.map((project, index) => {
-              const side =
-                index % 2 === 0
-                  ? "left"
-                  : "right";
+          <div className="relative z-10 text-center">
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className="
+                mb-6
+                flex
+                items-center
+                justify-center
+                gap-4
+              "
+            >
+              <span
+                className="
+                  h-px
+                  w-10
+                  bg-[#A7B68D]/70
+                "
+              />
 
-              return (
-                <div
-                  key={project.id}
-                  className="
-                    relative
-                    flex
-                    w-full
-                  "
-                >
-                  <ProjectCard
-                    project={project}
-                    index={index}
-                    side={side}
-                    onOpen={() =>
-                      setSelectedProject(project)
-                    }
-                  />
-                </div>
-              );
-            })}
+              <span
+                className="
+                  text-[10px]
+                  uppercase
+                  tracking-[0.35em]
+                "
+                style={{ color: COLORS.olive }}
+              >
+                Selected Work
+              </span>
+
+              <span
+                className="
+                  h-px
+                  w-10
+                  bg-[#A7B68D]/70
+                "
+              />
+            </motion.div>
+
+            <motion.h2
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.1,
+              }}
+              className="
+                text-6xl
+                font-medium
+                tracking-[-0.06em]
+                sm:text-7xl
+                md:text-8xl
+              "
+              style={{ color: COLORS.cream }}
+            >
+              Projects
+              <span style={{ color: COLORS.olive }}>
+                .
+              </span>
+            </motion.h2>
+
+            <motion.p
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.2,
+              }}
+              className="
+                mx-auto
+                mt-5
+                max-w-lg
+                text-sm
+                leading-7
+              "
+              style={{ color: COLORS.sage }}
+            >
+              Data-driven projects, analytical thinking,
+              and practical machine learning.
+            </motion.p>
           </div>
         </div>
 
-        {/* Bottom */}
+        {/* Projects */}
 
-        <ScrollReveal className="mt-16 text-center">
-          <div
-            className="mx-auto mb-5 h-px max-w-2xl"
-            style={{
-              backgroundColor: COLORS.border,
-            }}
+        {projects.map((project, index) => (
+          <ProjectSlide
+            key={project.id}
+            project={project}
+            index={index}
+            total={projects.length}
+            onOpen={() =>
+              setSelectedProject(project)
+            }
           />
+        ))}
+      </section>
 
-          <span
-            className="text-xs"
-            style={{
-              color: COLORS.muted,
-            }}
-          >
-            {projects.length} Projects
-          </span>
-        </ScrollReveal>
-      </div>
-
-      {/* =====================================================
-          MODAL
-      ===================================================== */}
+      {/* Modal */}
 
       <AnimatePresence>
         {selectedProject && (
@@ -652,6 +1180,6 @@ export default function ProjectsSection() {
           />
         )}
       </AnimatePresence>
-    </section>
+    </>
   );
 }
