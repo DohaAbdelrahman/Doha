@@ -1,7 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  CalendarDays,
+  MapPin,
+  Building2,
+} from "lucide-react";
 
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { experiences } from "@/data/portfolio";
@@ -13,7 +18,7 @@ export default function ExperienceSection() {
       className="
         relative
         overflow-hidden
-        bg-[#07100D]
+        bg-[#081412]
         py-28
         sm:py-36
       "
@@ -34,7 +39,7 @@ export default function ExperienceSection() {
             w-[420px]
             rounded-full
             border
-            border-[#A7B68D]/[0.07]
+            border-[#C7A86B]/[0.07]
           "
         />
 
@@ -47,11 +52,11 @@ export default function ExperienceSection() {
             w-[280px]
             rounded-full
             border
-            border-[#A7B68D]/[0.05]
+            border-[#C7A86B]/[0.05]
           "
         />
 
-        {/* Bottom left circle */}
+        {/* Bottom left */}
 
         <div
           className="
@@ -62,7 +67,7 @@ export default function ExperienceSection() {
             w-[450px]
             rounded-full
             border
-            border-[#A7B68D]/[0.06]
+            border-[#C7A86B]/[0.05]
           "
         />
 
@@ -78,7 +83,7 @@ export default function ExperienceSection() {
             -translate-x-1/2
             -translate-y-1/2
             rounded-full
-            bg-[#A7B68D]/[0.018]
+            bg-[#C7A86B]/[0.012]
             blur-[140px]
           "
         />
@@ -89,11 +94,11 @@ export default function ExperienceSection() {
           className="
             absolute
             left-[4%]
-            top-[20%]
+            top-[18%]
             grid
             grid-cols-4
             gap-4
-            opacity-30
+            opacity-25
           "
         >
           {Array.from({ length: 20 }).map((_, index) => (
@@ -103,7 +108,7 @@ export default function ExperienceSection() {
                 h-1
                 w-1
                 rounded-full
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/40
               "
             />
           ))}
@@ -119,16 +124,16 @@ export default function ExperienceSection() {
           relative
           z-10
           mx-auto
-          max-w-6xl
+          max-w-5xl
           px-6
-          sm:px-10
+          sm:px-8
         "
       >
         {/* =================================================
             HEADER
         ================================================= */}
 
-        <ScrollReveal className="mb-20 text-center">
+        <ScrollReveal className="mb-16 text-center">
           <div
             className="
               mb-5
@@ -142,7 +147,7 @@ export default function ExperienceSection() {
               className="
                 h-px
                 w-12
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/50
               "
             />
 
@@ -152,17 +157,17 @@ export default function ExperienceSection() {
                 font-medium
                 uppercase
                 tracking-[0.35em]
-                text-[#A7B68D]
+                text-[#C7A86B]
               "
             >
-              Journey
+              Experience
             </p>
 
             <span
               className="
                 h-px
                 w-12
-                bg-[#A7B68D]/50
+                bg-[#C7A86B]/50
               "
             />
           </div>
@@ -172,237 +177,51 @@ export default function ExperienceSection() {
               text-5xl
               font-medium
               tracking-[-0.06em]
-              text-[#F5F3EC]
+              text-[#F5F1E8]
               sm:text-6xl
               md:text-7xl
             "
           >
             My Journey
-            <span className="text-[#A7B68D]">
-              .
-            </span>
+            <span className="text-[#C7A86B]">.</span>
           </h2>
 
           <p
             className="
               mx-auto
               mt-5
-              max-w-xl
+              max-w-2xl
               text-sm
               leading-7
-              text-[#8D9489]
+              text-[#9BA8A2]
               sm:text-base
             "
           >
-            Programs, training, and experiences that
-            shaped my path in data science and technology.
+            Training programs, scholarships, and practical
+            experiences that shaped my path in data science
+            and technology.
           </p>
         </ScrollReveal>
 
         {/* =================================================
-            TIMELINE
+            EXPERIENCE CARDS
         ================================================= */}
 
-        <div className="relative">
-          {/* Center line */}
-
-          <div
-            className="
-              absolute
-              bottom-0
-              left-1/2
-              top-0
-              hidden
-              w-px
-              -translate-x-1/2
-              bg-gradient-to-b
-              from-transparent
-              via-[#A7B68D]/30
-              to-transparent
-              md:block
-            "
-          />
-
-          {/* Mobile line */}
-
-          <div
-            className="
-              absolute
-              bottom-0
-              left-[10px]
-              top-0
-              w-px
-              bg-gradient-to-b
-              from-transparent
-              via-[#A7B68D]/30
-              to-transparent
-              md:hidden
-            "
-          />
-
-          <div className="space-y-10 md:space-y-16">
-            {experiences.map((exp, index) => {
-              const isLeft = index % 2 === 0;
-
-              return (
-                <motion.div
-                  key={`${exp.title}-${index}`}
-                  initial={{
-                    opacity: 0,
-                    y: 25,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    margin: "-60px",
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.07,
-                  }}
-                  className="relative"
-                >
-                  {/* =================================================
-                      DESKTOP LAYOUT
-                  ================================================= */}
-
-                  <div className="hidden md:grid md:grid-cols-2 md:gap-16">
-                    {/* LEFT */}
-
-                    <div
-                      className={
-                        isLeft
-                          ? "flex justify-end"
-                          : "invisible"
-                      }
-                    >
-                      {isLeft && (
-                        <ExperienceCard
-                          exp={exp}
-                          index={index}
-                          align="right"
-                        />
-                      )}
-                    </div>
-
-                    {/* RIGHT */}
-
-                    <div
-                      className={
-                        !isLeft
-                          ? "flex justify-start"
-                          : "invisible"
-                      }
-                    >
-                      {!isLeft && (
-                        <ExperienceCard
-                          exp={exp}
-                          index={index}
-                          align="left"
-                        />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* =================================================
-                      CENTER DOT
-                  ================================================= */}
-
-                  <div
-                    className="
-                      absolute
-                      left-1/2
-                      top-8
-                      z-20
-                      hidden
-                      -translate-x-1/2
-                      md:block
-                    "
-                  >
-                    <div
-                      className="
-                        flex
-                        h-5
-                        w-5
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-[#A7B68D]/45
-                        bg-[#07100D]
-                      "
-                    >
-                      <span
-                        className="
-                          h-1.5
-                          w-1.5
-                          rounded-full
-                          bg-[#A7B68D]
-                          shadow-[0_0_12px_rgba(167,182,141,0.8)]
-                        "
-                      />
-                    </div>
-                  </div>
-
-                  {/* =================================================
-                      MOBILE
-                  ================================================= */}
-
-                  <div className="pl-8 md:hidden">
-                    <ExperienceCard
-                      exp={exp}
-                      index={index}
-                      align="left"
-                    />
-                  </div>
-
-                  {/* Mobile dot */}
-
-                  <div
-                    className="
-                      absolute
-                      left-[10px]
-                      top-8
-                      z-20
-                      -translate-x-1/2
-                      md:hidden
-                    "
-                  >
-                    <div
-                      className="
-                        flex
-                        h-5
-                        w-5
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-[#A7B68D]/45
-                        bg-[#07100D]
-                      "
-                    >
-                      <span
-                        className="
-                          h-1.5
-                          w-1.5
-                          rounded-full
-                          bg-[#A7B68D]
-                        "
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+        <div className="space-y-6">
+          {experiences.map((exp, index) => (
+            <ScrollReveal
+              key={`${exp.title}-${index}`}
+              delay={index * 0.06}
+            >
+              <ExperienceCard
+                exp={exp}
+                index={index}
+              />
+            </ScrollReveal>
+          ))}
         </div>
 
-        {/* =================================================
-            BOTTOM
-        ================================================= */}
+        {/* Bottom decoration */}
 
         <ScrollReveal
           direction="up"
@@ -421,7 +240,7 @@ export default function ExperienceSection() {
               className="
                 h-px
                 w-16
-                bg-[#A7B68D]/15
+                bg-[#C7A86B]/15
               "
             />
 
@@ -430,7 +249,7 @@ export default function ExperienceSection() {
                 h-1.5
                 w-1.5
                 rounded-full
-                bg-[#A7B68D]/60
+                bg-[#C7A86B]/60
               "
             />
 
@@ -438,7 +257,7 @@ export default function ExperienceSection() {
               className="
                 h-px
                 w-16
-                bg-[#A7B68D]/15
+                bg-[#C7A86B]/15
               "
             />
           </div>
@@ -455,45 +274,45 @@ export default function ExperienceSection() {
 function ExperienceCard({
   exp,
   index,
-  align,
 }: {
   exp: {
     title: string;
     organization: string;
     date: string;
     description: string;
+    location?: string;
+    mode?: string;
+    achievements?: string[];
     tags?: string[];
     type?: string;
+    verifyUrl?: string;
   };
   index: number;
-  align: "left" | "right";
 }) {
   return (
-    <article
-      className={`
+    <motion.article
+      whileHover={{
+        y: -3,
+      }}
+      transition={{
+        duration: 0.25,
+      }}
+      className="
         group
         relative
-        w-full
-        max-w-[510px]
         overflow-hidden
         rounded-2xl
         border
-        border-[#A7B68D]/20
+        border-[#C7A86B]/20
         bg-white/[0.018]
         p-6
         backdrop-blur-xl
         transition-all
         duration-500
-        hover:-translate-y-1
-        hover:border-[#A7B68D]/50
-        hover:bg-[#A7B68D]/[0.035]
-        sm:p-7
-        ${
-          align === "right"
-            ? "text-left md:text-right"
-            : "text-left"
-        }
-      `}
+        hover:border-[#C7A86B]/40
+        hover:bg-[#C7A86B]/[0.025]
+        sm:p-8
+      "
     >
       {/* Glass highlight */}
 
@@ -512,171 +331,315 @@ function ExperienceCard({
       {/* Decorative circle */}
 
       <div
-        className={`
+        className="
           pointer-events-none
           absolute
-          -top-12
-          h-32
-          w-32
+          -right-16
+          -top-16
+          h-40
+          w-40
           rounded-full
           border
-          border-[#A7B68D]/10
+          border-[#C7A86B]/[0.08]
           transition-transform
           duration-700
-          group-hover:scale-125
-          ${
-            align === "right"
-              ? "-left-12"
-              : "-right-12"
-          }
-        `}
+          group-hover:scale-110
+        "
       />
 
-      {/* Top */}
+      {/* =================================================
+          TOP
+      ================================================= */}
 
       <div
-        className={`
+        className="
           relative
           flex
-          items-start
-          justify-between
-          gap-4
-          ${
-            align === "right"
-              ? "md:flex-row-reverse"
-              : ""
-          }
-        `}
+          flex-col
+          gap-5
+          lg:flex-row
+          lg:items-start
+          lg:justify-between
+        "
       >
-        <span
-          className="
-            text-4xl
-            font-light
-            leading-none
-            tracking-[-0.08em]
-            text-[#A7B68D]/20
-            transition-colors
-            duration-300
-            group-hover:text-[#A7B68D]/60
-          "
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
+        <div className="min-w-0">
+          {/* Number */}
 
-        <ArrowUpRight
-          size={18}
-          strokeWidth={1.4}
-          className="
-            text-[#667068]
-            transition-all
-            duration-300
-            group-hover:-translate-y-1
-            group-hover:translate-x-1
-            group-hover:text-[#A7B68D]
-          "
-        />
+          <div
+            className="
+              mb-4
+              text-3xl
+              font-light
+              leading-none
+              tracking-[-0.08em]
+              text-[#C7A86B]/25
+              transition-colors
+              duration-300
+              group-hover:text-[#C7A86B]/55
+            "
+          >
+            {String(index + 1).padStart(2, "0")}
+          </div>
+
+          {/* Title */}
+
+          <h3
+            className="
+              text-2xl
+              font-medium
+              leading-tight
+              tracking-[-0.035em]
+              text-[#F5F1E8]
+              transition-colors
+              duration-300
+              group-hover:text-[#C7A86B]
+              sm:text-3xl
+            "
+          >
+            {exp.title}
+          </h3>
+
+          {/* Organization */}
+
+          <p
+            className="
+              mt-3
+              text-sm
+              font-medium
+              text-[#C7A86B]
+            "
+          >
+            {exp.organization}
+          </p>
+        </div>
+
+        {/* Verify */}
+
+        {exp.verifyUrl && (
+          <a
+            href={exp.verifyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              group/verify
+              inline-flex
+              w-fit
+              shrink-0
+              items-center
+              gap-2
+              rounded-xl
+              border
+              border-[#C7A86B]/25
+              bg-white/[0.02]
+              px-4
+              py-2.5
+              text-xs
+              font-medium
+              text-[#F5F1E8]
+              transition-all
+              duration-300
+              hover:border-[#C7A86B]/60
+              hover:bg-[#C7A86B]/[0.06]
+            "
+          >
+            Verify
+
+            <ArrowUpRight
+              size={14}
+              className="
+                text-[#C7A86B]
+                transition-transform
+                duration-300
+                group-hover/verify:-translate-y-0.5
+                group-hover/verify:translate-x-0.5
+              "
+            />
+          </a>
+        )}
       </div>
 
-      {/* Organization */}
+      {/* =================================================
+          META
+      ================================================= */}
 
-      <p
+      <div
         className="
           relative
           mt-7
-          text-[9px]
-          font-medium
-          uppercase
-          tracking-[0.25em]
-          text-[#A7B68D]
+          flex
+          flex-wrap
+          gap-x-6
+          gap-y-3
+          border-t
+          border-[#C7A86B]/10
+          pt-5
         "
       >
-        {exp.organization}
-      </p>
+        {exp.mode && (
+          <MetaItem label="Mode">
+            {exp.mode}
+          </MetaItem>
+        )}
 
-      {/* Title */}
+        {exp.location && (
+          <MetaItem
+            icon={<MapPin size={14} />}
+            label="Location"
+          >
+            {exp.location}
+          </MetaItem>
+        )}
 
-      <h3
-        className="
-          relative
-          mt-2
-          text-xl
-          font-medium
-          leading-tight
-          tracking-[-0.03em]
-          text-[#F5F3EC]
-          transition-colors
-          duration-300
-          group-hover:text-[#A7B68D]
-          sm:text-2xl
-        "
-      >
-        {exp.title}
-      </h3>
+        <MetaItem
+          icon={<CalendarDays size={14} />}
+          label="Date"
+        >
+          {exp.date}
+        </MetaItem>
 
-      {/* Date */}
+        <MetaItem
+          icon={<Building2 size={14} />}
+          label="Organization"
+        >
+          {exp.organization}
+        </MetaItem>
+      </div>
 
-      <p
-        className="
-          relative
-          mt-3
-          text-[10px]
-          uppercase
-          tracking-[0.18em]
-          text-[#667068]
-        "
-      >
-        {exp.date}
-      </p>
+      {/* =================================================
+          DESCRIPTION
+      ================================================= */}
 
-      {/* Description */}
+      <div className="relative mt-7">
+        <p
+          className="
+            max-w-4xl
+            text-sm
+            leading-7
+            text-[#9BA8A2]
+            sm:text-[15px]
+          "
+        >
+          {exp.description}
+        </p>
+      </div>
 
-      <p
-        className="
-          relative
-          mt-4
-          text-sm
-          leading-6
-          text-[#8D9489]
-        "
-      >
-        {exp.description}
-      </p>
+      {/* =================================================
+          ACHIEVEMENTS
+      ================================================= */}
 
-      {/* Tags */}
+      {exp.achievements &&
+        exp.achievements.length > 0 && (
+          <div
+            className="
+              relative
+              mt-8
+              border-t
+              border-[#C7A86B]/10
+              pt-7
+            "
+          >
+            <h4
+              className="
+                mb-5
+                text-[10px]
+                font-semibold
+                uppercase
+                tracking-[0.25em]
+                text-[#F5F1E8]
+              "
+            >
+              Key Achievements
+            </h4>
+
+            <ul className="space-y-3">
+              {exp.achievements.map(
+                (achievement) => (
+                  <li
+                    key={achievement}
+                    className="
+                      flex
+                      items-start
+                      gap-3
+                      text-sm
+                      leading-6
+                      text-[#9BA8A2]
+                    "
+                  >
+                    <span
+                      className="
+                        mt-2
+                        h-1.5
+                        w-1.5
+                        shrink-0
+                        rounded-full
+                        bg-[#C7A86B]
+                        shadow-[0_0_8px_rgba(199,168,107,0.35)]
+                      "
+                    />
+
+                    <span>{achievement}</span>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+        )}
+
+      {/* =================================================
+          TECHNOLOGIES
+      ================================================= */}
 
       {exp.tags && exp.tags.length > 0 && (
         <div
-          className={`
+          className="
             relative
-            mt-4
-            flex
-            flex-wrap
-            gap-x-3
-            gap-y-1.5
-            ${
-              align === "right"
-                ? "md:justify-end"
-                : ""
-            }
-          `}
+            mt-8
+            border-t
+            border-[#C7A86B]/10
+            pt-7
+          "
         >
-          {exp.tags.map((tag) => (
-            <span
-              key={tag}
-              className="
-                text-[9px]
-                uppercase
-                tracking-[0.1em]
-                text-[#707A72]
-              "
-            >
-              {tag}
-            </span>
-          ))}
+          <h4
+            className="
+              mb-4
+              text-[10px]
+              font-semibold
+              uppercase
+              tracking-[0.25em]
+              text-[#F5F1E8]
+            "
+          >
+            Technologies Used
+          </h4>
+
+          <div className="flex flex-wrap gap-2">
+            {exp.tags.map((tag) => (
+              <span
+                key={tag}
+                className="
+                  rounded-full
+                  border
+                  border-[#C7A86B]/15
+                  bg-[#C7A86B]/[0.035]
+                  px-3
+                  py-1.5
+                  text-xs
+                  text-[#9BA8A2]
+                  transition-all
+                  duration-300
+                  hover:border-[#C7A86B]/40
+                  hover:bg-[#C7A86B]/[0.07]
+                  hover:text-[#F5F1E8]
+                "
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
-      {/* Bottom line */}
+      {/* Bottom accent */}
 
       <span
         className="
@@ -686,13 +649,57 @@ function ExperienceCard({
           h-px
           w-0
           -translate-x-1/2
-          bg-[#A7B68D]
-          shadow-[0_0_12px_rgba(167,182,141,0.6)]
+          bg-[#C7A86B]
+          shadow-[0_0_14px_rgba(199,168,107,0.45)]
           transition-all
           duration-500
-          group-hover:w-2/3
+          group-hover:w-1/2
         "
       />
-    </article>
+    </motion.article>
+  );
+}
+
+/* =============================================================
+   META ITEM
+============================================================= */
+
+function MetaItem({
+  icon,
+  label,
+  children,
+}: {
+  icon?: React.ReactNode;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      {icon && (
+        <span className="text-[#C7A86B]">
+          {icon}
+        </span>
+      )}
+
+      <span
+        className="
+          text-[10px]
+          uppercase
+          tracking-[0.15em]
+          text-[#65736D]
+        "
+      >
+        {label}:
+      </span>
+
+      <span
+        className="
+          text-xs
+          text-[#9BA8A2]
+        "
+      >
+        {children}
+      </span>
+    </div>
   );
 }
