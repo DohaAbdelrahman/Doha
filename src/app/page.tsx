@@ -11,14 +11,12 @@ import EducationSection from "@/sections/EducationSection";
 import CertificationsSection from "@/sections/CertificationsSection";
 import ContactSection from "@/sections/ContactSection";
 
-import WelcomeOverlay from "@/components/portfolio/WelcomeOverlay";
+
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#081412]">
 
-      {/* Welcome Message */}
-      <WelcomeOverlay />
 
       {/* Navigation */}
       <Navigation />
