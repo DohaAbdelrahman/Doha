@@ -3,22 +3,40 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+const message = "Hey! Welcome to my portfolio 👋";
+
 export default function WelcomeOverlay() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [text, setText] = useState("");
+  const [showSubtitle, setShowSubtitle] = useState(false);
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("portfolio-welcome");
+    let index = 0;
 
-    if (!hasVisited) {
-      setVisible(true);
-      sessionStorage.setItem("portfolio-welcome", "true");
+    // Typing effect
+    const typingInterval = setInterval(() => {
+      index++;
 
-      const timer = setTimeout(() => {
-        setVisible(false);
-      }, 2200);
+      setText(message.slice(0, index));
 
-      return () => clearTimeout(timer);
-    }
+      if (index >= message.length) {
+        clearInterval(typingInterval);
+
+        setTimeout(() => {
+          setShowSubtitle(true);
+        }, 250);
+      }
+    }, 65);
+
+    // Hide overlay
+    const closeTimer = setTimeout(() => {
+      setVisible(false);
+    }, 3500);
+
+    return () => {
+      clearInterval(typingInterval);
+      clearTimeout(closeTimer);
+    };
   }, []);
 
   return (
@@ -40,39 +58,26 @@ export default function WelcomeOverlay() {
             flex
             items-center
             justify-center
-            bg-[#081412]/80
+            bg-[#081412]/85
             backdrop-blur-md
           "
         >
-          <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0.92,
-              y: 15,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.97,
-              y: -10,
-              transition: {
-                duration: 0.45,
-              },
-            }}
-            transition={{
-              duration: 0.65,
-              ease: "easeOut",
-            }}
-            className="
-              px-6
-              text-center
-            "
-          >
-            <p
+          <div className="px-6 text-center">
+
+            {/* Main Message */}
+
+            <motion.h1
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.5,
+              }}
               className="
                 text-3xl
                 font-medium
@@ -82,19 +87,69 @@ export default function WelcomeOverlay() {
                 md:text-6xl
               "
             >
-              Hey! Welcome to my portfolio
-              <span className="ml-2">👋</span>
-            </p>
+              {text}
 
+              {/* Typing Cursor */}
+
+              <motion.span
+                animate={{
+                  opacity: [1, 0, 1],
+                }}
+                transition={{
+                  duration: 0.8,
+                  repeat: Infinity,
+                }}
+                className="
+                  ml-1
+                  text-[#C7A86B]
+                "
+              >
+                |
+              </motion.span>
+            </motion.h1>
+
+            {/* Subtitle */}
+
+            <AnimatePresence>
+              {showSubtitle && (
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                    y: 10,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                  }}
+                  className="
+                    mt-5
+                    text-sm
+                    tracking-wide
+                    text-[#9BA8A2]
+                    sm:text-base
+                  "
+                >
+                  {subtitle}
+                </motion.p>
+              )}
+            </AnimatePresence>
+
+            {/* Gold Line */}
 
             <motion.div
-              initial={{ width: 0, opacity: 0 }}
+              initial={{
+                width: 0,
+                opacity: 0,
+              }}
               animate={{
                 width: "70px",
                 opacity: 1,
               }}
               transition={{
-                delay: 0.4,
+                delay: 0.8,
                 duration: 0.5,
               }}
               className="
@@ -104,7 +159,7 @@ export default function WelcomeOverlay() {
                 bg-[#C7A86B]
               "
             />
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
