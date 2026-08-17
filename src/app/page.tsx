@@ -1,7 +1,7 @@
 "use client";
 
 import Navigation from "@/components/portfolio/Navigation";
-import Footer from "@/components/portfolio/Footer";
+
 
 import HeroSection from "@/sections/HeroSection";
 import AboutSection from "@/sections/AboutSection";
@@ -39,8 +39,7 @@ export default function Home() {
 
       </main>
 
-      {/* Footer */}
-      <Footer />
+
 
     </div>
   );
