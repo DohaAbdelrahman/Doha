@@ -28,6 +28,7 @@ export default function EducationSection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
         {/* Top right orbit */}
 
         <div
@@ -183,7 +184,9 @@ export default function EducationSection() {
             "
           >
             Academic Background
-            <span className="text-[#C7A86B]">.</span>
+            <span className="text-[#C7A86B]">
+              .
+            </span>
           </h2>
 
           <p
@@ -348,7 +351,10 @@ export default function EducationSection() {
                   <GraduationCap
                     size={42}
                     strokeWidth={1.1}
-                    className="relative text-[#C7A86B]"
+                    className="
+                      relative
+                      text-[#C7A86B]
+                    "
                   />
                 </div>
 
@@ -400,28 +406,55 @@ export default function EducationSection() {
                     text-[#C7A86B]
                   "
                 >
-                  <Calendar size={13} strokeWidth={1.5} />
+                  <Calendar
+                    size={13}
+                    strokeWidth={1.5}
+                  />
 
-                  <span>October 2023 — Present</span>
+                  <span>
+                    October 2023 — Present
+                  </span>
                 </div>
 
-                {/* University */}
+                {/* University + Faculty */}
 
-                <h3
+                <div
                   className="
                     mt-5
-                    text-2xl
-                    font-medium
-                    leading-tight
-                    tracking-[-0.045em]
-                    text-[#F5F1E8]
-                    sm:text-3xl
+                    flex
+                    flex-wrap
+                    items-baseline
+                    gap-x-3
+                    gap-y-1
                   "
                 >
-                  Helwan National University
-                </h3>
+                  <h3
+                    className="
+                      text-2xl
+                      font-medium
+                      leading-tight
+                      tracking-[-0.045em]
+                      text-[#F5F1E8]
+                      sm:text-3xl
+                    "
+                  >
+                    Helwan National University
+                  </h3>
 
-                {/* Faculty */}
+                  <span
+                    className="
+                      text-sm
+                      font-medium
+                      leading-6
+                      text-[#C7A86B]
+                      sm:text-base
+                    "
+                  >
+                    Computer Science &amp; Information Technology
+                  </span>
+                </div>
+
+                {/* Degree */}
 
                 <p
                   className="
@@ -429,24 +462,11 @@ export default function EducationSection() {
                     text-base
                     font-medium
                     leading-6
-                    text-[#C7A86B]
+                    text-[#B8C1BC]
                     sm:text-lg
                   "
                 >
-                  Computer Science &amp; Information Technology
-                </p>
-
-                {/* Degree */}
-
-                <p
-                  className="
-                    mt-2
-                    text-sm
-                    text-[#B8C1BC]
-                    sm:text-base
-                  "
-                >
-                  Bachelor of Data Science &amp; AI
+                  B.Sc. Data Science &amp; AI
                 </p>
 
                 {/* GPA */}
@@ -480,7 +500,9 @@ export default function EducationSection() {
                     className="text-[#C7A86B]"
                   />
 
-                  <span>Cairo, Egypt</span>
+                  <span>
+                    Cairo, Egypt
+                  </span>
                 </div>
 
                 {/* Description */}
@@ -530,7 +552,12 @@ export default function EducationSection() {
                   Academic Focus
                 </p>
 
-                <div className="mt-7 space-y-5">
+                <div
+                  className="
+                    mt-7
+                    space-y-5
+                  "
+                >
                   {academicFocus.map((item) => (
                     <div
                       key={item}
@@ -641,4 +668,4 @@ export default function EducationSection() {
       </div>
     </section>
   );
-}}
+}
