@@ -23,7 +23,9 @@ export default function AboutSection() {
         sm:py-32
       "
     >
-      {/* Background */}
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
@@ -77,7 +79,9 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* Content */}
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
 
       <div
         className="
@@ -532,6 +536,110 @@ export default function AboutSection() {
             </div>
           </ScrollReveal>
         </div>
+
+        {/* =================================================
+            ADDITIONAL SKILLS MARQUEE
+        ================================================= */}
+
+        <ScrollReveal
+          direction="up"
+          delay={0.15}
+          className="mt-16"
+        >
+          <div className="relative overflow-hidden">
+            {/* Marquee Header */}
+
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#C7A86B]/30" />
+
+              <p
+                className="
+                  text-[9px]
+                  font-medium
+                  uppercase
+                  tracking-[0.3em]
+                  text-[#65736D]
+                "
+              >
+                Technologies I Work With
+              </p>
+            </div>
+
+            {/* Marquee */}
+
+            <div className="relative overflow-hidden">
+              <div className="skills-marquee flex w-max">
+                {[...skillCategories, ...skillCategories].flatMap(
+                  (category, categoryIndex) =>
+                    category.skills.map(
+                      (skill, skillIndex) => (
+                        <div
+                          key={`${categoryIndex}-${skillIndex}-${skill.name}`}
+                          className="flex items-center"
+                        >
+                          <span
+                            className="
+                              whitespace-nowrap
+                              text-sm
+                              font-medium
+                              tracking-wide
+                              text-[#9BA8A2]
+                              transition-colors
+                              duration-300
+                              hover:text-[#C7A86B]
+                            "
+                          >
+                            {skill.name}
+                          </span>
+
+                          <span
+                            className="
+                              mx-6
+                              text-[#C7A86B]/35
+                            "
+                          >
+                            •
+                          </span>
+                        </div>
+                      )
+                    )
+                )}
+              </div>
+
+              {/* Left Fade */}
+
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-y-0
+                  left-0
+                  z-10
+                  w-20
+                  bg-gradient-to-r
+                  from-[#081412]
+                  to-transparent
+                "
+              />
+
+              {/* Right Fade */}
+
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-y-0
+                  right-0
+                  z-10
+                  w-20
+                  bg-gradient-to-l
+                  from-[#081412]
+                  to-transparent
+                "
+              />
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
