@@ -27,7 +27,7 @@ const colors = {
 
 /* =========================================================
    CASE STUDY MODAL
-   Only used for the FIRST / FEATURED project
+   FIRST PROJECT ONLY
 ========================================================= */
 
 function CaseStudyModal({
@@ -397,7 +397,7 @@ function CaseStudyModal({
 
 /* =========================================================
    FEATURED PROJECT
-   FIRST PROJECT STAYS AS CASE STUDY
+   FIRST PROJECT - KEEP CASE STUDY
 ========================================================= */
 
 function FeaturedProject({
@@ -614,7 +614,7 @@ function FeaturedProject({
             </div>
           </div>
 
-          {/* Case Study Button */}
+          {/* Case Study */}
 
           <button
             type="button"
@@ -757,8 +757,8 @@ function FeaturedInfo({
 }
 
 /* =========================================================
-   NORMAL PROJECT
-   SECOND PROJECT AND AFTER
+   COMPACT PROJECT ROW
+   PROJECT 02+
 ========================================================= */
 
 function ProjectRow({
@@ -772,7 +772,7 @@ function ProjectRow({
     <motion.article
       initial={{
         opacity: 0,
-        y: 10,
+        y: 8,
       }}
       whileInView={{
         opacity: 1,
@@ -780,37 +780,37 @@ function ProjectRow({
       }}
       viewport={{
         once: true,
-        margin: "-40px",
+        margin: "-30px",
       }}
       transition={{
-        duration: 0.45,
+        duration: 0.4,
       }}
       className="
         group
         border-t
         border-[#C7A86B]/10
         px-4
-        py-7
+        py-5
         transition-all
         duration-300
         hover:bg-[#C7A86B]/[0.025]
         sm:px-6
-        sm:py-8
+        sm:py-5
       "
     >
       <div
         className="
           grid
-          gap-5
-          lg:grid-cols-[55px_1fr_auto]
-          lg:items-start
+          gap-3
+          lg:grid-cols-[45px_1fr_auto]
+          lg:items-center
         "
       >
         {/* Number */}
 
         <span
           className="
-            text-xl
+            text-lg
             font-light
             tracking-[-0.03em]
             text-[#C7A86B]
@@ -822,29 +822,27 @@ function ProjectRow({
         {/* Content */}
 
         <div className="min-w-0">
-          {/* Title */}
+          {/* Title + Category */}
 
-          <h3
-            className="
-              text-lg
-              font-medium
-              tracking-[-0.02em]
-              text-[#F5F1E8]
-              transition-colors
-              duration-300
-              group-hover:text-[#C7A86B]
-              sm:text-xl
-            "
-          >
-            {project.title}
-          </h3>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <h3
+              className="
+                text-base
+                font-medium
+                tracking-[-0.02em]
+                text-[#F5F1E8]
+                transition-colors
+                duration-300
+                group-hover:text-[#C7A86B]
+                sm:text-lg
+              "
+            >
+              {project.title}
+            </h3>
 
-          {/* Category */}
-
-          <div className="mt-1 flex items-center gap-3">
             <span
               className="
-                text-[9px]
+                text-[8px]
                 uppercase
                 tracking-[0.16em]
                 text-[#C7A86B]
@@ -852,27 +850,18 @@ function ProjectRow({
             >
               {project.category}
             </span>
-
-            <span
-              className="
-                hidden
-                h-px
-                w-4
-                bg-[#C7A86B]/20
-                sm:block
-              "
-            />
           </div>
 
           {/* Description */}
 
           <p
             className="
-              mt-3
-              max-w-2xl
-              text-sm
-              leading-6
+              mt-1.5
+              max-w-3xl
+              text-xs
+              leading-5
               text-[#9BA8A2]
+              sm:text-[13px]
             "
           >
             {project.shortDescription}
@@ -880,7 +869,7 @@ function ProjectRow({
 
           {/* Technologies */}
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-2 flex flex-wrap gap-1.5">
             {project.technologies
               .slice(0, 5)
               .map((technology) => (
@@ -890,10 +879,9 @@ function ProjectRow({
                     rounded-full
                     border
                     border-[#C7A86B]/10
-                    bg-[#C7A86B]/[0.015]
-                    px-2.5
-                    py-1
-                    text-[8px]
+                    px-2
+                    py-0.5
+                    text-[7px]
                     text-[#65736D]
                   "
                 >
@@ -901,110 +889,110 @@ function ProjectRow({
                 </span>
               ))}
           </div>
-
-          {/* Buttons */}
-
-          <div className="mt-5 flex flex-wrap gap-3">
-            {/* GitHub */}
-
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2.5
-                  rounded-lg
-                  border
-                  border-[#C7A86B]/30
-                  bg-[#C7A86B]/[0.025]
-                  px-4
-                  py-2.5
-                  text-[10px]
-                  font-medium
-                  uppercase
-                  tracking-[0.14em]
-                  text-[#F5F1E8]
-                  transition-all
-                  duration-300
-                  hover:border-[#C7A86B]/70
-                  hover:bg-[#C7A86B]/[0.08]
-                "
-              >
-                <Github
-                  size={15}
-                  className="text-[#C7A86B]"
-                />
-
-                GitHub
-
-                <ArrowUpRight
-                  size={13}
-                  className="text-[#C7A86B]"
-                />
-              </a>
-            )}
-
-            {/* Live Demo */}
-
-            {project.demoUrl && (
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  inline-flex
-                  items-center
-                  gap-2.5
-                  rounded-lg
-                  border
-                  border-[#C7A86B]/60
-                  bg-[#C7A86B]/[0.07]
-                  px-4
-                  py-2.5
-                  text-[10px]
-                  font-medium
-                  uppercase
-                  tracking-[0.14em]
-                  text-[#F5F1E8]
-                  transition-all
-                  duration-300
-                  hover:border-[#D8BC82]
-                  hover:bg-[#C7A86B]/[0.13]
-                "
-              >
-                Live Demo
-
-                <ArrowUpRight
-                  size={13}
-                  className="text-[#C7A86B]"
-                />
-              </a>
-            )}
-          </div>
         </div>
 
-        {/* Arrow */}
+        {/* Buttons */}
 
         <div
           className="
-            hidden
+            flex
+            shrink-0
             items-center
-            justify-end
-            lg:flex
+            gap-2
           "
         >
+          {/* GitHub */}
+
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-flex
+                items-center
+                gap-1.5
+                rounded-md
+                border
+                border-[#C7A86B]/30
+                px-3
+                py-2
+                text-[8px]
+                font-medium
+                uppercase
+                tracking-[0.12em]
+                text-[#F5F1E8]
+                transition-all
+                duration-300
+                hover:border-[#C7A86B]/70
+                hover:bg-[#C7A86B]/[0.08]
+              "
+            >
+              <Github
+                size={12}
+                className="text-[#C7A86B]"
+              />
+
+              GitHub
+
+              <ArrowUpRight
+                size={11}
+                className="text-[#C7A86B]"
+              />
+            </a>
+          )}
+
+          {/* Live Demo */}
+
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-flex
+                items-center
+                gap-1.5
+                rounded-md
+                border
+                border-[#C7A86B]/55
+                bg-[#C7A86B]/[0.05]
+                px-3
+                py-2
+                text-[8px]
+                font-medium
+                uppercase
+                tracking-[0.12em]
+                text-[#F5F1E8]
+                transition-all
+                duration-300
+                hover:border-[#D8BC82]
+                hover:bg-[#C7A86B]/[0.12]
+              "
+            >
+              Live Demo
+
+              <ArrowUpRight
+                size={11}
+                className="text-[#C7A86B]"
+              />
+            </a>
+          )}
+
+          {/* Arrow */}
+
           <ArrowUpRight
-            size={18}
+            size={15}
             className="
-              text-[#C7A86B]/40
+              ml-1
+              hidden
+              text-[#C7A86B]/30
               transition-all
               duration-300
-              group-hover:-translate-y-1
-              group-hover:translate-x-1
+              group-hover:-translate-y-0.5
+              group-hover:translate-x-0.5
               group-hover:text-[#C7A86B]
+              xl:block
             "
           />
         </div>
@@ -1206,7 +1194,7 @@ export default function ProjectsSection() {
           </motion.header>
 
           {/* =================================================
-              FIRST PROJECT — UNCHANGED CASE STUDY
+              FIRST PROJECT
           ================================================= */}
 
           {featuredProject && (
@@ -1222,7 +1210,7 @@ export default function ProjectsSection() {
           )}
 
           {/* =================================================
-              OTHER PROJECTS
+              PROJECTS 02+
           ================================================= */}
 
           <div
@@ -1247,7 +1235,9 @@ export default function ProjectsSection() {
             )}
           </div>
 
-          {/* Explore More */}
+          {/* =================================================
+              EXPLORE MORE
+          ================================================= */}
 
           <motion.div
             initial={{
@@ -1360,7 +1350,7 @@ export default function ProjectsSection() {
 
       {/* =====================================================
           CASE STUDY MODAL
-          Only opens for first project
+          FIRST PROJECT ONLY
       ===================================================== */}
 
       <AnimatePresence>
