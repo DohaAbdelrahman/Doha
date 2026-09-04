@@ -5,6 +5,7 @@ import {
   Github,
   Linkedin,
   Mail,
+  Kaggle,
   ArrowUpRight,
   ChevronDown,
 } from "lucide-react";
@@ -431,7 +432,6 @@ export default function HeroSection() {
               "
             >
               {profile.name}
-              <span className="text-[#C7A86B]">.</span>
             </motion.h1>
 
             {/* SUPPORTING DESCRIPTION */}

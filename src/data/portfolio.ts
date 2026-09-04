@@ -11,7 +11,9 @@ export const profile = {
   phone: "+201029474155",
   github: "https://github.com/DohaAbdelrahman",
   linkedin: "https://www.linkedin.com/in/doha-abdelrahman-3540292a5/",
+  kaggle: "https://www.kaggle.com/dohaabdelrahman",
   resumeUrl: "#",
+
 };
 
 export const heroStats = [
