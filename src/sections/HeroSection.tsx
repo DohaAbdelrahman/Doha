@@ -672,28 +672,27 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 aria-label="Kaggle"
                 className="
-                  flex
-                  h-12
-                  w-12
-                  items-center
-                  justify-center
+                  flex h-12 w-12 items-center justify-center
                   rounded-xl
-                  border
-                  border-[#F5F1E8]/15
+                  border border-[#F5F1E8]/15
                   bg-[#F5F1E8]/[0.025]
                   text-[#9BA8A2]
-                  shadow-[inset_0_1px_0_rgba(245,241,232,0.04)]
                   backdrop-blur-xl
-                  transition-all
-                  duration-300
+                  transition-all duration-300
                   hover:border-[#C7A86B]/60
                   hover:bg-[#C7A86B]/[0.08]
                   hover:text-[#C7A86B]
                 "
               >
-                <span className="text-sm font-bold">K</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[19px] w-[19px]"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M4.5 3.5h3v7.1l6.8-7.1h3.8l-7.2 7.4 7.7 9.6h-3.8l-5.5-7-1.8 1.8v5.2h-3V3.5z" />
+                </svg>
               </a>
-
               {/* Email */}
 
               <a
