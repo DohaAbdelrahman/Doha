@@ -27,6 +27,7 @@ const colors = {
 
 /* =========================================================
    CASE STUDY MODAL
+   Only used for the FIRST / FEATURED project
 ========================================================= */
 
 function CaseStudyModal({
@@ -396,6 +397,7 @@ function CaseStudyModal({
 
 /* =========================================================
    FEATURED PROJECT
+   FIRST PROJECT STAYS AS CASE STUDY
 ========================================================= */
 
 function FeaturedProject({
@@ -486,9 +488,7 @@ function FeaturedProject({
           lg:grid-cols-[1.05fr_0.95fr]
         "
       >
-        {/* =================================================
-            LEFT
-        ================================================= */}
+        {/* LEFT */}
 
         <div className="p-7 sm:p-9 lg:p-10">
           {/* Label */}
@@ -614,7 +614,7 @@ function FeaturedProject({
             </div>
           </div>
 
-          {/* Button */}
+          {/* Case Study Button */}
 
           <button
             type="button"
@@ -650,9 +650,7 @@ function FeaturedProject({
           </button>
         </div>
 
-        {/* =================================================
-            RIGHT
-        ================================================= */}
+        {/* RIGHT */}
 
         <div
           className="
@@ -759,17 +757,16 @@ function FeaturedInfo({
 }
 
 /* =========================================================
-   PROJECT ROW
+   NORMAL PROJECT
+   SECOND PROJECT AND AFTER
 ========================================================= */
 
 function ProjectRow({
   project,
   index,
-  onOpen,
 }: {
   project: Project;
   index: number;
-  onOpen: () => void;
 }) {
   return (
     <motion.article
@@ -790,142 +787,228 @@ function ProjectRow({
       }}
       className="
         group
-        grid
-        grid-cols-[50px_1fr_auto]
-        items-center
-        gap-4
         border-t
         border-[#C7A86B]/10
         px-4
-        py-6
+        py-7
         transition-all
         duration-300
         hover:bg-[#C7A86B]/[0.025]
-        sm:grid-cols-[65px_1fr_auto]
         sm:px-6
-        sm:py-7
+        sm:py-8
       "
     >
-      {/* Number */}
-
-      <span
+      <div
         className="
-          text-xl
-          font-light
-          tracking-[-0.03em]
-          text-[#C7A86B]
-          transition-colors
+          grid
+          gap-5
+          lg:grid-cols-[55px_1fr_auto]
+          lg:items-start
         "
       >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-      {/* Content */}
-
-      <button
-        type="button"
-        onClick={onOpen}
-        className="min-w-0 text-left"
-      >
-        <h3
-          className="
-            truncate
-            text-base
-            font-medium
-            tracking-[-0.02em]
-            text-[#F5F1E8]
-            transition-transform
-            duration-300
-            group-hover:translate-x-1
-            sm:text-lg
-          "
-        >
-          {project.title}
-        </h3>
-
-        <div className="mt-1 flex items-center gap-3">
-          <span
-            className="
-              text-[9px]
-              uppercase
-              tracking-[0.16em]
-              text-[#C7A86B]
-            "
-          >
-            {project.category}
-          </span>
-
-          <span
-            className="
-              hidden
-              h-px
-              w-4
-              bg-[#C7A86B]/20
-              sm:block
-            "
-          />
-
-          <span
-            className="
-              hidden
-              text-[10px]
-              text-[#65736D]
-              sm:block
-            "
-          >
-            {project.technologies
-              .slice(0, 3)
-              .join(" · ")}
-          </span>
-        </div>
-      </button>
-
-      {/* View */}
-
-      <button
-        type="button"
-        onClick={onOpen}
-        className="
-          flex
-          items-center
-          gap-3
-          text-[9px]
-          uppercase
-          tracking-[0.15em]
-          text-[#C7A86B]
-        "
-      >
-        <span className="hidden sm:block">
-          View Project
-        </span>
+        {/* Number */}
 
         <span
           className="
-            flex
-            h-9
-            w-9
+            text-xl
+            font-light
+            tracking-[-0.03em]
+            text-[#C7A86B]
+          "
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        {/* Content */}
+
+        <div className="min-w-0">
+          {/* Title */}
+
+          <h3
+            className="
+              text-lg
+              font-medium
+              tracking-[-0.02em]
+              text-[#F5F1E8]
+              transition-colors
+              duration-300
+              group-hover:text-[#C7A86B]
+              sm:text-xl
+            "
+          >
+            {project.title}
+          </h3>
+
+          {/* Category */}
+
+          <div className="mt-1 flex items-center gap-3">
+            <span
+              className="
+                text-[9px]
+                uppercase
+                tracking-[0.16em]
+                text-[#C7A86B]
+              "
+            >
+              {project.category}
+            </span>
+
+            <span
+              className="
+                hidden
+                h-px
+                w-4
+                bg-[#C7A86B]/20
+                sm:block
+              "
+            />
+          </div>
+
+          {/* Description */}
+
+          <p
+            className="
+              mt-3
+              max-w-2xl
+              text-sm
+              leading-6
+              text-[#9BA8A2]
+            "
+          >
+            {project.shortDescription}
+          </p>
+
+          {/* Technologies */}
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.technologies
+              .slice(0, 5)
+              .map((technology) => (
+                <span
+                  key={technology}
+                  className="
+                    rounded-full
+                    border
+                    border-[#C7A86B]/10
+                    bg-[#C7A86B]/[0.015]
+                    px-2.5
+                    py-1
+                    text-[8px]
+                    text-[#65736D]
+                  "
+                >
+                  {technology}
+                </span>
+              ))}
+          </div>
+
+          {/* Buttons */}
+
+          <div className="mt-5 flex flex-wrap gap-3">
+            {/* GitHub */}
+
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2.5
+                  rounded-lg
+                  border
+                  border-[#C7A86B]/30
+                  bg-[#C7A86B]/[0.025]
+                  px-4
+                  py-2.5
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.14em]
+                  text-[#F5F1E8]
+                  transition-all
+                  duration-300
+                  hover:border-[#C7A86B]/70
+                  hover:bg-[#C7A86B]/[0.08]
+                "
+              >
+                <Github
+                  size={15}
+                  className="text-[#C7A86B]"
+                />
+
+                GitHub
+
+                <ArrowUpRight
+                  size={13}
+                  className="text-[#C7A86B]"
+                />
+              </a>
+            )}
+
+            {/* Live Demo */}
+
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2.5
+                  rounded-lg
+                  border
+                  border-[#C7A86B]/60
+                  bg-[#C7A86B]/[0.07]
+                  px-4
+                  py-2.5
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.14em]
+                  text-[#F5F1E8]
+                  transition-all
+                  duration-300
+                  hover:border-[#D8BC82]
+                  hover:bg-[#C7A86B]/[0.13]
+                "
+              >
+                Live Demo
+
+                <ArrowUpRight
+                  size={13}
+                  className="text-[#C7A86B]"
+                />
+              </a>
+            )}
+          </div>
+        </div>
+
+        {/* Arrow */}
+
+        <div
+          className="
+            hidden
             items-center
-            justify-center
-            rounded-full
-            border
-            border-[#C7A86B]/30
-            transition-all
-            duration-300
-            group-hover:border-[#C7A86B]
-            group-hover:bg-[#C7A86B]/[0.06]
+            justify-end
+            lg:flex
           "
         >
           <ArrowUpRight
-            size={14}
+            size={18}
             className="
-              transition-transform
+              text-[#C7A86B]/40
+              transition-all
               duration-300
-              group-hover:-translate-y-0.5
-              group-hover:translate-x-0.5
+              group-hover:-translate-y-1
+              group-hover:translate-x-1
+              group-hover:text-[#C7A86B]
             "
           />
-        </span>
-      </button>
+        </div>
+      </div>
     </motion.article>
   );
 }
@@ -939,8 +1022,9 @@ export default function ProjectsSection() {
     useState<Project | null>(null);
 
   const featuredProject =
-    projects.find((project) => project.featured) ??
-    projects[0];
+    projects.find(
+      (project) => project.featured
+    ) ?? projects[0];
 
   const remainingProjects = projects.filter(
     (project) =>
@@ -1121,7 +1205,9 @@ export default function ProjectsSection() {
             </h2>
           </motion.header>
 
-          {/* Featured */}
+          {/* =================================================
+              FIRST PROJECT — UNCHANGED CASE STUDY
+          ================================================= */}
 
           {featuredProject && (
             <FeaturedProject
@@ -1135,7 +1221,9 @@ export default function ProjectsSection() {
             />
           )}
 
-          {/* Project list */}
+          {/* =================================================
+              OTHER PROJECTS
+          ================================================= */}
 
           <div
             className="
@@ -1154,17 +1242,12 @@ export default function ProjectsSection() {
                   key={project.id}
                   project={project}
                   index={index + 1}
-                  onOpen={() =>
-                    setSelectedProject(project)
-                  }
                 />
               )
             )}
           </div>
 
-          {/* =================================================
-              EXPLORE MORE ON GITHUB
-          ================================================= */}
+          {/* Explore More */}
 
           <motion.div
             initial={{
@@ -1275,7 +1358,10 @@ export default function ProjectsSection() {
         </div>
       </section>
 
-      {/* Modal */}
+      {/* =====================================================
+          CASE STUDY MODAL
+          Only opens for first project
+      ===================================================== */}
 
       <AnimatePresence>
         {selectedProject && (
