@@ -28,6 +28,8 @@ export default function AboutSection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Decorative circles */}
+
         <div
           className="
             absolute
@@ -53,6 +55,8 @@ export default function AboutSection() {
             border-[#C7A86B]/[0.045]
           "
         />
+
+        {/* Dot grid */}
 
         <div
           className="
@@ -283,8 +287,7 @@ export default function AboutSection() {
                         {step}
                       </span>
 
-                      {index <
-                        approachSteps.length - 1 && (
+                      {index < approachSteps.length - 1 && (
                         <span
                           className="
                             mx-3
@@ -546,7 +549,7 @@ export default function AboutSection() {
           delay={0.15}
           className="mt-16"
         >
-          <div className="relative overflow-hidden">
+          <div>
             {/* Marquee Header */}
 
             <div className="mb-5 flex items-center gap-3">
@@ -567,43 +570,62 @@ export default function AboutSection() {
 
             {/* Marquee */}
 
-            <div className="relative overflow-hidden">
-              <div className="skills-marquee flex w-max">
-                {[...skillCategories, ...skillCategories].flatMap(
-                  (category, categoryIndex) =>
-                    category.skills.map(
-                      (skill, skillIndex) => (
-                        <div
-                          key={`${categoryIndex}-${skillIndex}-${skill.name}`}
-                          className="flex items-center"
-                        >
-                          <span
-                            className="
-                              whitespace-nowrap
-                              text-sm
-                              font-medium
-                              tracking-wide
-                              text-[#9BA8A2]
-                              transition-colors
-                              duration-300
-                              hover:text-[#C7A86B]
-                            "
-                          >
-                            {skill.name}
-                          </span>
+            <div className="relative w-full overflow-hidden">
+              <div className="skills-track">
 
-                          <span
-                            className="
-                              mx-6
-                              text-[#C7A86B]/35
-                            "
-                          >
-                            •
-                          </span>
-                        </div>
-                      )
-                    )
-                )}
+                {/* First Row */}
+
+                <div className="skills-row">
+                  {skillCategories.flatMap((category) =>
+                    category.skills.map((skill) => (
+                      <span
+                        key={`first-${category.title}-${skill.name}`}
+                        className="
+                          whitespace-nowrap
+                          text-sm
+                          font-medium
+                          tracking-wide
+                          text-[#9BA8A2]
+                        "
+                      >
+                        {skill.name}
+
+                        <span className="mx-6 text-[#C7A86B]/40">
+                          •
+                        </span>
+                      </span>
+                    ))
+                  )}
+                </div>
+
+                {/* Second Row */}
+
+                <div
+                  className="skills-row"
+                  aria-hidden="true"
+                >
+                  {skillCategories.flatMap((category) =>
+                    category.skills.map((skill) => (
+                      <span
+                        key={`second-${category.title}-${skill.name}`}
+                        className="
+                          whitespace-nowrap
+                          text-sm
+                          font-medium
+                          tracking-wide
+                          text-[#9BA8A2]
+                        "
+                      >
+                        {skill.name}
+
+                        <span className="mx-6 text-[#C7A86B]/40">
+                          •
+                        </span>
+                      </span>
+                    ))
+                  )}
+                </div>
+
               </div>
 
               {/* Left Fade */}
