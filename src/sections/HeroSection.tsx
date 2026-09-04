@@ -434,9 +434,9 @@ export default function HeroSection() {
               <span className="text-[#C7A86B]">.</span>
             </motion.h1>
 
-            {/* SPECIALIZATIONS */}
+            {/* SUPPORTING DESCRIPTION */}
 
-            <motion.div
+            <motion.p
               initial={{
                 opacity: 0,
                 y: 12,
@@ -451,48 +451,16 @@ export default function HeroSection() {
               }}
               className="
                 mt-7
-                flex
-                flex-wrap
-                items-center
-                justify-center
-                gap-x-4
-                gap-y-2
+                max-w-xl
+                px-4
                 text-sm
+                leading-relaxed
+                text-[#9BA8A2]
                 sm:text-base
               "
             >
-              {[
-                "Data Science",
-                "Data Analysis",
-                "Machine Learning",
-              ].map((skill, index) => (
-                <div
-                  key={skill}
-                  className="
-                    flex
-                    items-center
-                    gap-4
-                  "
-                >
-                  <span
-                    className="
-                      text-[#9BA8A2]
-                      transition-colors
-                      duration-300
-                      hover:text-[#F5F1E8]
-                    "
-                  >
-                    {skill}
-                  </span>
-
-                  {index < 2 && (
-                    <span className="text-[#C7A86B]/60">
-                      ·
-                    </span>
-                  )}
-                </div>
-              ))}
-            </motion.div>
+              I support data analysis — turning raw numbers into clear, actionable insights.
+            </motion.p>
 
             {/* =================================================
                 GLASS CTA BUTTONS
