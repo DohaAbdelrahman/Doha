@@ -1,4 +1,4 @@
-{"use client";
+"use client";
 
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { Calendar, MapPin, GraduationCap } from "lucide-react";
