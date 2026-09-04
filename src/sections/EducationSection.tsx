@@ -450,7 +450,7 @@ export default function EducationSection() {
                       sm:text-base
                     "
                   >
-                    Computer Science &amp; Information Technology
+                    Faculty of Computer Science and Information Technology
                   </span>
                 </div>
 
