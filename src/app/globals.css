@@ -339,3 +339,25 @@
     transition-duration: 0ms !important;
   }
 }
+@keyframes skills-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.skills-track {
+  display: flex;
+  width: max-content;
+  animation: skills-scroll 25s linear infinite;
+}
+
+.skills-row {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: max-content;
+}
