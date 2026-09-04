@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, X } from "lucide-react";
 
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { certifications } from "@/data/portfolio";
@@ -17,6 +18,35 @@ const colors = {
 };
 
 export default function CertificationsSection() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
+  const [selectedPdf, setSelectedPdf] = useState<string | null>(null);
+
+  const openImage = (image: string, title: string) => {
+    setSelectedImage(image);
+    setSelectedTitle(title);
+  };
+
+  const openCredential = (url: string) => {
+    let previewUrl = url;
+
+    if (url.includes("drive.google.com/file/d/")) {
+      const match = url.match(/\/file\/d\/([^/]+)/);
+
+      if (match?.[1]) {
+        previewUrl = `https://drive.google.com/file/d/${match[1]}/preview`;
+      }
+    }
+
+    setSelectedPdf(previewUrl);
+  };
+
+  const closeModals = () => {
+    setSelectedImage(null);
+    setSelectedPdf(null);
+    setSelectedTitle("");
+  };
+
   return (
     <section
       id="certifications"
@@ -33,7 +63,6 @@ export default function CertificationsSection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-
         {/* Top right circles */}
 
         <div
@@ -262,11 +291,7 @@ export default function CertificationsSection() {
                   CERTIFICATE IMAGE
               ================================================= */}
 
-              <a
-                href={cert.credentialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`View ${cert.title} credential`}
+              <div
                 className="
                   relative
                   block
@@ -278,19 +303,34 @@ export default function CertificationsSection() {
                 "
               >
                 {cert.image ? (
-                  <img
-                    src={cert.image}
-                    alt={`${cert.title} certificate`}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openImage(cert.image, cert.title)
+                    }
+                    aria-label={`Preview ${cert.title} certificate`}
                     className="
+                      absolute
+                      inset-0
                       h-full
                       w-full
-                      object-contain
-                      p-3
-                      transition-transform
-                      duration-500
-                      group-hover:scale-[1.025]
+                      cursor-zoom-in
                     "
-                  />
+                  >
+                    <img
+                      src={cert.image}
+                      alt={`${cert.title} certificate`}
+                      className="
+                        h-full
+                        w-full
+                        object-contain
+                        p-3
+                        transition-transform
+                        duration-500
+                        group-hover:scale-[1.06]
+                      "
+                    />
+                  </button>
                 ) : (
                   <div
                     className="
@@ -326,40 +366,50 @@ export default function CertificationsSection() {
                   "
                 />
 
-                {/* Open icon */}
+                {/* Open credential button */}
 
-                <div
-                  className="
-                    absolute
-                    right-4
-                    top-4
-                    flex
-                    h-9
-                    w-9
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-[#C7A86B]/30
-                    bg-[#081412]/80
-                    text-[#C7A86B]
-                    opacity-0
-                    backdrop-blur-md
-                    transition-all
-                    duration-300
-                    group-hover:opacity-100
-                  "
-                >
-                  <ArrowUpRight size={15} />
-                </div>
-              </a>
+                {cert.credentialUrl && (
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      openCredential(cert.credentialUrl);
+                    }}
+                    aria-label={`Open ${cert.title} credential`}
+                    className="
+                      absolute
+                      right-4
+                      top-4
+                      z-20
+                      flex
+                      h-9
+                      w-9
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-[#C7A86B]/30
+                      bg-[#081412]/80
+                      text-[#C7A86B]
+                      opacity-0
+                      backdrop-blur-md
+                      transition-all
+                      duration-300
+                      hover:border-[#C7A86B]/70
+                      hover:bg-[#C7A86B]/10
+                      group-hover:opacity-100
+                    "
+                  >
+                    <ArrowUpRight size={15} />
+                  </button>
+                )}
+              </div>
 
               {/* =================================================
                   CARD CONTENT
               ================================================= */}
 
               <div className="relative p-5 sm:p-6">
-
                 {/* Number + Label */}
 
                 <div className="flex items-start justify-between">
@@ -539,6 +589,200 @@ export default function CertificationsSection() {
           </div>
         </ScrollReveal>
       </div>
+
+      {/* =====================================================
+          IMAGE PREVIEW MODAL
+      ===================================================== */}
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModals}
+            className="
+              fixed
+              inset-0
+              z-[100]
+              flex
+              items-center
+              justify-center
+              bg-black/85
+              p-4
+              backdrop-blur-md
+              sm:p-8
+            "
+          >
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0.92,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.92,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              onClick={(event) => event.stopPropagation()}
+              className="
+                relative
+                flex
+                max-h-[90vh]
+                max-w-[95vw]
+                items-center
+                justify-center
+                overflow-hidden
+                rounded-xl
+                border
+                border-[#C7A86B]/30
+                bg-[#06100E]
+                p-3
+                shadow-2xl
+              "
+            >
+              <img
+                src={selectedImage}
+                alt={`${selectedTitle} certificate preview`}
+                className="
+                  max-h-[85vh]
+                  max-w-full
+                  object-contain
+                "
+              />
+
+              <button
+                type="button"
+                onClick={closeModals}
+                aria-label="Close certificate preview"
+                className="
+                  absolute
+                  right-4
+                  top-4
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-[#C7A86B]/30
+                  bg-[#081412]/90
+                  text-[#F5F1E8]
+                  backdrop-blur-md
+                  transition-all
+                  hover:border-[#C7A86B]/70
+                  hover:text-[#C7A86B]
+                "
+              >
+                <X size={18} />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* =====================================================
+          PDF PREVIEW MODAL
+      ===================================================== */}
+
+      <AnimatePresence>
+        {selectedPdf && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModals}
+            className="
+              fixed
+              inset-0
+              z-[110]
+              flex
+              items-center
+              justify-center
+              bg-black/90
+              p-3
+              backdrop-blur-md
+              sm:p-6
+            "
+          >
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0.96,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.96,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              onClick={(event) => event.stopPropagation()}
+              className="
+                relative
+                h-[92vh]
+                w-full
+                max-w-5xl
+                overflow-hidden
+                rounded-xl
+                border
+                border-[#C7A86B]/30
+                bg-[#06100E]
+                shadow-2xl
+              "
+            >
+              <iframe
+                src={selectedPdf}
+                title={`${selectedTitle} credential`}
+                className="
+                  h-full
+                  w-full
+                  border-0
+                "
+              />
+
+              <button
+                type="button"
+                onClick={closeModals}
+                aria-label="Close PDF preview"
+                className="
+                  absolute
+                  right-4
+                  top-4
+                  z-20
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-[#C7A86B]/30
+                  bg-[#081412]/90
+                  text-[#F5F1E8]
+                  backdrop-blur-md
+                  transition-all
+                  hover:border-[#C7A86B]/70
+                  hover:text-[#C7A86B]
+                "
+              >
+                <X size={18} />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
