@@ -1,4 +1,4 @@
-"use client";
+{"use client";
 
 import ScrollReveal from "@/components/portfolio/ScrollReveal";
 import { Calendar, MapPin, GraduationCap } from "lucide-react";
@@ -28,7 +28,6 @@ export default function EducationSection() {
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-
         {/* Top right orbit */}
 
         <div
@@ -184,9 +183,7 @@ export default function EducationSection() {
             "
           >
             Academic Background
-            <span className="text-[#C7A86B]">
-              .
-            </span>
+            <span className="text-[#C7A86B]">.</span>
           </h2>
 
           <p
@@ -351,10 +348,7 @@ export default function EducationSection() {
                   <GraduationCap
                     size={42}
                     strokeWidth={1.1}
-                    className="
-                      relative
-                      text-[#C7A86B]
-                    "
+                    className="relative text-[#C7A86B]"
                   />
                 </div>
 
@@ -406,14 +400,9 @@ export default function EducationSection() {
                     text-[#C7A86B]
                   "
                 >
-                  <Calendar
-                    size={13}
-                    strokeWidth={1.5}
-                  />
+                  <Calendar size={13} strokeWidth={1.5} />
 
-                  <span>
-                    October 2023 — Present
-                  </span>
+                  <span>October 2023 — Present</span>
                 </div>
 
                 {/* University */}
@@ -421,18 +410,18 @@ export default function EducationSection() {
                 <h3
                   className="
                     mt-5
-                    text-3xl
+                    text-2xl
                     font-medium
                     leading-tight
                     tracking-[-0.045em]
                     text-[#F5F1E8]
-                    sm:text-4xl
+                    sm:text-3xl
                   "
                 >
                   Helwan National University
                 </h3>
 
-                {/* Major */}
+                {/* Faculty */}
 
                 <p
                   className="
@@ -444,8 +433,33 @@ export default function EducationSection() {
                     sm:text-lg
                   "
                 >
-                  Computer Science &amp;
-                  Information Technology
+                  Computer Science &amp; Information Technology
+                </p>
+
+                {/* Degree */}
+
+                <p
+                  className="
+                    mt-2
+                    text-sm
+                    text-[#B8C1BC]
+                    sm:text-base
+                  "
+                >
+                  Bachelor of Data Science &amp; AI
+                </p>
+
+                {/* GPA */}
+
+                <p
+                  className="
+                    mt-2
+                    text-sm
+                    font-medium
+                    text-[#C7A86B]
+                  "
+                >
+                  GPA: 2.6
                 </p>
 
                 {/* Location */}
@@ -466,9 +480,7 @@ export default function EducationSection() {
                     className="text-[#C7A86B]"
                   />
 
-                  <span>
-                    Cairo, Egypt
-                  </span>
+                  <span>Cairo, Egypt</span>
                 </div>
 
                 {/* Description */}
@@ -518,12 +530,7 @@ export default function EducationSection() {
                   Academic Focus
                 </p>
 
-                <div
-                  className="
-                    mt-7
-                    space-y-5
-                  "
-                >
+                <div className="mt-7 space-y-5">
                   {academicFocus.map((item) => (
                     <div
                       key={item}
@@ -634,4 +641,4 @@ export default function EducationSection() {
       </div>
     </section>
   );
-}
+}}
