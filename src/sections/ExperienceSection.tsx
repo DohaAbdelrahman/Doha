@@ -143,7 +143,7 @@ export default function ExperienceSection() {
               sm:text-6xl
             "
           >
-            Professional Training
+            My Journey
             <span className="text-[#C7A86B]">.</span>
           </h2>
 
