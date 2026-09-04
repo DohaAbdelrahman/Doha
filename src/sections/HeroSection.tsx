@@ -5,7 +5,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  Kaggle,
   ArrowUpRight,
   ChevronDown,
 } from "lucide-react";
@@ -663,6 +662,36 @@ export default function HeroSection() {
                 "
               >
                 <Linkedin size={18} strokeWidth={1.5} />
+              </a>
+
+              {/* Kaggle */}
+
+              <a
+                href={profile.kaggle}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Kaggle"
+                className="
+                  flex
+                  h-12
+                  w-12
+                  items-center
+                  justify-center
+                  rounded-xl
+                  border
+                  border-[#F5F1E8]/15
+                  bg-[#F5F1E8]/[0.025]
+                  text-[#9BA8A2]
+                  shadow-[inset_0_1px_0_rgba(245,241,232,0.04)]
+                  backdrop-blur-xl
+                  transition-all
+                  duration-300
+                  hover:border-[#C7A86B]/60
+                  hover:bg-[#C7A86B]/[0.08]
+                  hover:text-[#C7A86B]
+                "
+              >
+                <span className="text-sm font-bold">K</span>
               </a>
 
               {/* Email */}
