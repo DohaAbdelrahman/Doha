@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Doha Adelrahman" }],
   icons: {
-    icon: "/workspaces/Doha/src/app/icon.png/ChatGPT Image Sep 5, 2026, 12_22_58 AM.png",
+    icon:"/icon.png",
   },
 
   openGraph: {
