@@ -16,7 +16,7 @@ const navigation = [
     section: "projects",
   },
   {
-    label: "Experience",
+    label: "Training",
     href: "#experience",
     section: "experience",
   },
